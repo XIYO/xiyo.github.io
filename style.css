@@ -1,0 +1,124 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    /* border-style: solid; 
+    border-width: 1px;
+    border-color: aquamarine; */
+    color: #ffffff;
+}
+
+.contents {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+.element1 {
+    position: absolute;
+    left: 304px;
+    top: 387px;
+}
+
+#page1 {
+    width: 1920px;
+    height: 1080px;
+    background-image: url("./page1.png");
+}
+
+.title1 {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 73px;
+    letter-spacing: 0.03em;
+    width: 792px;
+    height: 156px;
+}
+
+.title2 {
+    margin-top: 50px;
+
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #e84908;
+}
+
+.title2::after {
+    content: "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯";
+    margin-left: 10px;
+    color: #e84908;
+}
+
+.title3 {
+    font-family: "SUIT Variable";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+#logo {
+    position: absolute;
+    left: 144px;
+    top: 83px;
+    /* background-image: url("./logo.png"); */
+}
+
+#pages {
+    position: absolute;
+    width: 200px;
+    /* height: 32px; */
+    left: 310px;
+    top: 955px;
+}
+
+#buttons {
+    float: left;
+    font-size: 15px;
+}
+
+#upButton {}
+
+#downButton {
+    margin-top: 8px;
+}
+
+#pageNumbers {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-size: 18px;
+
+    position: absolute;
+    left: 29px;
+    top: 50%;
+    transform: translateY(-62%);
+}
+
+#currentPage {
+    font-weight: 600;
+}
+
+#totalPages {
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#contact {
+    position: absolute;
+    left: 1532px;
+    top: 849px;
+
+    width: 138px;
+    height: 138px;
+    /* line-height: 3.5 !important; */
+    /* margin: auto; */
+    background: #ebebeb;
+    border-radius: 500px;
+    text-align: center;
+}

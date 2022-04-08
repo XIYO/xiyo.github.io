@@ -35,22 +35,24 @@
     letter-spacing: 0.03em;
     width: 792px;
     height: 156px;
+
+    margin-bottom: 53px;
 }
 
 .title2 {
-    margin-top: 50px;
+    margin-bottom: 19px;
 
     font-family: "Montserrat";
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 20px;
 
     color: #e84908;
 }
 
 .title2::after {
-    content: "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯";
+    content: "⎯⎯⎯⎯🥳⎯⎯⎯⎯⎯⎯⎯";
     margin-left: 10px;
     color: #e84908;
 }
@@ -59,8 +61,8 @@
     font-family: "SUIT Variable";
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 15px;
+    line-height: 28px;
 }
 
 #logo {
@@ -108,7 +110,10 @@
     font-weight: 300;
     color: rgba(255, 255, 255, 0.6);
 }
-
+#contact:hover {
+    background: linear-gradient(313.9deg, rgba(255, 255, 255, 0.63) -17.36%, rgba(255, 255, 255, 0) 59.01%);
+    border-width: 2px;
+}
 #contact {
     position: absolute;
     left: 1532px;
@@ -118,35 +123,115 @@
     height: 138px;
     /* line-height: 3.5 !important; */
     /* margin: auto; */
-    background: #ebebeb;
+    background: none;
     border-radius: 500px;
+    border-width: 1px;
+    border-style: solid;
     text-align: center;
+
+    /* contents_semibold_en */
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 17px;
+line-height: 17px;
+/* identical to box height */
+
+text-align: center;
+letter-spacing: 0.03em;
 }
 
 #menu {
     position: absolute;
     width: 40px;
-    height: 50px;
-    left: 100px;
-    top: 100px;
-    background-color: #e84908;
+    height: 40px;
+    left: 1700px;
+    top: 81px;
+}
+#menu :last-child{
+    position: absolute;
+    right: 0;
 }
 
-#menu:hover .line:last-child {
-    width: 10px;
+#menu:hover > * {
+    width: 40px;
+}
+
+#titleMenu {
+    position: absolute;
+    top: 315px;
+    left: 110px;
+
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 35px;
+    line-height: 38px;
+    letter-spacing: 0.05em;
+}
+
+#titleMenu * {
+    color: #666567;
+}
+
+#titleMenu :hover {
+    color: #FFFFFF;
+}
+
+#titleMenu :not(:last-child) {
+    margin-bottom: 50px;
+}
+
+#subMenu {
+    position: absolute;
+    top: 762px;
+    left: 110px;
+}
+
+#subMenu> :not(:first-child) {
+    margin-top: 34px;
+}
+
+.menuSubtitle {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    letter-spacing: 0.03em;
+
+    color: #E84908;
+
+    margin-bottom: 9px;
+}
+
+.menuSubDescription {
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 6px;
+}
+
+#sideBar {
+    display: none;
+    position: absolute;
+    left: 1190px;
+    top: 0px;
+
+    width: 730px;
+    height: 1080px;
+
+    background: #171717;
 }
 
 .line {
     background: #ffffff;
     margin-top: 6px;
-    /* margin-bottom: 6px; */
-    /* width: 50px; */
-    height: 10px;
-    /* border-radius: 2px; */
-    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); */
-    position: relative;
+    width: 27px;
+    height: 4px;
 }
-
-/* .line:hover:last-child {
-    width: 10px;
-} */

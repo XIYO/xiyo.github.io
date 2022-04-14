@@ -1,0 +1,48 @@
+#index2page1 {
+    background-image: url("/images/index2/index2page1.png");
+}
+
+#index2page2 {
+    background-image: url("/images/index2/index2page2.png");
+}
+
+#index2page1content1 {
+    position: relative;
+    left: 310px;
+    top: 376px;
+}
+
+/* #index2page2 {position: relative;} */
+#index2page2content1 {
+    position: absolute;
+    left: 310px;
+    top: 226px;
+}
+
+#index2page2content2 {
+    position: absolute;
+    left: 860px;
+    top: 226px;
+
+    /* display: flex; */
+    /* align-items: center; */
+}
+
+#index2page2content2slideImages {
+    background-color: aquamarine;
+    height: 426px;
+    width: 640px;
+}
+#index2page2content2> :nth-child(2) {
+    display: flex;
+}
+.skill {
+    display: flex;
+    flex-grow: 1;
+}
+.skill> :first-child {margin-right: 40px;}
+.skill> :last-child> :first-child {
+    margin-right: 78px;
+    margin-bottom: 15px;
+
+}

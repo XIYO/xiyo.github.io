@@ -1,0 +1,59 @@
+#logo {
+    position: absolute;
+    /* left: 144px;
+    top: 83px; */
+    height: 37px;
+    width: 69px;
+    left: 144px;
+    top: 83px;
+    border-radius: 0px;
+
+    background-image: url("./images/common/logo.png");
+}
+
+#page1 {background-image: url("./images/main/page1.png");}
+#page2 {background-image: url("./images/main/page2.png");}
+#page3 {background-image: url("./images/main/page3.png");}
+#index2page1 {background-image: url("./images/index2/index2page1.png");}
+#index2page2 {background-image: url("./images/index2/index2page2.png");}
+footer {background-image: url("./images/common/footer.png");}
+
+#contents {
+    width: 1920px;
+    /* height: 1080px; */
+    overflow: hidden;
+}
+#index1page1 :first-child {
+    position: relative;
+    left: 304px;
+    top: 387px;
+}
+#index2page1 :first-child {
+    position: relative;
+    /* left: 310px; */
+    top: 376px;
+
+    background-color: blue;
+}
+
+footer {
+    height: 584px;
+    width: 1920px;
+}
+
+footer> :first-child {
+    position: relative;
+    left: 308px;
+    top: 203px;
+}
+
+footer> :first-child> :first-child {
+    font-size: 30px;
+    line-height: 38px;
+    margin-bottom: 28px;
+}
+
+footer> :first-child> :last-child {
+    font-size: 14px;
+    line-height: 17px;
+}

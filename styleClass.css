@@ -1,0 +1,60 @@
+.content {
+    width: 1920px;
+    height: 1080px;
+    /* overflow: hidden; */
+}
+
+.content> :first-child {
+
+}
+
+.title1 {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+}
+
+.title1_2 {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+}
+
+.title2 {
+    font-family: "Montserrat";
+    font-style: normal;
+
+    color: #e84908;
+}
+
+.redTail::after {
+    content: "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯";
+    margin-left: 10px;
+    color: #e84908;
+}
+
+.title3 {
+    font-family: "SUIT Variable";
+    font-style: normal;
+}
+
+.index2.title2 {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.03em;
+
+    margin-bottom: 50px;
+}
+
+.index2.title1 {
+    font-weight: 800;
+    font-size: 44px;
+    line-height: 55px;
+
+    margin-bottom: 55px;
+}
+
+.index2.title3 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+}

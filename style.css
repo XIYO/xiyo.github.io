@@ -1,75 +1,20 @@
+@charset "utf-8";
+
+@import "./styleId.css";
+@import "./styleClass.css";
+
 * {
     border: 0;
     margin: 0;
     padding: 0;
-    /* border-style: solid; 
-    border-width: 1px;
-    border-color: aquamarine; */
     color: #ffffff;
-}
-
-.contents {
-    width: 1920px;
-    height: 1080px;
-    overflow: hidden;
-}
-
-.element1 {
-    position: absolute;
-    left: 304px;
-    top: 387px;
-}
-
-#page1 {
-    width: 1920px;
-    height: 1080px;
-    background-image: url("./page1.png");
-}
-
-.title1 {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 60px;
-    line-height: 73px;
-    letter-spacing: 0.03em;
-    width: 792px;
-    height: 156px;
-
-    margin-bottom: 53px;
-}
-
-.title2 {
-    margin-bottom: 19px;
-
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 17px;
-    line-height: 20px;
-
-    color: #e84908;
-}
-
-.title2::after {
-    content: "⎯⎯⎯⎯🥳⎯⎯⎯⎯⎯⎯⎯";
-    margin-left: 10px;
-    color: #e84908;
-}
-
-.title3 {
-    font-family: "SUIT Variable";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 28px;
 }
 
 #logo {
     position: absolute;
     left: 144px;
     top: 83px;
-    /* background-image: url("./logo.png"); */
+    background-image: url("./logo.png");
 }
 
 #pages {
@@ -85,10 +30,13 @@
     font-size: 15px;
 }
 
-#upButton {}
+#upButton {
+    margin-bottom: 8px;
+    cursor: pointer;
+}
 
 #downButton {
-    margin-top: 8px;
+    cursor: pointer;
 }
 
 #pageNumbers {
@@ -106,56 +54,14 @@
     font-weight: 600;
 }
 
-#totalPages {
+#p {
     font-weight: 300;
     color: rgba(255, 255, 255, 0.6);
 }
-#contact:hover {
-    background: linear-gradient(313.9deg, rgba(255, 255, 255, 0.63) -17.36%, rgba(255, 255, 255, 0) 59.01%);
-    border-width: 2px;
-}
-#contact {
-    position: absolute;
-    left: 1532px;
-    top: 849px;
 
-    width: 138px;
-    height: 138px;
-    /* line-height: 3.5 !important; */
-    /* margin: auto; */
-    background: none;
-    border-radius: 500px;
-    border-width: 1px;
-    border-style: solid;
-    text-align: center;
-
-    /* contents_semibold_en */
-
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 600;
-font-size: 17px;
-line-height: 17px;
-/* identical to box height */
-
-text-align: center;
-letter-spacing: 0.03em;
-}
-
-#menu {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    left: 1700px;
-    top: 81px;
-}
-#menu :last-child{
-    position: absolute;
-    right: 0;
-}
-
-#menu:hover > * {
-    width: 40px;
+#totalPages {
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 #titleMenu {
@@ -229,9 +135,27 @@ letter-spacing: 0.03em;
     background: #171717;
 }
 
-.line {
+#menu > * {
     background: #ffffff;
     margin-top: 6px;
-    width: 27px;
+    width: 80%;
     height: 4px;
+    transition: 0.2s; 
+}
+
+#menu {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 1700px;
+    top: 81px;
+}
+
+#menu :last-child{
+    position: absolute;
+    right: 0;
+}
+
+#menu:hover > * {
+    width: 100%;
 }

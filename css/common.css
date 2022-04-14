@@ -1,0 +1,105 @@
+* {
+    color: white;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    list-style: none;
+}
+#logo {
+    position: absolute;
+    height: 37px;
+    width: 69px;
+    left: 144px;
+    top: 83px;
+
+    background-image: url("/images/common/logo.png");
+}
+
+.content {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+}
+
+footer {
+    background-image: url("/images/common/footer.png");
+    height: 584px;
+    width: 1920px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer> :first-child> :first-child {
+text-align: center;
+}
+footer> :first-child> :last-child {
+text-align: center;
+}
+
+.red {
+    color: #E84908;
+}
+
+.white {
+    color: white
+}
+
+.Montserrat {
+    font-family: 'Montserrat';
+}
+
+.SUIT {
+    font-family: 'SUIT Variable';
+}
+
+.fontNormal {
+    font-style: normal
+}
+
+.fontWeight800 {
+    font-weight: 800;
+}
+
+.fontWeight600 {
+    font-weight: 600;
+}
+
+.fontWeight700 {
+    font-weight: 700;
+}
+
+.fontSize44 {
+    font-size: 44px;
+}
+
+.fontSize14 {
+    font-size: 14px;
+}
+
+.fontSize18 {
+    font-size: 18px;
+}
+
+.lineHeight17 {
+    line-height: 17px;
+}
+
+.lineHeight22 {
+    line-height: 22px;
+}
+
+.lineHeight55 {
+    line-height: 55px;
+}
+
+.letterSpacing {
+    letter-spacing: 0.03em;
+}
+
+.marginBottom50 {
+    margin-bottom: 50px;
+}
+
+.marginBottom22 {
+    margin-bottom: 22px;
+}

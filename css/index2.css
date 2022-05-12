@@ -1,5 +1,5 @@
 #index2page1 {
-    background-image: url("/images/index2/index2page1.png");
+    background: linear-gradient(0deg, #171717 1.95%, rgba(0, 0, 0, 0) 83.73%), url("/images/index2/index2page1.png");
 }
 
 #index2page2 {
@@ -7,12 +7,13 @@
 }
 
 #index2page1content1 {
+    /* background-color: red; */
     position: relative;
     left: 310px;
     top: 376px;
+    width:fit-content;
 }
 
-/* #index2page2 {position: relative;} */
 #index2page2content1 {
     position: absolute;
     left: 310px;
@@ -33,6 +34,12 @@
     height: 426px;
     width: 640px;
 }
+
+
+#index2page2content2slideImages::after {
+
+}
+
 #index2page2content2> :nth-child(2) {
     display: flex;
 }
@@ -40,9 +47,11 @@
     display: flex;
     flex-grow: 1;
 }
-.skill> :first-child {margin-right: 40px;}
-.skill> :last-child> :first-child {
-    margin-right: 78px;
-    margin-bottom: 15px;
 
+.skill> :nth-child(2)> div> ul> * {
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
 }

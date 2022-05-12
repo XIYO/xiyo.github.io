@@ -4,6 +4,7 @@
     border: 0;
     padding: 0;
     list-style: none;
+    /* width: fit-content; */
 }
 #logo {
     position: absolute;
@@ -29,77 +30,95 @@ footer {
     justify-content: center;
     align-items: center;
 }
-footer> :first-child> :first-child {
-text-align: center;
-}
-footer> :first-child> :last-child {
-text-align: center;
+footer> :first-child> :first-child {text-align: center;}
+footer> :first-child> :last-child {text-align: center;}
+
+.red {color: #E84908;}
+.white {color: white}
+.grey {color: grey;}
+
+.Montserrat {font-family: 'Montserrat';}
+.SUIT {font-family: 'SUIT Variable';}
+
+.fontWeight300 {font-weight: 300;}
+.fontWeight800 {font-weight: 800;}
+.fontWeight600 {font-weight: 600;}
+.fontWeight700 {font-weight: 700;}
+
+.fontSize44 {font-size: 44px;}
+.fontSize50 {font-size: 50px;}
+.fontSize14 {font-size: 14px;}
+.fontSize18 {font-size: 18px;}
+.fontSize20 {font-size: 20px;}
+
+.lineHeight17 {line-height: 17px;}
+.lineHeight22 {line-height: 22px;}
+.lineHeight55 {line-height: 55px;}
+
+.letterSpacing {letter-spacing: 0.03em;}
+
+.marginBottom50 {margin-bottom: 50px;}
+.marginBottom22 {margin-bottom: 22px;}
+.marginBottom36 {margin-bottom: 36px;}
+.marginBottom15 {margin-bottom: 15px;}
+.marginRight40 {margin-right: 40px;}
+
+#menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 1080px;
+    width: 730px;
+    left: 1190px;
+    background-color: #171717;
+    opacity: 0;
 }
 
-.red {
-    color: #E84908;
-}
+#menuLinks> * {
+    position: relative;
+    top: 315px;
+    left: 110px;
+    width: fit-content;
 
-.white {
-    color: white
-}
-
-.Montserrat {
-    font-family: 'Montserrat';
-}
-
-.SUIT {
     font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 35px;
+    letter-spacing: 0.05em;
+
+    margin-bottom: 36px;
+    color: #666567;
 }
 
-.fontNormal {
-    font-style: normal
+#menuLinks> *:hover {color: #FFFFFF;}
+
+#aboutCompany {
+    position: relative;
+    top: 500px;
+    left: 110px;
+    width: fit-content;
 }
 
-.fontWeight800 {
-    font-weight: 800;
-}
-
-.fontWeight600 {
+.menuTitle {
+    font-family: 'Montserrat';
+    font-style: normal;
     font-weight: 600;
-}
-
-.fontWeight700 {
-    font-weight: 700;
-}
-
-.fontSize44 {
-    font-size: 44px;
-}
-
-.fontSize14 {
     font-size: 14px;
-}
-
-.fontSize18 {
-    font-size: 18px;
-}
-
-.lineHeight17 {
     line-height: 17px;
-}
 
-.lineHeight22 {
-    line-height: 22px;
-}
-
-.lineHeight55 {
-    line-height: 55px;
-}
-
-.letterSpacing {
     letter-spacing: 0.03em;
+
+    color: #E84908;
+
+    margin-top: 34px;
+    margin-bottom: 9px;
 }
 
-.marginBottom50 {
-    margin-bottom: 50px;
-}
-
-.marginBottom22 {
-    margin-bottom: 22px;
+.menuDescription {
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 6px;
 }

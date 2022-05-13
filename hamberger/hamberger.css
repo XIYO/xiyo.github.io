@@ -1,0 +1,50 @@
+#hamberger {
+    --box-size: 500px;
+}
+
+.line {
+    --height: calc(100%/5);
+    --border-radius: calc(var(--box-size));
+    --margin-top-bottom: calc(var(--height) / 2);
+    --transition: 0.2s;
+
+    --scaleX: 80%;
+    --translateX: calc((100% - var(--scaleX)) / 2);
+    --translateY: 100%;
+}
+
+#hamberger {
+    position: relative;
+    background-color: tan;
+    height: var(--box-size);
+    width: var(--box-size);
+    display: flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.line {
+    height: var(--height);
+    background-color: green;
+    border-radius: var(--border-radius);
+    transition: var(--transition)
+}
+
+#hamberger:hover> :first-child {
+    transform: 
+        translateX(calc(-1 * var(--translateX))) scaleX(var(--scaleX));
+}
+
+#hamberger:hover> :last-child {
+    transform:
+        translateX(var(--translateX)) scaleX(var(--scaleX));
+}
+
+#hamberger> :first-child.right {
+    transform: translateY(var(--translateY)) rotate(45deg);
+}
+
+#hamberger> :last-child.left {
+    transform: translateY(calc(-1 * var(--translateY))) rotate(-45deg);
+}

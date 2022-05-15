@@ -16,13 +16,6 @@ html {
     color: #ffffff;
 }
 
-#logo {
-    position: absolute;
-    left: 144px;
-    top: 83px;
-    background-image: url("./logo.png");
-}
-
 #pages {
     position: absolute;
     width: 200px;

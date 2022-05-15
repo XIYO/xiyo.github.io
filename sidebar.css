@@ -4,11 +4,10 @@
     top: 0;
     /* left:1920px; */
     width: 730px;
-    height: calc(1080px*3);
+    height: 100%;
     z-index: 1;
 
     overflow: hidden;
-    background-color: yellow;
 }
 #sidebar {
     width: 100%;

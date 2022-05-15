@@ -1,6 +1,6 @@
 /* variable */
 #hamberger {
-    --box-size: 100px;
+    --box-size: 30px;
 }
 
 .line {
@@ -24,7 +24,7 @@
     height: var(--box-size);
     width: var(--box-size);
 
-    background-color: teal;
+    /* background-color: teal; */
     display: grid;
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas: 
@@ -38,8 +38,8 @@
 .line {
     height: var(--height);
     width: var(--width);
-    background-color: white;
-    border-radius: var(--border-radius);
+    background-color: #E84908;
+    /* border-radius: var(--border-radius); */
     transition: var(--transition)
 }
 

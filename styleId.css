@@ -1,13 +1,12 @@
 #logo {
-    position: absolute;
+    position: fixed;
     top: 83px;
-    height: 37px;
-    width: 69px;
+    z-index: 5;
+    /* height: 37px; */
+    /* width: 69px; */
     left: 144px;
     top: 83px;
     border-radius: 0px;
-
-    background-image: url("./images/common/logo.png");
 }
 
 #page1 {background-image: url("./images/main/page1.png");}

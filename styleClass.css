@@ -1,12 +1,14 @@
-.content {
+.contentContainer {
     position: relative;
     width: 1920px;
     height: 1080px;
     /* overflow: hidden; */
 }
 
-.content> :first-child {
-
+.content {
+    position: absolute;
+    left: 304px;
+    top: 387px;
 }
 
 .title1 {

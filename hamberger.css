@@ -38,7 +38,7 @@
 .line {
     height: var(--height);
     width: var(--width);
-    background-color: #E84908;
+    background-color: white;  
     /* border-radius: var(--border-radius); */
     transition: var(--transition)
 }
@@ -59,6 +59,10 @@
 #hamberger:hover> :last-child {
     transform:
         translateX(var(--translateX)) scaleX(var(--scaleX));
+}
+
+.rotateR, .rotateL {
+    background-color: #E84908;
 }
 
 #hamberger> :first-child.rotateR {

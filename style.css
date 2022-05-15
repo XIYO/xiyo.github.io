@@ -2,6 +2,12 @@
 
 @import "./styleId.css";
 @import "./styleClass.css";
+@import "./hamberger.css";
+@import "./sidebar.css";
+
+html {
+    scroll-behavior: smooth;
+}
 
 * {
     border: 0;
@@ -23,31 +29,6 @@
     /* height: 32px; */
     left: 310px;
     top: 955px;
-}
-
-#buttons {
-    float: left;
-    font-size: 15px;
-}
-
-#upButton {
-    margin-bottom: 8px;
-    cursor: pointer;
-}
-
-#downButton {
-    cursor: pointer;
-}
-
-#pageNumbers {
-    font-family: "Montserrat";
-    font-style: normal;
-    font-size: 18px;
-
-    position: absolute;
-    left: 29px;
-    top: 50%;
-    transform: translateY(-62%);
 }
 
 #currentPage {
@@ -121,41 +102,4 @@
     font-size: 14px;
     line-height: 18px;
     margin-top: 6px;
-}
-
-#sideBar {
-    display: none;
-    position: absolute;
-    left: 1190px;
-    top: 0px;
-
-    width: 730px;
-    height: 1080px;
-
-    background: #171717;
-}
-
-#menu > * {
-    background: #ffffff;
-    margin-top: 6px;
-    width: 80%;
-    height: 4px;
-    transition: 0.2s; 
-}
-
-#menu {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    left: 1700px;
-    top: 81px;
-}
-
-#menu :last-child{
-    position: absolute;
-    right: 0;
-}
-
-#menu:hover > * {
-    width: 100%;
 }

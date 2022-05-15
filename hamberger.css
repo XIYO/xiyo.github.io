@@ -1,0 +1,78 @@
+/* variable */
+#hamberger {
+    --box-size: 100px;
+}
+
+.line {
+    --height: 100%;
+    --width: var(var(--height));
+    --border-radius: calc(var(--box-size));
+    --transition: 0.3s;
+
+    --scaleX: 80%;
+    --translateX: calc((100% - var(--scaleX)) / 2);
+    --translateY: 100%;
+}
+
+/* css */
+#hamberger {
+    position: fixed;
+    top: 77px;
+    left: 1700px;
+    z-index: 2;
+
+    height: var(--box-size);
+    width: var(--box-size);
+
+    background-color: teal;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: 
+    "."
+    "first"
+    "."
+    "last"
+    ".";
+}
+
+.line {
+    height: var(--height);
+    width: var(--width);
+    background-color: white;
+    border-radius: var(--border-radius);
+    transition: var(--transition)
+}
+
+#hamberger> :first-child {
+    grid-area: first;
+}
+
+#hamberger> :last-child {
+    grid-area: last;
+}
+
+#hamberger:hover> :first-child {
+    transform: 
+        translateX(calc(-1 * var(--translateX))) scaleX(var(--scaleX));
+}
+
+#hamberger:hover> :last-child {
+    transform:
+        translateX(var(--translateX)) scaleX(var(--scaleX));
+}
+
+#hamberger> :first-child.rotateR {
+    transform: translateY(var(--translateY)) rotate(45deg);
+}
+
+#hamberger> :last-child.rotateL {
+    transform: translateY(calc(-1 * var(--translateY))) rotate(-45deg);
+}
+
+#hamberger:hover> :first-child.rotateR {
+    transform: translateY(var(--translateY)) rotate(45deg) scaleX(0.8);
+}
+
+#hamberger:hover> :last-child.rotateL {
+    transform: translateY(calc(-1 * var(--translateY))) rotate(-45deg) scaleX(0.8);
+}

@@ -6,7 +6,7 @@
     --height: calc(100%/5);
     --border-radius: calc(var(--box-size));
     --margin-top-bottom: calc(var(--height) / 2);
-    --transition: 0.2s;
+    --transition: 1s;
 
     --scaleX: 80%;
     --translateX: calc((100% - var(--scaleX)) / 2);

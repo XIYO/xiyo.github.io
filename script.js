@@ -1,28 +1,12 @@
-$(document).ready(() => {
-    $('#upButton').click(() => {
-        page.up();
-    });
+window.onload = () => {
+    var hamberger = document.querySelector('#hamberger');
+    var sidebar = document.querySelector('#sidebar');
+    var contents = document.querySelectorAll('#contents> .content');
 
-    $('#downButton').click(() => {
-        page.down();
-    });
-})
-
-let page = {};
-
-page.up = () => {page.move(-1)};
-page.down = () => {page.move(1)};
-page.move = (preOrNext) => {
-    let currentPage = Number($('#currentPage').text());
-    let totalPage = Number($('#totalPage').text());
-
-    if( (preOrNext == -1 &&currentPage == 1) || (preOrNext == 1 && currentPage == totalPage))
-        return 0;
-    
-    currentPage += preOrNext;
-
-    $('.content').each((i,e) => {
-        e.style.top -= '500px';
+    hamberger.addEventListener('click', () => {
+        hamberger.firstElementChild.classList.toggle('rotateR');
+        hamberger.lastElementChild.classList.toggle('rotateL');
+        sidebar.classList.toggle('active');
+        contents.forEach(v => v.classList.toggle('active'));
     })
-    $("#currentPage").text("0" + currentPage);
 }

@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +18,37 @@
 
 <body>
     <div id="contents">
+
+        <div id="logo"></div>
+        <div id="sidebarContainer">
+            <div id="sidebar">
+                <div id="titleMenu">
+                    <div>about us</div>
+                    <div>projects</div>
+                    <div>contact</div>
+                </div>
+                <div id="subMenu">
+                    <div>
+                        <div class="menuSubtitle">we are here</div>
+                        <div class="menuSubDescription">경기 성남시 분당구 성남대로 38</div>
+                    </div>
+                    <div>
+                        <div class="menuSubtitle">talk to us</div>
+                        <div class="menuSubDescription">010. 9141. 8524</div>
+                        <div class="menuSubDescription">dazzling8585</div>
+                    </div>
+                    <div>
+                        <div class="menuSubtitle">Instagram</div>
+                        <div class="menuSubDescription">project_dazzling</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="hamberger">
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
         <div id="page1" class="content">
             <div class="element">
                 <div class="title1">DAZZLING<br>DESIGN STUDIO</div>
@@ -34,7 +66,7 @@
                 <div class="title3">소비자를 잘 아는 다즐링은 빠르게 발전하는</br>
                     온라인 시장에서 소비자가 원하는 내용을</br>
                     정확하게 파악하여 매력적인 디자인을 만듭니다</div>
-                </div>
+            </div>
         </div>
 
         <div id="page3" class="content">
@@ -49,40 +81,9 @@
             </div>
         </div>
 
-        <div class="circle">
-            <button id="contact">contact</button>
-        </div>
-
-        <div id="logo"></div>
-        <div id="sideBar">
-            <div id="titleMenu">
-                <div>about us</div>
-                <div>projects</div>
-                <div>contact</div>
-            </div>
-            <div id="subMenu">
-                <div>
-                    <div class="menuSubtitle">we are here</div>
-                    <div class="menuSubDescription">경기 성남시 분당구 성남대로 38</div>
-                </div>
-                <div>
-                    <div class="menuSubtitle">talk to us</div>
-                    <div class="menuSubDescription">010. 9141. 8524</div>
-                    <div class="menuSubDescription">dazzling8585</div>
-                </div>
-                <div>
-                    <div class="menuSubtitle">Instagram</div>
-                    <div class="menuSubDescription">project_dazzling</div>
-                </div>
-            </div>
-        </div>
-        <div id="menu">
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-        <div id="pages">
+        <!-- <div id="pages">
             <span id="buttons">
-                <div id="upButton">▲</div>
+                <a href="#page3"><div id="upButton">▲</div></a>
                 <div id="downButton">▼</div>
             </span>
             <span id="pageNumbers">
@@ -90,7 +91,11 @@
                 <span id="pageBorder"> / </span>
                 <span id="totalPage">03</span>
             </span>
-        </div> 
+        </div>  -->
+
+        <!-- <div class="circle">
+            <button id="contact">contact</button>
+        </div> -->
     </div>
 
     <footer>

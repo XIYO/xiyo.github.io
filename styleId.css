@@ -36,23 +36,45 @@ footer {background-image: url("./images/common/footer.png");}
 }
 
 footer {
+    position: relative;
     height: 584px;
     width: 1920px;
 }
 
 footer> :first-child {
-    position: relative;
-    left: 308px;
-    top: 203px;
+    position: absolute;
+    left: 820px;
+    top: 175px;
+
 }
 
 footer> :first-child> :first-child {
-    font-size: 30px;
-    line-height: 38px;
+    font-family: 'SUIT Variable';
+font-style: normal;
+font-weight: 700;
+font-size: 44px;
+line-height: 55px;
+text-align: center;
     margin-bottom: 28px;
 }
 
 footer> :first-child> :last-child {
-    font-size: 14px;
-    line-height: 17px;
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+text-align: center;
+letter-spacing: 0.03em;
+
+color: #E84908;
+}
+
+footer> :first-child> :last-child::after {
+    content: '';
+    /* margin: 0 auto; */
+    width: 500px;
+    height: 500px;
+    border: 1px solid #E84908;
+    border-radius: 50%;
 }

@@ -12,8 +12,15 @@
 }
 
 .title1 {
-    font-family: "Montserrat", sans-serif;
+    /* en/h1/extrabold/60 */
+    font-family: 'Montserrat';
     font-style: normal;
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 73px;
+    letter-spacing: 0.03em;
+    
+    margin-bottom: 52px;
 }
 
 .title1_2 {
@@ -22,10 +29,17 @@
 }
 
 .title2 {
-    font-family: "Montserrat";
+
+    font-family: 'Montserrat';
     font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.03em;
 
     color: #e84908;
+
+    margin-bottom: 21px;
 }
 
 .redTail::after {
@@ -35,8 +49,11 @@
 }
 
 .title3 {
-    font-family: "SUIT Variable";
+    font-family: 'SUIT Variable';
     font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19px;
 }
 
 .index2.title2 {

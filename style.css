@@ -4,39 +4,21 @@
 @import "./styleClass.css";
 @import "./hamberger.css";
 @import "./sidebar.css";
+@import "./pages.css";
 
 html {
     scroll-behavior: smooth;
 }
 
 * {
-    border: 0;
     margin: 0;
-    padding: 0;
     color: #ffffff;
 }
 
-#pages {
-    position: absolute;
-    width: 200px;
-    /* height: 32px; */
-    left: 310px;
-    top: 955px;
-}
+a:link { text-decoration: none;}
+a:visited { text-decoration: none;}
+a:hover { text-decoration: none;}
 
-#currentPage {
-    font-weight: 600;
-}
-
-#p {
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-#totalPages {
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.6);
-}
 
 #titleMenu {
     position: absolute;

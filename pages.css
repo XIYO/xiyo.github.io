@@ -1,0 +1,35 @@
+.pages {
+    position: absolute;
+    width: 95px;
+    height: 32px;
+    left: 310px;
+    top: 955px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+}
+
+.buttons {
+    /* background-color: violet; */
+}
+
+#page1 > .pages > .buttons > .prev {
+    visibility:hidden;
+}
+
+#page3 > .pages > .buttons > .next {
+    visibility:hidden;
+}
+
+.pageNumbers {
+    /* background-color: tomato; */
+}
+
+.currentPage {
+    font-weight: 600;
+}
+
+.totalPages {
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+}

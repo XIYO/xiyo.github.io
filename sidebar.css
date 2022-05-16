@@ -1,16 +1,39 @@
 #sidebarContainer {
     position: fixed;
-    left: 1190px;
+    left: 0;
     top: 0;
     /* left:1920px; */
-    width: 730px;
+    width: 1920px;
     height: 100%;
     z-index: 1;
 
-    overflow: hidden;
+    visibility:hidden;
+
+    overflow: hidden;  
 }
+
+#sidebarContainer.active {
+    visibility: visible;
+}
+
+#dimmed {
+    width: 100%; 
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#dimmed.active {
+    opacity: 0.85;
+}
+
 #sidebar {
-    width: 100%;
+    position: absolute;
+    /* right: 0; */
+    top: 0;
+    left: 1190px;
+    width: 730px;
     height: 100%;
     background-color: #171717;
     transform: translateX(100%);
@@ -21,25 +44,3 @@
 #sidebar.active {
     transform: translateX(0%);
 }
-
-.content::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    width: 1920px;
-    height: 1080px;
-    display: block;
-    background-color: black;
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.content.active::after {
-    opacity: 0.85;
-}
-
-/* .content.active { */
-    /* filter: blur(20px); */
-    /* transform: scaleX(1.05); */
-/* } */

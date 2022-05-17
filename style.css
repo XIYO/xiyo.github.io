@@ -5,15 +5,17 @@
 @import "./hamberger.css";
 @import "./sidebar.css";
 @import "./pages.css";
-
-html {
-    scroll-behavior: smooth;
-}
+@import "./footer.css";
 
 * {
     margin: 0;
     color: #ffffff;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 a:link { text-decoration: none;}
 a:visited { text-decoration: none;}

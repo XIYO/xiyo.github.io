@@ -17,9 +17,9 @@
 /* css */
 #hamberger {
     position: fixed;
-    top: 77px;
-    left: 1700px;
-    z-index: 2;
+    top: 5%;
+    right: 5%;
+    z-index: 1;
 
     height: var(--box-size);
     width: var(--box-size);

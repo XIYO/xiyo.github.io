@@ -1,3 +1,42 @@
-/* footer {
-    position: relative;
-} */
+footer {
+    height: 30.16vw;
+    width: 100vw;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+footer> :first-child> :first-child {
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 55px;
+    text-align: center;
+
+    margin-bottom: 50 px;
+}
+
+footer> :first-child> :last-child {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.03em;
+
+    color: #E84908;
+}
+
+footer> :first-child> :last-child::after {
+    position: absolute;
+    content: '';
+    /* margin: 0 auto; */
+    left: 50%;
+    width: 130px;
+    height: 130px;
+    border: 1px solid #E84908;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 50%;
+}

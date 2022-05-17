@@ -1,14 +1,14 @@
 .contentContainer {
     position: relative;
-    width: 1920px;
-    height: 1080px;
+    width: 100vw;
+    height: 56.24vw;
     /* overflow: hidden; */
 }
 
 .content {
     position: absolute;
-    left: 304px;
-    top: 387px;
+    left: 20%;
+    top: 45%;
 }
 
 .title1 {
@@ -16,11 +16,11 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 800;
-    font-size: 60px;
-    line-height: 73px;
-    letter-spacing: 0.03em;
+    font-size: 2em;
+    /* line-height: 73px; */
+    /* letter-spacing: 0.03em; */
     
-    margin-bottom: 52px;
+    margin-bottom: 5%;
 }
 
 .title1_2 {

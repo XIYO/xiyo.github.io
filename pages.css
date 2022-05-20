@@ -1,12 +1,18 @@
 .pages {
     position: absolute;
-    width: 95px;
-    height: 32px;
-    left: 310px;
-    top: 955px;
+    left: 10%;
+    top: 80%;
+
+    width: 10%;
+    height: 10%;
     display: grid;
     grid-template-columns: 1fr 2fr;
     align-items: center;
+}
+
+.pages > * {
+    font-family: 'SUIT Variable';
+    font-size: 1vw;
 }
 
 .buttons {

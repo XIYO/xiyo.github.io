@@ -1,6 +1,6 @@
 /* variable */
 #hamberger {
-    --box-size: 30px;
+    --box-size: 3vh;
 }
 
 .line {

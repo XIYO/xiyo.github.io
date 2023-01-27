@@ -1,6 +1,6 @@
 plugins:
   - jekyll-seo-tag
-  # - jekyll-minifier
+  - jekyll-minifier
 
 title: CODERs DIARY
 tagline: 개발 자료 보관소

@@ -1,6 +1,6 @@
 ---
-layout: default
+layout: simple-article 
 title: Home
 ---
-
-# {{ site.description }}
+# 저의 코드 일기장 입니다.
+{{ site.description }}

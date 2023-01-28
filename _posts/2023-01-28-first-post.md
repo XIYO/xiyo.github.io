@@ -1,5 +1,7 @@
 ---
 layout: post
+title: 첫 번째 포스팅
+description :  단순한  테스트용 글 입니다.
 author: XIYO
 ---
 정식 글 첫번째 입니다.

@@ -1,8 +1,6 @@
-- name: Home
+- name: 홈
   link: /
-- name: About
+- name: 아카이브
+  link: /archive.html
+- name: 어바웃
   link: /about.html
-- name: Blog
-  link: /blog.html
-- name: Staff
-  link: /staff.html

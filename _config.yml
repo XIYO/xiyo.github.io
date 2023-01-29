@@ -2,6 +2,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-minifier
 
+logo: /logo.jpeg
 title: CODERs DIARY
 tagline: 개발 자료 보관소
 description: 미래의 나를 위한 자료를 만듭니다. (아 그렇다고 나만을 위한건 아닙니다.)
@@ -44,5 +45,26 @@ defaults:
     values:
       layout: "default"
 
+#markdown: kramdown
+# !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
+# Since Jekyll 3 the default highlighter is Rouge (replaced Pygments.rb in v44)
+#highlighter: rouge
+
+# More › http://kramdown.gettalong.org/quickref.html
+# Options › http://kramdown.gettalong.org/options.html
 kramdown:
-  auto_ids: false
+#  input:          GFM
+  # https://github.com/jekyll/jekyll/pull/4090
+#  syntax_highlighter: rouge
+
+  # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  # span, block element options fall back to global
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+#    css_class: 'highlight'
+    #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1

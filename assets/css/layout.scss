@@ -1,11 +1,16 @@
 ---
 ---
 @import "main";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
+@font-face {
+  font-family: "NeoDunggeunmoPro-Regular";
+  src: url("/assets/fonts/NeoDunggeunmoPro-Regular.woff2") format("woff2"),
+    url("/assets/fonts/NeoDunggeunmoPro-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
 * {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'NeoDunggeunmoPro-Regular', 'Noto Sans KR', sans-serif;
   //margin: 0;
   //padding: 0;
 }

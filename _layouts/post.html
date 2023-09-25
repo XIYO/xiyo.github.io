@@ -9,8 +9,8 @@ permalink: /:categories/:title
     <div id = "published-date">
       작성일 : {{ page.date | date: "%Y/%m/%d" }}
     </div>
+    {{ content }}
     <script defer src="https://comentario.xiyo.dev/comentario.js"></script>
     <comentario-comments></comentario-comments>
-    {{ content }}
   </article>
 </main>

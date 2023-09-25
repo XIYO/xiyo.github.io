@@ -28,3 +28,8 @@ docker run --rm \
   -it jvconseil/jekyll-docker \
   bundle update
 ```
+
+__Windows PowerShell__
+```sh
+docker run --rm --volume="$(Get-Location):/srv/jekyll:Z" -it jvconseil/jekyll-docker bundle  lock --add-platform x86_64-linux
+```

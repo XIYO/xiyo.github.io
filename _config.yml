@@ -2,6 +2,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-minifier
 
+url: "https://blog.xiyo.dev" # https!!!
 logo: /logo.jpeg
 title: CODERs DIARY
 tagline: 개발 자료 보관소

@@ -1,22 +1,11 @@
-plugins:
-  - jekyll-seo-tag
-  - jekyll-minifier
-
-logo: /assets/meta/logo.jpeg
+logo: /assets/meta/logo.jpe
 title: CODERs DIARY
 tagline: 개발 자료 보관소
 description: 미래의 나를 위한 자료를 만듭니다. (아 그렇다고 나만을 위한건 아닙니다.)
 url: https://blog.xiyo.dev
-# logo: /assets/images/logo.png
-locale: ko_KR
 author:
   name: XIYO
   url: https://xiyo.dev
-
-# SNS
-twitter:
-  username: BunnyXIYO
-  card: summary
 
 social:
   name: XIYO

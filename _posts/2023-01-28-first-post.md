@@ -5,7 +5,7 @@ description : 단순한 테스트용 글 입니다.
 author: XIYO
 #https://jekyllrb-ko.github.io/docs/liquid/tags/#linking-to-posts
 tags: [pilot, jekyll]
-categories: [archive, diary]
+categories: [posts, diary]
 #https://jekyllrb-ko.github.io/docs/permalinks/
 ---
 {{ page.description }}

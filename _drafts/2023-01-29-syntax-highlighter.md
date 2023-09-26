@@ -4,7 +4,7 @@ title: jekyll 기반 블로그에 syntax highlight 추가
 description : syntax highlight CSS 추가하여 문서에 포함된 코드를 좀 더 읽기 쉽게 합니다.
 author: XIYO
 tags: [ruby, rouge, jekyll, jekyll plugin, syntax highlight, syntax highlighter, code highlight, code highlighter]
-categories: [archive, jekyll]
+categories: [posts, jekyll]
 ---
 {{ page.description }}
 

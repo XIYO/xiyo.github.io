@@ -1,14 +1,12 @@
 ---
-layout: post
 title: 첫 번째 포스팅
-description : 단순한 테스트용 글 입니다.
 author: XIYO
 #https://jekyllrb-ko.github.io/docs/liquid/tags/#linking-to-posts
 tags: [pilot, jekyll]
 categories: [posts, diary]
 #https://jekyllrb-ko.github.io/docs/permalinks/
 ---
-{{ page.description }}
+# {{ page.title }}
 
 수많은 블로깅 툴 고민 끝에 선택한, 지킬에 정착하기를 바라며...
 

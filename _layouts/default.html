@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/assets/css/layout.css">
-	  {% include icon.html %}
-	  {% include tinting.html %}
+	  {% include head/icon.html %}
+	  {% include head/tinting.html %}
     {% seo %}
   </head>
   <body>
-    {% include header.html %}
-    {% include nav.html %}
+    {% include body/header.html %}
+    {% include body/nav.html %}
     {{ content }}
-    {% include footer.html %}
+    {% include body/footer.html %}
   </body>
 </html>

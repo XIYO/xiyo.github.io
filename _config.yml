@@ -25,8 +25,9 @@ social:
     - https://github.com/XIYO
 
 collections:
-  authors:
+  posts:
     output: true
+    permalink: /:categories/:title
 
 defaults:
   - scope:

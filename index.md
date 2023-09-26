@@ -1,5 +1,5 @@
 ---
 layout: simple-article 
-title: 홈
+title: home
 ---
 {{ site.description }}

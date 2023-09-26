@@ -9,7 +9,7 @@ title: 포스트
 			<article>
 				<a href="{{ post.url }}">
 					<h2>{{ post.title }}</h2>
-					<p>{{ post.excerpt | truncatewords: 20, '...' }}</p>
+					<p>{{ post.excerpt | truncatewords: 5, '...' }}</p>
 				</a>
 			</article>
 		{% endfor %}

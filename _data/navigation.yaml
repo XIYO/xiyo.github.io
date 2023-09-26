@@ -1,6 +1,6 @@
 - name: 홈
   link: /
 - name: 포스트
-  link: /posts.html
+  link: /posts
 - name: 어바웃
-  link: /about.html
+  link: /about

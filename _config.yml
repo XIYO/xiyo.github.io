@@ -15,10 +15,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-  - scope:
-      path: ""
-    values:
-      layout: "default"
+      author: "XIYO"
 
 #markdown: kramdown
 # !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change

@@ -1,6 +1,5 @@
 ---
 title: 첫 번째 포스팅
-author: XIYO
 #https://jekyllrb-ko.github.io/docs/liquid/tags/#linking-to-posts
 tags: [pilot, jekyll]
 categories: [posts, diary]

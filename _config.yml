@@ -9,8 +9,16 @@ collections:
     # output: true
     permalink: /:categories/:title
 
+# https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
-  - scope:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  -
+    scope:
       path: ""
       type: "posts"
     values:

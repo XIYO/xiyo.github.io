@@ -1,5 +1,4 @@
 ---
-layout: simple-article
 title: about
 ---
 # XIYO

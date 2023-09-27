@@ -8,10 +8,6 @@ lang: kr
 # 왜캐 문서가 복잡한지... 찾기도 힘듬
 timezone: Asia/Seoul
 
-collections:
-  posts:
-    permalink: /:categories/:title
-
 # https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
   -
@@ -27,6 +23,16 @@ defaults:
     values:
       layout: "post"
       author: "XIYO"
+  -
+    scope:
+      path: "_posts/web"
+      type: "posts"
+    values:
+      categories: "web"
+
+collections:
+  posts:
+    permalink: /:categories/:title
 
 #markdown: kramdown
 # !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change

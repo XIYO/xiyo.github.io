@@ -3,4 +3,4 @@ layout: simple-article
 title: home
 ---
 # 미래용 저장 공간
-{{ site.description }}
+미래의 나를 위한 자료를 만듭니다. (아 그렇다고 나만을 위한건 아닙니다.)

@@ -45,8 +45,12 @@ nav {
   }
 }
 
-article {
+main {
   background-color: slategrey;
+}
+
+article {
+  background-color: rgba(0, 0, 0, 0.09); /* 자식 요소의 배경색 (검은색의 50% 투명도) */
 }
 
 footer {

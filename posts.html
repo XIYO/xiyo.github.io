@@ -1,17 +1,14 @@
 ---
-layout: default
 title: posts
 ---
-<main>
-	<section>
-		<div>최근 포스트</div>
-		{% for post in site.posts %}
-			<article>
-				<a href="{{ post.url }}">
-					<h2>{{ post.title }}</h2>
-					<p>{{ post.excerpt | truncatewords: 5, '...' }}</p>
-				</a>
-			</article>
-		{% endfor %}
-	</section>
-</main>
+<h1>최근 포스트</h1>
+<section>
+	{% for post in site.posts %}
+	<a href="{{ post.url }}">
+		<article>
+			<h2>{{ post.title }}</h2>
+			<p>{{ post.content | strip_html | truncatewords: 5, '...' }}</p>
+		</article>
+	</a>
+	{% endfor %}
+</section>

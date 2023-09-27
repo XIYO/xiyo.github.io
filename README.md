@@ -69,7 +69,7 @@ docker run --rm \
 ```
 
 __Windows PowerShell__
-```powershell
+```sh
 cd ~/Projects/xiyo.github.io
 docker run --rm --volume="$(Get-Location):/srv/jekyll:Z" -it -p 4000:4000 jvconseil/jekyll-docker jekyll serve --livereload
 ```

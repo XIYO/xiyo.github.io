@@ -1,6 +1,5 @@
 ---
 title: 첫 번째 포스팅
-categories: [posts, diary]
 ---
 # {{ page.title }}
 

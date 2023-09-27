@@ -6,7 +6,6 @@ lang: kr
 ## system variables
 collections:
   posts:
-    # output: true
     permalink: /:categories/:title
 
 # https://jekyllrb.com/docs/configuration/front-matter-defaults/

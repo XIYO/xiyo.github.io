@@ -2,9 +2,9 @@
 layout: default
 ---
 <article>
-    <div id = "published-date">
+    <time datetime="{{ page.date | date_to_xmlschema }}">
         작성일 : {{ page.date | date: "%Y/%m/%d" }}
-    </div>
+    </time>
     {{ content }}
     <script defer src="https://comentario.xiyo.dev/comentario.js"></script>
     <comentario-comments></comentario-comments>

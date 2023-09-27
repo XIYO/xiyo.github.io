@@ -4,6 +4,10 @@
 lang: kr
 
 ## system variables
+# https://jekyllrb.com/docs/configuration/options/#global-configuration
+# 왜캐 문서가 복잡한지... 찾기도 힘듬
+timezone: Asia/Seoul
+
 collections:
   posts:
     permalink: /:categories/:title

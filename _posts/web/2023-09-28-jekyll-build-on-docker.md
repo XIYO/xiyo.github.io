@@ -25,13 +25,13 @@ title: 지킬 프로젝트 도커로 시작하기
     지킬 프로젝트를 구성할 디렉토리를 만들고 이동합니다.
     
     - __Mac zsh__
-    ```Shell
+    ```shell
     mkdir -p "$HOME/Projects" \
     && cd "$_"
     ```
 
     - __Windows PowerShell__
-    ```PowerShell
+    ```powershell
     New-Item -ItemType Directory `
     -Path "$HOME\Projects" `
     | Set-Location
@@ -41,7 +41,7 @@ title: 지킬 프로젝트 도커로 시작하기
 지킬 보일러 플레이트 코드를 도커를 이용해 빠르게 생성할 수 있습니다.
 
 __Mac zsh__
-```Shell
+```shell
 SITE_NAME="my-jekyll"
 docker run --rm \
 --volume="$PWD:/srv/jekyll" \
@@ -57,7 +57,7 @@ jekyll new $SITE_NAME \
 
 
 __Windows PowerShell__
-```PowerShell
+```powershell
 $SITE_NAME = "my-jekyll"
 docker run --rm `
 --volume="$(Get-Location):/srv/jekyll" `
@@ -75,7 +75,7 @@ jekyll new $SITE_NAME `
 지킬 빌드와 웹 서버 실행을 도커로 실행합니다.
 
 __Mac zsh__
-```Shell
+```shell
 docker run --rm \
 --volume="$PWD:/srv/jekyll" \
 -p 4000:4000 \
@@ -90,7 +90,7 @@ jekyll serve --livereload
 - `jekyll serve --livereload`: 지킬 웹 서버를 실행하며, 파일 변경을 감지하면 자동으로 브라우저를 새로고침합니다.
 
 __Windows PowerShell__
-```PowerShell
+```powershell
 docker run --rm `
 --volume="$(Get-Location):/srv/jekyll" `
 -p 4000:4000 `
@@ -130,7 +130,7 @@ LiveReload address: http://0.0.0.0:35729
 종속성을 업데이트 하려면 `bundle update`를 실행합니다.
 
 __Mac zsh__
-```Shell
+```shell
 docker run --rm \
 --volume="$PWD:/srv/jekyll" \
 jvconseil/jekyll-docker \
@@ -138,7 +138,7 @@ bundle update
 ```
 
 __Windows PowerShell__
-```PowerShell
+```powershell
 docker run --rm `
 --volume="$(Get-Location):/srv/jekyll" `
 jvconseil/jekyll-docker `
@@ -149,7 +149,7 @@ bundle update
 지킬 도커에서 캐싱을 활성화하려면, 도커 `--volume` 옵션을 사용하여 이미지 내부의 `/usr/local/bundle` 디렉토리를 지정할 수 있습니다. 이는 CI(지속적 통합)에서 빌드를 빠르게 수행하려는 사용자에게 이상적입니다.
 
 __Mac zsh__
-```Shell
+```shell
 docker run --rm \
 --volume="$PWD:/srv/jekyll" \
 --volume="$PWD/vendor/bundle:/usr/local/bundle" \
@@ -160,7 +160,7 @@ jekyll serve --livereload
 ```
 
 __Windows PowerShell__
-```PowerShell
+```powershell
 docker run --rm `
 --volume="$(Get-Location):/srv/jekyll" `
 --volume="$(Get-Location)/vendor/bundle:/usr/local/bundle" `

@@ -58,7 +58,7 @@ jekyll new $SITE_NAME \
 
 __Windows PowerShell__
 ```powershell
-$SITE_NAME = "my-jekyll"
+$SITE_NAME="my-jekyll"
 docker run --rm `
 --volume="$(Get-Location):/srv/jekyll" `
 jvconseil/jekyll-docker `
@@ -103,7 +103,7 @@ jekyll serve --livereload --force_polling
 - `-p 4000:4000`: 로컬의 4000 포트와 컨테이너의 4000 포트를 매핑합니다. 웹 서버가 이 포트에서 실행됩니다.
 - `-p 35729:35729`: LiveReload 기능을 위한 포트 매핑입니다.
 - `jekyll serve --livereload --force_polling`: 지킬 웹 서버를 실행하며, 파일 변경을 감지하면 자동으로 브라우저를 새로고침합니다.  
-  - `--force_polling`: 윈도우에서는 리눅스와 파일 시스템이 다르기 때문에 파일 수정 을 감지 못합니다 해 페이지 리로드가 안 됩니다. 이 옵션을 추가하면 강제로 파일 시스템을 감지합니다. 
+  - `--force_polling`: 윈도우에서는 리눅스와 파일 시스템이 다르기 때문에 파일 수정을 감지할 수 없어 페이지 리로드가 안 됩니다. 이 옵션을 추가하면 주기적으로 파일을 변경을 스케줄링으로 검사 합니다. 
 
 #### 접속하기
 빌드와 서버실행이 끝나면 `http://0.0.0.0:4000`으로 접속하라는 메시지가 출력됩니다.  
@@ -169,4 +169,3 @@ docker run --rm `
 jvconseil/jekyll-docker `
 jekyll serve --livereload --force_polling
 ```
-

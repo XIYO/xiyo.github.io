@@ -106,9 +106,9 @@ jekyll serve --livereload --force_polling
   - `--force_polling`: 윈도우에서는 리눅스와 파일 시스템이 다르기 때문에 파일 수정을 감지할 수 없어 페이지 리로드가 안 됩니다. 이 옵션을 추가하면 주기적으로 파일을 변경을 스케줄링으로 검사 합니다. 
 
 #### 접속하기
-빌드와 서버실행이 끝나면 `http://0.0.0.0:4000`으로 접속하라는 메시지가 출력됩니다.  
-`맥`은 접속이 가능하지만 `윈도우`는 [http://127.0.0.1:4000](http://127.0.0.1:4000)으로 접속해야 합니다.  
-`윈도우`는 `0.0.0.0`에 대하여 `루프백`을 지원이 없기 때문입니다.
+
+빌드와 서버 실행이 끝나면 [http://127.0.0.1:4000](http://127.0.0.1:4000)으로 접속하면 됩니다.  
+또, 와일드 카드 주소로 열려 있어 외부에서도 접속 가능합니다.
 
 __결과__ 
 ```sh
@@ -122,7 +122,7 @@ Configuration file: /srv/jekyll/_config.yml
                     done in 1.81 seconds.
  Auto-regeneration: enabled for '/srv/jekyll'
 LiveReload address: http://0.0.0.0:35729
-    Server address: http://0.0.0.0:4000 # 윈도우는 127.0.0.1:4000으로 접속해야 합니다. 
+    Server address: http://0.0.0.0:4000 # 모든 접근에 대해서 열려 있습니다.
   Server running... press ctrl-c to stop.
 ```
 

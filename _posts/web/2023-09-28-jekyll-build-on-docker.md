@@ -11,10 +11,8 @@ title: 지킬 프로젝트 도커로 시작하기
 
 ## 방법
 ### 알아두기
-공식 지킬을 포크한 [도커허브](https://hub.docker.com/r/jvconseil/jekyll-docker) 이미지를 사용하겠습니다.  
-[깃허브](https://github.com/JV-conseil/jekyll-docker)에 소스코드가 공개 되어 있습니다.
 
-> 공식 지킬 [도커허브](https://hub.docker.com/r/jekyll/jekyll/), [깃허브](https://github.com/envygeeks/jekyll-docker)는 더 이상 업데이트되지 않고 있습니다.  
+공식 도커 이미지가 없기 때문에 비공식 [도커허브](https://hub.docker.com/r/jvconseil/jekyll-docker) 이미지를 사용하겠습니다. [깃허브](https://github.com/JV-conseil/jekyll-docker)에 소스코드가 공개 되어 있습니다.
 
 ### 시작하기
 지킬 도커 이미지를 컨테이너로 만듭니다.  

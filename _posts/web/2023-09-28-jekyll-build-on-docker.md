@@ -8,14 +8,14 @@ title: 지킬 프로젝트 도커로 시작하기
 
 ## 요구사항
 
-- 맥의 경우 zsh, 윈도우의 경우 PowerShell을 사용할 수 있어야 합니다.
-- 도커 패키지 설치 및 사용 방법을 알고 있어야 합니다.
+- 맥의 경우 `zsh`, 윈도우의 경우 `PowerShell`을 사용할 수 있어야 합니다.
+- 도커 패키지 설치 및 `docker cli`의 사용 방법을 알고 있어야 합니다.
 
 ## 방법
 
 ### 알아두기
 
-공식 도커 이미지가 없기 때문에 비공식 [도커허브](https://hub.docker.com/r/jvconseil/jekyll-docker) 이미지를 사용하겠습니다. [깃허브](https://github.com/JV-conseil/jekyll-docker)에 소스코드가 공개 되어 있습니다.
+공식 도커 이미지가 없기 때문에 jvconsil 의 [도커허브](https://hub.docker.com/r/jvconseil/jekyll-docker) 이미지를 사용하겠습니다. [깃허브](https://github.com/JV-conseil/jekyll-docker)에 소스 코드가 공개 되어 있습니다.
 
 ### 시작하기
 
@@ -162,7 +162,7 @@ bundle update
 
 #### 캐싱
 
-지킬 도커에서 캐싱을 활성화하려면, 도커 `--volume` 옵션을 사용하여 이미지 내부의 `/usr/local/bundle` 디렉토리를 지정할 수 있습니다. 이는 CI(지속적 통합)에서 빌드를 빠르게 수행하려는 사용자에게 이상적입니다.
+지킬 도커에서 캐싱을 활성화하려면, 도커 `--volume` 옵션을 사용하여 이미지 내부의 `/usr/local/bundle` 디렉토리를 지정할 수 있습니다.
 
 __Mac zsh__
 

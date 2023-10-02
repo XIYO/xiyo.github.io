@@ -10,28 +10,57 @@
   font-style: normal;
 }
 
-
 * {
   font-family: 'NeoDunggeunmoPro-Regular', sans-serif;
 }
 
 a {
-  color: #ccc;
+  color: Cornsilk;
 }
 
 body {
-  color: #ccc;
+  color: Cornsilk;
   background: #111;
   width: 720px;
   margin: 0 auto;
 }
 
-time {
+h1, h2, h3, h4, h5, h6 {
+  background: linear-gradient(45deg, transparent 0%, transparent 75%, rgb(19, 143, 173) 75%, blue 100%);
+  margin-top: 4rem;
+}
+
+h1::before {
+  content: "주제";
   float: right;
 }
 
+h2::before {
+  content: "큰 단락";
+  float: right;
+}
+
+h3::before {
+  content: "중간 단락";
+  float: right;
+}
+
+h4::before {
+  content: "작은 단락";
+  float: right;
+}
+
+h1::after, h2::after, h3::after, h4::after, h5::after, h6::after {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  margin-top: 0.5rem;
+}
+
 nav {
-  background-color: slategrey;
+  background-color: dimgrey;
 
   ul {
     list-style: none;
@@ -45,7 +74,7 @@ nav {
 }
 
 main {
-  background-color: slategrey;
+  background-color: dimgrey;
 }
 
 article {
@@ -53,7 +82,7 @@ article {
 }
 
 footer {
-  background-color: slategrey;
+  background-color: dimgrey;
   height: 5vh;
   display: grid;
   place-items: center;

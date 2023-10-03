@@ -79,6 +79,16 @@ main {
 
 article {
   background-color: rgba(0, 0, 0, 0.09); /* 자식 요소의 배경색 (검은색의 50% 투명도) */
+  position: relative;
+}
+
+time {
+  transform: translateX(150%);
+  position: absolute;
+  right: 0;
+  writing-mode: vertical-rl; /* 세로 방향으로 쓰기 */
+  // text-orientation: upright; /* 텍스트 방향을 유지 */
+  // white-space: nowrap; /* 텍스트를 한 줄로 유지 */
 }
 
 footer {

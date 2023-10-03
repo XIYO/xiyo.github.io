@@ -133,7 +133,7 @@ jekyll serve --livereload --force_polling
 
 __결과__
 
-```sh
+```text
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ruby 3.2.2 (2023-03-30 revision e51014f9c0) [x86_64-linux-musl]
 Configuration file: /srv/jekyll/_config.yml

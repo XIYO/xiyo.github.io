@@ -36,9 +36,11 @@ body {
 
 $headings: (
   h1: '주제',
-  h2: '큰 단락',
-  h3: '중간 단락',
-  h4: '작은 단락',
+  h2: '',
+  h3: '',
+  h4: '',
+  h5: '',
+  h6: ''
 );
 
 @each $heading, $content in $headings {

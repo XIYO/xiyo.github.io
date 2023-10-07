@@ -1,5 +1,5 @@
 ---
-title: checking-running-background-jobs
+title: 백그라운드에서 실행중인 작업 확인하기
 ---
 # {{ page.title }}
 

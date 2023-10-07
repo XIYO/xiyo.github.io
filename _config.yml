@@ -33,7 +33,7 @@ defaults:
         - "web"
   -
     scope:
-      path: "_posts/UNIX"
+      path: "_posts/unix"
       type: "posts"
     values:
       categories:

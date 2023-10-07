@@ -87,6 +87,10 @@ article {
   position: relative;
 }
 
+img {
+  max-width: 100%;  
+}
+
 time {
   transform: translateX(150%);
   position: absolute;

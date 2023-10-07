@@ -82,9 +82,9 @@ main {
   background-color: dimgrey;
 }
 
-article {
+article, aside {
   background-color: rgba(0, 0, 0, 0.09);
-  position: relative;
+  position: relative; /* time 태그를 article 태그에 상대적으로 배치 */
 }
 
 img {

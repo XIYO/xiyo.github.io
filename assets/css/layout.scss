@@ -100,6 +100,11 @@ time {
   // white-space: nowrap; /* 텍스트를 한 줄로 유지 */
 }
 
+header, main, footer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 footer {
   background-color: dimgrey;
   height: 5vh;

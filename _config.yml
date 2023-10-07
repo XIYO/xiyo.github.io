@@ -28,7 +28,17 @@ defaults:
       path: "_posts/web"
       type: "posts"
     values:
-      categories: "web"
+      categories:
+        - "posts"
+        - "web"
+  -
+    scope:
+      path: "_posts/UNIX"
+      type: "posts"
+    values:
+      categories:
+        - "posts"
+        - "unix"
 
 collections:
   posts:

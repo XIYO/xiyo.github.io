@@ -12,6 +12,14 @@ timezone: Asia/Seoul
 defaults:
   -
     scope:
+      path: "_drafts"
+      type: "posts"
+    values:
+      layout: "page"
+      author: "XIYO"
+      categories: "drafts"
+  -
+    scope:
       path: ""
       type: "pages"
     values:

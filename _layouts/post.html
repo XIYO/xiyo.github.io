@@ -1,28 +1,11 @@
 ---
 layout: default
 ---
-<section>
-    <article>
-        <time datetime="{{ page.date | date_to_xmlschema }}">
-            작성일 : {{ page.date | date: "%Y/%m/%d" }}
-        </time>
-        {{ content }}
-    </article>
-    <aside>
-        <script src="https://giscus.app/client.js"
-        data-repo="XIYO/xiyo.github.io"
-        data-repo-id="R_kgDOI1uIYw"
-        data-category="giscus"
-        data-category-id="DIC_kwDOI1uIY84CZ8EA"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="ko"
-        crossorigin="anonymous"
-        async>
-        </script>
-    </aside>
-</section>
+<article>
+    <time datetime="{{ page.date | date_to_xmlschema }}">
+        작성일 : {{ page.date | date: "%Y/%m/%d" }}
+    </time>
+    {{ content }}
+    <script defer src="https://comentario.xiyo.dev/comentario.js"></script>
+    <comentario-comments></comentario-comments>
+</article>

@@ -65,3 +65,29 @@ Git으로 추적하지 않을 파일이나 디렉토리를 지정합니다.
 ### `Gemfile`, `Gemfile.lock`
 
 Ruby 패키지(젬) 관리를 위한 파일입니다.
+
+## RUN
+
+__Mac zsh__
+
+```shell
+docker run --rm \
+--volume="$PWD:/srv/jekyll" \
+--volume="$PWD/vendor/bundle:/usr/local/bundle" \
+-p 4000:4000 \
+-p 35729:35729 \
+jvconseil/jekyll-docker \
+jekyll serve --livereload
+```
+
+__Windows PowerShell__
+
+```powershell
+docker run --rm `
+--volume="$(Get-Location):/srv/jekyll" `
+--volume="$(Get-Location)/vendor/bundle:/usr/local/bundle" `
+-p 4000:4000 `
+-p 35729:35729 `
+jvconseil/jekyll-docker `
+jekyll serve --livereload --force_polling --drafts
+```

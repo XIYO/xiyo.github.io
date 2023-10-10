@@ -90,9 +90,9 @@ PID: 21105
 $(brew --prefix)/opt/mongodb-community/bin/mongod --config $(brew --prefix)/etc/mongod.conf --fork --logpath $(brew --prefix)/var/log/mongodb/mongod.log
 ```
 
-> `$(brew --prefix)`는 `brew`의 설치 경로를 출력합니다.
+> `$(brew --prefix)`는 `brew`의 설치 경로가 반환되어 경로가 됩니다.  
 > `--fork` 옵션은 `mongod` 프로세스를 백그라운드에서 실행하도록 합니다.  
-> `--logpath` 옵션은 로그 파일의 위치를 지정합니다.
+> `--logpath` 옵션은 로그 파일의 위치를 지정합니다.  
 > **백그라운드로 실행 할 때는 두 옵션을 동시에 사용**해야 합니다.
 
 ## ⚠️ TRAOUUBLE SHOOTING

@@ -1,0 +1,14 @@
+version: '3'
+services:
+  jekyll:
+    container_name: jekyll
+    image: jvconseil/jekyll-docker
+    restart: always
+    stdin_open: true  # Equivalent to -i option
+    tty: true  # Equivalent to -t option
+    command: jekyll serve --livereload --force_polling --drafts --incremental
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - "4000:4000"
+      - "35729:35729"

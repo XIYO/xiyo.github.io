@@ -420,6 +420,6 @@ sudo chown -R $(whoami) /usr/local/var/log/mongodb/
 
 더 이상 셸과 대화가 불가능해지면서 정상적인 프로세스 구동이 완료 됐습니다.
 
-이제 `brew`의 **`root`로 실행하지말것** 원칙을 어긴 댓가로 생긴 권한 문제를 다 수정했으니 실제 `macOS`에 `VNC`나 물리적 접근으로 `brew services`로 `mongDB` 실행하면 됩니다.
+이제 `brew`의 **`root`로 실행하지말것** 원칙을 어긴 댓가로 생긴 권한 문제를 다 수정했으니 실제 `macOS`에 `VNC`나 물리적 접근으로 `brew services`로 `mongoDB` 실행하면 됩니다.
 
 즐겁게 `mongoDB`를 사용하세요.

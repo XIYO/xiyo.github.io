@@ -16,7 +16,7 @@ description: 로컬과 리모트로 `intel`, `macOS 14.0`, `sonoma` 환경에서
   > 🟣 IMPORTANT
   >
   > `mongodb-atlas`는 `mongodb-atlas-cli`로 변경 되었습니다. ([`brew` 문서 참고](https://docs.atlas.mongodb.com/command-line-tools/))
-- [`mongoDB` 7.0 문서](https://www.mongodb.com/docs/v6.0/tutorial/install-mongodb-on-os-x/)의 설명대로 설치를 진행합니다.
+- 이 문서는 [`mongoDB` 7.0 Docs](https://www.mongodb.com/docs/v6.0/tutorial/install-mongodb-on-os-x/)의 가이드대로 설치를 진행합니다.
 
 ## INSTALL
 

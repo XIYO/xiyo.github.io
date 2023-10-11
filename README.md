@@ -68,26 +68,207 @@ Ruby 패키지(젬) 관리를 위한 파일입니다.
 
 ## RUN
 
-__Mac zsh__
+`Windows`에서 테스트할 때는 볼륨 옵션으로 연결시 초기 읽기 속도가 느리기 때문에 도커 컨테이너를 만들고 유지해서 사용해야 합니다. (**다른 OS도 확인 필요**)
 
-```shell
-docker run --rm \
---volume="$PWD:/srv/jekyll" \
---volume="$PWD/vendor/bundle:/usr/local/bundle" \
--p 4000:4000 \
--p 35729:35729 \
-jvconseil/jekyll-docker \
-jekyll serve --livereload
-```
+- docker
+  - `docker-compose.yaml`를 이용해서 저장된 설정을 불러와서 컨테이너 생성:
 
-__Windows PowerShell__
+  ```shell
+  docker compose up -d
+  ```
 
-```powershell
-docker run --rm `
---volume="$(Get-Location):/srv/jekyll" `
---volume="$(Get-Location)/vendor/bundle:/usr/local/bundle" `
--p 4000:4000 `
--p 35729:35729 `
-jvconseil/jekyll-docker `
-jekyll serve --livereload --force_polling --drafts
-```
+  - `docker run`을 이용하여 컨테이너 생성:
+    - PowerShell
+
+    ```powershell
+    docker run `
+    --name jekyll `
+    --volume="$(Get-Location):/srv/jekyll" `
+    --volume="$(Get-Location)/vendor/bundle:/usr/local/bundle" `
+    -p 4000:4000 `
+    -p 35729:35729 `
+    jvconseil/jekyll-docker `
+    jekyll serve --livereload --force_polling --drafts --incremental
+    ```
+
+    `Windows` 환경에서 `docker`를 사용할 경우 `--livereload`는 `--force_polling` 옵션 함께 사용해야 합니다.  
+    가상화 기술이 `Windows` 파일 시스템과 안 맞는 부분이 있어 파일 감지 기능이 정상 작동하지 않습니다.  
+    `--force_polling`을 이용해 강제로 파일의 변화를 감지해야 `--livereload` 기능이 동작합니다.
+
+    - bash
+
+    ```bash
+    docker run \
+    --name jekyll \
+    --volume="$PWD:/srv/jekyll" \
+    --volume="$PWD/vendor/bundle:/usr/local/bundle" \
+    -p 4000:4000 \
+    -p 35729:35729 \
+    jvconseil/jekyll-docker \
+    jekyll serve --livereload --drafts --incremental
+    ```
+
+## ADD JEKYLL PLUGIN
+
+- docker
+  - PowerShell
+
+    ```powershell
+    docker exec jekyll bundle add jekyll-admin --group jekyll_plugins `
+    && docker restart jekyll
+    ```
+
+    현재 실행중인 `jekyll` 이름의 도커 컨테이너에서 `jekyll-admin`을 추가합니다.  
+    그리고 `jekyll` 컨테이너를 재시작합니다.
+
+  - bash
+
+    ```shell
+    docker exec jekyll bundle add jekyll-admin --group jekyll_plugins \
+    && docker restart jekyll
+    ```
+
+    현재 실행중인 `jekyll` 이름의 도커 컨테이너에서 `jekyll-admin`을 추가합니다.  
+    그리고 `jekyll` 컨테이너를 재시작합니다.
+
+## REMOVE JEKYLL PLUGIN
+
+- docker
+  - PowerShell
+
+    ```powershell
+    docker exec jekyll bundle remove jekyll-admin `
+    && docker restart jekyll
+    ```
+
+    현재 실행중인 `jekyll` 이름의 도커 컨테이너에서 `jekyll-admin`을 제거합니다.  
+    그리고 `jekyll` 컨테이너를 재시작합니다.
+
+  - bash
+
+    ```shell
+    docker exec jekyll bundle remove jekyll-admin \
+    && docker restart jekyll
+    ```
+
+    현재 실행중인 `jekyll` 이름의 도커 컨테이너에서 `jekyll-admin`을 제거합니다.
+    그리고 `jekyll` 컨테이너를 재시작합니다.
+
+## UPDATE JEKYLL PLUGIN
+
+- docker
+  - 모든 `gem`을 업데이트하는 방법:
+    - PowerShell
+
+      ```powershell
+      docker exec jekyll bundle update `
+      && docker restart jekyll
+      ```
+
+    - bash
+
+    ```bash
+    docker exec jekyll bundle update \
+    && docker restart jekyll
+    ```
+
+  - 특정 `gem` 업데이트하는 방법:
+    - PowerShell
+
+    ```powershell
+    docker exec jekyll bundle update jekyll-admin `
+    && docker restart jekyll
+    ```
+
+    - bash
+
+    ```bash
+    docker exec jekyll bundle update jekyll-admin \
+    && docker restart jekyll
+    ```
+
+## STOP
+
+- docker
+  - PowerShell
+
+  ```powershell
+  docker stop jekyll
+  ```
+
+  - bash
+
+  ```bash
+  docker stop jekyll
+  ```
+
+## START
+
+이미 존재하는 컨테이너를 시작합니다.
+
+- docker
+  - PowerShell
+
+  ```powershell
+  docker start jekyll
+  ```
+
+  - bash
+
+  ```bash
+  docker start jekyll
+  ```
+
+## REMOVE
+
+존재하는 컨테이너를 삭제합니다.
+
+- docker
+  - PowerShell
+
+  ```powershell
+  docker rm jekyll
+  ```
+
+  - bash
+
+  ```bash
+  docker rm jekyll
+  ```
+
+## OUTPUT
+
+컨테이너의 출력을 확인합니다.  
+`ctrl` + `c`는 컨테이너에  `SIGINT`를 보내서 컨테이너를 종료합니다.
+
+> 컨테이너 실행시 `-it` 옵션을 사용했다면 `ctrl` + `p`, `ctrl` + `q`를 이용해 컨테이너를 종료하지 않고 빠져나올 수 있습니다.
+
+- docker
+  - PowerShell
+
+  ```powershell
+  docker attach jekyll
+  ```
+
+  - bash
+
+  ```bash
+  docker attach jekyll
+  ```
+
+## LOGS
+
+컨테이너의 현재까지의 로그를 확인합니다.
+
+- docker
+  - PowerShell
+
+  ```powershell
+  docker logs jekyll
+  ```
+
+  - bash
+
+  ```bash
+  docker logs jekyll
+  ```

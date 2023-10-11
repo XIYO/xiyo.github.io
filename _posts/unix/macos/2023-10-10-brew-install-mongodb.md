@@ -136,9 +136,9 @@ Error: Failure while executing; `/bin/launchctl bootstrap user/501 /Users/xiyo/L
    Error: Failure while executing; `/bin/launchctl bootstrap user/501 /Users/xiyo/Library/LaunchAgents/homebrew.mxcl.mongodb-community.plist` exited with 5.
    ```
 
-    `macOS`의 `launchctl` 출력하는 오류 메시지입니다.  
-    최하단의 명령어 `/bin/launchctl`은 실행 환경에 따라서 `GUI` 도메인과 `USER` 도메인을 구분합니다.(`GUI`는 물리적 로그인이고, `USER`는 `ssh`와 같은 원격 세션입니다.)  
-    이는 `launchctl`의 특징이며, `ssh`로 접속한 상태에서는 `brew`가 `USER` 도메인으로 실행합니다.
+    `macOS`의 `launchctl`이 출력하는 오류입니다.  
+    최하단의 명령어 `/bin/launchctl`은 `brew`의 실행 환경에 따라서 `GUI` 도메인과 `USER` 도메인을 구분합니다.(`GUI`는 물리적 로그인이고, `USER`는 `ssh`와 같은 원격 세션입니다.)  
+    이는 `macOS`의 명령어인 `launchctl`의 특징이며, `ssh`로 접속한 상태에서는 `brew`가 `USER` 도메인으로 실행합니다.
 
     명시적으로 `user/501`를 `gui/501`로 변경하여 실행하면 정상실행이 됩니다.(501은 사용자의 `uid`입니다.)
     그러나 이럴 경우 `gui` 입출력이 필요한 화면이 나올경우 `ssh` 세션에서는 진행이 불가능합니다.  

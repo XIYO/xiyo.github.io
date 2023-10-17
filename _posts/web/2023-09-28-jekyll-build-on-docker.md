@@ -1,5 +1,5 @@
 ---
-title: 지킬 프로젝트 도커로 시작하기
+title: START JEKYLL WITH DOCKER
 categories: [web]
 ---
 # {{ page.title }}

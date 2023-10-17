@@ -34,22 +34,7 @@ defaults:
     values:
       layout: "post"
       author: "XIYO"
-  -
-    scope:
-      path: "_posts/web"
-      type: "posts"
-    values:
-      categories:
-        - "posts"
-        - "web"
-  -
-    scope:
-      path: "_posts/unix"
-      type: "posts"
-    values:
-      categories:
-        - "posts"
-        - "unix"
+      categories: "posts"
 
 collections:
   posts:

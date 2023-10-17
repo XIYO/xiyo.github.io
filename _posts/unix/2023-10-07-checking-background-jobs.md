@@ -1,5 +1,6 @@
 ---
 title: 백그라운드 작업 확인하기
+categories: [unix]
 ---
 # {{ page.title }}
 

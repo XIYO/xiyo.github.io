@@ -6,7 +6,7 @@ services:
     restart: always
     stdin_open: true  # Equivalent to -i option
     tty: true  # Equivalent to -t option
-    command: jekyll serve --livereload --force_polling --drafts --incremental
+    command: jekyll serve --livereload --force_polling
     volumes:
       - .:/srv/jekyll
     ports:

@@ -1,9 +1,11 @@
 ---
 title: START JEKYLL WITH DOCKER
+description: ⛳ `Jekyll`을 `Docker`로 시작하는 방법을 설명합니다.
 categories: [web]
 ---
 # {{ page.title }}
-이 글에서는 지킬을 처음부터 깃허브에 업로드할 때까지, 도커를 활용하는 전체 과정을 설명하겠습니다.
+  
+{{ page.description }}
 
 ## 배경
 

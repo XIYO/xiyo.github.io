@@ -18,7 +18,7 @@ category: [unix-and-unix-like, macos]
 
 ## SOLUTION
 
-![미션 컨트롤 옵션 설정 화면](/assets/resources/2023-10-27-13-38-20.png)
+![미션 컨트롤 옵션 설정 화면](/assets/resources/2023-10-27-13-36-46.png)
 
 0. **설정 화면** :
 

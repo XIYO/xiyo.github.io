@@ -104,7 +104,7 @@ categories: [asuswrt]
         "watch-dir": "/mnt/XIYOsD10/home/xiyo/watchdir",
         ```
 
-        > *XIYOsD10* 는 마운트된 *USB* 스토리지의 이름입니다.
+        > *XIYOsD10* 는 마운트된 스토리지의 이름입니다.
 
         - *download-dir* \
             내려받은 파일을 저장할 위치 입니다.

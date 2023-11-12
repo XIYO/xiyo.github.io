@@ -80,8 +80,6 @@ categories: [asuswrt]
 
 기본 에디터, *vi* 를 이용해 트랜스미션 설정파일, */opt/etc/transmission/settings.json* 를 수정합니다.
 
-트랜스미션은 설정 파일에 입력한 디렉토리가 없다면 자동으로 생성하기 때문에 따로 디렉토리를 생성하지 않아도 됩니다.
-
 [![asciicast](https://asciinema.xiyo.dev/a/34.svg)](https://asciinema.xiyo.dev/a/34)
 
 0. 설정 파일을 엽니다.
@@ -121,6 +119,8 @@ categories: [asuswrt]
         > - *watch-dir* \
         >     토렌트 파일을 자동으로 불러올 위치입니다. \
         >     *watch-dir-enabled* 속성을 *true* (기본값)로 > 설정해야 합니다.
+        >
+        > 트랜스미션은 설정 파일에 입력한 디렉토리가 없다면 자동으로 생성하기 때문에 따로 디렉토리를 생성하지 않아도 됩니다.
 
     0. 단어 찾기 \
     <kbd>/</kbd>를 입력하고 찾을 텍스트를 입력하면 됩니다.

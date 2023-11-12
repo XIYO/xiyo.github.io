@@ -63,8 +63,6 @@ categories: [asuswrt]
 
     > 엔트웨어를 업데이트 후, 웹 인터페이스를 설치합니다.
 
-> [*asuswrt-merlin*](https://github.com/RMerl/asuswrt-merlin.ng/wiki/Installing-Transmission-through-Entware) 문서에서는 여러 패키지를 설치하고 있는데, 현재는 의존성에 설치하는 패키지가 다 포함되어 있기 때문에 설치할 필요 없습니다.
-
 ## CONFIGURATION
 
 ### KILL TRANSMISSION

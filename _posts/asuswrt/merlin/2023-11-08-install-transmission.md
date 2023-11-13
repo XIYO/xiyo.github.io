@@ -1,7 +1,7 @@
 ---
 title: "INSTALL TRANSMISSION ON ASUSWRT"
 description: "트랜스미션을 설치하고 원격으로 토렌트를 관리하는 방법을 알아봅니다."
-categories: [asuswrt]
+categories: ["asuswrt", "merlin"]
 ---
 
 # {{ page.title }}

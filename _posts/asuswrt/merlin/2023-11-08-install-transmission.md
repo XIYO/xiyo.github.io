@@ -212,7 +212,7 @@ echo "iptables -I INPUT -p udp --dport 51413 -j ACCEPT" >> "$FILE"
 ![윈도우즈 11, 엣지에서 접속한 화면](/assets/resources/2023-11-12-22-17-45.png)
 
 브라우저에서 *http://라우터IP:9091* 에 접속하면 웹 *UI*를 확인할 수 있습니다. \
-*ID* 와 암호는 설정파일에서 설정한 값입니다. \
+*ID* 와 암호는 설정파일에서 설정한 값입니다.
 
 ### TRANSMISSION CLIENT
 

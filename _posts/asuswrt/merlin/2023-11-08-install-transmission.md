@@ -15,7 +15,7 @@ categories: ["asuswrt", "merlin"]
 설치 환경입니다.
 
 | 분류        | 상세 정보                 |
-|-------------|-------------------------|
+|:-------------|:-------------------------:|
 | Hardware    | AC88U                   |
 | Firmware    | ASUSWRT-MERLIN 386.12   |
 | Package     | Entware armv7sf-k2.6    |

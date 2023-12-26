@@ -1,33 +1,18 @@
 ---
 ---
 @import "main";
+@import "code.css";
+
 @font-face {
-  font-family: "NeoDunggeunmoPro-Regular";
-  src: url("/assets/fonts/NeoDunggeunmoPro-Regular.woff2") format("woff2"),
-    url("/assets/fonts/NeoDunggeunmoPro-Regular.woff") format("woff"),
-    url("/assets/fonts/NeoDunggeunmoPro-Regular.ttf") format("ttf");
-  font-weight: normal;
+  font-family: 'Pretendard Variable';
+  font-weight: 45 920;
   font-style: normal;
-}
-
-* {
-  font-family: 'NeoDunggeunmoPro-Regular', sans-serif;
-  word-break:keep-all;
-  letter-spacing: 1px;
-  line-height: 150%;
-}
-
-a {
-  color: Cornsilk;
-}
-
-blockquote {
-  background-color: rgba(0, 0, 0, 0.09);
-  border-left: 0.25rem solid #000;
-  font-style: italic;
+  font-display: swap;
+  src: url('/assets/fonts/PretendardVariable.woff2') format('woff2-variations');
 }
 
 body {
+  font-family: 'Pretendard Variable', sans-serif;
   color: Cornsilk;
   background: #111;
   width: 720px;

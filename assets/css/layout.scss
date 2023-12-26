@@ -19,6 +19,15 @@ body {
   margin: 0 auto;
 }
 
+a {
+  color: Cornsilk;
+  text-decoration: none;
+}
+
+blockquote {
+  border-left: 0.25rem solid #000;
+}
+
 $headings: (
   h1: '주제',
   h2: '',
@@ -73,7 +82,7 @@ article, aside {
 }
 
 img {
-  max-width: 100%;  
+  max-width: 100%;
 }
 
 time {
@@ -85,14 +94,18 @@ time {
   // white-space: nowrap; /* 텍스트를 한 줄로 유지 */
 }
 
-header, main, footer {
+header, nav, main, footer {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
+header {
+  font-size: 7rem;
+  text-align: center;
+}
+
 footer {
   background-color: dimgrey;
-  height: 5vh;
-  display: grid;
-  place-items: center;
+  text-align: center;
+  padding: 1rem;
 }

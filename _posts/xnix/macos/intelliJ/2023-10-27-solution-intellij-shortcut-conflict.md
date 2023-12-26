@@ -1,7 +1,7 @@
 ---
 title: "SOLUTION INTELLIJ SHORTCUT CONFLICT"
 description: "*IntelliJ* 단축키 충돌 문제를 해결하는 방법을 알아봅니다."
-categories: [unix-and-unix-like, macos, intellij]
+categories: [xnix, macos, intellij]
 ---
 
 # {{ page.title }}

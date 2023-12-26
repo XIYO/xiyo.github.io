@@ -1,7 +1,7 @@
 ---
 title: LOCK DESKTOP SPACE
 description: 미션 컨트롤의 데스크톱 스페이스를 잠그는 방법을 알아봅니다.
-category: [unix-and-unix-like, macos]
+category: [xnix, macos]
 ---
 
 # {{ page.title }}

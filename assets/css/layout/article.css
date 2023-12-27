@@ -1,0 +1,20 @@
+article, aside {
+    position: relative; /* time 태그를 article 태그에 상대적으로 배치 */
+}
+
+img {
+    max-width: 100%;
+}
+
+time {
+    transform: translateX(150%);
+    position: absolute;
+    right: 0;
+    writing-mode: vertical-rl; /* 세로 방향으로 쓰기 */
+    text-orientation: upright; /* 텍스트 방향을 유지 */
+    white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+}
+
+blockquote {
+    border-left: 0.25rem solid #000;
+}

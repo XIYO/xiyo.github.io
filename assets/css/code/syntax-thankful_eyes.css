@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "NeoDunggeunmo-Code";
+  src: url("/assets/fonts/neodgm_code.woff2") format("woff2");
+  font-display: swap;
+}
+
+code {
+  font-family: 'NeoDunggeunmo-Code', sans-serif;
+  font-feature-settings: 'calt' on;
+}
+
 pre {
   overflow: auto;
 }

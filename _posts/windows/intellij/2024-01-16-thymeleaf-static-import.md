@@ -1,5 +1,5 @@
 ---
-제목: "인텔리제이의 HTML에서 정적 자원 인식 문제 해결"
+title: "인텔리제이의 HTML에서 정적 자원 인식 문제 해결"
 description: "인텔리제이에서 스프링부트 프로젝트의 HTML이 정적 자원인, 자바스크립트 파일을 인식하지 못 하는 문제를 해결합니다."
 categories: [windows, intellij]
 tags: [windows, intellij, thymeleaf, static, import]

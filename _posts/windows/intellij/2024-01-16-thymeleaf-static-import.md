@@ -1,6 +1,6 @@
 ---
-title: "타임리프에서 정적 자원 읽기"
-description: "스프링부트 타임리프 프로젝트에서 자바스크립트 파일을 임포트시에 인텔리제이에서 정적 자원을 인식하지 못 해 구문 분석이 정상적이지 않은 상황을 해결합니다."
+제목: "인텔리제이의 HTML에서 정적 자원 인식 문제 해결"
+description: "인텔리제이에서 스프링부트 프로젝트의 HTML이 정적 자원인, 자바스크립트 파일을 인식하지 못 하는 문제를 해결합니다."
 categories: [windows, intellij]
 tags: [windows, intellij, thymeleaf, static, import]
 ---

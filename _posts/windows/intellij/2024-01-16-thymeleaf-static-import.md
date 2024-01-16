@@ -9,21 +9,25 @@ tags: [windows, intellij, thymeleaf, static, import]
 
 {{ page.description }}
 
-이 문제가 발생하더라도 실제 빌드 후 결과물에는 아무런 문제가 발생하지 않지만 코드 작성시 자바스크립트를 도움없이 작성하는 것은 매우 불편하며, 런타임 오류를 발생시킬 수 있습니다.
+코드를 작성할 때, 
+인텔리제이가 자바스크립트 파일을 인식하지 못해 불편함이 있습니다. 
+이 문제는 실제로 애플리케이션을 실행할 때는 영향을 주지 않지만, 
+코딩 시 오류를 발생시킬 수 있어 해결이 필요합니다.
 
 ## 원인
 
-![정적 리소스를 IDE가 찾지 못해서 경고 발생](/assets/resources/2024-01-16-13-38-33.png)
+![인텔리제이에서 정적 리소스 인식 실패](/assets/resources/2024-01-16-13-38-33.png)
 
-HTML에서 리소스를 임포트하면 경로를 파악하지 못하는 문제가 발생합니다.
-인텔리제이에서 리소스 디렉토리가 `src/main/resources`만 등록되어있기 때문입니다.
+스프링 부트 프로젝트에서 HTML에 자바스크립트 파일을 임포트할 때, 
+자바스크립트의 경로를 제대로 찾지 못하는 문제가 발생합니다. 
+이는 인텔리제이의 리소스 디렉토리 설정 때문입니다.
 
-## 해결방법
+## 해결 방법
 
-`src/main/resources/static` 디렉토리를 추가로 등록하여, 다른 리소스의 경로를 인식할 수 있게 합니다.
+인텔리제이의 **Project Structure** 창에서 `src/main/resources/static` 디렉토리를 리소스로 추가합니다.
 
 ![리소스 경로를 등록하는 방법](/assets/resources/2024-01-16-13-38-45.png)
 
-> **note**
+> **tip**
 >
-> <kdb>Ctrl</kdb> + <kdb>Alt</kdb> + <kdb>Shift</kdb> + <kdb>S</kdb> 를 눌러 `프로젝트 스트럭처` 창을 열 수 있습니다.
+> <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>를 눌러 **Project Structure** 창을 열 수 있습니다.

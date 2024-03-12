@@ -1,0 +1,81 @@
+:root {
+    --primary-color: #50C878; /* 기본 에메랄드 */
+    --background-color: #2C3E50; /* 배경색 */
+    --text-color: #ECF0F1; /* 글자색 */
+    --accent-color: #1ABC9C; /* 강조색 */
+    --light-accent-color: #34495E; /* 보조 강조색 */
+    --secondary-text-color: #16A085; /* 보조 글자색 */
+    --border-color: #34495E; /* 테두리 색상 */
+    --highlight-color: #F39C12; /* 하이라이트 색상 */
+    --error-color: #C0392B; /* 에러 색상 */
+
+    --nav-width: 10rem;
+    --three-quarters-of-three-quarter-ratio: 0.875;
+    --three-quarter-ratio: 0.75;
+    --half-ratio: 0.5;
+    --quarter-ratio: 0.25;
+    --three-quarters-of-quarter-ratio: 0.1875;
+    --eighth-ratio: 0.125;
+}
+
+html {
+    margin-inline-end: var(--nav-width);
+
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+a {
+    color: var(--text-color);
+}
+
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --primary-color: #50C878; /* 기본 에메랄드 */
+        --background-color: #F0F4F8; /* 배경색 */
+        --text-color: #333333; /* 글자색 */
+        --accent-color: #A2D9CE; /* 강조색 */
+        --light-accent-color: #E6F5EE; /* 보조 강조색 */
+        --secondary-text-color: #76B39D; /* 보조 글자색 */
+        --border-color: #BDC3C7; /* 테두리 색상 */
+        --highlight-color: #F1C40F; /* 하이라이트 색상 */
+        --error-color: #E74C3C; /* 에러 색상 */
+    }
+}
+
+@media (max-width: 424px) {
+    html {
+        margin-inline-end: 0;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 1023px) {
+    html {
+        margin-inline-end: calc(var(--nav-width) * 0.25);
+    }
+}
+
+/*
+ 내비게이션의 미디어 쿼리에 의한 영역 변동에 대하여 본문의 영역을 조절,
+ 본문이 내비게이션에 가려서 안 보이는 일이 없도록 함
+ 단, 이 트랜지션에 대한 부하 검증이 필요.
+ */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        transition: margin 0.25s ease-in-out;
+    }
+}
+
+@media (prefers-reduced-motion) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.25s;
+}

@@ -3,10 +3,6 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import { onNavigate } from '$app/navigation';
 
-	export let data;
-
-	const category = data.category;
-
 	onNavigate((navigation) => {
 		if (!document.startViewTransition || navigation.to.route.id === navigation.from.route.id) return;
 
@@ -33,4 +29,4 @@
 <main>
 	<slot />
 </main>
-<Nav {category} />
+<Nav />

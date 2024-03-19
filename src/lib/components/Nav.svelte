@@ -1,8 +1,9 @@
 <script>
 	import AboutLink from '$lib/components/aside/AboutLink.svelte';
 	import { page } from '$app/stores';
-	const { category } = $props();
-	const categories = category.children;
+	import CategoryManager from "$lib/CategoryManager.js";
+
+	const category = CategoryManager.instance.category.children.get('posts');
 </script>
 
 <input checked="true" hidden id="nav-toggle" type="checkbox">

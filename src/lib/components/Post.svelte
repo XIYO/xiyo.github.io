@@ -1,7 +1,6 @@
 <script>
-	import { Marked } from 'marked';
 	import fm from 'front-matter';
-	import { markedHighlight } from 'marked-highlight';
+	import {marked} from 'marked';
 	import hljs from 'highlight.js';
 
 	const {markdown} = $props();
@@ -31,22 +30,27 @@
 			}
 			return `<p>${text}</p>`;
 		},
+		code(code, language) {
+			if (language === 'mermaid') {
+				// Mermaid 블록을 처리
+				return `<pre class="mermaid">${code}</pre>`;
+			} else {
+				// 다른 언어의 코드 블록 처리
+				const highlighted = hljs.highlight(code, { language, ignoreIllegals: true }).value;
+				return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
+			}
+			}
 	};
 
-	const marked = new Marked(markedHighlight({
-		langPrefix: 'hljs language-', highlight(code, lang, info) {
-			const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-			return hljs.highlight(code, { language }).value;
-		}
-	}))
-
-	marked.use({ renderer, hooks: { preprocess } });
+	marked.use({ gfm: true, renderer, hooks: { preprocess } });
 	const html = marked.parse(markdown);
 </script>
 
 <svelte:head>
 	<title>{meta.title}</title>
 	<meta name="description" content={meta.description} />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 </svelte:head>
 
 {@html html}

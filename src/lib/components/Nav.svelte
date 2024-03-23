@@ -6,7 +6,7 @@
 	const category = CategoryManager.instance.category.children.get('posts');
 </script>
 
-<input checked="true" hidden id="nav-toggle" type="checkbox">
+<input hidden id="nav-toggle" type="checkbox">
 <nav>
 	<div>
 		<label aria-label="Close navigation" for="nav-toggle"></label>

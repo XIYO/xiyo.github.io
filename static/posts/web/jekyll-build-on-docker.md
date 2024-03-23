@@ -1,11 +1,6 @@
----
-title: START JEKYLL WITH DOCKER
-description: ⛳ `Jekyll`을 `Docker`로 시작하는 방법을 설명합니다.
-categories: [web]
----
-# {{ page.title }}
-  
-{{ page.description }}
+# START JEKYLL WITH DOCKER
+
+`Jekyll`을 `Docker`로 시작하는 방법을 설명합니다.
 
 ## 배경
 

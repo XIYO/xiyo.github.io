@@ -8,8 +8,7 @@ export default class CategoryManager {
 	#metaMarkdown = import.meta.glob('/static/**/*.md', { query: '?raw'});
 
 	/**
-	 * 싱글톤 입니다. 직접 생성하지마십시오. instance를 사용하십시오.
-	 * @returns {CategoryManager}
+	 * 싱글톤 입니다. 직접 생성하지마십시오. "instance"를 사용하십시오.
 	 */
 	constructor() {
 		if (CategoryManager.#instance) {

@@ -1,12 +1,6 @@
----
-title: INSTALL SSH SERVER
-description: "윈도우즈에서 *SSH* 서버를 설치하는 방법을 알아봅니다."
-category: [windows, system]
----
+# INSTALL SSH SERVER
 
-# {{ page.title }}
-
-{{ page.description }}
+윈도우즈에서 *SSH* 서버를 설치하는 방법을 알아봅니다.
 
 *SSH* 클라이언트는 윈도우즈 10부터 설치되어 있습니다.
 

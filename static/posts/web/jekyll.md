@@ -1,7 +1,4 @@
----
-title: jekyll로 블로그 개설하기
----
-# {{ page.title }}
+# jekyll로 블로그 개설하기
 
 [jekyll]은 [github]의 공동 설립자 [Tom Preston-Werner]가 2008년 출시한 정적 사이트 생성기입니다. 공식 문서가 매우 친절하기 때문에 일주일 정도의 노력끝에 블로그를 개설 할 수 있었습니다.
 

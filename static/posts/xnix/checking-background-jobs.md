@@ -1,11 +1,6 @@
----
-title: CHECKING BACKGROUND JOBS
-description: ⛳ `UNIX`와 `UNIX LIKE`에서 `Job control` 일부인 `jobs` 명령어를 설명합니다.
-categories: [xnix]
----
-# {{ page.title }}
+# CHECKING BACKGROUND JOBS
 
-{{ page.description }}
+`UNIX`와 `UNIX LIKE`에서 `Job control` 일부인 `jobs` 명령어를 설명합니다.
 
 `jobs`는 현재 `shell`의 `background`에서 실행중인 `job`을 확인하는 명령어입니다.
 

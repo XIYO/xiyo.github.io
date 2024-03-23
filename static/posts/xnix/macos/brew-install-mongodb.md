@@ -1,11 +1,6 @@
----
-title: BREW INSTALL MONGODB
-description: ⛳️ `intel`, `macOS 14.0`, `sonoma` 환경에서 `brew 4.1.14`를 사용해 `mongoDB`를 설치하는 과정을 정리합니다.
-categories: [xnix, macos]
----
-# {{ page.title }}
+# BREW INSTALL MONGODB
 
-{{ page.description }}
+`intel`, `macOS 14.0`, `sonoma` 환경에서 `brew 4.1.14`를 사용해 `mongoDB`를 설치하는 과정을 정리합니다.
 
 ## NOTE
 

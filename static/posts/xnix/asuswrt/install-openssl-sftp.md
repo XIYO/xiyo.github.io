@@ -1,12 +1,6 @@
----
-title: INSTALL OPENSSL AND SFTP ON ASUSWRT
-description: ⛳ `Dropbear`에 `SFTP` 기능을 추가하는 방법을 설명합니다.
-categories: [asuswrt]
----
+# INSTALL OPENSSL AND SFTP ON ASUSWRT
 
-# {{ page.title }}
-
-{{ page.description }}
+`Dropbear`에 `SFTP` 기능을 추가하는 방법을 설명합니다.
 
 `Dropbear`는 `OpenSSH`의 경량 패키지 입니다. \
 `OpenSSH`의 일부 기능을 제거하면서 `SFTP`까지 제거 되었습니다.

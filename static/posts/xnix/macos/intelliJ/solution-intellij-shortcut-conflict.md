@@ -1,12 +1,6 @@
----
-title: "SOLUTION INTELLIJ SHORTCUT CONFLICT"
-description: "*IntelliJ* 단축키 충돌 문제를 해결하는 방법을 알아봅니다."
-categories: [xnix, macos, intellij]
----
+# SOLUTION INTELLIJ SHORTCUT CONFLICT
 
-# {{ page.title }}
-
-{{ page.description }}
+*IntelliJ* 단축키 충돌 문제를 해결하는 방법을 알아봅니다.
 
 인텔리제이를 사용한지 일주일 정도가 넘은 시점에서 발생한 경고입니다. \
 최신버전의 인텔리제이는 키 기능이 오버라이드 되어 있어서 충돌이 발생하지 않습니다. \

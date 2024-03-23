@@ -1,13 +1,8 @@
----
-title: USE SSH FS
-description: ⛳ *VS Code*의 *SSH FS*를 사용하여 편리하게 파일을 관리하는 방법을 알아봅니다.
----
-
-# {{ page.title }}
+# USE SSH FS
 
 ![*VS Code*에서 *SSH FS*으로 연결한 화면](/resources/2023-10-22-11-55-54.png)
 
-{{ page.description }}
+*VS Code*의 *SSH FS*를 사용하여 편리하게 파일을 관리하는 방법을 알아봅니다.
 
 *라우터*에 자주 접속해서 작업을 하다보면, 관리할 파일이 점점 많아집니다. \
 그래서 조금 더 편리한 작업을 위해 *VS Code*를 이용하여 파일을 관리 할 수 있도록 기능을 추가했습니다.

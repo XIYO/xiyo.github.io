@@ -1,12 +1,6 @@
----
-title: "INSTALL TRANSMISSION ON ASUSWRT"
-description: "트랜스미션을 설치하고 원격으로 토렌트를 관리하는 방법을 알아봅니다."
-categories: ["asuswrt", "merlin"]
----
+# INSTALL TRANSMISSION ON ASUSWRT
 
-# {{ page.title }}
-
-{{ page.description }}
+트랜스미션을 설치하고 원격으로 토렌트를 관리하는 방법을 알아봅니다.
 
 트랜스미션은 여러 토렌트 대몬 중에서 웹 *UI*가 내장된, 간단한 토렌트 대몬입니다. 대체로 *NAS*에서 사용되는 편이지만, 에이수스 라우터에서도 사용할 수 있습니다.
 

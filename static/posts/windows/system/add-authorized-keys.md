@@ -55,3 +55,7 @@ icacls.exe $env:ProgramData\ssh\administrators_authorized_keys /inheritance:r /g
     ```powershell
     code $env:ProgramData\ssh\administrators_authorized_keys
     ```
+   
+## 참고
+
+[마이크로소프트 문서](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement)

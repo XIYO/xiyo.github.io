@@ -13,10 +13,10 @@
 ![open search everywhere](img.png)
 ![modify protected branch](img_1.png)
 
-- 접근 방법
-  0. <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> 조합 단축키를 입력해 `Search Everywhere` 를 엽니다.
-  0. `Protected branches:` 를 검색하고 일치하는 항목을 클릭합니다.
-  0. settings 에서 `Protected branches:` 의 내용을 삭제합니다.
+- 방법
+  0. <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> 조합 단축키를 입력해 `Search Everywhere` 창을 엽니다.
+  0. `Search Everywhere` 창에서 "Protected branches:"를 입력하고 일치하는 항목을 클릭합니다.
+  0. `settings` 창에서 `Protected branches:` 필드를 찾아 내용을 삭제합니다.
 
 ## TROUBLESHOOTING
 

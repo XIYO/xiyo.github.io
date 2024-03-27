@@ -126,7 +126,7 @@
     }
 
     @media (max-width: 1023px) {
-        input:checked ~ nav, nav:focus-within {
+        nav:hover, input:checked ~ nav, nav:focus-within {
             transform: unset;
         }
 

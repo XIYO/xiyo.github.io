@@ -68,9 +68,9 @@
 
 				font-size: 1.25em;
 
-        /*border-left-width: 0.25rem;*/
-        /*border-left-style: solid;*/
-        /*border-left-color: var(--accent-color);*/
+        border-left-width: 1px;
+        border-left-style: solid;
+        border-left-color: var(--accent-color);
 
         overflow-wrap: break-word;
         user-select: none;
@@ -151,15 +151,16 @@
         }
     }
 
+    /* 동작 활성화 모드일때만 트랜지션을 작동, 사용자를 존중 */
     @media (prefers-reduced-motion: no-preference) {
         /* 내비게이션 반응형 영역 트랜지션 */
         nav {
-            transition: all 0.25s ease-in-out;
+            transition: transform 0.25s ease-in-out;
         }
 
         /* 내비게이션 노출 아이콘 반응형 영역 트랜지션 */
         nav div {
-            transition: all 0.25s ease-in-out;
+            transition: transform 0.25s ease-in-out;
         }
     }
 </style>

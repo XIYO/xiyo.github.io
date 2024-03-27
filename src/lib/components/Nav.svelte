@@ -17,15 +17,6 @@
 		</li>
 		<li aria-current={$page.url.pathname === category.getPathname() ? 'page' : undefined}>
 			<a data-sveltekit-keepfocus href={category.getPathname()}>POSTS</a>
-			<!--{#if categories.size}-->
-			<!--	<ul>-->
-			<!--		{#each categories.values() as category}-->
-			<!--			<li aria-current={$page.url.pathname === category.getPathname() ? 'page' : undefined}>-->
-			<!--				<a data-sveltekit-keepfocus href={category.getPathname()}>{category.name}</a>-->
-			<!--			</li>-->
-			<!--		{/each}-->
-			<!--	</ul>-->
-			<!--{/if}-->
 		</li>
 		<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 			<a data-sveltekit-keepfocus href="/about">ABOUT</a>

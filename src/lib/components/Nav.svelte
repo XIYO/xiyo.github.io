@@ -81,13 +81,6 @@
     ul {
         list-style: main-category;
         overflow-y: auto;
-        padding-inline-start: calc(var(--nav-width) * var(--quarter-ratio));
-    }
-
-    ul ul {
-        list-style: middle-category;
-        padding-inline-start: calc(var(--nav-width) * var(--three-quarters-of-quarter-ratio));
-				font-size: calc(var(--three-quarters-of-three-quarter-ratio) * 1em);
     }
 
     li:not(:first-child):not(:last-child) {
@@ -101,12 +94,6 @@
 
     li > a:first-child {
         text-decoration: none;
-    }
-
-    li > span {
-        display: inline-block;
-        width: calc(100% * var(--quarter-ratio));
-        text-align: center;
     }
 
     @counter-style main-category {
@@ -173,14 +160,6 @@
         /* 내비게이션 노출 아이콘 반응형 영역 트랜지션 */
         nav div {
             transition: all 0.25s ease-in-out;
-        }
-
-        a {
-            transition: all 0.25s ease-in-out;
-        }
-
-        li {
-            position: relative;
         }
     }
 </style>

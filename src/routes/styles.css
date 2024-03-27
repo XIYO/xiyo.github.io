@@ -18,8 +18,17 @@
     --eighth-ratio: 0.125;
 }
 
+/* 네요 둥근모 폰트를 쓰려고해 */
+@font-face {
+    font-family: 'NeoDGMCode'; /* 폰트에 대한 이름을 설정합니다. */
+    src: url('/fonts/neodgm_code.woff2') format('woff2'); /* 폰트 파일의 위치와 포맷을 지정합니다. */
+    font-weight: normal; /* 폰트 두께를 정의합니다. */
+    font-style: normal; /* 폰트 스타일을 정의합니다. */
+}
+
 html {
     margin-inline-end: var(--nav-width);
+    font-family: 'NeoDGMCode', sans-serif;
 
     color: var(--text-color);
     background-color: var(--background-color);

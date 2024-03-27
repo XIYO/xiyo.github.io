@@ -1,28 +1,28 @@
 <script>
-	import AboutLink from '$lib/components/aside/AboutLink.svelte';
-	import { page } from '$app/stores';
-	import CategoryManager from "$lib/CategoryManager.js";
+    import AboutLink from '$lib/components/aside/AboutLink.svelte';
+    import {page} from '$app/stores';
+    import CategoryManager from "$lib/CategoryManager.js";
 
-	const category = CategoryManager.instance.category.children.get('posts');
+    const category = CategoryManager.instance.category.children.get('posts');
 </script>
 
 <input hidden id="nav-toggle" type="checkbox">
 <nav>
-	<div>
-		<label aria-label="Close navigation" for="nav-toggle"></label>
-	</div>
-	<ul>
-		<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-			<a data-sveltekit-keepfocus href="/">HOME</a>
-		</li>
-		<li aria-current={$page.url.pathname === category.getPathname() ? 'page' : undefined}>
-			<a data-sveltekit-keepfocus href={category.getPathname()}>POSTS</a>
-		</li>
-		<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-			<a data-sveltekit-keepfocus href="/about">ABOUT</a>
-		</li>
-	</ul>
-	<AboutLink />
+    <div>
+        <label aria-label="Close navigation" for="nav-toggle"></label>
+    </div>
+    <ul>
+        <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+            <a data-sveltekit-keepfocus href="/">HOME</a>
+        </li>
+        <li aria-current={$page.url.pathname === category.getPathname() ? 'page' : undefined}>
+            <a data-sveltekit-keepfocus href={category.getPathname()}>POSTS</a>
+        </li>
+        <li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
+            <a data-sveltekit-keepfocus href="/about">ABOUT</a>
+        </li>
+    </ul>
+    <AboutLink/>
 </nav>
 
 <style>
@@ -57,7 +57,7 @@
         background-color: var(--light-accent-color);
         width: var(--nav-width);
 
-				font-size: 1.25em;
+        font-size: 1.25em;
 
         border-left-width: 1px;
         border-left-style: solid;

@@ -3,8 +3,15 @@
     --color-default-white: hsl(42, 66%, 93%);
     --color-primary: hsl(176, 89%, 37%);
 
+    /* default */
     --width-default-nav: 10rem;
     --margin-default-nav: calc(var(--ratio-half) * 1rem);
+    --radius-default: 1rem;
+    --padding-default: 1rem;
+
+    --padding-block-tag: calc(var(--ratio-three-quarters-of-quarter) * 1rem);
+    --padding-inline-tag: calc(var(--ratio-half) * 1rem);
+    --margin-inline-tag: calc(var(--ratio-quarter) * 1rem);
 
     --ratio-three-quarters-of-three-quarter: 0.875;
     --ratio-three-quarter: 0.75;
@@ -27,16 +34,72 @@ html {
 
     color: var(--color-default-black);
     background-color: var(--color-default-white);
+}
 
-    a {
-        color: var(--color-default-black);
-        text-decoration-thickness: calc(var(--ratio-eighth) * 1rem);
+a {
+    color: var(--color-default-black);
+    text-decoration-thickness: calc(var(--ratio-eighth) * 1rem);
 
-        transition: text-decoration-color calc(var(--ratio-eighth) * 1s);
+    transition: text-decoration-color calc(var(--ratio-eighth) * 1s);
 
-        &:hover {
-            text-decoration-color: var(--color-primary);
+    &:hover {
+        text-decoration-color: var(--color-primary);
+    }
+}
+
+.heading1 {
+    background-color: var(--color-default-black);
+    color: var(--color-default-white);
+
+    padding: var(--radius-default);
+    border-radius: var(--radius-default);
+
+    h1 {
+        margin: 0;
+    }
+
+    .tags {
+        /* 내용의 시작이 오른쪽 끝에부터로 변경하고싶어 논리 시작 변경 코드*/
+        text-align: end;
+
+        margin-block: 0;
+        padding-inline-start: 0;
+    }
+
+    .tag {
+        display: inline-block;
+        word-break: break-all; /* 비정상 적으로 아주 좁을때 단어를 자르는 코드 */
+        background-color: var(--color-primary);
+        padding-block: var(--padding-block-tag);
+        padding-inline: var(--padding-inline-tag);
+
+        margin-block-start: var(--margin-inline-tag);
+        margin-inline: var(--margin-inline-tag);
+        border-radius: var(--radius-default);
+
+        a {
+            color: var(--color-default-white);
+
+            &:hover {
+                text-decoration-color: var(--color-default-black);
+            }
         }
+    }
+}
+
+#content {
+    padding: var(--radius-default);
+    border-radius: var(--radius-default);
+
+    border-color: var(--color-default-black);
+    border-width: var(--ratio-eighth);
+    border-style: solid;
+    box-sizing: border-box;
+
+    margin-block: var(--margin-default-nav);
+    * {
+        &:first-child {margin-block-start: 0;}
+        &:last-child {margin-block-end: 0;}
     }
 }
 

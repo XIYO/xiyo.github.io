@@ -1,5 +1,4 @@
 <script>
-    import AboutLink from '$lib/components/aside/AboutLink.svelte';
     import {page} from '$app/stores';
     import CategoryManager from "$lib/CategoryManager.js";
 
@@ -8,9 +7,10 @@
 
 <input hidden id="nav-toggle" type="checkbox">
 <nav>
-    <div>
-        <label aria-label="Close navigation" for="nav-toggle"></label>
-    </div>
+    <label aria-label="Close navigation" for="nav-toggle">
+        <span>MENU</span>
+        <span>📌</span>
+    </label>
     <ul>
         <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
             <a data-sveltekit-keepfocus href="/">HOME</a>
@@ -22,28 +22,20 @@
             <a data-sveltekit-keepfocus href="/about">ABOUT</a>
         </li>
     </ul>
-    <AboutLink/>
+    <footer>
+        <a href="https://github.com/XIYO">
+            <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path
+                        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+            </svg>
+        </a>
+    </footer>
 </nav>
 
 <style>
-    div {
-        background-color: inherit;
-        border-top-left-radius: 0.5rem;
-        border-bottom-left-radius: 0.5rem;
-    }
-
-    label {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: calc(var(--quarter-ratio) * 100%);
-        filter: drop-shadow(0 0 0.25rem var(--accent-color));
-    }
-
-    label::before {
-        content: '🐣';
-        font-size: 1.75rem;
-        line-height: 3rem;
+    :global(body) {
+        margin-inline-end: calc(var(--width-default-nav) + (var(--margin-default-nav) * 2));
     }
 
     nav {
@@ -51,106 +43,119 @@
         flex-direction: column;
         justify-content: space-between;
         position: fixed;
-        inset-block-start: 0;
-        inset-block-end: 0;
-        inset-inline-end: 0;
-        background-color: var(--light-accent-color);
-        width: var(--nav-width);
+
+        inset-block-start: var(--margin-default-nav);;
+        inset-block-end: var(--margin-default-nav);;
+        inset-inline-end: var(--margin-default-nav);
+        width: var(--width-default-nav);
 
         font-size: 1.25em;
+        font-weight: 700;
 
-        border-left-width: 1px;
-        border-left-style: solid;
-        border-left-color: var(--accent-color);
+        background-color: var(--color-default-black);
+        border-radius: 1rem;
+        border-style: solid;
+        box-sizing: border-box;
 
         overflow-wrap: break-word;
-        user-select: none;
 
-        view-transition-name: nav;
+        user-select: none; /* 표준 문법 */
+    }
+
+    label, footer {
+        color: var(--color-default-white);
+        height: 3rem;
+    }
+
+    label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding-inline: 0.5rem;
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /* 폰트 사이즈 0을 주지 않으면 영역이 튀어나옴 */
+
+        a {
+            font-size: 0;
+        }
+
+        svg {
+            fill: var(--color-default-white);
+        }
     }
 
     ul {
-        list-style: main-category;
-        overflow-y: auto;
-    }
+        background-color: var(--color-default-white);
+        list-style-type: none;
+        overflow-y: auto; /* 영역이 작아서 찌그러졌을때 스크롤 생성 */
+        flex-grow: 1; /* 나머지 영역을 모두 차지 */
+        padding-inline-start: 1rem;
+        margin: 0; /* Reset default margin */
 
-    li:not(:first-child):not(:last-child) {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-    }
+        li {
+            margin-block: 1rem;
 
-    li[aria-current="page"] > * {
-        color: var(--accent-color);
-    }
+            /* 자식 요소에 앵커가 있기 때문에 명시적으로 */
 
-    li > a:first-child {
-        text-decoration: none;
-    }
-
-    @counter-style main-category {
-        system: fixed;
-        symbols: ♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓ ⛎;
-        /*symbols: 🚀 ☄️ 🌌 👽 👾 🤖 🎃 🦇 🕷️ 🕸️ 🦠;*/
-        suffix: " ";
-    }
-
-    @counter-style middle-category {
-        system: cyclic;
-        symbols: 🐭 🐮 🐯 🐰 🐲 🐍 🐴 🐏 🐵 🐔 🐶 🐷;
-        suffix: " ";
-    }
-
-    @media (max-width: 424px) {
-        nav {
-            transform: translateX(100%);
-        }
-
-        nav > div {
-            transform: translateX(calc(var(--quarter-ratio) * -100%));
-        }
-    }
-
-    @media (min-width: 425px) and (max-width: 1023px) {
-        nav {
-            transform: translateX(calc(var(--three-quarter-ratio) * 100%));
+            &[aria-current="page"] a {
+                color: var(--color-primary);
+            }
         }
     }
 
     @media (max-width: 1023px) {
-        nav:hover, input:checked ~ nav, nav:focus-within {
-            transform: unset;
-        }
-
-        label {
+        nav label {
             cursor: pointer;
         }
 
-        label::before {
-            content: '🥚';
+        input[type="checkbox"]:not(:checked) ~ nav > label > span:last-child {
+            filter: grayscale(1);
+        }
+    }
+
+    @media (min-width: 425px) and (max-width: 1023px) {
+        input[type="checkbox"]:not(:checked) ~ nav {
+            transform: translateX(calc(var(--ratio-three-quarters-of-three-quarter) * 100%));
         }
 
-        input:checked ~ nav label::before {
-            content: '🍳';
+        :global(body:has(input[type="checkbox"]:not(:checked))) {
+            margin-inline-end: calc((var(--width-default-nav) * var(--ratio-eighth)) + (var(--margin-default-nav) * 2));
+        }
+    }
+
+    @media (max-width: 424px) {
+        nav {
+            position: initial;
+
+            label {
+                cursor: unset;
+            }
         }
 
-        nav:focus-within label::before {
-            content: '🐔';
+        input[type="checkbox"]:not(:checked) ~ nav > label > span:last-child {
+            filter: unset;
         }
 
-        input:checked ~ nav:focus-within label::before {
-            content: '🐥';
+        :global(body) {
+            margin-inline-end: var(--margin-default-nav);
         }
     }
 
     /* 동작 활성화 모드일때만 트랜지션을 작동, 사용자를 존중 */
     @media (prefers-reduced-motion: no-preference) {
-        /* 내비게이션 반응형 영역 트랜지션 */
-        nav {
-            transition: transform 0.25s ease-in-out;
+        :global(body) {
+            transition: margin 0.25s ease-in-out;
         }
 
-        /* 내비게이션 노출 아이콘 반응형 영역 트랜지션 */
-        nav div {
+        /* 내비게이션 반응형 영역 트랜지션 */
+        nav {
             transition: transform 0.25s ease-in-out;
         }
     }

@@ -23,6 +23,14 @@
     --ratio-eighth: 0.125;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* TODO 변수 어감 변경하기 */
+        --color-default-white: hsl(200, 4%, 16%);
+        --color-default-black: hsl(42, 66%, 93%);
+    }
+}
+
 /* 네요 둥근모 폰트를 쓰려고해 */
 @font-face {
     font-family: 'Pretendard Variable'; /* 폰트에 대한 이름을 설정합니다. */

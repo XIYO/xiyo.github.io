@@ -92,6 +92,10 @@
     @media (min-width: 426px) and (max-width: 1024px) {
         input[type="checkbox"]:not(:checked) ~ nav {
             transform: translateX(calc(var(--ratio-three-quarters-of-three-quarter) * 100%));
+
+            &:hover, &:focus-within {
+                transform: unset;
+            }
         }
 
         :global(body:has(input[type="checkbox"]:not(:checked))) {

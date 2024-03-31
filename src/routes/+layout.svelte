@@ -2,6 +2,7 @@
 	import './styles.css';
 	import Nav from '$lib/components/Nav.svelte';
 	import { onNavigate } from '$app/navigation';
+	import Footer from "$lib/components/Footer.svelte";
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition || navigation.to.route.id === navigation.from.route.id) return;
@@ -30,3 +31,4 @@
 	<slot />
 </main>
 <Nav />
+<Footer></Footer>

@@ -1,9 +1,9 @@
 {
 	"name": "xiyo.dev",
-	"version": "1.0.2",
+	"version": "2.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",

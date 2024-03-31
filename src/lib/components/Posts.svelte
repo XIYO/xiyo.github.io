@@ -17,7 +17,7 @@
     // const tags = tags();
 </script>
 
-<div class="border">
+<div id="title" class="border">
     <div class="header">
         <h1>{category.name.toLocaleUpperCase()}</h1>
         <!--        <ul class="tags">-->
@@ -29,7 +29,7 @@
         <!--        </ul>-->
     </div>
 </div>
-<div class="border">
+<div id="content" class="border">
     <div class="header">
         <h2>SUB CATEGORY</h2>
     </div>
@@ -37,19 +37,19 @@
         {#if !category.children.size}
             <div>하위 카테고리가 없습니다.</div>
         {/if}
-        <ul>
-        {#each category.children.values() as category}
-            <li>
-                <a href={category.getPathname()}>{category.name}</a>
-            </li>
-        {/each}
-        </ul>
+        {#if category.children.size}
+            <ul>
+                {#each category.children.values() as category}
+                    <li>
+                        <a href={category.getPathname()}>{category.name}</a>
+                    </li>
+                {/each}
+            </ul>
+        {/if}
     </div>
-</div>
 
-<div class="border">
     <div class="header">
-        <h2 class="heading">SUB POSTS</h2>
+        <h2>SUB POSTS</h2>
     </div>
 
     <div class="content">
@@ -57,13 +57,13 @@
             <div>글이 없습니다.</div>
         {:else}
             <ul>
-            {#each category.allPosts.keys() as key}
-                <li>
-                <article>
-                    <a href={`${category.getPathname()}/${key}`}>{key}</a>
-                </article>
-                </li>
-            {/each}
+                {#each category.allPosts.keys() as key}
+                    <li>
+                        <article>
+                            <a href={`${category.getPathname()}/${key}`}>{key}</a>
+                        </article>
+                    </li>
+                {/each}
             </ul>
         {/if}
     </div>

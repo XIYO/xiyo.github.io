@@ -19,6 +19,15 @@ export default class Category {
 
 	get allPosts() {return this.#collectPosts(this);}
 
+	get allParents() {
+		if (this.parent.name === 'root') {
+			return [];
+		} else if (this.parent) {
+			return [...this.parent.allParents, this.parent];
+		}
+		return [];
+	}
+
 	/** 
 	 * @param {string} parentName
 	 * @returns {string[]}

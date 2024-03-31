@@ -83,13 +83,13 @@
         }
     }
 
-    @media (max-width: 1023px) {
+    @media (max-width: 1024px) {
         nav label {
             cursor: pointer;
         }
     }
 
-    @media (min-width: 425px) and (max-width: 1023px) {
+    @media (min-width: 426px) and (max-width: 1024px) {
         input[type="checkbox"]:not(:checked) ~ nav {
             transform: translateX(calc(var(--ratio-three-quarters-of-three-quarter) * 100%));
         }
@@ -99,7 +99,7 @@
         }
     }
 
-    @media (max-width: 424px) {
+    @media (max-width: 425px) {
         nav {
             position: initial;
 

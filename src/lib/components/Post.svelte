@@ -71,18 +71,50 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 </svelte:head>
 
-<div class="heading1">
-    <h1>{meta.title}</h1>
-    <ul class="tags">
-    {#if meta.tag}
-        {#each meta.tag as tag}
-            <li class="tag">
-                <a href="/{tag.path}">{tag.name}</a>
-            </li>
-        {/each}
-    {/if}
-    </ul>
+<div class="border">
+    <div class="header">
+        <h1>{meta.title}</h1>
+        <ul>
+            {#if meta.tag}
+                {#each meta.tag as tag}
+                    <li>
+                        <a href="/{tag.path}">{tag.name}</a>
+                    </li>
+                {/each}
+            {/if}
+        </ul>
+    </div>
 </div>
-<div id="content">
-    {@html html}
-</div>
+<article>
+    <div class="border">
+        <div class="content">
+            {@html html}
+        </div>
+    </div>
+</article>
+
+<style>
+    ul {
+        text-align: end;
+
+        margin-block: 0;
+        padding-inline-start: 0;
+    }
+
+    li {
+        display: inline-block;
+        background-color: var(--color-primary);
+        padding-block: var(--padding-block-tag);
+        padding-inline: var(--padding-inline-tag);
+        margin: var(--margin-tag);
+        border-radius: var(--radius-default);
+
+        a {
+            color: var(--color-default-white);
+
+            &:hover {
+                text-decoration-color: var(--color-default-black);
+            }
+        }
+    }
+</style>

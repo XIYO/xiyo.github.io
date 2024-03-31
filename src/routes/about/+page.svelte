@@ -1,3 +1,11 @@
-<h1>어바웃</h1>
+<div class="border">
+    <div class="header">
+        <h1>어바웃</h1>
+    </div>
+</div>
 
-<p>클릭해주셔서 감사합니다.</p>
+<div class="border">
+    <div class="content">
+        <p>스벨트 광신도 블로그</p>
+    </div>
+</div>

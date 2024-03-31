@@ -8,7 +8,7 @@
 >
 > ES5 부터 `Array.isArray`가 추가되었습니다.
 
-## 결론, 무었을 사용하면 좋을까요?
+## 결론, 무엇을 사용하면 좋을까요?
 
 `instanceof Array`가 다르게 나올 경우는 iframe으로 디자인된 코드 밖이며,
 코드의 통일성을 중요시한다면 `instanceof Array`를 사용하면 됩니다.

@@ -71,7 +71,7 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 </svelte:head>
 
-<div class="border">
+<div id="title" class="border">
     <div class="header">
         <h1>{meta.title}</h1>
         <ul>
@@ -86,7 +86,7 @@
     </div>
 </div>
 <article>
-    <div class="border">
+    <div id="content" class="border">
         <div class="content">
             {@html html}
         </div>

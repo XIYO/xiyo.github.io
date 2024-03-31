@@ -1,10 +1,10 @@
-<div class="border">
+<div id="title" class="border">
     <div class="header">
         <h1>환영합니다.</h1>
     </div>
 </div>
 
-<div class="border">
+<div id="content" class="border">
     <div class="content">
         <p>제 블로그의 목표는 자바스크립트 활성화 유무, CSS 활성화 유무에 상관없이 문서가 정상적으로 보이는 것에 목표를 두고 있습니다.</p>
         <p>자바스크립트가 있으면 더욱 멋진, 없어도 좋은 그런 유연한 곳</p>

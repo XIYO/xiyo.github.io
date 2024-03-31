@@ -41,15 +41,33 @@
     nav {
         position: fixed;
 
-        inset-block: 0;
-        inset-inline-end: var(--margin-default-inline);
+        /* 세로 위치 높이 */
+        inset-block-start: 0;
+        height: calc(100dvh - (var(--margin-default-block) * 2));
         width: var(--width-default-nav);
+
+        /* 윈도우 엣지에 스크롤 영역이 계산되지 않는 100dvh 때문에 아래 코드는 일딴 추석 */
+        inset-inline-end: var(--margin-default-inline);
+
+        /* TODO 나중에 꼭 해결법 찾기 */
+        /* 가로 위치 넓이 */
+        /* 사파리에 가로모드에서 세로 모드가 될때는 inset-inline-start 가 있어야 요소가 깜박 거리지 않음 */
+        /*@media (orientation: portrait) {*/
+        /*    inset-inline-start: calc(100vw - (var(--width-default-nav) + (var(--margin-default-inline) * 3)));*/
+        /*}*/
+
+        /* 사파리에 세로모드에서 가로 모드가 될때는 inset-inline-end 가 있어야 요소가 깜박 거리지 않음 */
+        /*@media (orientation: landscape) {*/
+        /*    inset-inline-end: var(--margin-default-inline);*/
+        /*}*/
 
         font-size: 1.25em;
         font-weight: 700;
 
         overflow-wrap: break-word;
         user-select: none;
+
+        view-transition-name: nav;
 
         .header::after {
             content: '📌';
@@ -87,6 +105,10 @@
         nav label {
             cursor: pointer;
         }
+
+        input[type="checkbox"]:not(:checked) ~ nav > label::after {
+            filter: grayscale(100%);
+        }
     }
 
     @media (min-width: 426px) and (max-width: 1024px) {
@@ -105,7 +127,8 @@
 
     @media (max-width: 425px) {
         nav {
-            position: initial;
+            /*position: initial;*/
+            position: unset;
 
             label {
                 cursor: unset;
@@ -123,9 +146,12 @@
             transition: margin 0.25s ease-in-out;
         }
 
-        /* 내비게이션 반응형 영역 트랜지션 */
+        input[type="checkbox"] ~ nav > label::after {
+            transition: filter 0.25s ease-in-out;
+        }
+
         nav {
-            transition: transform 0.25s ease-in-out;
+            transition: height 0.25s ease-in-out, transform 0.25s ease-in-out;
         }
     }
 </style>

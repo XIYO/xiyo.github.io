@@ -5,7 +5,7 @@
 
 조사해보니 원인은 로컬 디스크 공간 부족...
 
-```shell
+```text
 # df -h
 Filesystem      Size  Used Avail Use% Mounted on
 devtmpfs        7.8G     0  7.8G   0% /dev

@@ -21,3 +21,10 @@
             <br/>물론 끄지 않고 보면 더욱더 멋진 웹이지만요.(저는 당신의 선택을 존중합니다.)</p>
     </div>
 </div>
+
+<style>
+    ul {
+        padding-inline-start: 1em;
+        list-style-type: '\1F388';
+    }
+</style>

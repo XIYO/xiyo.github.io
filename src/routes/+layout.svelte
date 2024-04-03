@@ -1,4 +1,5 @@
 <script>
+	import 'gardevoir';
 	import './styles.css';
 	import Nav from '$lib/components/Nav.svelte';
 	import { onNavigate } from '$app/navigation';

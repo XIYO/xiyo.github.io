@@ -1,14 +1,38 @@
 name: Deploy to GitHub Pages
 
 on:
+  workflow_dispatch:
+    inputs:
+      importAll:
+        default: false
+        required: false
+        type: boolean
+        description: Enable, if you want to import all TODOs. Runs on checked out branch! Only use if you're sure what you are doing.
   push:
     branches:
       - main
     paths-ignore:
-      - README.md
       - /.idea/**
 
 jobs:
+  todos:
+    runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+      repository-projects: read
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run Issue Bot
+        uses: derjuulsn/todo-issue@main
+        with:
+          excludePattern: '^(node_modules/)'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build_site:
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +51,7 @@ jobs:
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: |
-          npm run build
+          pnpm run build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3

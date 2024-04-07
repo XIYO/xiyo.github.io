@@ -70,20 +70,20 @@
 </div>
 
 <style>
-    ul {
-        list-style: none;
-        padding-inline-start: 0;
+  ul {
+    list-style: none;
+    padding-inline-start: 0;
+
+    & > :first-child {
+      margin-block-start: 0;
     }
 
-    li {
-        margin-block: var(--margin-default-block);
-
-        :first-child {
-            margin-block-start: 0;
-        }
-
-        :last-child {
-            margin-block-end: 0;
-        }
+    & > :last-child {
+      margin-block-end: 0;
     }
+  }
+
+  li {
+    margin-block: var(--margin-default-block);
+  }
 </style>

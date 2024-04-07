@@ -46,6 +46,10 @@
         height: calc(100dvh - (var(--margin-default-block) * 2));
         width: var(--width-default-nav);
 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         /* 윈도우 엣지에 스크롤 영역이 계산되지 않는 100dvh 때문에 아래 코드는 일딴 추석 */
         inset-inline-end: var(--margin-default-inline);
 

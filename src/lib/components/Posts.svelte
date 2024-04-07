@@ -17,73 +17,37 @@
     // const tags = tags();
 </script>
 
-<div id="title" class="border">
-    <div class="header">
-        <h1>{category.name.toLocaleUpperCase()}</h1>
-        <!--        <ul class="tags">-->
-        <!--            &lt;!&ndash;{#each category.allParents as pathname}&ndash;&gt;-->
-        <!--            &lt;!&ndash;    <li class="tag">&ndash;&gt;-->
-        <!--            &lt;!&ndash;        <a href="/{pathname.path}">{pathname.name}</a>&ndash;&gt;-->
-        <!--            &lt;!&ndash;    </li>&ndash;&gt;-->
-        <!--            &lt;!&ndash;{/each}&ndash;&gt;-->
-        <!--        </ul>-->
-    </div>
+<div class="border invert padding margin">
+    <h1>{category.name}</h1>
 </div>
-<div id="content" class="border">
-    <div class="header">
-        <h2>SUB CATEGORY</h2>
-    </div>
-    <div class="content">
-        {#if !category.children.size}
-            <div>하위 카테고리가 없습니다.</div>
-        {/if}
-        {#if category.children.size}
-            <ul>
-                {#each category.children.values() as category}
-                    <li>
-                        <a href={category.getPathname()}>{category.name}</a>
-                    </li>
-                {/each}
-            </ul>
-        {/if}
-    </div>
+<div class="border content padding margin">
+    <h2>SUB CATEGORY</h2>
+    {#if !category.children.size}
+        <div>하위 카테고리가 없습니다.</div>
+    {/if}
+    {#if category.children.size}
+        <ul>
+            {#each category.children.values() as category}
+                <li>
+                    <a href={category.getPathname()}>{category.name}</a>
+                </li>
+            {/each}
+        </ul>
+    {/if}
 
-    <div class="header">
-        <h2>SUB POSTS</h2>
-    </div>
+    <h2>SUB POSTS</h2>
 
-    <div class="content">
-        {#if !category.allPosts.size}
-            <div>글이 없습니다.</div>
-        {:else}
-            <ul>
-                {#each category.allPosts.keys() as key}
-                    <li>
-                        <article>
-                            <a href={`${category.getPathname()}/${key}`}>{key}</a>
-                        </article>
-                    </li>
-                {/each}
-            </ul>
-        {/if}
-    </div>
+    {#if !category.allPosts.size}
+        <div>글이 없습니다.</div>
+    {:else}
+        <ul>
+            {#each category.allPosts.keys() as key}
+                <li>
+                    <article>
+                        <a href={`${category.getPathname()}/${key}`}>{key}</a>
+                    </article>
+                </li>
+            {/each}
+        </ul>
+    {/if}
 </div>
-
-<style>
-  ul {
-    list-style: none;
-    padding-inline-start: 0;
-
-    & > :first-child {
-      margin-block-start: 0;
-    }
-
-    & > :last-child {
-      margin-block-end: 0;
-    }
-  }
-
-  li {
-    margin-block: var(--margin-default-block);
-  }
-</style>

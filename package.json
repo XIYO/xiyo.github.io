@@ -18,7 +18,7 @@
 		"highlight.js": "^11.9.0",
 		"marked": "^12.0.1",
 		"marked-highlight": "^2.1.1",
-		"svelte": "5.0.0-next.82",
+		"svelte": "5.0.0-next.95",
 		"svelte-check": "^3.6.9",
 		"typescript": "^5.4.4",
 		"vite": "^5.2.8"

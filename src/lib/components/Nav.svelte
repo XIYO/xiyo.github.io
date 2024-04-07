@@ -6,11 +6,11 @@
 </script>
 
 <input checked="true" hidden id="nav-toggle" type="checkbox">
-<nav class="border">
-    <label class="header" aria-label="Close navigation" for="nav-toggle">
+<nav class="border invert margin">
+    <label class="header padding" aria-label="Close navigation" for="nav-toggle">
         MENU
     </label>
-    <ul class="content">
+    <ul class="invert padding content">
         <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
             <a data-sveltekit-keepfocus href="/">HOME</a>
         </li>
@@ -21,7 +21,7 @@
             <a data-sveltekit-keepfocus href="/about">ABOUT</a>
         </li>
     </ul>
-    <div class="footer">
+    <div class="footer padding">
         <a href="https://github.com/XIYO">
             <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
                 <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -71,36 +71,31 @@
         overflow-wrap: break-word;
         user-select: none;
 
-        view-transition-name: nav;
-
         .header::after {
             content: '📌';
         }
 
-        .footer {
-            a {
-            /* 폰트 사이즈 0을 주지 않으면 영역이 튀어나옴 */
-                font-size: 0;
+        ul {
+            flex-grow: 1;
+            list-style-type: none;
+            margin-block: unset;
 
-                svg {
-                    fill: var(--color-default-white);
+            li {
+                margin-block: var(--margin-default-block);
+
+                &[aria-current="page"] {
+                    color: var(--color-primary);
                 }
             }
         }
-    }
 
-    ul {
-        list-style-type: none;
-        padding-inline-start: initial; /* reset */
-        margin: initial; /* reset */
+        .footer {
+            a {
+                font-size: 0; /* 폰트 사이즈 0을 주지 않으면 영역이 튀어나옴 */
+            }
 
-        li {
-            margin-block: 1rem;
-
-            /* 자식 요소에 앵커가 있기 때문에 명시적으로 */
-
-            &[aria-current="page"] a {
-                color: var(--color-primary);
+            svg {
+                fill: var(--color-default-white);
             }
         }
     }

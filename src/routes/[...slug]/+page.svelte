@@ -4,16 +4,15 @@
 
 	const { data } = $props();
 
-	let markdown = $state(data.markdown);
+	let post = $state(data.post);
 	let category = $state(data.category)
 	$effect(() => {
-		markdown = data.markdown;
+		post = data.post;
 		category = data.category;
 	});
 </script>
-
-{#if markdown}
-	<Post {markdown} />
+{#if post}
+	<Post {post} />
 {:else if category}
 	<Posts {category} />
 {/if}

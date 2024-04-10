@@ -2,6 +2,7 @@ import {unified} from 'unified';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
+import {visit, EXIT} from 'unist-util-visit';
 import Category from "$lib/post/Category.js";
 
 export default class Post {
@@ -12,6 +13,8 @@ export default class Post {
     #name;
     /** @type {string} HTML 로 변환된 마크다운 */
     #convertedMarkdown;
+    /** @type {string} 타이틀 */
+    #title;
 
     /**
      * Post 클래스의 생성자입니다. 이 생성자는 포스트의 제목, 내용, 작성 날짜, 그리고 슬러그를 인자로 받아 Post 인스턴스를 생성합니다.
@@ -27,6 +30,7 @@ export default class Post {
         // 마크다운을 HTML로 변환합니다.
         this.#convertedMarkdown = unified()
             .use(remarkParse)
+            .use(this.extractTitle.bind(this))
             .use(remarkRehype)
             .use(rehypeStringify)
             .processSync(markdown).toString();
@@ -49,7 +53,7 @@ export default class Post {
      * @returns {string}
      */
     get title() {
-        return this.#name; // TODO 제목은 마크다운 문장에서 한글로 된 문장 추출
+        return this.#title;
     }
 
     /**
@@ -78,5 +82,22 @@ export default class Post {
      */
     static getPosts(absolutePath) {
         return Post.#posts.get(absolutePath);
+    }
+
+    extractTitle() {
+        return (tree) => {
+            let found = false;
+
+            visit(tree, 'heading', (node, index, parent) => {
+                if (!found && node.depth === 1) {
+                    this.#title = node.children[0]?.value;
+                    found = true;
+                    if (parent) {
+                        parent.children.splice(index, 1); // 노드 제거
+                        return EXIT; // 순회 중단
+                    }
+                }
+            });
+        };
     }
 }

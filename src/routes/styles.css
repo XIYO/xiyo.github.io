@@ -13,7 +13,7 @@
 
     --padding-block-tag: calc(var(--ratio-three-quarters-of-quarter) * 1rem);
     --padding-inline-tag: calc(var(--ratio-three-quarter) * 1rem);
-    --margin-tag: calc(var(--ratio-three-quarters-of-quarter) * 1rem);
+    --margin-tag: calc(var(--ratio-half) * 1rem);
 
     --ratio-three-quarters-of-three-quarter: 0.875;
     --ratio-three-quarter: 0.75;
@@ -65,6 +65,7 @@ a {
     border-radius: var(--radius-default);
     border-style: solid;
     box-sizing: border-box;
+    overflow-y: hidden;
 
     &.accent {
         background-color: var(--color-primary);
@@ -72,7 +73,6 @@ a {
         padding-inline: var(--padding-inline-tag);
     }
 
-    overflow-y: hidden;
 
     &.margin, .margin {
         margin-block: var(--margin-default-block);
@@ -124,11 +124,6 @@ a {
             padding-inline-start: var(--padding-inline-tag);
         }
     }
-}
-
-
-.accent-border {
-
 }
 
 #tags {

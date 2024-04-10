@@ -1,8 +1,11 @@
 <script>
     import {page} from '$app/stores';
-    import CategoryManager from "$lib/CategoryManager.js";
+    import Category from "$lib/post/Category.js";
+    // import RootCategory from "$lib/post/RootCategory.js";
 
-    const category = CategoryManager.instance.category.children.get('posts');
+    // const category = RootCategory.instance.getCategory('posts');
+
+    // const rootCategory = Category.getCategory('/');
 </script>
 
 <input checked="true" hidden id="nav-toggle" type="checkbox">
@@ -14,8 +17,8 @@
         <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
             <a data-sveltekit-keepfocus href="/">HOME</a>
         </li>
-        <li aria-current={$page.url.pathname === category.getPathname() ? 'page' : undefined}>
-            <a data-sveltekit-keepfocus href={category.getPathname()}>POSTS</a>
+        <li aria-current={$page.url.pathname === '/posts' ? 'page' : undefined}>
+            <a data-sveltekit-keepfocus href='/posts'>POSTS</a>
         </li>
         <li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
             <a data-sveltekit-keepfocus href="/about">ABOUT</a>

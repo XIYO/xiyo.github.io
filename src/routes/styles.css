@@ -73,7 +73,6 @@ a {
         padding-inline: var(--padding-inline-tag);
     }
 
-
     &.margin, .margin {
         margin-block: var(--margin-default-block);
         margin-inline: var(--margin-default-inline);

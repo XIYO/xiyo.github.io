@@ -3,16 +3,9 @@
 	import Posts from '$lib/components/Posts.svelte';
 
 	const { data } = $props();
-
-	let post = $state(data.post);
-	let category = $state(data.category)
-	$effect(() => {
-		post = data.post;
-		category = data.category;
-	});
 </script>
-{#if post}
-	<Post {post} />
-{:else if category}
-	<Posts {category} />
+{#if data.post}
+	<Post post={data.post} />
+{:else if data.category}
+	<Posts category={data.category} />
 {/if}

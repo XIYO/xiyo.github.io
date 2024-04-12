@@ -154,6 +154,7 @@
 
         nav {
             transition: height 0.25s ease-in-out, transform 0.25s ease-in-out;
+            view-transition-name: nav;
         }
     }
 </style>

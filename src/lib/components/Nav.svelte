@@ -1,14 +1,10 @@
 <script>
     import {page} from '$app/stores';
-    import Category from "$lib/post/Category.js";
-    // import RootCategory from "$lib/post/RootCategory.js";
 
-    // const category = RootCategory.instance.getCategory('posts');
-
-    // const rootCategory = Category.getCategory('/');
+    const checked = true;
 </script>
 
-<input checked="true" hidden id="nav-toggle" type="checkbox">
+<input bind:checked={checked} hidden id="nav-toggle" type="checkbox">
 <nav class="border invert margin">
     <label class="header padding" aria-label="Close navigation" for="nav-toggle">
         MENU
@@ -56,7 +52,9 @@
         /* 윈도우 엣지에 스크롤 영역이 계산되지 않는 100dvh 때문에 아래 코드는 일딴 추석 */
         inset-inline-end: var(--margin-default-inline);
 
-        /* TODO 나중에 꼭 해결법 찾기 */
+        /* TODO: 엣지 버그, 100lvw 가 스크롤 영역을 포함하여 계산됨 가져가고 있음
+        100%를 사용하면 사파리에서 가로모드 세로모드 전환시 계산을 할 수 없어서 내비게이션이 잠깐 사라지는 버그가 있음
+            */
         /* 가로 위치 넓이 */
         /* 사파리에 가로모드에서 세로 모드가 될때는 inset-inline-start 가 있어야 요소가 깜박 거리지 않음 */
         /*@media (orientation: portrait) {*/

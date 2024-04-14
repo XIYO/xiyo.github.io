@@ -2,7 +2,7 @@
     const {post} = $props();
 </script>
 
-<div class="border invert padding margin">
+<div style="--view-transition-name: header;"  class="border invert padding margin">
     <h1>{post.title}</h1>
     <ul id="tags">
         {#each post.parentCategories as category}
@@ -14,6 +14,6 @@
 </div>
 
 
-<div class="border content padding margin">
+<div style="--view-transition-name: content" class="border content padding margin">
     {@html post.convertedMarkdown}
 </div>

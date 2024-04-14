@@ -5,7 +5,7 @@
 	import Footer from "$lib/components/Footer.svelte";
 
 	onNavigate((navigation) => {
-		if (!document.startViewTransition || navigation.to.route.id === navigation.from.route.id) return;
+		if (!document.startViewTransition || navigation.to.url.pathname === navigation.from.url.pathname) return;
 
 		return new Promise((resolve) => {
 			const transition = document.startViewTransition(async () => {

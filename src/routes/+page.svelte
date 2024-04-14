@@ -1,11 +1,8 @@
-<div class="border invert padding margin">
+<div style="--view-transition-name: header;" class="border invert padding margin">
     <h1>환영합니다.</h1>
-    <ul id="tags">
-        <li class="border accent"><a href="/">/</a></li>
-    </ul>
 </div>
 
-<div class="border content padding margin">
+<div style="--view-transition-name: content" class="border content padding margin">
     <p>"HTML"은 Hyper Text Markup Language의 약자로, 👌 마크업 랭귀지 입니다.
         하지만 모던 웹은 그것을 뛰어넘어 다양한 기능을 요구하기 시작했고, ⚡ 자바스크립트가 탄생했습니다.</p>
     <p>자바스크립트는 정적이던 웹을 상당히 발전시키는 동시에 자바스크립트 없는 웹은 상상할 수 없는 시대가 되었습니다. 🌐</p>

@@ -1,11 +1,9 @@
 <script>
     import {page} from '$app/stores';
-
-    const checked = true;
 </script>
 
-<input bind:checked={checked} hidden id="nav-toggle" type="checkbox">
-<nav class="border invert margin">
+<input checked={true} hidden id="nav-toggle" type="checkbox">
+<nav style="--view-transition-name: nav" class="border invert margin">
     <label class="header padding" aria-label="Close navigation" for="nav-toggle">
         MENU
     </label>

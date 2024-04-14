@@ -2,7 +2,7 @@
     const {category} = $props();
 </script>
 
-<div class="border invert padding margin">
+<div style="--view-transition-name: header;"  class="border invert padding margin">
     <h1>{category.name}</h1>
     <ul id="tags">
         {#each category.parentCategories as category}
@@ -12,7 +12,7 @@
         {/each}
     </ul>
 </div>
-<div class="border content padding margin">
+<div style="--view-transition-name: content" class="border content padding margin">
     <h2>SUB CATEGORY</h2>
     {#if !category.hasChildCategories()}
         <div>하위 카테고리가 없습니다.</div>

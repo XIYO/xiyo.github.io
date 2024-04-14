@@ -60,11 +60,17 @@ a {
 }
 
 .border {
-    background-color: var(--color-default-white);
-    border-color: var(--color-default-black);
-    border-radius: var(--radius-default);
-    border-style: solid;
-    box-sizing: border-box;
+    /*
+    보더 포기,
+    보더를 사용하면 뷰 트랜지션 실행시 비율이 바뀔때 스트레치로 적용되기 때문에 상당히 보기싫음.
+    */
+    /*background-color: var(--color-default-white);*/
+    /*border-color: var(--color-default-black);*/
+    /*border-radius: var(--radius-default);*/
+    /*border-style: solid;*/
+    /*box-sizing: border-box;*/
+
+    /* 내비게이션 때문에 적용, 사이트의 최소 높이 너비를 지정해서 찌그러지지 않도록 하면 삭제해도됨 */
     overflow-y: hidden;
 
     &.accent {
@@ -160,15 +166,21 @@ a {
     view-transition-name: var(--view-transition-name);
 }
 
-::view-transition-old(header) {
-    display: none;
-}
-
+::view-transition-old(header),
 ::view-transition-new(header) {
-    animation: none;
     height: 100%;
 }
 
+/* TODO: 트랜지션 이름을 일관성 있게 정의하기, 어떤건 svelte 에 어떤건 css 에 정의되고 있음*/
 h1 {
     view-transition-name: heading1;
+}
+
+::view-transition-old(heading1),
+::view-transition-new(heading1),
+::view-transition-old(sub-category),
+::view-transition-new(sub-category),
+::view-transition-old(sub-posts),
+::view-transition-new(sub-posts) {
+    width: auto;
 }

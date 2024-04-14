@@ -6,7 +6,7 @@
     <h1>{post.title}</h1>
     <ul id="tags">
         {#each post.parentCategories as category}
-            <li class="border accent">
+            <li style="--view-transition-name: tags-{category.name};" class="border accent">
                 <a href={category.absolutePath}>{category.name}</a>
             </li>
         {/each}

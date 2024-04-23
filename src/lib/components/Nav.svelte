@@ -130,13 +130,13 @@
             transform: translateX(calc(var(--ratio-three-quarters-of-three-quarter) * 100%));
         }
 
-        :global(input[type="checkbox"]:not(:checked) ~ .border-outer:hover),
-        :global(input[type="checkbox"]:not(:checked) ~ .border-outer:focus-within) {
+        /* 내비게이션에 호버, 포커스가 갈 경우 뷰에서 보이도록 위치를 초기화한다 */
+        :global(input[type="checkbox"]:not(:checked) ~ .border-outer:where(:hover, :focus-within)) {
             transform: unset;
         }
 
-
-        :global(body:has(input[type="checkbox"]:not(:checked))) {
+        /* 내비게이션이 숨김 상태일 때, 호버, 포커스가 아닐 경우에만 본문의 간격을 조절한다.(내비게이션 여백 조절)  */
+        :global(body:has(input[type="checkbox"]:not(:checked) ~ .border-outer:where(:not(:hover, :focus-within)))) {
             margin-inline-end: calc((var(--width-default-nav) * var(--ratio-eighth)) + (var(--margin-default-inline) * 3));
         }
     }

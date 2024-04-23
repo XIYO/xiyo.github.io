@@ -24,6 +24,11 @@
     --ratio-eighth: 0.125;
 
     --animation-duration-default: .5s;
+
+    font-family: 'Pretendard Variable', sans-serif;
+
+    color: var(--color-default-black);
+    background-color: var(--color-default-white);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,13 +44,6 @@
     src: url('/fonts/PretendardVariable.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-}
-
-html {
-    font-family: 'Pretendard Variable', sans-serif;
-
-    color: var(--color-default-black);
-    background-color: var(--color-default-white);
 }
 
 body {

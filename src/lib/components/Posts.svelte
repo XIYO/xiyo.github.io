@@ -1,18 +1,28 @@
 <script>
+    import Border from "$lib/Border.svelte";
+
     const {category} = $props();
 </script>
 
-<div style="--view-transition-name: header;" class="border invert padding margin">
+
+<Border
+        viewTransitionName="header"
+        classes="padding negative"
+>
     <h1>{category.name}</h1>
-    <ul id="tags">
-        {#each category.parentCategories as category}
-            <li style="--view-transition-name: tags-{category.name};" class="border accent">
-                <a href={category.absolutePath}>{category.name}</a>
-            </li>
-        {/each}
-    </ul>
-</div>
-<div style="--view-transition-name: content" class="border content padding margin">
+<!--    <ul id="tags">-->
+<!--        {#each category.parentCategories as category}-->
+<!--            <li style="&#45;&#45;view-transition-name: tags-{category.name};" class="border accent">-->
+<!--                <a href={category.absolutePath}>{category.name}</a>-->
+<!--            </li>-->
+<!--        {/each}-->
+<!--    </ul>-->
+</Border>
+
+<Border
+        viewTransitionName="content"
+        classes="content padding"
+>
     <h2 style="--view-transition-name: sub-category">SUB CATEGORY</h2>
     {#if !category.hasChildCategories()}
         <div>하위 카테고리가 없습니다.</div>
@@ -33,7 +43,7 @@
     {:else}
         <ul>
             {#each category.allPosts as post}
-                <li style="--view-transition-name: {post.title.replaceAll(' ', '-')}">
+                <li >
                     <article>
                         <a href={post.absolutePath}>{post.title}</a>
                     </article>
@@ -41,4 +51,4 @@
             {/each}
         </ul>
     {/if}
-</div>
+</Border>

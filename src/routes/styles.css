@@ -177,11 +177,6 @@ a {
     border-radius: calc(var(--border-radius-default) + var(--border-width-default));
     border-color: var(--color-default-black);
     background-color: var(--color-default-black);
-    /*background-color: plum;*/
-
-    mix-blend-mode: difference;
-
-    isolation: auto;
 }
 
 ::view-transition-old(border-inner-header) {

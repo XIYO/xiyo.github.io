@@ -81,13 +81,8 @@
         overflow-wrap: break-word;
         user-select: none;
 
-        label {
-            font-size: 2rem;
-        }
-
         label::after {
             content: '📌';
-            font-size: 1rem;
         }
 
         ul {

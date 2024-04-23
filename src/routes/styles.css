@@ -163,7 +163,7 @@ a {
     animation-delay: var(--animation-duration-default);
 }
 
-::view-transition-image-pair(border-outer-header) {
+::view-transition-group(border-outer-header) {
     display: none;
 }
 

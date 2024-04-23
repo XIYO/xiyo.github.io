@@ -7,6 +7,7 @@
 	onNavigate((navigation) => {
 		if (!document.startViewTransition || navigation.to.url.pathname === navigation.from.url.pathname) return;
 
+
 		return new Promise((resolve) => {
 			const transition = document.startViewTransition(async () => {
 				resolve();
@@ -15,14 +16,15 @@
 
 			transition.updateCallbackDone.then(() => {
 				// alert('updateCallbackDone');
+				const contentContainer = document.querySelector('main .content');
 			});
 
 			transition.ready.then(() => {
-				// alert('ready');
+				const contentContainer = document.querySelector('main .content');
 			});
 
 			transition.finished.then(() => {
-				// alert('finished');
+				const contentContainer = document.querySelector('main .content');
 			});
 		});
 	});

@@ -8,7 +8,8 @@
     --margin-default-nav: calc(var(--ratio-half) * 1rem);
     --margin-default-block: calc(var(--ratio-half) * 1rem);
     --margin-default-inline: calc(var(--margin-default-block) * var(--ratio-half));
-    --radius-default: 1rem;
+    --border-radius-default: 1rem;
+    --border-width-default: 0.25rem;
     --padding-default: 1rem;
 
     --padding-block-tag: calc(var(--ratio-three-quarters-of-quarter) * 1rem);
@@ -21,6 +22,8 @@
     --ratio-quarter: 0.25;
     --ratio-three-quarters-of-quarter: 0.1875;
     --ratio-eighth: 0.125;
+
+    --animation-duration-default: .5s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,78 +59,6 @@ a {
 
     &:hover {
         text-decoration-color: var(--color-primary);
-    }
-}
-
-.border {
-    /*
-    보더 포기,
-    보더를 사용하면 뷰 트랜지션 실행시 비율이 바뀔때 스트레치로 적용되기 때문에 상당히 보기싫음.
-    */
-    /*background-color: var(--color-default-white);*/
-    /*border-color: var(--color-default-black);*/
-    /*border-radius: var(--radius-default);*/
-    /*border-style: solid;*/
-    /*box-sizing: border-box;*/
-
-    /* 내비게이션 때문에 적용, 사이트의 최소 높이 너비를 지정해서 찌그러지지 않도록 하면 삭제해도됨 */
-    overflow-y: hidden;
-
-    &.accent {
-        background-color: var(--color-primary);
-        border-color: var(--color-primary);
-        padding-inline: var(--padding-inline-tag);
-    }
-
-    &.margin, .margin {
-        margin-block: var(--margin-default-block);
-        margin-inline: var(--margin-default-inline);
-    }
-
-    &.padding, .padding {
-        padding: var(--padding-default);
-    }
-
-    &.invert, .invert {
-        color: var(--color-default-white);
-        background-color: var(--color-default-black);
-
-        .invert {
-            color: var(--color-default-black);
-            background-color: var(--color-default-white);
-        }
-    }
-
-    > :first-child {
-        margin-block-start: unset;
-    }
-
-    > :last-child {
-        margin-block-end: unset;
-    }
-
-    &.content, .content {
-        h2, h3, h4, h5, h6 {
-            color: var(--color-primary);
-        }
-
-        > li, ul > li {
-            margin-block: var(--margin-default-block);
-
-            &:first-child {
-                margin-block-start: unset;
-            }
-
-            &:last-child {
-                margin-block-end: unset;
-            }
-        }
-
-        blockquote {
-            border-inline-start-style: solid;
-            border-inline-start-color: var(--color-primary);
-            padding-inline-start: var(--padding-inline-tag);
-        }
     }
 }
 
@@ -171,11 +102,6 @@ a {
     height: 100%;
 }
 
-/* TODO: 트랜지션 이름을 일관성 있게 정의하기, 어떤건 svelte 에 어떤건 css 에 정의되고 있음*/
-h1 {
-    view-transition-name: heading1;
-}
-
 ::view-transition-old(heading1),
 ::view-transition-new(heading1),
 ::view-transition-old(sub-category),
@@ -183,4 +109,145 @@ h1 {
 ::view-transition-old(sub-posts),
 ::view-transition-new(sub-posts) {
     width: auto;
+}
+
+.border-outer {
+    background-color: var(--color-default-black);
+    border-color: var(--color-default-black);
+
+    border-style: solid;
+    border-width: var(--border-width-default);
+    border-radius: calc(var(--border-radius-default) + var(--border-width-default));
+    box-sizing: border-box;
+
+    color: var(--color-default-white); /* 아우터 보더의 배경 색과 다른 색으로 컬러를 명시적으로 지정해야한다 */
+
+    margin-block: var(--margin-default-block);
+    margin-inline: var(--margin-default-inline);
+
+    /* .border-inner 요소도 패딩을 바로 줄 수 있기 때문에 여기에 선언*/
+    .padding {
+        padding: var(--padding-default);
+    }
+
+    .negative {
+        background-color: var(--color-default-black);
+    }
+
+    /* .border-inner 요소에 바로 적용 가능한 스타일 */
+    /* TODO: revert-layer 가 무언지 확실히 조사하고 그걸로 적용할 수 있는지 확인하기 */
+    .content {
+        background-color: var(--color-default-white);
+        color: var(--color-default-black);
+    }
+
+    /* 보더가 겹 구조라서 어쩔 수 없이 추가 되었는데 뺄 수 있으면 빼야합니다. nav 에서 사용하기 때문에 추가했습니다 */
+    .full-height {
+        height: 100%;
+    }
+
+    .border-inner {
+        border-radius: var(--border-radius-default);
+        overflow: clip;
+
+        :first-child {
+            margin-block-start: 0
+        }
+
+        :last-child {
+            margin-block-end: 0
+        }
+    }
+}
+
+::view-transition-group(*) {
+    animation-duration: var(--animation-duration-default);
+    animation-delay: var(--animation-duration-default);
+}
+
+::view-transition-image-pair(border-outer-header) {
+    display: none;
+}
+
+::view-transition-image-pair(border-inner-header) {
+    width: 100%;
+    height: 100%;
+    transform: translateX(calc(var(--border-width-default) * -1)) translateY(calc(var(--border-width-default) * -1));
+
+    border-style: solid;
+    border-width: var(--border-width-default);
+    border-radius: calc(var(--border-radius-default) + var(--border-width-default));
+    border-color: var(--color-default-black);
+    background-color: var(--color-default-black);
+    /*background-color: plum;*/
+
+    mix-blend-mode: difference;
+
+    isolation: auto;
+}
+
+::view-transition-old(border-inner-header) {
+    animation-name: fade-out;
+    animation-duration: var(--animation-duration-default);
+}
+
+::view-transition-new(border-inner-header) {
+    animation-name: fade-in;
+    animation-duration: var(--animation-duration-default);
+    animation-delay: calc(var(--animation-duration-default) * 2);
+}
+
+/* 데이터 */
+/* 보더의 굴곡이 뷰 트랜지션 동안에는 변형되기 때문에 가리는 트릭을 사용했습니다. */
+::view-transition-image-pair(border-outer-content) {
+    display: none;
+}
+
+::view-transition-old(border-outer-content) {
+    animation-duration: var(--animation-duration-default);
+}
+
+::view-transition-image-pair(border-inner-content) {
+    width: 100%;
+    height: 100%;
+    transform: translateX(calc(var(--border-width-default) * -1)) translateY(calc(var(--border-width-default) * -1));
+
+    border-style: solid;
+    border-width: var(--border-width-default);
+    border-radius: calc(var(--border-radius-default) + var(--border-width-default));
+    border-color: var(--color-default-black);
+    background-color: var(--color-default-white);
+
+    /* 삐져 나가는 것을 자를려고했으나 전환 찰나의 순간 오버플로우가 밸생함 사용하면 안댐 */
+    /*overflow: clip;*/
+}
+
+::view-transition-old(border-inner-content) {
+    animation-name: fade-out;
+    animation-duration: var(--animation-duration-default);
+}
+
+::view-transition-new(border-inner-content) {
+    animation-name: fade-in;
+    animation-duration: var(--animation-duration-default);
+    animation-delay: calc(var(--animation-duration-default) * 2);
+}
+
+::view-transition-new(sub-category):only-child,
+::view-transition-new(sub-posts):only-child {
+    animation-name: fade-in;
+    animation-duration: var(--animation-duration-default);
+    animation-delay: calc(var(--animation-duration-default) * 2);
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
 }

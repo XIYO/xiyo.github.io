@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="6px" id="border" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6">
+    <style>
+        :root {
+        --color-default-black: hsl(200, 4%, 16%);
+        --color-default-white: hsl(42, 66%, 93%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+        :root {
+        --color-default-white: hsl(200, 4%, 16%);
+        --color-default-black: hsl(42, 66%, 93%);
+        }
+        }
+
+        rect {
+        fill: transparent;
+<!--        stroke: var(&#45;&#45;color-default-black);-->
+        stroke: red;
+        }
+    </style>
+    <rect x=".5" y=".5" width="5" height="5" stroke-width="0.5" rx="1.5" ry="1.5"/>
+</svg>

@@ -1,26 +1,20 @@
 <script>
-    import Border from "$lib/Border.svelte";
-
+    import Header from "$lib/Header.svelte";
     const {post} = $props();
 </script>
 
-<Border
-        viewTransitionName="header"
-        classes="padding negative"
->
+<Header>
     <h1>{post.title}</h1>
-<!--        <ul id="tags">-->
-<!--            {#each post.parentCategories as category}-->
-<!--                <li style="&#45;&#45;view-transition-name: tags-{category.name};" class="border accent">-->
-<!--                    <a href={category.absolutePath}>{category.name}</a>-->
-<!--                </li>-->
-<!--            {/each}-->
-<!--        </ul>-->
-</Border>
+</Header>
 
-<Border
-        viewTransitionName="content"
-        classes="padding content"
+<div
+        class="border-outer"
+        style="--view-transition-name: border-outer-content;"
 >
+    <div
+            class="content padding"
+            style="--view-transition-name: border-inner-content;"
+    >
         {@html post.convertedMarkdown}
-</Border>
+    </div>
+</div>

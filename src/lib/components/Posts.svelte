@@ -1,54 +1,47 @@
 <script>
-    import Border from "$lib/Border.svelte";
-
+    import Header from "$lib/Header.svelte";
     const {category} = $props();
 </script>
 
+<Header>
+    <h1>posts</h1>
+</Header>
 
-<Border
-        viewTransitionName="header"
-        classes="padding negative"
+<div
+        class="border-outer"
+        style="view-transition-name: border-outer-content;"
 >
-    <h1>{category.name}</h1>
-<!--    <ul id="tags">-->
-<!--        {#each category.parentCategories as category}-->
-<!--            <li style="&#45;&#45;view-transition-name: tags-{category.name};" class="border accent">-->
-<!--                <a href={category.absolutePath}>{category.name}</a>-->
-<!--            </li>-->
-<!--        {/each}-->
-<!--    </ul>-->
-</Border>
+    <div
+            class="content padding"
+            style="view-transition-name: border-inner-content;"
+    >
+        <h2>sub category</h2>
+        {#if !category.hasChildCategories()}
+            <div>하위 카테고리가 없습니다.</div>
+        {:else}
+            <ul>
+                {#each category.childCategories as childCategory}
+                    <li>
+                        <a href={childCategory.absolutePath}>{childCategory.name}</a>
+                    </li>
+                {/each}
+            </ul>
+        {/if}
 
-<Border
-        viewTransitionName="content"
-        classes="content padding"
->
-    <h2 style="--view-transition-name: sub-category">SUB CATEGORY</h2>
-    {#if !category.hasChildCategories()}
-        <div>하위 카테고리가 없습니다.</div>
-    {:else}
-        <ul>
-            {#each category.childCategories as childCategory}
-                <li>
-                    <a href={childCategory.absolutePath}>{childCategory.name}</a>
-                </li>
-            {/each}
-        </ul>
-    {/if}
+        <h2>sub posts</h2>
 
-    <h2 style="--view-transition-name: sub-posts">SUB POSTS</h2>
-
-    {#if !category.allPosts.length}
-        <div>글이 없습니다.</div>
-    {:else}
-        <ul>
-            {#each category.allPosts as post}
-                <li >
-                    <article>
-                        <a href={post.absolutePath}>{post.title}</a>
-                    </article>
-                </li>
-            {/each}
-        </ul>
-    {/if}
-</Border>
+        {#if !category.allPosts.length}
+            <div>글이 없습니다.</div>
+        {:else}
+            <ul>
+                {#each category.allPosts as post}
+                    <li>
+                        <article>
+                            <a href={post.absolutePath}>{post.title}</a>
+                        </article>
+                    </li>
+                {/each}
+            </ul>
+        {/if}
+    </div>
+</div>

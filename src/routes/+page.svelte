@@ -1,17 +1,18 @@
 <script>
-    import Border from "$lib/Border.svelte";
+    import Header from "$lib/Header.svelte";
 </script>
 
-<Border
-        viewTransitionName="header"
-        classes="padding negative"
->
+<Header>
     <h1>환영합니다.</h1>
-</Border>
+</Header>
 
-<Border
-        viewTransitionName="content"
-        classes="padding content"
+<div
+        class="border-outer"
+        style="--view-transition-name: border-outer-content;"
+>
+<div
+        class="padding content"
+        style="--view-transition-name: border-inner-content;"
 >
     <p>"HTML"은 Hyper Text Markup Language의 약자로, 👌 마크업 랭귀지 입니다.
         하지만 모던 웹은 그것을 뛰어넘어 다양한 기능을 요구하기 시작했고, ⚡ 자바스크립트가 탄생했습니다.</p>
@@ -26,4 +27,5 @@
     <p>이 블로그는 그런 생각에서 시작되었습니다. 💭</p>
     <p>자 이제 자바스크립트를 끄고 이 블로그를 보시면 어떨까요? 🤗
         <br/>물론 끄지 않고 보면 더욱더 멋진 웹이지만요.(저는 당신의 선택을 존중합니다.)</p>
-</Border>
+</div>
+</div>

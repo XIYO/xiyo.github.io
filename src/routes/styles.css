@@ -3,6 +3,11 @@
     --color-default-white: hsl(42, 66%, 93%);
     --color-primary: hsl(176, 89%, 37%);
 
+    --min-width: 320px;
+    --min-height: 480px;
+
+    --scroll-bar-size: 4px;
+
     /* default */
     --width-default-nav: 10rem;
     --margin-default-nav: calc(var(--ratio-half) * 1rem);
@@ -29,6 +34,9 @@
 
     color: var(--color-default-black);
     background-color: var(--color-default-white);
+
+    min-inline-size: var(--min-width);
+    overflow: scroll;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,11 +54,6 @@
     font-style: normal;
 }
 
-body {
-    margin-block: var(--margin-default-block);
-    margin-inline: var(--margin-default-inline);
-}
-
 a {
     color: unset;
     text-decoration-thickness: calc(var(--ratio-eighth) * 1rem); /** TODO: 앵커의 밑줄 두께를 변수화 */
@@ -60,15 +63,64 @@ a {
     }
 }
 
-#tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--margin-tag);
-    justify-content: end;
-
-    padding-inline-start: 0;
-    list-style-type: none;
+img {
+    max-inline-size: 100%;
 }
+
+h1, h2, h3 {
+    text-transform: uppercase;
+}
+
+.border-outer {
+    background-color: var(--color-default-black);
+    border-color: var(--color-default-black);
+    border-radius: calc(var(--border-radius-default) + var(--border-width-default));
+    padding: var(--border-width-default);
+    box-sizing: border-box;
+
+    margin-block: var(--margin-default-block);
+
+    /* border-inner 의 기능을 가지고 있음 */
+
+    > *:only-child {
+        color: var(--color-default-white);
+        background-color: var(--color-default-black);
+        border-radius: var(--border-radius-default);
+
+        /*
+        오버 플로우 클립으로 부모가 라운딩 처리 되어 있어서 화면상에서는 자식 요소가 부모를 벗어나지 않는데,
+        자식 요소가 뷰 트랜지션에 따로 참여하게 되면 트랜지션 동안에는 잠시 원래의 모습으로 보인다.
+        이는 뷰 트랜지션이 자식의 자식 요소를 가지지 못하는 현재 개발중인 단계의 문제,
+        미래에는 고쳐지겠지?
+        */
+        overflow: clip;
+
+        block-size: 100%;
+
+        &.padding, .padding {
+            padding: var(--padding-default);
+        }
+
+        &.content, .content {
+            color: var(--color-default-black);
+            background-color: var(--color-default-white);
+
+            & >:first-child {
+                margin-block-start: 0;
+            }
+
+            & >:last-child {
+                margin-block-end: 0;
+            }
+        }
+    }
+
+    > *:not(:only-child) {
+        /* 디버깅 기능, 나와서는 안되는 여역이라 색상을 엉뚱하게 표시 */
+        background-color: red;
+    }
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
     a {
@@ -84,101 +136,28 @@ a {
     }
 }
 
-/*!* 디폴트 값이라 활성화 필요가 없음 *!*/
-/*!*::view-transition-old(root),*!*/
-/*!*::view-transition-new(root) {*!*/
-/*!*    animation-duration: 0.25s;*!*/
-/*!*}*!*/
-
 /* 내용만 교체되는 컴포넌트를 위한 트랜지션*/
 [style*="--view-transition-name"] {
     view-transition-name: var(--view-transition-name);
 }
 
-::view-transition-old(header),
-::view-transition-new(header) {
-    height: 100%;
-}
+/*::view-transition-group(*) {*/
+/*animation-duration: var(--animation-duration-default);*/
+/*animation-delay: var(--animation-duration-default);*/
+/*}*/
 
-::view-transition-old(heading1),
-::view-transition-new(heading1),
-::view-transition-old(sub-category),
-::view-transition-new(sub-category),
-::view-transition-old(sub-posts),
-::view-transition-new(sub-posts) {
-    width: auto;
-}
-
-.border-outer {
-    background-color: var(--color-default-black);
-    border-color: var(--color-default-black);
-
-    border-style: solid;
-    border-width: var(--border-width-default);
-    border-radius: calc(var(--border-radius-default) + var(--border-width-default));
-    box-sizing: border-box;
-
-    color: var(--color-default-white); /* 아우터 보더의 배경 색과 다른 색으로 컬러를 명시적으로 지정해야한다 */
-
-    margin-block: var(--margin-default-block);
-    margin-inline: var(--margin-default-inline);
-
-    /* .border-inner 요소도 패딩을 바로 줄 수 있기 때문에 여기에 선언*/
-    .padding {
-        padding: var(--padding-default);
-    }
-
-    .negative {
-        background-color: var(--color-default-black);
-    }
-
-    /* .border-inner 요소에 바로 적용 가능한 스타일 */
-    /* TODO: revert-layer 가 무언지 확실히 조사하고 그걸로 적용할 수 있는지 확인하기 */
-    .content {
-        background-color: var(--color-default-white);
-        color: var(--color-default-black);
-    }
-
-    /* 보더가 겹 구조라서 어쩔 수 없이 추가 되었는데 뺄 수 있으면 빼야합니다. nav 에서 사용하기 때문에 추가했습니다 */
-    .full-height {
-        height: 100%;
-    }
-
-    .border-inner {
-        border-radius: var(--border-radius-default);
-        overflow: clip;
-
-        :first-child {
-            margin-block-start: 0
-        }
-
-        :last-child {
-            margin-block-end: 0
-        }
-    }
-}
-
-::view-transition-group(*) {
-    animation-duration: var(--animation-duration-default);
-    animation-delay: var(--animation-duration-default);
-}
-
+/* 헤더 */
+/* 헤더-아우터 */
 ::view-transition-group(border-outer-header) {
+    background-color: var(--color-default-black);
+    border-radius: calc(var(--border-radius-default) + var(--border-width-default));
+}
+
+::view-transition-image-pair(border-outer-header) {
     display: none;
 }
 
-::view-transition-image-pair(border-inner-header) {
-    width: 100%;
-    height: 100%;
-    transform: translateX(calc(var(--border-width-default) * -1)) translateY(calc(var(--border-width-default) * -1));
-
-    border-style: solid;
-    border-width: var(--border-width-default);
-    border-radius: calc(var(--border-radius-default) + var(--border-width-default));
-    border-color: var(--color-default-black);
-    background-color: var(--color-default-black);
-}
-
+/* 헤더-이너 */
 ::view-transition-old(border-inner-header) {
     animation-name: fade-out;
     animation-duration: var(--animation-duration-default);
@@ -190,29 +169,25 @@ a {
     animation-delay: calc(var(--animation-duration-default) * 2);
 }
 
-/* 데이터 */
-/* 보더의 굴곡이 뷰 트랜지션 동안에는 변형되기 때문에 가리는 트릭을 사용했습니다. */
+/* 콘텐츠 */
+/* 콘텐츠-아우터 */
+::view-transition-group(border-outer-content) {
+    background-color: var(--color-default-black);
+    border-radius: calc(var(--border-radius-default) + var(--border-width-default));
+    animation-duration: var(--animation-duration-default);
+    animation-delay: calc(var(--animation-duration-default) * 1);
+}
+
 ::view-transition-image-pair(border-outer-content) {
     display: none;
 }
 
-::view-transition-old(border-outer-content) {
-    animation-duration: var(--animation-duration-default);
-}
-
-::view-transition-image-pair(border-inner-content) {
-    width: 100%;
-    height: 100%;
-    transform: translateX(calc(var(--border-width-default) * -1)) translateY(calc(var(--border-width-default) * -1));
-
-    border-style: solid;
-    border-width: var(--border-width-default);
-    border-radius: calc(var(--border-radius-default) + var(--border-width-default));
-    border-color: var(--color-default-black);
+/* 콘텐츠-이너, 콘텐츠는 배경 색이 달라서 그룹으로 배경색도 지정*/
+::view-transition-group(border-inner-content) {
     background-color: var(--color-default-white);
-
-    /* 삐져 나가는 것을 자를려고했으나 전환 찰나의 순간 오버플로우가 밸생함 사용하면 안댐 */
-    /*overflow: clip;*/
+    border-radius: var(--border-radius-default);
+    animation-duration: var(--animation-duration-default);
+    animation-delay: var(--animation-duration-default);
 }
 
 ::view-transition-old(border-inner-content) {
@@ -226,11 +201,10 @@ a {
     animation-delay: calc(var(--animation-duration-default) * 2);
 }
 
-::view-transition-new(sub-category):only-child,
-::view-transition-new(sub-posts):only-child {
-    animation-name: fade-in;
+/* 푸터, 움직임만 추적 */
+::view-transition-group(footer) {
     animation-duration: var(--animation-duration-default);
-    animation-delay: calc(var(--animation-duration-default) * 2);
+    animation-delay: var(--animation-duration-default);
 }
 
 @keyframes fade-out {

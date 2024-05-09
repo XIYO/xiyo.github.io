@@ -1,27 +1,29 @@
 <script>
     import {page} from '$app/stores';
-    import Border from "$lib/Border.svelte";
 </script>
 
 <input checked={true} hidden id="nav-toggle" type="checkbox">
-<Border
-        viewTransitionName="nav"
-        classes="full-height"
+<div
+        id="nav"
+        class="border-outer"
+        style="view-transition-name: border-outer-nav;"
 >
-    <nav>
+    <nav
+            style="--view-transition-name: border-inner-nav;"
+    >
         <label class="padding" aria-label="Close navigation" for="nav-toggle">
-            MENU
+            Menu
         </label>
 
         <ul class="padding content">
             <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-                <a data-sveltekit-keepfocus href="/">HOME</a>
+                <a data-sveltekit-keepfocus href="/">home</a>
             </li>
             <li aria-current={$page.url.pathname === '/posts' ? 'page' : undefined}>
-                <a data-sveltekit-keepfocus href='/posts'>POSTS</a>
+                <a data-sveltekit-keepfocus href='/posts'>posts</a>
             </li>
             <li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-                <a data-sveltekit-keepfocus href="/about">ABOUT</a>
+                <a data-sveltekit-keepfocus href="/about">about</a>
             </li>
         </ul>
 
@@ -35,138 +37,145 @@
             </a>
         </div>
     </nav>
-</Border>
+</div>
 
 <style>
-    :global(body) {
-        /** 상수 3을 하는 이유는 인라인 마진이 블록 마진의 0.5배이며, 내비게이션이 총 3개의 인라인 마진을 가지고 있기 때문 */
-        margin-inline-end: calc(var(--width-default-nav) + (var(--margin-default-inline) * 3));
-    }
-
-    :global(.border-outer:has(nav)) {
+    /* 내비게이션은 보이는 상태를 스타일링 하고, (input:checked) 움직였을 때의 상태는 추가 스타일링(아래)으로 한다 */
+    .border-outer {
         position: fixed;
+        /*
+        내 생각에는 fixed 는 position 중에서 가장 최상위 레이어에 놓아져야한다 생각하는데,
+        문맥상 먼저 선언되면(최상위 +layout.svelte 에서 nav 가 가장 먼저 선언) 다른 다음 요소 밑에 깔리는 일이 발생.
+        사파리는 문제 없는데 엣지는 문제 발생해서 z-index 를 줌
+        그리고 사파리에서도 header 의 svg 보다 밑에 깔림... 이건 버그?
+        */
+        z-index: 1;
 
-        /* 세로 위치 높이 */
-        inset-block-start: 0;
-        /* 윈도우 엣지에 스크롤 영역이 계산되지 않는 100dvh 때문에 아래 코드는 일딴 주석 */
-        inset-inline-end: var(--margin-default-inline);
-        height: calc(100dvh - (var(--margin-default-block) * 2));
-        width: var(--width-default-nav);
-    }
+        /* 세로 */
+        /*
+        start 만 제어하고 end 는 제어하지 않는다.
+        이유는 트랜지션을 사용할 수 없기 때문에 block-size 를 이용하여 뷰 포트의 높이 변화시 트랜지션을 주기 위함(ex 아이폰 주소창 사라질 때)
 
-    nav {
-        height: 100%;
+        깔끔한 코드, 하지만 뷰포트가 변화되었을때 블록 사이즈에 대한 트랜지션을 줄 수 없다.
+        inset-block: 0;
+        margin-block: var(--margin-default-block);
+         */
+        inset-block: 0;
+        block-size: calc(100dvh - (var(--margin-default-block) * 2));
+        min-block-size: var(--min-height); /* 최소 블록 사이즈에 대한 제어만 한다. */
 
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        /* TODO: 엣지 버그, 100lvw 가 스크롤 영역을 포함하여 계산됨 가져가고 있음
-        100%를 사용하면 사파리에서 가로모드 세로모드 전환시 계산을 할 수 없어서 내비게이션이 잠깐 사라지는 버그가 있음
-            */
-        /* 가로 위치 넓이 */
+        /* 가로 */
+        inline-size: var(--width-default-nav);
+        /* 세로 모드 */
         /* 사파리에 가로모드에서 세로 모드가 될때는 inset-inline-start 가 있어야 요소가 깜박 거리지 않음 */
-        /*@media (orientation: portrait) {*/
-        /*    inset-inline-start: calc(100vw - (var(--width-default-nav) + (var(--margin-default-inline) * 3)));*/
-        /*}*/
-
-        /* 사파리에 세로모드에서 가로 모드가 될때는 inset-inline-end 가 있어야 요소가 깜박 거리지 않음 */
-        /*@media (orientation: landscape) {*/
-        /*    inset-inline-end: var(--margin-default-inline);*/
-        /*}*/
-
-        font-size: 1.25em;
-        font-weight: 700;
-
-        overflow-wrap: break-word;
-        user-select: none;
-
-        label::after {
-            content: '📌';
+        @media (orientation: portrait) {
+            inset-inline-start: calc(100% - (var(--width-default-nav) + var(--margin-default-block) * 1));
         }
 
-        ul {
-            flex-grow: 1;
-            list-style-type: none;
-            margin-block: unset;
+        /* 가로 모드 */
+        /* 사파리에 세로모드에서 가로 모드가 될때는 inset-inline-end 가 있어야 요소가 깜박 거리지 않음 */
+        @media (orientation: landscape) {
+            inset-inline-end: var(--margin-default-block);
+        }
 
-            li {
-                margin-block: var(--margin-default-block);
+        & >:only-child {
+            block-size: 100%;
 
-                &[aria-current="page"] {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            font-size: 1.25em;
+            font-weight: 700;
+
+            overflow-wrap: break-word;
+            user-select: none;
+            text-transform: uppercase;
+
+            label {
+                cursor: pointer;
+
+                &:hover {
                     color: var(--color-primary);
                 }
             }
-        }
 
-        .footer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            ul {
+                flex-grow: 1;
+                list-style-type: none;
+                margin-block: unset;
 
-            a {
-                font-size: 0; /* 폰트 사이즈 0을 주지 않으면 영역이 튀어나옴 */
+                li {
+                    margin-block: var(--margin-default-block);
 
-                svg {
-                    fill: var(--color-default-white);
+                    &[aria-current="page"] {
+                        color: var(--color-primary);
+                    }
                 }
             }
 
-        }
-    }
+            .footer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-    @media (max-width: 1024px) {
-        nav label {
-            cursor: pointer;
-        }
+                a {
+                    font-size: 0; /* 폰트 사이즈 0을 주지 않으면 영역이 튀어나옴 */
 
-        :global(input[type="checkbox"]:not(:checked) ~ .border-outer > .border-inner > nav > label::after) {
-            filter: grayscale(100%);
-        }
-    }
+                    svg {
+                        fill: var(--color-default-white);
 
-    @media (min-width: 426px) and (max-width: 1024px) {
-        :global(input[type="checkbox"]:not(:checked) ~ .border-outer) {
-            transform: translateX(calc(var(--ratio-three-quarters-of-three-quarter) * 100%));
-        }
+                        &:hover {
+                            fill: var(--color-primary);
+                        }
+                    }
+                }
 
-        /* 내비게이션에 호버, 포커스가 갈 경우 뷰에서 보이도록 위치를 초기화한다 */
-        :global(input[type="checkbox"]:not(:checked) ~ .border-outer:where(:hover, :focus-within)) {
-            transform: unset;
-        }
-
-        /* 내비게이션이 숨김 상태일 때, 호버, 포커스가 아닐 경우에만 본문의 간격을 조절한다.(내비게이션 여백 조절)  */
-        :global(body:has(input[type="checkbox"]:not(:checked) ~ .border-outer:where(:not(:hover, :focus-within)))) {
-            margin-inline-end: calc((var(--width-default-nav) * var(--ratio-eighth)) + (var(--margin-default-inline) * 3));
-        }
-    }
-
-    @media (max-width: 425px) {
-        nav {
-            position: unset;
-
-            label {
-                cursor: unset;
             }
         }
+    }
 
+    /* #nav-toggle:not(:checked) 상태의 내비게이션 스타일링 */
+    :global(body:has(#nav-toggle:not(:checked))) {
+        .border-outer {
+
+            /* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
+            transform: translateX(calc(100% + var(--margin-default-block)));
+        }
+    }
+
+    /* 내비게이션이 보이는 상태일 때의 스타일링
+    body 기본 의 스타일링은 전체를 사용하도록 디자인 되어 있어서, 내비게이션 컴포넌트에서 적절히 제어를 하여 공간을 확보해준다.
+     */
+    @media (min-width: 426px) {
+        /* 내비게이션이 나타났을 때 본문이 덮혀서 안 보이는 일이 없도록 마진을 줘서 옆으로 밀어준다 */
+        :global(body:has(#nav-toggle:checked)) {
+            /* 상수 2는 nav 에 좌우에 여백이 두 개 있기 때문 */
+            margin-inline-end: calc(var(--width-default-nav) + (var(--margin-default-block) * 2));
+        }
+    }
+
+    /* 모바일 해상도 */
+    @media (max-width: 425px) {
         :global(body) {
-            margin-inline-end: var(--margin-default-inline);
+            .border-outer {
+                inset-inline-start: 0;
+                margin-inline: var(--margin-default-block);
+
+                inline-size: calc(100% - (var(--margin-default-block) * 2));
+                min-inline-size: var(--min-width); /* 최소 높이는 기본 옵션으로 지정되어 있기 때문에 최소 인라인 사이즈만 지정 */
+            }
         }
     }
 
     /* 동작 활성화 모드일때만 트랜지션을 작동, 사용자를 존중 */
     @media (prefers-reduced-motion: no-preference) {
         :global(body) {
-            transition: margin 0.25s ease-in-out;
-        }
+            transition: margin .5s;
 
-        :global(input[type="checkbox"] ~ .border-outer > .border-inner > nav > label::after) {
-            transition: filter 0.25s ease-in-out;
-        }
-
-        :global(.border-outer) {
-            transition: height 0.25s ease-in-out, transform 0.25s ease-in-out;
+            .border-outer {
+                transition: block-size .5s, transform .5s;
+            }
         }
     }
 </style>

@@ -1,13 +1,12 @@
 <script>
-    const { viewTransitionName, classes } = $props();
+    const {viewTransitionName, classes} = $props();
 </script>
 <div class="border-outer"
-     style={
-     viewTransitionName ? `--view-transition-name: border-outer-${viewTransitionName};` : ''}
+     style={viewTransitionName ? `--view-transition-name: border-outer-${viewTransitionName};` : ''}
 >
     <div class={`border-inner ${ classes || ''}`}
          style={viewTransitionName ? `--view-transition-name: border-inner-${viewTransitionName};` : ''}
     >
-        <slot />
+        <slot/>
     </div>
 </div>

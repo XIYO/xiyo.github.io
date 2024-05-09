@@ -2,7 +2,7 @@
     import {page} from '$app/stores';
 </script>
 
-<input checked={true} hidden id="nav-toggle" type="checkbox">
+<input checked={false} hidden id="nav-toggle" type="checkbox">
 <div
         id="nav"
         class="border-outer"

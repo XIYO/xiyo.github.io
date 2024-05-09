@@ -17,13 +17,13 @@
 
         <ul class="padding content">
             <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-                <a data-sveltekit-keepfocus href="/">home</a>
+                <a href="/">home</a>
             </li>
             <li aria-current={$page.url.pathname === '/posts' ? 'page' : undefined}>
-                <a data-sveltekit-keepfocus href='/posts'>posts</a>
+                <a href='/posts'>posts</a>
             </li>
             <li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-                <a data-sveltekit-keepfocus href="/about">about</a>
+                <a href="/about">about</a>
             </li>
         </ul>
 

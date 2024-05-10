@@ -6,6 +6,6 @@
     footer {
         font-size: 0.75rem;
         text-align: center;
-        margin-block: var(--margin-default-block);
+        margin-block: var(--default-margin-block);
     }
 </style>

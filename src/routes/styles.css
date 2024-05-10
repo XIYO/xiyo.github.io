@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Pretendard Variable';
+    font-weight: 45 920;
+    font-style: normal;
+    font-display: swap;
+    src: url('/fonts/PretendardVariable.woff2') format('woff2');
+}
+
 :root {
     --color-default-black: hsl(200, 4%, 16%);
     --color-default-white: hsl(42, 66%, 93%);
@@ -45,13 +53,6 @@
         --color-default-white: hsl(200, 4%, 16%);
         --color-default-black: hsl(42, 66%, 93%);
     }
-}
-
-@font-face {
-    font-family: 'Pretendard Variable';
-    src: url('/fonts/PretendardVariable.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
 }
 
 a {

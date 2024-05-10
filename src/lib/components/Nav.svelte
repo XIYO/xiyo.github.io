@@ -12,7 +12,13 @@
             style="--view-transition-name: border-inner-nav;"
     >
         <label class="padding" aria-label="Close navigation" for="nav-toggle">
-            Menu
+            <span>
+                Menu
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 256 512">
+                <path d="M214.7,278.6c12.5-12.5,12.5-32.8,0-45.3L86.7,105.3c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8,16.6-19.8,29.6v256c0,12.9,7.8,24.6,19.8,29.6s25.7,2.2,34.9-6.9l128-128h0Z"/>
+            </svg>
         </label>
 
         <ul class="padding content">
@@ -94,9 +100,18 @@
 
             label {
                 cursor: pointer;
+                fill: var(--color-default-white);
 
                 &:hover {
                     color: var(--color-primary);
+                    fill: var(--color-primary);
+                }
+
+                display: flex;
+                justify-content: space-between;
+
+                svg {
+                    block-size: 1.75rem;
                 }
             }
 
@@ -152,6 +167,11 @@
         :global(body:has(#nav-toggle:checked)) {
             /* 상수 2는 nav 에 좌우에 여백이 두 개 있기 때문 */
             margin-inline-end: calc(var(--width-default-nav) + (var(--margin-default-block) * 2));
+        }
+
+        label svg {
+            /* 내비게이션 헤더의 내비 하이드 쇼 버튼을 모바일 초과 해상도에서는 안 보이게 한다 */
+            display: none;
         }
     }
 

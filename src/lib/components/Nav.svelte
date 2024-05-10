@@ -84,7 +84,7 @@
             inset-inline-end: var(--margin-default-block);
         }
 
-        & >:only-child {
+        & > :only-child {
             block-size: 100%;
 
             display: flex;

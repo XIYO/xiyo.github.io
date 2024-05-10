@@ -7,6 +7,10 @@
 }
 
 :root {
+    -ms-text-size-adjust: 100%; /* IE, old Edge */
+    -webkit-text-size-adjust: 100%; /* Chrome, Safari, new Edge */
+    text-size-adjust: 100%;
+
     --color-default-black: hsl(200, 4%, 16%);
     --color-default-white: hsl(42, 66%, 93%);
     --color-primary: hsl(176, 89%, 37%);

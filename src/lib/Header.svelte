@@ -1,3 +1,7 @@
+<script>
+    const { children } = $props();
+</script>
+
 <header
         class="border-outer"
         style="--view-transition-name: border-outer-header;"
@@ -5,7 +9,7 @@
     <div
             style="--view-transition-name: border-inner-header;"
     >
-        <slot/>
+        {@render children()}
         <label
                 style="--view-transition-name: header-label;"
                 aria-label="Close navigation" for="nav-toggle">

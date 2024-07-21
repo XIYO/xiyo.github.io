@@ -4,6 +4,8 @@
     import {onNavigate} from '$app/navigation';
     import Footer from "$lib/components/Footer.svelte";
 
+    const { children } = $props();
+
     onNavigate((navigation) => {
         if (!document.startViewTransition || navigation.to.url.pathname === navigation.from.url.pathname) return;
 
@@ -25,5 +27,5 @@
     });
 </script>
 <Nav/>
-<slot/>
+{@render children()}
 <Footer></Footer>

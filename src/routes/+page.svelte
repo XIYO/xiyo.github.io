@@ -1,6 +1,8 @@
 <script>
 	import Header from '$lib/Header.svelte';
 	import Border from '$lib/Border.svelte';
+	import { Canvas } from '@threlte/core';
+	import Scene from '$lib/threlte/Scene.svelte';
 </script>
 
 <Header>
@@ -8,6 +10,10 @@
 </Header>
 
 <Border viewTransitionName="content" padding content negative>
+	<Canvas >
+		<Scene />
+	</Canvas>
+
 	<p>
 		"HTML"은 Hyper Text Markup Language의 약자로, 👌 마크업 랭귀지 입니다. 하지만 모던 웹은 그것을
 		뛰어넘어 다양한 기능을 요구하기 시작했고, ⚡ 자바스크립트의 발전이 시작 되었습니다.

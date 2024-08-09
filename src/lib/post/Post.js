@@ -39,11 +39,7 @@ export default class Post {
 			.use(remarkMermaid)
 			.use(remarkRehype)
 			.use(rehypeShiki, {
-				// or `theme` for a single theme
-				themes: {
-					light: 'vitesse-light',
-					dark: 'vitesse-dark',
-				}
+				theme: 'vitesse-dark'
 			})
 			.use(rehypeStringify)
 			.process(markdown);

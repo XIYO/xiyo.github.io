@@ -1,9 +1,12 @@
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
+import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import { visit, EXIT } from 'unist-util-visit';
 import Category from '$lib/post/Category.js';
+import remarkMermaid from 'remark-mermaidjs';
+import rehypeShiki from '@shikijs/rehype';
 
 export default class Post {
 	static #posts = new Map();
@@ -13,6 +16,7 @@ export default class Post {
 	#name;
 	/** @type {string} HTML 로 변환된 마크다운 */
 	#convertedMarkdown;
+	#promise;
 	/** @type {string} 타이틀 */
 	#title;
 
@@ -27,14 +31,27 @@ export default class Post {
 		this.#absolutePath = absolutePath;
 		this.#name = absolutePath.split('/').at(-1);
 
-		// 마크다운을 HTML로 변환합니다.
-		this.#convertedMarkdown = unified()
+		// 마크다운을 HTML로 변환합니다. title 은 여기서 추출합니다.
+		this.#promise = unified()
 			.use(remarkParse)
 			.use(this.extractTitle.bind(this))
+			.use(remarkGfm)
+			.use(remarkMermaid)
 			.use(remarkRehype)
+			.use(rehypeShiki, {
+				// or `theme` for a single theme
+				themes: {
+					light: 'vitesse-light',
+					dark: 'vitesse-dark',
+				}
+			})
 			.use(rehypeStringify)
-			.processSync(markdown)
-			.toString();
+			.process(markdown);
+	}
+
+	async isReady() {
+		const html = await this.#promise;
+		this.#convertedMarkdown = html.value;
 	}
 
 	get absolutePath() {

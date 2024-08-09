@@ -1,202 +1,196 @@
 @font-face {
-  font-family: "Pretendard Variable";
-  font-weight: 45 920;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/PretendardVariable.woff2") format("woff2");
+	font-family: 'Pretendard Variable';
+	font-weight: 45 920;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/PretendardVariable.woff2') format('woff2');
 }
 
 :root {
-  /* color */
-  --color-default-black: hsl(200, 4%, 16%);
-  --color-default-white: hsl(42, 66%, 93%);
-  --color-primary: hsl(176, 89%, 37%);
+	/* color */
+	--color-default-black: hsl(200, 4%, 16%);
+	--color-default-white: hsl(42, 66%, 93%);
+	--color-primary: hsl(176, 89%, 37%);
 
-  /* margin, border */
-  --default-margin-block: 0.5rem;
-  --default-border-width: 0.25rem;
-  --default-padding: 1rem;
-  --inner-border-radius: 1rem;
-  --outer-border-radius: calc(
-    var(--inner-border-radius) + var(--default-border-width)
-  );
+	/* margin, border */
+	--default-margin-block: 0.5rem;
+	--default-border-width: 0.25rem;
+	--default-padding: 1rem;
+	--inner-border-radius: 1rem;
+	--outer-border-radius: calc(var(--inner-border-radius) + var(--default-border-width));
 
-  /* size */
-  --scroll-bar-size: 0.25rem;
-  --min-inline-size: 320px;
-  --min-block-size: 375px; /* 아이폰 SE 3 사이즈 */
-  --nav-min-inline-size: 10rem;
-  --nav-min-block-size: calc(
-    var(--min-block-size) - (var(--default-margin-block) * 2)
-  );
+	/* size */
+	--scroll-bar-size: 0.25rem;
+	--min-inline-size: 320px;
+	--min-block-size: 375px; /* 아이폰 SE 3 사이즈 */
+	--nav-min-inline-size: 10rem;
+	--nav-min-block-size: calc(var(--min-block-size) - (var(--default-margin-block) * 2));
 
-  --ratio-three-quarters-of-three-quarter: 0.875;
-  --ratio-three-quarter: 0.75;
-  --ratio-half: 0.5;
-  --ratio-quarter: 0.25;
-  --ratio-three-quarters-of-quarter: 0.1875;
-  --ratio-eighth: 0.125;
+	--ratio-three-quarters-of-three-quarter: 0.875;
+	--ratio-three-quarter: 0.75;
+	--ratio-half: 0.5;
+	--ratio-quarter: 0.25;
+	--ratio-three-quarters-of-quarter: 0.1875;
+	--ratio-eighth: 0.125;
 
-  /* animation */
-  --default-animation-duration: 0.5s;
-  --default-anmiation-delay: var(--default-animation-duration);
-  --default-anmiation-delay-new: calc(var(--default-animation-duration) * 2);
+	/* animation */
+	--default-animation-duration: 0.5s;
+	--default-anmiation-delay: var(--default-animation-duration);
+	--default-anmiation-delay-new: calc(var(--default-animation-duration) * 2);
 
-  /* 기본 스타일링 */
-  font-family: "Pretendard Variable", sans-serif;
+	/* 기본 스타일링 */
+	font-family: 'Pretendard Variable', sans-serif;
 
-  -ms-text-size-adjust: 100%; /* IE, old Edge */
-  -webkit-text-size-adjust: 100%; /* Chrome, Safari, new Edge */
-  text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%; /* IE, old Edge */
+	-webkit-text-size-adjust: 100%; /* Chrome, Safari, new Edge */
+	text-size-adjust: 100%;
 
-  color: var(--color-default-black);
-  background-color: var(--color-default-white);
+	color: var(--color-default-black);
+	background-color: var(--color-default-white);
 
-  min-inline-size: var(--min-inline-size);
-  overflow: scroll; /* 윈도우에서 의도적으로 스크롤바를 노출시켜 스크롤바 때문에 생기는 레이아웃의 뒤틀림 방지 */
+	min-inline-size: var(--min-inline-size);
+	overflow: scroll; /* 윈도우에서 의도적으로 스크롤바를 노출시켜 스크롤바 때문에 생기는 레이아웃의 뒤틀림 방지 */
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    /* TODO 변수 어감 변경하기 */
-    --color-default-white: hsl(200, 4%, 16%);
-    --color-default-black: hsl(42, 66%, 93%);
-  }
+	:root {
+		/* TODO 변수 어감 변경하기 */
+		--color-default-white: hsl(200, 4%, 16%);
+		--color-default-black: hsl(42, 66%, 93%);
+	}
 }
 
 a {
-  color: unset;
+	color: unset;
 
-  &:hover {
-    text-decoration-color: var(--color-primary);
-  }
+	&:hover {
+		text-decoration-color: var(--color-primary);
+	}
 }
 
 img {
-  max-inline-size: 100%;
+	max-inline-size: 100%;
 }
 
 h1,
 h2,
 h3 {
-  text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a {
-    transition: text-decoration-color var(--default-animation-duration);
-  }
+	a {
+		transition: text-decoration-color var(--default-animation-duration);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
-  }
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
 }
 
 /* 내용만 교체되는 컴포넌트를 위한 트랜지션*/
-[style*="--view-transition-name"] {
-  view-transition-name: var(--view-transition-name);
+[style*='--view-transition-name'] {
+	view-transition-name: var(--view-transition-name);
 }
 
 /* 헤더 */
 /* 헤더-아우터 */
 ::view-transition-group(border-outer-header) {
-  background-color: var(--color-default-black);
-  border-radius: var(--outer-border-radius);
+	background-color: var(--color-default-black);
+	border-radius: var(--outer-border-radius);
 }
 
 ::view-transition-image-pair(border-outer-header) {
-  display: none;
+	display: none;
 }
 
 /* 헤더-이너 */
 ::view-transition-old(border-inner-header) {
-  animation-name: fade-out;
-  animation-duration: var(--default-animation-duration);
+	animation-name: fade-out;
+	animation-duration: var(--default-animation-duration);
 }
 
 ::view-transition-new(border-inner-header) {
-  animation-name: fade-in;
-  animation-duration: var(--default-animation-duration);
-  animation-delay: var(--default-anmiation-delay-new);
+	animation-name: fade-in;
+	animation-duration: var(--default-animation-duration);
+	animation-delay: var(--default-anmiation-delay-new);
 }
 
 /* 콘텐츠 */
 /* 콘텐츠-아우터 */
 ::view-transition-group(border-outer-content) {
-  background-color: var(--color-default-black);
-  border-radius: var(--outer-border-radius);
-  animation-duration: var(--default-animation-duration);
-  animation-delay: var(--default-anmiation-delay);
+	background-color: var(--color-default-black);
+	border-radius: var(--outer-border-radius);
+	animation-duration: var(--default-animation-duration);
+	animation-delay: var(--default-anmiation-delay);
 }
 
 ::view-transition-image-pair(border-outer-content) {
-  display: none;
+	display: none;
 }
 
 /* 콘텐츠-이너, 콘텐츠는 배경 색이 달라서 그룹으로 배경색도 지정*/
 ::view-transition-group(border-inner-content) {
-  background-color: var(--color-default-white);
-  border-radius: var(--inner-border-radius);
-  animation-duration: var(--default-animation-duration);
-  animation-delay: var(--default-animation-duration);
+	background-color: var(--color-default-white);
+	border-radius: var(--inner-border-radius);
+	animation-duration: var(--default-animation-duration);
+	animation-delay: var(--default-animation-duration);
 }
 
 ::view-transition-old(border-inner-content) {
-  animation-name: fade-out;
-  animation-duration: var(--default-animation-duration);
+	animation-name: fade-out;
+	animation-duration: var(--default-animation-duration);
 }
 
 ::view-transition-new(border-inner-content) {
-  animation-name: fade-in;
-  animation-duration: var(--default-animation-duration);
-  animation-delay: var(--default-anmiation-delay-new);
+	animation-name: fade-in;
+	animation-duration: var(--default-animation-duration);
+	animation-delay: var(--default-anmiation-delay-new);
 }
 
 /* 푸터, 움직임만 추적 */
 ::view-transition-group(footer) {
-  animation-duration: var(--default-animation-duration);
-  animation-delay: var(--default-animation-duration);
+	animation-duration: var(--default-animation-duration);
+	animation-delay: var(--default-animation-duration);
 }
 
 @keyframes fade-out {
-  to {
-    opacity: 0;
-  }
+	to {
+		opacity: 0;
+	}
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
+	from {
+		opacity: 0;
+	}
 }
 
 /* 스크롤바 전체 컨테이너 스타일링 */
 ::-webkit-scrollbar {
-  inline-size: var(--scroll-bar-size); /* 스크롤바 너비, 세로 모드시 */
-  block-size: var(--scroll-bar-size); /* 스크롤바 높이, 가로 모드시 */
+	inline-size: var(--scroll-bar-size); /* 스크롤바 너비, 세로 모드시 */
+	block-size: var(--scroll-bar-size); /* 스크롤바 높이, 가로 모드시 */
 }
 
 /* 스크롤바 트랙 (트랙 부분은 스크롤바가 움직이는 배경 부분) */
 ::-webkit-scrollbar-track {
-  margin: var(--default-margin-block);
+	margin: var(--default-margin-block);
 }
 
 /* 스크롤바 핸들 (사용자가 잡고 움직이는 부분) */
 ::-webkit-scrollbar-thumb {
-  background-color: var(
-    --color-primary
-  ); /* 스크롤바 핸들을 프라이머리 컬러로 설정 */
-  border-radius: var(--scroll-bar-size); /* 스크롤바 모서리를 둥글게 */
+	background-color: var(--color-primary); /* 스크롤바 핸들을 프라이머리 컬러로 설정 */
+	border-radius: var(--scroll-bar-size); /* 스크롤바 모서리를 둥글게 */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: hsl(176, 89%, 47%); /* 좀 더 밝은 프라이머리 컬러로 변경 */
+	background-color: hsl(176, 89%, 47%); /* 좀 더 밝은 프라이머리 컬러로 변경 */
 }
 
 ::-webkit-scrollbar-corner {
-  background-color: transparent;
+	background-color: transparent;
 }

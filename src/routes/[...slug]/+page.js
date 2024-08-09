@@ -4,8 +4,13 @@ import Category from '$lib/post/Category.js';
 import Post from '$lib/post/Post.js';
 
 export async function load({ url }) {
+	const post = Post.getPosts(url.pathname);
+	if (post) {
+		await post.isReady();
+	}
+
 	return {
-		post: Post.getPosts(url.pathname),
+		post,
 		category: Category.getCategory(url.pathname)
 	};
 

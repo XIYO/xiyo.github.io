@@ -8,7 +8,7 @@
   클라우드 서비스를 사용하면 `mongoDB`를 설치할 필요가 없습니다.
 - 이 문서에서는 `brew`를 통해 `mongoDB`를 설치합니다.
 - [공식 다운로드](https://www.mongodb.com/try/download/community)에서 제공하는 명령어인 `brew install mongodb-atlas`는 클라우드 사용자를 위한 패키지 입니다.  
-  클라우드 사용자가 아니라면 이 패키지를 설치할 필요는 없습니다.  
+  클라우드 사용자가 아니라면 이 패키지를 설치할 필요는 없습니다.
   > 🟣 IMPORTANT
   >
   > `mongodb-atlas`는 `mongodb-atlas-cli`로 변경 되었습니다. ([`brew` 문서 참고](https://docs.atlas.mongodb.com/command-line-tools/))
@@ -112,8 +112,8 @@ Error: Failure while executing; `/bin/launchctl bootstrap user/501 /Users/xiyo/L
    Warning: running over SSH, using user/* instead of gui/* domain!
    Hide this warning by setting HOMEBREW_SERVICES_NO_DOMAIN_WARNING.
    ```
-  
-    `ssh` 세션으로 접근하면 실행 도메인이 `gui`가 아닌 `user`로 실행된다는 경고 메시지입니다.  
+
+   `ssh` 세션으로 접근하면 실행 도메인이 `gui`가 아닌 `user`로 실행된다는 경고 메시지입니다.  
     `brew`는 개인 사용자를 위해 만들어진 패키지 매니저입니다.  
     때문에 `gui`로 실행돼야 문제가 없지만, 저는 `ssh`를 이용해 실행했기 때문에 경고가 발생합니다.  
     마지막 메시지는 경고 메시지를 숨길 수 있는 환경 변수, `HOMEBREW_SERVICES_NO_DOMAIN_WARNING`를 마지막 줄에서 알려줍니다.
@@ -122,7 +122,7 @@ Error: Failure while executing; `/bin/launchctl bootstrap user/501 /Users/xiyo/L
    Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
    ```
 
-    `HOMEBREW_NO_ENV_HINTS`는 환경 변수로, 설정하면 `brew`에서 나오는 환경에 관련된 힌트 메시지를 숨길 수 있습니다.  
+   `HOMEBREW_NO_ENV_HINTS`는 환경 변수로, 설정하면 `brew`에서 나오는 환경에 관련된 힌트 메시지를 숨길 수 있습니다.  
     이는 명령어 출력을 간결하게 유지하려는 사용자에게 유용합니다.  
     `man brew`를 실행하면 `brew`의 `manual`을 볼 수 있고, 이 환경 변수에 대한 추가 정보를 얻을 수 있습니다.
 
@@ -132,12 +132,12 @@ Error: Failure while executing; `/bin/launchctl bootstrap user/501 /Users/xiyo/L
    Error: Failure while executing; `/bin/launchctl bootstrap user/501 /Users/xiyo/Library/LaunchAgents/homebrew.mxcl.mongodb-community.plist` exited with 5.
    ```
 
-    `macOS`의 `launchctl`이 출력하는 오류입니다.  
+   `macOS`의 `launchctl`이 출력하는 오류입니다.  
     최하단의 명령어 `/bin/launchctl`은 `brew`의 실행 환경에 따라서 `GUI` 도메인과 `USER` 도메인을 구분합니다.(`GUI`는 물리적 로그인이고, `USER`는 `ssh`와 같은 원격 세션입니다.)  
     이는 `macOS`의 명령어인 `launchctl`의 특징이며, `ssh`로 접속한 상태에서는 `brew`가 `USER` 도메인으로 실행합니다.
 
-    명시적으로 `user/501`를 `gui/501`로 변경하여 실행하면 정상실행이 됩니다.(501은 사용자의 `uid`입니다.)
-    그러나 이럴 경우 `gui` 입출력이 필요한 화면이 나올경우 `ssh` 세션에서는 진행이 불가능합니다.  
+   명시적으로 `user/501`를 `gui/501`로 변경하여 실행하면 정상실행이 됩니다.(501은 사용자의 `uid`입니다.)
+   그러나 이럴 경우 `gui` 입출력이 필요한 화면이 나올경우 `ssh` 세션에서는 진행이 불가능합니다.  
     예를들면 방화벽이 활성화된 경우 `gui`에서 허용을 해야합니다.  
     결국 `gui` 도메인으로 실행해야하는건 변함 없기 때문에 `vnc`를 이용해 `macOS`에 원격 접속 후에 터미널에서 `brew services`로 `mongoDB`를 실행했습니다.
 
@@ -145,32 +145,32 @@ Error: Failure while executing; `/bin/launchctl bootstrap user/501 /Users/xiyo/L
 >
 > 오류 문장 중간에
 >
->  ```text
->  Try re-running the command as root for richer errors.
->  # 자세한 오류를 보기 위해 `root`로 실행하세요
+> ```text
+> Try re-running the command as root for richer errors.
+> # 자세한 오류를 보기 위해 `root`로 실행하세요
 > ```
 >
 > `root`실행 권장 메시지가 있는데, `mongoDB`는 보안을 위해 `root`로 실행이 차단되어 있습니다.  
 > `root`로 실행했을 경우 `brew`의 `directory`의 소유권이 변경되기 때문에,  
 > **소유권을 변경하거나**,
 >
->> ```shell
->> sudo chown -R $(whoami) $(brew --prefix)/*
->> ```
->>
->> `brew`의 모든 `directory`와 `File`의 소유자가 현재 사용자로 변경됩니다.  
->> 또는 명시적으로 `$(brew --prefix)/Cellar/mongodb-community`의 소유권을 변경하면 됩니다.
->>
->> `-R` 옵션은 `recursive`를 의미합니다.  
->> 모든 하위의 `file`과 `directory`에 대하여 명령을 적용하라는 의미입니다.
+> > ```shell
+> > sudo chown -R $(whoami) $(brew --prefix)/*
+> > ```
+> >
+> > `brew`의 모든 `directory`와 `File`의 소유자가 현재 사용자로 변경됩니다.  
+> > 또는 명시적으로 `$(brew --prefix)/Cellar/mongodb-community`의 소유권을 변경하면 됩니다.
+> >
+> > `-R` 옵션은 `recursive`를 의미합니다.  
+> > 모든 하위의 `file`과 `directory`에 대하여 명령을 적용하라는 의미입니다.
 >
 > **삭제 후 다시 설치**하는 방법을 사용해야합니다.
 >
->> ```shell
->> brew uninstall mongodb/brew/mongodb-community
->> ```
->>
->> `brew`를 이용해 삭제 명령을 입력을 하면 `root`로 삭제 해야할 `directory`를 명확히 알려줍니다.
+> > ```shell
+> > brew uninstall mongodb/brew/mongodb-community
+> > ```
+> >
+> > `brew`를 이용해 삭제 명령을 입력을 하면 `root`로 삭제 해야할 `directory`를 명확히 알려줍니다.
 
 #### `PLIST`
 
@@ -224,22 +224,28 @@ cat /Users/xiyo/Library/LaunchAgents/homebrew.mxcl.mongodb-community.plist
 ```
 
 1. `Label`:
+
    - 서비스의 고유한 식별자입니다. 이 경우 `homebrew.mxcl.mongodb-community`라는 라벨이 주어졌습니다.
 
 2. `ProgramArguments`:
+
    - 실행할 프로그램과 그에 대한 인자들을 명시합니다.
    - 이 경우 `/usr/local/opt/mongodb-community/bin/mongod` 프로그램을 `--config /usr/local/etc/mongod.conf` 옵션과 함께 실행하도록 설정했습니다.
 
 3. `RunAtLoad`:
+
    - 이 키가 `true`로 설정되면, 시스템 로드 시에 서비스가 자동으로 시작됩니다.
 
 4. `KeepAlive`:
+
    - 이 키가 `true`로 설정되면, 서비스가 종료되더라도 `launchd`가 자동으로 재시작합니다. 여기에서는 `false`로 설정되어 있으므로, 서비스가 종료되면 재시작되지 않습니다.
 
 5. `WorkingDirectory`:
+
    - 서비스가 실행될 때 작업 디렉터리를 지정합니다. 이 경우 `/usr/local`로 설정되어 있습니다.
 
 6. `StandardErrorPath`와 `StandardOutPath`:
+
    - 표준 에러와 표준 출력을 리디렉션할 파일 경로를 지정합니다. 이 경우 모두 `/usr/local/var/log/mongodb/output.log`로 설정되어 있어, 모든 출력과 에러 메시지가 이 파일에 기록됩니다.
 
 7. `HardResourceLimits`와 `SoftResourceLimits`:
@@ -311,7 +317,7 @@ xiyo             12842   0.0  0.0 34121212    524 s000  S+    7:32PM   0:00.00 g
 ```
 
 출력에 총 2개의 `process`가 보이며 아래는 제가 실행한 명령어 입니다.  
-`root`로 실행된 `process`가 실제 구동중인 `mongod`입니다.  
+`root`로 실행된 `process`가 실제 구동중인 `mongod`입니다.
 
 현재 `brew`는 `root`로 실행하면 안되는 규칙을 깨고 실행했기 때문에,  
 여기저기 권한 문제가 발생하고 있습니다.

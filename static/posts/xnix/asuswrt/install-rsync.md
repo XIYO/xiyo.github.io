@@ -16,7 +16,7 @@
 필수 요소 입니다. 자세한 설명은 생략합니다.
 
 - Merlin firmware 설치
-- Entware 설치 
+- Entware 설치
 - jffs partition 활성화
 - ssh 활성화
 

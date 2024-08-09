@@ -1,8 +1,8 @@
 # INSTALL SSH SERVER
 
-윈도우즈에서 *SSH* 서버를 설치하는 방법을 알아봅니다.
+윈도우즈에서 _SSH_ 서버를 설치하는 방법을 알아봅니다.
 
-*SSH* 클라이언트는 윈도우즈 10부터 설치되어 있습니다.
+_SSH_ 클라이언트는 윈도우즈 10부터 설치되어 있습니다.
 
 ## PREREQUISITES
 
@@ -13,156 +13,156 @@
 ## INSTALL
 
 0. 파워셸을 관리자 권한으로 실행
-0. *SSH* 서버 설치
+1. _SSH_ 서버 설치
 
-    *명령어* :
+   _명령어_ :
 
-    ```powershell
-    Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0    
-    ```
+   ```powershell
+   Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+   ```
 
-    *출력* :
+   _출력_ :
 
-    ```powershell
-    Path          :
-    Online        : True
-    RestartNeeded : False
-    ```
+   ```powershell
+   Path          :
+   Online        : True
+   RestartNeeded : False
+   ```
 
-    성공적으로 설치되면 *Online* 이 *True* 로 나타납니다.
+   성공적으로 설치되면 _Online_ 이 _True_ 로 나타납니다.
 
 ## RUN
 
-*SSH* 서버 실행
+_SSH_ 서버 실행
 
 - 실행
 
-    단독으로 실행하는 방법입니다.
+  단독으로 실행하는 방법입니다.
 
-    *명령어* :
+  _명령어_ :
 
-    ```powershell
-    Start-Service sshd
-    ```
+  ```powershell
+  Start-Service sshd
+  ```
 
-    *출력* 없음
+  _출력_ 없음
 
 - 서비스 자동 실행
 
-    윈도우즈 부팅시 자동으로 실행되도록 설정합니다. 
+  윈도우즈 부팅시 자동으로 실행되도록 설정합니다.
 
-    *명령어* :
+  _명령어_ :
 
-    ```powershell
-    Set-Service -Name sshd -StartupType 'Automatic'
-    ```
+  ```powershell
+  Set-Service -Name sshd -StartupType 'Automatic'
+  ```
 
-    *출력* 없음
+  _출력_ 없음
 
 - 방화벽 허용
 
-    방화벽에서 *SSH* 서버가 사용하는 22번 포트의 접근을 허용합니다.
+  방화벽에서 _SSH_ 서버가 사용하는 22번 포트의 접근을 허용합니다.
 
-    *명령어* :
+  _명령어_ :
 
-    ```powershell
-    if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyContinue | Select-Object Name, Enabled)) {
-        Write-Output "Firewall Rule 'OpenSSH-Server-In-TCP' does not exist, creating it..."
-        New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
-    } else {
-        Write-Output "Firewall rule 'OpenSSH-Server-In-TCP' has been created and exists."
-    }
-    ```
+  ```powershell
+  if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyContinue | Select-Object Name, Enabled)) {
+      Write-Output "Firewall Rule 'OpenSSH-Server-In-TCP' does not exist, creating it..."
+      New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+  } else {
+      Write-Output "Firewall rule 'OpenSSH-Server-In-TCP' has been created and exists."
+  }
+  ```
 
 ## CHECK
 
-- *SSH* 서버 상태 확인
+- _SSH_ 서버 상태 확인
 
-    실제 서비스가 실행되고 있는지 확인합니다.
+  실제 서비스가 실행되고 있는지 확인합니다.
 
-    *명령어* :
+  _명령어_ :
 
-    ```powershell
-    Get-Service -Name 'sshd'
-    ```
+  ```powershell
+  Get-Service -Name 'sshd'
+  ```
 
-    *출력* :
+  _출력_ :
 
-    ```text
-    Status   Name               DisplayName
-    ------   ----               -----------
-    Running  sshd               OpenSSH SSH Server
-    ```
+  ```text
+  Status   Name               DisplayName
+  ------   ----               -----------
+  Running  sshd               OpenSSH SSH Server
+  ```
 
-    *Status* 가 *Running* 이면 정상적으로 실행된 것입니다. \
-    *Status* 가 *Stopped* 이면 *Start-Service sshd* 명령어 실행 후 다시 확인합니다.
+  _Status_ 가 _Running_ 이면 정상적으로 실행된 것입니다. \
+   _Status_ 가 _Stopped_ 이면 _Start-Service sshd_ 명령어 실행 후 다시 확인합니다.
 
 - 접속 확인
 
-    - 내 계정 확인
+  - 내 계정 확인
 
-        윈도우즈 설치 초기에 마이크로소프트 계정으로 생성했으면 메일의 아이디가 계정 이름입니다. \
-        5자를 초과하는 아이디에 대해서는 변경하기 때문에 정확히 확인 합니다.
+    윈도우즈 설치 초기에 마이크로소프트 계정으로 생성했으면 메일의 아이디가 계정 이름입니다. \
+     5자를 초과하는 아이디에 대해서는 변경하기 때문에 정확히 확인 합니다.
 
-        *명령어* :
+    _명령어_ :
 
-        ```powershell
-        Write-Output $env:UserName
-        ```
+    ```powershell
+    Write-Output $env:UserName
+    ```
 
-        *출력* :
+    _출력_ :
 
-        ```text
-        xiyo
-        ```
+    ```text
+    xiyo
+    ```
 
-        실제 시스템 계정 이름이 출력됩니다.
+    실제 시스템 계정 이름이 출력됩니다.
 
-    - 로컬 *SSH* 접속
+  - 로컬 _SSH_ 접속
 
-        *명령어* :
+    _명령어_ :
 
-        ```powershell
-        ssh xiyo@localhost
-        ```
+    ```powershell
+    ssh xiyo@localhost
+    ```
 
-        xiyo 자신의 계정으로 바꾸면 됩니다.
+    xiyo 자신의 계정으로 바꾸면 됩니다.
 
-        *출력* :
+    _출력_ :
 
-        ```text
-        he authenticity of host '127.0.0.1 (127.0.0.1)' can't be established.      
-        ECDSA key fingerprint is SHA256:D/StxC2FjSpxjD9X+QcXyhHJHb0tfC+Hn9iFMbZooTM.
-        Are you sure you want to continue connecting (yes/no/[fingerprint])? 
-        ```
+    ```text
+    he authenticity of host '127.0.0.1 (127.0.0.1)' can't be established.
+    ECDSA key fingerprint is SHA256:D/StxC2FjSpxjD9X+QcXyhHJHb0tfC+Hn9iFMbZooTM.
+    Are you sure you want to continue connecting (yes/no/[fingerprint])?
+    ```
 
-        최초 접속시 접속 정보를 저장합니다. \
-        *yes* 를 입력하고 엔터를 누릅니다.
+    최초 접속시 접속 정보를 저장합니다. \
+     _yes_ 를 입력하고 엔터를 누릅니다.
 
-        이어서 패스워드를 물어봅니다.
+    이어서 패스워드를 물어봅니다.
 
-        *출력* :
+    _출력_ :
 
-        ```text
-        xiyo@127.0.0.1's password: 
-        ```
+    ```text
+    xiyo@127.0.0.1's password:
+    ```
 
-        패드워드 입력시 화면에는 아무것도 나타나지 않습니다. \
-        패스워드를 입력하고 엔터를 누릅니다.
+    패드워드 입력시 화면에는 아무것도 나타나지 않습니다. \
+     패스워드를 입력하고 엔터를 누릅니다.
 
-        성공적으로 접속시 새로운 명령 프롬프트가 나타납니다.
+    성공적으로 접속시 새로운 명령 프롬프트가 나타납니다.
 
-    - 외부 *SSH* 접속
+  - 외부 _SSH_ 접속
 
-        외부 접속은 호스트의 IP 주소를 바꾸고 실행하면 됩니다.
+    외부 접속은 호스트의 IP 주소를 바꾸고 실행하면 됩니다.
 
-        *명령어* :
+    _명령어_ :
 
-        ```powershell
-        ssh xiyo@192.168.0.10
-        ```
+    ```powershell
+    ssh xiyo@192.168.0.10
+    ```
 
-        로컬 접속과 시나리오는 같습니다.
+    로컬 접속과 시나리오는 같습니다.
 
 ## TROUBLESHOOTING
 
@@ -172,9 +172,9 @@
 
 #### 방화벽 차단
 
-네트워크 어딘가에서 방화벽이 *SSH* 접속을 차단하고 있습니다.
+네트워크 어딘가에서 방화벽이 _SSH_ 접속을 차단하고 있습니다.
 
-*출력* :
+_출력_ :
 
 ```text
 ssh: connect to host 192.168.1.10 port 22: Connection refused
@@ -188,7 +188,7 @@ ssh: connect to host 192.168.1.10 port 22: Connection refused
 
 *192.168.1.10*을 입력하다가 실수로 *0*을 하나더 입력한 상황입니다.
 
-*출력* :
+_출력_ :
 
 ```text
 ssh: connect to host 192.168.1.100 port 22: Network is unreachable
@@ -202,7 +202,7 @@ IP 주소를 확인하고 다시 시도합니다.
 
 *192.168.1.10*이 아닌 *192.168.**2**.10*으로 다른 네트워크 대역으로 접속하는 상황입니다.
 
-*출력* :
+_출력_ :
 
 ```text
 ssh: connect to host 192.168.2.10 port 22: Operation timed out

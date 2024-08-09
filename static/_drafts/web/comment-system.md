@@ -1,6 +1,7 @@
 ---
 title: 댓글 서비스 고르기
 ---
+
 # {{ page.title }}
 
 `jekyll`을 운영하면서 글을 쓰다보면 일방적인 글 보다는 소통 가능한,  
@@ -37,21 +38,20 @@ title: 댓글 서비스 고르기
 
 ### 일부 무료
 
-| 기능 | [Disqus](https://disqus.com/) | [Utterances](https://utteranc.es/) | [Staticman](https://staticman.net/) | [Giscus](https://giscus.app/) | [Commento](https://commento.io/) | [CommentBox](https://commentbox.io/) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| 저장소 | `Disqus` | `Github` | `Files` | `Github` | `Database` | `CommentBox` |
-| 완전 무료 | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ |
-| 익명 글쓰기 | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
-| 이메일 발송 | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
-| 소셜 로그인 | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+| 기능        | [Disqus](https://disqus.com/) | [Utterances](https://utteranc.es/) | [Staticman](https://staticman.net/) | [Giscus](https://giscus.app/) | [Commento](https://commento.io/) | [CommentBox](https://commentbox.io/) |
+| :---------- | :---------------------------: | :--------------------------------: | :---------------------------------: | :---------------------------: | :------------------------------: | ------------------------------------ |
+| 저장소      |           `Disqus`            |              `Github`              |               `Files`               |           `Github`            |            `Database`            | `CommentBox`                         |
+| 완전 무료   |              ❌               |                 ✅                 |                 ✅                  |              ✅               |                ❌                | ❌                                   |
+| 익명 글쓰기 |              ✅               |                 ❌                 |                 ✅                  |              ✅               |                ✅                | ✅                                   |
+| 이메일 발송 |              ✅               |                 ❌                 |                 ✅                  |              ✅               |                ✅                | ✅                                   |
+| 소셜 로그인 |              ✅               |                 ❌                 |                 ❌                  |              ✅               |                ✅                | ✅                                   |
 
-| 기능 | [Disqus](https://disqus.com/) | [Utterances](https://utteranc.es/) | [Staticman](https://staticman.net/) | [Giscus](https://giscus.app/) | [Commento](https://commento.io/) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| 오픈 소스 | ❌ | ✅ | ✅ | ✅ | ✅ |
-| 셀프 호스팅 | ❌ | ❌ | ✅ | ✅ | ✅ |
-| 데이터 저장 위치 | Disqus | GitHub | GitHub self | GitHub | self or Commento's servers |
-| 완전 무료 | ❌ | ✅ | ✅ | ✅ | ❌ (Self-hosted can be free) |
-| 익명 글쓰기 지원 | ✅ | ❌ | ❌ | ✅ | ✅ |
-| 이메일 발송 | ✅ | ❌ | ✅ | ✅ | ✅ |
-| 소셜 로그인 | ✅ | ❌ | ❌ | ✅ | (OAuth login supported) |
-
+| 기능             | [Disqus](https://disqus.com/) | [Utterances](https://utteranc.es/) | [Staticman](https://staticman.net/) | [Giscus](https://giscus.app/) | [Commento](https://commento.io/) |
+| :--------------- | :---------------------------: | :--------------------------------: | :---------------------------------: | :---------------------------: | :------------------------------: |
+| 오픈 소스        |              ❌               |                 ✅                 |                 ✅                  |              ✅               |                ✅                |
+| 셀프 호스팅      |              ❌               |                 ❌                 |                 ✅                  |              ✅               |                ✅                |
+| 데이터 저장 위치 |            Disqus             |               GitHub               |             GitHub self             |            GitHub             |    self or Commento's servers    |
+| 완전 무료        |              ❌               |                 ✅                 |                 ✅                  |              ✅               |   ❌ (Self-hosted can be free)   |
+| 익명 글쓰기 지원 |              ✅               |                 ❌                 |                 ❌                  |              ✅               |                ✅                |
+| 이메일 발송      |              ✅               |                 ❌                 |                 ✅                  |              ✅               |                ✅                |
+| 소셜 로그인      |              ✅               |                 ❌                 |                 ❌                  |              ✅               |     (OAuth login supported)      |

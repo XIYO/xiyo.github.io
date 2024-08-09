@@ -30,7 +30,7 @@ jobs:
       - name: Run Issue Bot
         uses: derjuulsn/todo-issue@main
         with:
-          excludePattern: '^(node_modules/)'
+          excludePattern: "^(node_modules/)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -50,7 +50,7 @@ jobs:
 
       - name: build
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
+          BASE_PATH: "/${{ github.event.repository.name }}"
         run: |
           pnpm run build
 
@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # this should match the `pages` option in your adapter-static options
-          path: 'build/'
+          path: "build/"
 
   deploy:
     needs: build_site

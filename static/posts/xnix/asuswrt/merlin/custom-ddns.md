@@ -29,7 +29,7 @@ WAN 카테고리의 DDNS 설정에서 Server 옵션을 Custom으로 변경합니
 
 ## ISSUE API TOKEN
 
-클라우드 플레어의 [토큰 발급](https://dash.cloudflare.com/profile/api-tokens)에서 
+클라우드 플레어의 [토큰 발급](https://dash.cloudflare.com/profile/api-tokens)에서
 
 - zone.zone read
 - zone.dns edit
@@ -50,7 +50,7 @@ WAN 카테고리의 DDNS 설정에서 Server 옵션을 Custom으로 변경합니
 
 ```shell
 # 도메인
-# 단일 프로바이더만 사용한다면 `:1`을 제거하고 사용합니다. 
+# 단일 프로바이더만 사용한다면 `:1`을 제거하고 사용합니다.
 # provider cloudflare.com
 provider cloudflare.com:1 {
     username = "xiyo.dev"

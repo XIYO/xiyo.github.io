@@ -48,25 +48,25 @@ Hardware:
 
 0. **SPHardwareDataType**: 하드웨어 관련 정보를 보여줍니다. 예를 들어, 프로세서, 메모리, 모델 식별자 등의 정보가 포함됩니다.
 
-0. **SPSoftwareDataType**: 운영 체제와 관련된 정보를 보여줍니다. 예를 들어, macOS 버전, 부트 볼륨, 커널 정보 등이 있습니다.
+1. **SPSoftwareDataType**: 운영 체제와 관련된 정보를 보여줍니다. 예를 들어, macOS 버전, 부트 볼륨, 커널 정보 등이 있습니다.
 
-0. **SPNetworkDataType**: 네트워크 설정과 관련된 정보를 보여줍니다. 예를 들어, IP 주소, 라우터 주소, 서브넷 마스크 등의 정보가 포함됩니다.
+2. **SPNetworkDataType**: 네트워크 설정과 관련된 정보를 보여줍니다. 예를 들어, IP 주소, 라우터 주소, 서브넷 마스크 등의 정보가 포함됩니다.
 
-0. **SPStorageDataType**: 디스크 및 스토리지 정보를 보여줍니다. 예를 들어, 디스크 용량, 사용 가능한 공간, 파일 시스템 등의 정보가 있습니다.
+3. **SPStorageDataType**: 디스크 및 스토리지 정보를 보여줍니다. 예를 들어, 디스크 용량, 사용 가능한 공간, 파일 시스템 등의 정보가 있습니다.
 
-0. **SPMemoryDataType**: RAM에 대한 상세 정보를 보여줍니다.
+4. **SPMemoryDataType**: RAM에 대한 상세 정보를 보여줍니다.
 
-0. **SPAudioDataType**: 오디오 설정과 디바이스 정보를 보여줍니다.
+5. **SPAudioDataType**: 오디오 설정과 디바이스 정보를 보여줍니다.
 
-0. **SPPowerDataType**: 배터리와 전력 관련 정보를 보여줍니다. 노트북 사용자에게 유용합니다.
+6. **SPPowerDataType**: 배터리와 전력 관련 정보를 보여줍니다. 노트북 사용자에게 유용합니다.
 
-0. **SPBluetoothDataType**: 블루투스 관련 정보를 보여줍니다.
+7. **SPBluetoothDataType**: 블루투스 관련 정보를 보여줍니다.
 
-0. **SPDisplaysDataType**: 연결된 디스플레이와 그래픽 카드에 대한 정보를 보여줍니다.
+8. **SPDisplaysDataType**: 연결된 디스플레이와 그래픽 카드에 대한 정보를 보여줍니다.
 
-0. **SPUSBDataType**: USB 포트와 연결된 디바이스 정보를 보여줍니다.
+9. **SPUSBDataType**: USB 포트와 연결된 디바이스 정보를 보여줍니다.
 
-0. **SPThunderboltDataType**: 썬더볼트 포트와 연결된 디바이스 정보를 보여줍니다.
+10. **SPThunderboltDataType**: 썬더볼트 포트와 연결된 디바이스 정보를 보여줍니다.
 
 #### 사용 방법
 

@@ -2,9 +2,9 @@ import adapter from '@sveltejs/adapter-static';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	compilerOptions: {
-		runes: true
-	},
+	// compilerOptions: {
+	// 	runes: true
+	// },
 	kit: {
 		adapter: adapter({
 			// default options are shown. On some platforms

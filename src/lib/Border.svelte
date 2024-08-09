@@ -1,6 +1,6 @@
 <script>
-    /** @type {{ viewTransitionName: string, children: import('svelte').Snippet, tag?: string, rest?: any }} */
-    const {viewTransitionName, content = false, negative = false, padding = false, children, id, tag = 'div', ...rest} = $props();
+    /** @type {{ children: import('svelte').Snippet, viewTransitionName: string, padding?: boolean, content?: boolean, negative?: boolean, id?: string, tag?: string, rest?: any }} */
+    const {viewTransitionName, padding = false, content = false, negative = false, children, id, tag = 'div', ...rest} = $props();
 </script>
 
 <div

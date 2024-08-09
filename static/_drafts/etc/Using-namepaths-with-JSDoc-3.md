@@ -33,16 +33,16 @@ JSDoc 을 사용해서 생성한 HTML 문서에서 참조한 대상에 링크가
 
 ```js
 let Person = function () {
-  this.say = function () {
-    return "instance 입니다.";
-  };
+	this.say = function () {
+		return 'instance 입니다.';
+	};
 
-  function say() {
-    return "inner 입니다.";
-  }
+	function say() {
+		return 'inner 입니다.';
+	}
 };
 Person.say = function () {
-  return "static 입니다.";
+	return 'static 입니다.';
 };
 
 var p = new Person();

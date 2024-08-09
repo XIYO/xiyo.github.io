@@ -12,7 +12,7 @@ tags:
     syntax highlight,
     syntax highlighter,
     code highlight,
-    code highlighter,
+    code highlighter
   ]
 categories: [posts, jekyll]
 ---

@@ -4,6 +4,7 @@
 
 	const { data } = $props();
 </script>
+
 {#if data.post}
 	<Post post={data.post} />
 {:else if data.category}

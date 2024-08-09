@@ -1,5 +1,6 @@
 <script>
     import Header from "$lib/Header.svelte";
+    import Border from "$lib/Border.svelte";
     const {post} = $props();
 </script>
 
@@ -7,14 +8,6 @@
     <h1>{post.title}</h1>
 </Header>
 
-<div
-        class="border-outer"
-        style="--view-transition-name: border-outer-content;"
->
-    <div
-            class="content padding"
-            style="--view-transition-name: border-inner-content;"
-    >
-        {@html post.convertedMarkdown}
-    </div>
-</div>
+<Border viewTransitionName="content" negative content padding>
+    {@html post.convertedMarkdown}
+</Border>

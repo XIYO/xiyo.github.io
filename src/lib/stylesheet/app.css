@@ -76,49 +76,6 @@ h1, h2, h3 {
     text-transform: uppercase;
 }
 
-.border-outer {
-    background-color: var(--color-default-black);
-    border-radius: var(--outer-border-radius);
-
-    margin-block: var(--default-margin-block);
-    padding: var(--default-border-width);
-    box-sizing: border-box;
-
-    &:has(:not(.content)) {
-        color: var(--color-default-white);
-    }
-
-    /* border-inner 를 명시하는 기능, 반드시 하나의 차일드만 존재 해야함 */
-    > :only-child {
-        border-radius: var(--inner-border-radius);
-        block-size: 100%; /* 이너는 부모 영역을 꽉 채운다 */
-
-        overflow: hidden;
-    }
-
-    .padding {
-        padding: var(--default-padding);
-    }
-
-    .content {
-        color: var(--color-default-black);
-        background-color: var(--color-default-white);
-
-        & > :first-child {
-            margin-block-start: 0;
-        }
-
-        & > :last-child {
-            margin-block-end: 0;
-        }
-    }
-
-    > *:not(:only-child) {
-        /* 디버깅 기능, 나와서는 안되는 여역이라 색상을 엉뚱하게 표시 */
-        background-color: red;
-    }
-}
-
 @media (prefers-reduced-motion: no-preference) {
     a {
         transition: text-decoration-color var(--default-animation-duration);

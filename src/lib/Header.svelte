@@ -1,14 +1,14 @@
 <script>
+    import Border from "$lib/Border.svelte";
+
     const { children } = $props();
 </script>
 
-<header
-        class="border-outer"
-        style="--view-transition-name: border-outer-header;"
+<Border
+        id="header"
+        viewTransitionName="header"
+        tag="header"
 >
-    <div
-            style="--view-transition-name: border-inner-header;"
-    >
         {@render children()}
         <label
                 style="--view-transition-name: header-label;"
@@ -18,18 +18,17 @@
                 <path d="M9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 256c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-128-128z"/>
             </svg>
         </label>
-    </div>
-</header>
+</Border>
 
 <style>
-    .border-outer {
-        & > :only-child {
+    :global(#border-outer-header) {
+        :global(& > #border-inner-header) {
             display: flex;
             justify-content: space-between;
 
             /* slot 으로 들어온 첫 번째 요소에 대한 핸들링 */
 
-            & > :global(:first-child) {
+            :global(& > :first-child) {
                 /* 내부에서 스크롤이 생길경우 보더에 가려지지 않도록 한다. */
                 margin-inline: var(--default-padding);
                 padding-block: var(--default-padding);
@@ -77,7 +76,7 @@
     }
 
     :global(#nav-toggle:checked) {
-        & ~ header label svg {
+        :global(& ~ #border-outer-header > #border-inner-header) > label > svg {
             rotate: 180deg;
         }
     }

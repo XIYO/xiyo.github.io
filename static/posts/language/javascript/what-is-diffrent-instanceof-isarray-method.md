@@ -27,21 +27,29 @@ const arr = [];
 const time = 10_000_000_000;
 
 // 1st
-console.time('Array.isArray');
-for (let i = 0; i < time; i++) {Array.isArray(arr);}
-console.timeEnd('Array.isArray');
+console.time("Array.isArray");
+for (let i = 0; i < time; i++) {
+  Array.isArray(arr);
+}
+console.timeEnd("Array.isArray");
 
 // 2nd
-console.time('instanceof');
-for (let i = 0; i < time; i++) {(arr instanceof Array);}
-console.timeEnd('instanceof');
+console.time("instanceof");
+for (let i = 0; i < time; i++) {
+  arr instanceof Array;
+}
+console.timeEnd("instanceof");
 
-Array.polyfillIsArray = function (obj) {return Object.prototype.toString.call(obj) === '[object Array]';}
+Array.polyfillIsArray = function (obj) {
+  return Object.prototype.toString.call(obj) === "[object Array]";
+};
 
 // 3rd
-console.time('Array.polyfillIsArray');
-for (let i = 0; i < time; i++) {Array.polyfillIsArray(arr);}
-console.timeEnd('Array.polyfillIsArray');
+console.time("Array.polyfillIsArray");
+for (let i = 0; i < time; i++) {
+  Array.polyfillIsArray(arr);
+}
+console.timeEnd("Array.polyfillIsArray");
 ```
 
 ## 결과

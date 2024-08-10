@@ -86,7 +86,7 @@ export default class Category {
 
 	static [symbol]() {
 		// const markdowns = import.meta.glob('/src/markdown/**/*.md', {
-		const markdowns = import.meta.glob('/static/**/*.md', {
+		const markdowns = import.meta.glob('/markdown/**/*.md', {
 			query: '?raw',
 			eager: true,
 			import: 'default'
@@ -94,7 +94,7 @@ export default class Category {
 		Object.entries(markdowns).forEach(([path, markdown]) => {
 			let absolutePath = path
 				// .replace(/^\/src\/markdown/, '') // 경로 제거
-				.replace(/^\/static/, '') // 스태틱 경로 제거
+				.replace(/^\/markdown/, '') // 스태틱 경로 제거
 				.replace(/\.md$/, ''); // 확장자 제거
 			this.#initCategories({ absolutePath, markdown });
 		});

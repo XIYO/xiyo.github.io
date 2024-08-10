@@ -5,7 +5,7 @@
 <div>
 	{#each path as p, i}
 		<a href="/{path.slice(0, i + 1).join('/')}" style:--padding-line-start={i}>
-			{i === path.length - 1 ? '📂' : '📁'}{p}
+			{i === path.length - 1 ? '📂' : '📁'}{p ? p : '/'}
 		</a>
 	{/each}
 </div>

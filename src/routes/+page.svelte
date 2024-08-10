@@ -1,13 +1,8 @@
 <script>
-	import Header from '$lib/Header.svelte';
 	import Border from '$lib/Border.svelte';
 	import { Canvas } from '@threlte/core';
 	import Scene from '$lib/threlte/Scene.svelte';
 </script>
-
-<Header>
-	<h1>Welcome</h1>
-</Header>
 
 <Border viewTransitionName="content" padding content negative>
 	<Canvas>

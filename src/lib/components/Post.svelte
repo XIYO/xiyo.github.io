@@ -22,13 +22,9 @@
 	});
 </script>
 
-<Header>
-	<h1>{post.title}</h1>
-</Header>
-
 <Border viewTransitionName="content" negative>
 	<div class="meta">
-		<DirectoryTrees path={post.absolutePath.split('/').slice(1, -1)} />
+		<DirectoryTrees path={post.absolutePath.split('/').slice(0, -1)} />
 		<div class="time">
 		<div>
 		최초 작성일: {firstCommitDateString}

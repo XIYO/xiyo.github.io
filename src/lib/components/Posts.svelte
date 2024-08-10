@@ -11,7 +11,7 @@
 
 <Border viewTransitionName="content" padding negative content>
 	<h2>sub category</h2>
-	{#if !category.hasChildCategories()}
+	{#if !category.childCategories}
 		<div>하위 카테고리가 없습니다.</div>
 	{:else}
 		<ul>
@@ -25,11 +25,11 @@
 
 	<h2>sub posts</h2>
 
-	{#if !category.allPosts.length}
+	{#if !category.posts.length}
 		<div>글이 없습니다.</div>
 	{:else}
 		<ul>
-			{#each category.allPosts as post}
+			{#each category.posts as post}
 				<li>
 					<article>
 						<a href={post.absolutePath}>{post.title}</a>

@@ -45,11 +45,6 @@ export default class Post {
 			.process(markdown);
 	}
 
-	async isReady() {
-		const html = await this.#promise;
-		this.#convertedMarkdown = html.value;
-	}
-
 	get absolutePath() {
 		return this.#absolutePath;
 	}
@@ -98,6 +93,11 @@ export default class Post {
 		return Post.#posts.get(absolutePath);
 	}
 
+	async isReady() {
+		const html = await this.#promise;
+		this.#convertedMarkdown = html.value;
+	}
+
 	extractTitle() {
 		return (tree) => {
 			let found = false;
@@ -114,4 +114,19 @@ export default class Post {
 			});
 		};
 	}
+
+
+	toSerialize() {
+		const simpleSerialize = this.toSimpleSerialize();
+		simpleSerialize.convertedMarkdown = this.#convertedMarkdown;
+
+		return simpleSerialize;
+	}
+
+	toSimpleSerialize() {
+		return {
+			absolutePath: this.#absolutePath, name: this.#name, title: this.#title
+		};
+	}
+
 }

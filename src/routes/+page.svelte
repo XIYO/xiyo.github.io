@@ -10,7 +10,7 @@
 </Header>
 
 <Border viewTransitionName="content" padding content negative>
-	<Canvas >
+	<Canvas>
 		<Scene />
 	</Canvas>
 

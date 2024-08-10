@@ -3,14 +3,18 @@
 import Category from '$lib/post/Category.js';
 import Post from '$lib/post/Post.js';
 
-export async function load({ url }) {
+/** @type {import('./$types').PageServerLoad} */
+export async function load({ url, locals }) {
 	const post = Post.getPosts(url.pathname);
 	const category = Category.getCategory(url.pathname);
 	if (post) {
 		await post.isReady();
 	}
 
+	const title = post?.title || category?.name || undefined;
+
 	return {
+		title,
 		post: post?.toSerialize(),
 		category: category?.toSerialize()
 	};

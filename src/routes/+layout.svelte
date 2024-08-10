@@ -4,6 +4,7 @@
 	import { onNavigate } from '$app/navigation';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/Header.svelte';
+	import { page } from '$app/stores';
 
 	const { children } = $props();
 
@@ -30,5 +31,8 @@
 </script>
 
 <Nav />
+<Header>
+	{$page.data.title}
+</Header>
 {@render children()}
 <Footer></Footer>

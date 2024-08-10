@@ -1,13 +1,8 @@
 <script>
-	import Header from '$lib/Header.svelte';
 	import Border from '$lib/Border.svelte';
 
 	const { category } = $props();
 </script>
-
-<Header>
-	<h1>{category.name}</h1>
-</Header>
 
 <Border viewTransitionName="content" negative>
 	{#if category.childCategories.length}

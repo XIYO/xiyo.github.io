@@ -7,6 +7,8 @@ import { visit, EXIT } from 'unist-util-visit';
 import Category from '$lib/post/Category.js';
 import remarkMermaid from 'remark-mermaidjs';
 import rehypeShiki from '@shikijs/rehype';
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkParseFrontmatter from 'remark-parse-frontmatter';
 
 export default class Post {
 	static #posts = new Map();
@@ -34,6 +36,8 @@ export default class Post {
 		// 마크다운을 HTML로 변환합니다. title 은 여기서 추출합니다.
 		this.#promise = unified()
 			.use(remarkParse)
+			.use(remarkFrontmatter)
+			.use(remarkParseFrontmatter)
 			.use(this.extractTitle.bind(this))
 			.use(remarkGfm)
 			.use(remarkMermaid)
@@ -93,9 +97,14 @@ export default class Post {
 		return Post.#posts.get(absolutePath);
 	}
 
+	#firstCommitDate;
+	#lastCommitDate;
 	async isReady() {
-		const html = await this.#promise;
-		this.#convertedMarkdown = html.value;
+		const vfile = await this.#promise;
+		this.#convertedMarkdown = vfile.value;
+
+		this.#firstCommitDate = new Date(vfile.data.frontmatter.firstCommitDate);
+		this.#lastCommitDate = new Date(vfile.data.frontmatter.lastCommitDate);
 	}
 
 	extractTitle() {
@@ -125,7 +134,8 @@ export default class Post {
 
 	toSimpleSerialize() {
 		return {
-			absolutePath: this.#absolutePath, name: this.#name, title: this.#title
+			absolutePath: this.#absolutePath, name: this.#name, title: this.#title,
+			firstCommitDate: this.#firstCommitDate, lastCommitDate: this.#lastCommitDate
 		};
 	}
 

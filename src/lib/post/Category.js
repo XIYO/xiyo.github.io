@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import Post from '$lib/post/Post.js';
 
 const symbol = Symbol('Category initialization');
@@ -85,41 +86,58 @@ export default class Category {
 	}
 
 	static [symbol]() {
-		// const markdowns = import.meta.glob('/src/markdown/**/*.md', {
-		const markdowns = import.meta.glob('/markdown/**/*.md', {
-			query: '?raw',
-			eager: true,
-			import: 'default'
+		const markdowns = import.meta.glob('/static/**/*.md', {
+			query: '?raw', eager: true, import: 'default'
 		});
+		this.#addGitHistory(markdowns);
+
 		Object.entries(markdowns).forEach(([path, markdown]) => {
 			let absolutePath = path
-				// .replace(/^\/src\/markdown/, '') // 경로 제거
-				.replace(/^\/markdown/, '') // 스태틱 경로 제거
+				.replace(/^\/static/, '') // 스태틱 경로 제거
 				.replace(/\.md$/, ''); // 확장자 제거
 			this.#initCategories({ absolutePath, markdown });
 		});
 	}
 
-	static #initCategories(
-		{ absolutePath, markdown },
-		{ category = this.rootCategory, index = 0 } = {}
-	) {
+	static #initCategories({ absolutePath, markdown }, { category = this.rootCategory, index = 0 } = {}) {
 		const absolutePaths = absolutePath.split('/');
 		const categoryAbsolutePath = absolutePath
 			.split('/')
 			.slice(0, index + 1)
 			.join('/');
 		if (absolutePaths.length > index + 1) {
-			if (!this.hasCategory(categoryAbsolutePath))
-				category.addChildCategory(new Category(categoryAbsolutePath));
+			if (!this.hasCategory(categoryAbsolutePath)) category.addChildCategory(new Category(categoryAbsolutePath));
 			const childCategory = this.getCategory(categoryAbsolutePath);
-			this.#initCategories(
-				{ absolutePath, markdown },
-				{ category: childCategory, index: index + 1 }
-			);
+			this.#initCategories({ absolutePath, markdown }, { category: childCategory, index: index + 1 });
 		} else {
 			const post = new Post({ absolutePath, markdown });
 			category.addPost(post);
+		}
+	}
+
+	static #addGitHistory(markdowns) {
+		for (const path in markdowns) {
+			const originalContent = markdowns[path];
+
+			const obj = execSync(`git log --follow --pretty=format:"%ad, %s" --date=format:"%Y-%m-%dT%H:%M%z" ".${path}"`);
+			const output = obj.toString().trim();
+
+			const historyEntries = output.split('\n').map(line => {
+				const [date, subject] = line.split(', ');
+				return { date, subject };
+			});
+
+			const firstCommitDate = historyEntries[historyEntries.length - 1].date; // 가장 오래된 커밋
+			const lastCommitDate = historyEntries[0].date; // 가장 최근 커밋
+			const history = historyEntries.map(entry => `  - ${entry.date}, ${entry.subject}`).join('\n');
+
+			const frontmatter = `---
+firstCommitDate: ${firstCommitDate}
+lastCommitDate: ${lastCommitDate}
+---
+`;
+
+			markdowns[path] = frontmatter + originalContent;
 		}
 	}
 

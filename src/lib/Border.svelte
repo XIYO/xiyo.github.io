@@ -51,6 +51,10 @@
 			overflow: hidden;
 		}
 
+			:global(.highlight-background) {
+				background-color: var(--color-primary);
+			}
+
 		:global(.padding) {
 			padding: var(--default-padding);
 		}

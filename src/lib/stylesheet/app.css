@@ -78,6 +78,10 @@ h3 {
 	text-transform: uppercase;
 }
 
+:not(pre) > code {
+	color: var(--color-primary);
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	a {
 		transition: text-decoration-color var(--default-animation-duration);

@@ -9,19 +9,19 @@
 	<h1>{category.name}</h1>
 </Header>
 
-<Border viewTransitionName="content" padding negative content>
+<Border viewTransitionName="content" negative>
 	{#if category.childCategories.length}
-		<h2>sub category</h2>
+		<h2 class="padding highlight-background">sub category</h2>
 		<ul>
 			{#each category.childCategories as childCategory}
 				<li>
-					<a href={childCategory.absolutePath}>{childCategory.name}</a>
+					<a href={childCategory.absolutePath}>{childCategory.name} ({childCategory.posts.length})</a>
 				</li>
 			{/each}
 		</ul>
 	{/if}
 
-	<h2>sub posts</h2>
+	<h2 class="padding highlight-background">sub posts</h2>
 	<ul>
 		{#each category.posts as post}
 			<li>
@@ -32,3 +32,20 @@
 		{/each}
 	</ul>
 </Border>
+
+<style>
+		h2 {
+				margin-block: 0;
+		}
+
+    ul {
+        /* reset */
+        list-style: none;
+
+        li {
+						&:not(:last-child) {
+								margin-block-end: 0.5rem;
+						}
+        }
+    }
+</style>

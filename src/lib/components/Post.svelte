@@ -2,8 +2,8 @@
 	import Header from '$lib/Header.svelte';
 	import Border from '$lib/Border.svelte';
 	import { onMount } from 'svelte';
+	import DirectoryTrees from '$lib/components/DirectoryTrees.svelte';
 	const { post } = $props();
-
 
 	let firstCommitDateString = $state(post.firstCommitDate);
 	let lastCommitDateString = $state(post.lastCommitDate);
@@ -14,8 +14,7 @@
 		const firstCommitDate = new Date(post.firstCommitDate);
 		const lastCommitDate = new Date(post.lastCommitDate);
 
-		// 날짜 형식 지정 (필요에 따라 수정)
-		const dateFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+		const dateFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
 		const dateTimeFormat = new Intl.DateTimeFormat(locale, dateFormatOptions);
 
 		firstCommitDateString = dateTimeFormat.format(firstCommitDate);
@@ -29,11 +28,14 @@
 
 <Border viewTransitionName="content" negative>
 	<div class="meta">
+		<DirectoryTrees path={post.absolutePath.split('/').slice(1, -1)} />
+		<div class="time">
 		<div>
 		최초 작성일: {firstCommitDateString}
 		</div>
 		<div>
 		마지막 수정일: {lastCommitDateString}
+		</div>
 		</div>
 	</div>
 	<div class="content padding">
@@ -45,11 +47,18 @@
 	.meta {
 			background-color: var(--color-primary);
 			display: flex;
-			flex-direction: column;
+			/*flex-direction: column;*/
 			align-items: end;
 			gap: 0.5rem;
 
+			justify-content: space-between;
+
 			padding-block: .5rem;
 			padding-inline: 1rem;
+
+			.time {
+					text-align: end;
+          font-variant-numeric: tabular-nums;
+			}
 	}
 </style>

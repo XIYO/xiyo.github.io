@@ -142,6 +142,15 @@ export default class Category {
 	addPost(post) {
 		this.#posts.set(post.absolutePath, post);
 	}
+
+	toSerialize() {
+		return {
+			name: this.name,
+			absolutePath: this.#absolutePath,
+			childCategories: this.childCategories.map((category) => category.toSerialize()),
+			posts: this.allPosts.map((post) => post.toSimpleSerialize())
+		};
+	}
 }
 
 Category[symbol]();

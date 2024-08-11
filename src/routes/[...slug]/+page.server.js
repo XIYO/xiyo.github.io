@@ -4,7 +4,7 @@ import Category from '$lib/post/Category.js';
 import Post from '$lib/post/Post.js';
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ url, locals }) {
+export async function load({ url }) {
 	const post = Post.getPosts(url.pathname);
 	const category = Category.getCategory(url.pathname);
 	if (post) {

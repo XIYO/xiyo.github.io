@@ -30,9 +30,15 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{$page.data.title}</title>
+</svelte:head>
+
 <Nav />
-<Header>
-	{$page.data.title}
-</Header>
-{@render children()}
+<main>
+	<Header>
+		{$page.data.title}
+	</Header>
+	{@render children()}
+</main>
 <Footer></Footer>

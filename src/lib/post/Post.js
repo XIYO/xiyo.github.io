@@ -52,6 +52,7 @@ export default class Post {
 			.use(rehypeShiki, {
 				theme: 'vitesse-dark'
 			})
+			.use(removeStaticPath)
 			.use(rehypeStringify)
 			.process(markdown);
 	}

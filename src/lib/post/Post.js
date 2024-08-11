@@ -5,7 +5,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import { visit, EXIT } from 'unist-util-visit';
 import Category from '$lib/post/Category.js';
-import rehypeMermaid from 'rehype-mermaid';
+import remarkMermaid from 'remark-mermaidjs';
 import rehypeShiki from '@shikijs/rehype';
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkParseFrontmatter from 'remark-parse-frontmatter';
@@ -40,8 +40,12 @@ export default class Post {
 			.use(remarkParseFrontmatter)
 			.use(this.extractTitle.bind(this))
 			.use(remarkGfm)
+			.use(remarkMermaid, {
+				mermaidConfig: {
+					theme: 'dark'
+				}
+			})
 			.use(remarkRehype)
-			.use(rehypeMermaid)
 			.use(rehypeShiki, {
 				theme: 'vitesse-dark'
 			})

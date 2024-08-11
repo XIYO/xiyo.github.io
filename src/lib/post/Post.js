@@ -9,6 +9,8 @@ import remarkMermaid from 'remark-mermaidjs';
 import rehypeShiki from '@shikijs/rehype';
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkParseFrontmatter from 'remark-parse-frontmatter';
+import callouts from "remark-callouts";
+import { removeStaticPath } from '$lib/unifiedPlugin/removeStaticPath.js';
 
 export default class Post {
 	static #posts = new Map();
@@ -40,6 +42,7 @@ export default class Post {
 			.use(remarkParseFrontmatter)
 			.use(this.extractTitle.bind(this))
 			.use(remarkGfm)
+			.use(callouts)
 			.use(remarkMermaid, {
 				mermaidConfig: {
 					theme: 'dark'

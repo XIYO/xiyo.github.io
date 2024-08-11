@@ -52,6 +52,7 @@
 		"@threlte/theatre": "3.0.0-next.4",
 		"@threlte/xr": "1.0.0-next.6",
 		"gray-matter": "^4.0.3",
+		"remark-callouts": "^2.0.0",
 		"remark-frontmatter": "^5.0.0",
 		"remark-gfm": "^4.0.0",
 		"remark-mermaidjs": "^6.0.0",

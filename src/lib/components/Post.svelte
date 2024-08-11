@@ -1,8 +1,6 @@
 <script>
-	import Header from '$lib/Header.svelte';
 	import Border from '$lib/Border.svelte';
 	import { onMount } from 'svelte';
-	import DirectoryTrees from '$lib/components/DirectoryTrees.svelte';
 	const { post } = $props();
 
 	let firstCommitDateString = $state(post.firstCommitDate);
@@ -24,7 +22,6 @@
 
 <Border viewTransitionName="content" negative>
 	<div class="meta">
-		<DirectoryTrees path={post.absolutePath.split('/').slice(0, -1)} />
 		<div class="time">
 		<div>
 		최초 작성일: {firstCommitDateString}

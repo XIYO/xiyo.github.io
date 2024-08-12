@@ -77,8 +77,8 @@
         }
     }
 
-    :global(#nav-toggle:checked) {
-        :global(& ~ #border-outer-header > #border-inner-header) > label > svg {
+    :global(body:has(input#nav-toggle:checked)) {
+        svg {
             rotate: 180deg;
         }
     }

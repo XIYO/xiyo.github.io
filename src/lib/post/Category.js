@@ -87,9 +87,8 @@ export default class Category {
 
 	static [symbol]() {
 		const markdowns = import.meta.glob('/static/**/*.md', {
-			query: '?raw', eager: true, import: 'default'
+			eager: true, import: 'default'
 		});
-		this.#addGitHistory(markdowns);
 
 		Object.entries(markdowns).forEach(([path, markdown]) => {
 			let absolutePath = path
@@ -112,32 +111,6 @@ export default class Category {
 		} else {
 			const post = new Post({ absolutePath, markdown });
 			category.addPost(post);
-		}
-	}
-
-	static #addGitHistory(markdowns) {
-		for (const path in markdowns) {
-			const originalContent = markdowns[path];
-
-			const obj = execSync(`git log --follow --pretty=format:"%ad, %s" --date=format:"%Y-%m-%dT%H:%M%z" ".${path}"`);
-			const output = obj.toString().trim();
-
-			const historyEntries = output.split('\n').map(line => {
-				const [date, subject] = line.split(', ');
-				return { date, subject };
-			});
-
-			const firstCommitDate = historyEntries[historyEntries.length - 1].date; // 가장 오래된 커밋
-			const lastCommitDate = historyEntries[0].date; // 가장 최근 커밋
-			const history = historyEntries.map(entry => `  - ${entry.date}, ${entry.subject}`).join('\n');
-
-			const frontmatter = `---
-firstCommitDate: ${firstCommitDate}
-lastCommitDate: ${lastCommitDate}
----
-`;
-
-			markdowns[path] = frontmatter + originalContent;
 		}
 	}
 

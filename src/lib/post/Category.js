@@ -87,7 +87,8 @@ export default class Category {
 
 	static [symbol]() {
 		const markdowns = import.meta.glob('/static/**/*.md', {
-			eager: true, import: 'default'
+			eager: true,
+			import: 'default'
 		});
 
 		Object.entries(markdowns).forEach(([path, markdown]) => {
@@ -98,16 +99,23 @@ export default class Category {
 		});
 	}
 
-	static #initCategories({ absolutePath, markdown }, { category = this.rootCategory, index = 0 } = {}) {
+	static #initCategories(
+		{ absolutePath, markdown },
+		{ category = this.rootCategory, index = 0 } = {}
+	) {
 		const absolutePaths = absolutePath.split('/');
 		const categoryAbsolutePath = absolutePath
 			.split('/')
 			.slice(0, index + 1)
 			.join('/');
 		if (absolutePaths.length > index + 1) {
-			if (!this.hasCategory(categoryAbsolutePath)) category.addChildCategory(new Category(categoryAbsolutePath));
+			if (!this.hasCategory(categoryAbsolutePath))
+				category.addChildCategory(new Category(categoryAbsolutePath));
 			const childCategory = this.getCategory(categoryAbsolutePath);
-			this.#initCategories({ absolutePath, markdown }, { category: childCategory, index: index + 1 });
+			this.#initCategories(
+				{ absolutePath, markdown },
+				{ category: childCategory, index: index + 1 }
+			);
 		} else {
 			const post = new Post({ absolutePath, markdown });
 			category.addPost(post);

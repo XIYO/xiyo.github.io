@@ -22,19 +22,20 @@
 **POJO 에러 발생 코드:**
 
 ```js
-import Category from '$lib/post/Category.js';  
-import Post from '$lib/post/Post.js';  
-  
-/** @type {import('./$types').PageServerLoad} */  
-export async function load({ url }) {  
-  return {  
-   post: Post.getPosts(url.pathname), // POJO error, 클래스 인스턴스 리턴
-   category: Category.getCategory(url.pathname)  // POJO error, 클래스 인스턴스 리턴
-  };
+import Category from '$lib/post/Category.js';
+import Post from '$lib/post/Post.js';
+
+/** @type {import('./$types').PageServerLoad} */
+export async function load({ url }) {
+	return {
+		post: Post.getPosts(url.pathname), // POJO error, 클래스 인스턴스 리턴
+		category: Category.getCategory(url.pathname) // POJO error, 클래스 인스턴스 리턴
+	};
 }
 ```
 
 **에러:**
+
 ```sh
 ... Cannot stringify arbitrary non-POJOs ...
 ```
@@ -42,13 +43,14 @@ export async function load({ url }) {
 POJO를 리턴하지 않아 렌더링 오류가 발생하였습니다. 그래서 각 클래스의 메서드에 직렬화 함수를 추가하여 POJO 객체를 리턴하도록 변경하였습니다.
 
 **POJO를 리턴하는 코드:**
+
 ```diff
-import Category from '$lib/post/Category.js';  
-import Post from '$lib/post/Post.js';  
-  
-/** @type {import('./$types').PageServerLoad} */  
-export async function load({ url }) {  
-  return {  
+import Category from '$lib/post/Category.js';
+import Post from '$lib/post/Post.js';
+
+/** @type {import('./$types').PageServerLoad} */
+export async function load({ url }) {
+  return {
 --   post: Post.getPosts(url.pathname), // POJO error, 클래스 인스턴스 리턴
 ++   post: Post.getPosts(url.pathname).toSerialize(), // POJO return
 --   category: Category.getCategory(url.pathname)  // POJO error, 클래스 인스턴스 리턴
@@ -56,7 +58,6 @@ export async function load({ url }) {
   };
 }
 ```
-
 
 ## 다른 해결
 

@@ -10,7 +10,9 @@
 		<ul>
 			{#each category.childCategories as childCategory}
 				<li>
-					<a href={childCategory.absolutePath}>{childCategory.name} ({childCategory.posts.length})</a>
+					<a href={childCategory.absolutePath}
+						>{childCategory.name} ({childCategory.posts.length})</a
+					>
 				</li>
 			{/each}
 		</ul>
@@ -29,18 +31,18 @@
 </Border>
 
 <style>
-		h2 {
-				margin-block: 0;
+	h2 {
+		margin-block: 0;
+	}
+
+	ul {
+		/* reset */
+		list-style: none;
+
+		li {
+			&:not(:last-child) {
+				margin-block-end: 0.5rem;
+			}
 		}
-
-    ul {
-        /* reset */
-        list-style: none;
-
-        li {
-						&:not(:last-child) {
-								margin-block-end: 0.5rem;
-						}
-        }
-    }
+	}
 </style>

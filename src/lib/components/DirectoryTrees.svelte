@@ -11,13 +11,13 @@
 </div>
 
 <style>
-    a {
-        display: block;
-				text-decoration: none;
-				padding-inline-start: calc(var(--padding-line-start) * 1rem);
+	a {
+		display: block;
+		text-decoration: none;
+		padding-inline-start: calc(var(--padding-line-start) * 1rem);
 
-				&:not(:last-child) {
-						margin-block-end: 0.5rem;
-				}
-    }
+		&:not(:last-child) {
+			margin-block-end: 0.5rem;
+		}
+	}
 </style>

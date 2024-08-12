@@ -1,12 +1,6 @@
 <script>
 	import { T } from '@threlte/core';
-	import {
-		Environment,
-		Float,
-		interactivity,
-		Stars,
-		useCursor
-	} from '@threlte/extras';
+	import { Environment, Float, interactivity, Stars, useCursor } from '@threlte/extras';
 	import gem from '$lib/threlte/assets/envmap/gem.png';
 	import { DoubleSide } from 'three';
 	import { tweened } from 'svelte/motion';

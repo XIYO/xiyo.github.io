@@ -1,7 +1,9 @@
 <script>
-	/** @type {{ children: import('svelte').Snippet, viewTransitionName: string, padding?: boolean, content?: boolean, negative?: boolean, id?: string, tag?: string, rest?: any }} */
+	/** @type {{ children: import('svelte').Snippet, viewTransitionName: string, beforeViewTransitionClass?: string, afterViewTransitionClass?: string, padding?: boolean, content?: boolean, negative?: boolean, id?: string, tag?: string, rest?: any }} */
 	const {
 		viewTransitionName,
+		beforeViewTransitionClass = 'before-view-transition',
+		afterViewTransitionClass = 'after-view-transition',
 		padding = false,
 		content = false,
 		negative = false,
@@ -13,9 +15,10 @@
 </script>
 
 <div
-	id="border-outer-{id}"
+	id={id ? `border-outer-${id}` : undefined}
 	class="border-outer"
-	style={viewTransitionName ? `--view-transition-name: border-outer-${viewTransitionName};` : ''}
+	style:view-transition-name={`border-outer-${viewTransitionName}`}
+style:view-transition-class={beforeViewTransitionClass}
 	{...rest}
 >
 	<svelte:element
@@ -24,7 +27,8 @@
 		class:padding
 		class:content
 		class:negative
-		style={viewTransitionName ? `--view-transition-name: border-inner-${viewTransitionName};` : ''}
+		style:view-transition-name={`border-inner-${viewTransitionName}`}
+		style:view-transition-class={afterViewTransitionClass}
 	>
 		{@render children()}
 	</svelte:element>

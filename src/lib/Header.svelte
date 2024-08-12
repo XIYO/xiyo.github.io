@@ -9,7 +9,6 @@
 		{@render children()}
 	</svelte:element>
 	<label
-		style="--view-transition-name: header-label;"
 		aria-label="Close navigation"
 		for="nav-toggle"
 	>
@@ -45,6 +44,9 @@
 			label {
 				background-color: var(--color-default-white);
 				color: var(--color-default-black);
+
+				view-transition-name: header-label;
+				view-transition-class: after-view-transition;
 
 				/*
 												뷰 트랜지션시에 내비게이션 버튼은 사라지지 않도록 하고싶은데,

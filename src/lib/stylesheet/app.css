@@ -96,21 +96,48 @@ h3 {
 	}
 }
 
+/* MPA 에서 효과가 발생하는데, no JS에도 브라우저만 지원하면 동작하지만, 아직 까지 버그있음
+동작이 끊어지면서 재생됨
+*/
+@view-transition {
+	navigation: auto;
+}
+
 /* 내용만 교체되는 컴포넌트를 위한 트랜지션*/
-[style*='--view-transition-name'] {
-	view-transition-name: var(--view-transition-name);
+/*[style*='--view-transition-name'] {*/
+/*	view-transition-name: var(--view-transition-name);*/
+/*}*/
+
+/* border-outer */
+:root::view-transition-group(.before-view-transition) {
+	background-color: var(--color-default-black);
+	border-radius: var(--outer-border-radius);
+	animation-duration: var(--default-animation-duration);
+	animation-delay: var(--default-anmiation-delay);
+}
+
+:root::view-transition-image-pair(.before-view-transition) {
+	display: none;
+}
+
+/* border-inner */
+::view-transition-group(.after-view-transition) {
+	animation-duration: var(--default-animation-duration);
+	animation-delay: var(--default-animation-duration);
 }
 
 /* 헤더 */
 /* 헤더-아우터 */
-::view-transition-group(border-outer-header) {
-	background-color: var(--color-default-black);
-	border-radius: var(--outer-border-radius);
-}
+/*::view-transition-group(border-outer-header) {*/
+/*	background-color: var(--color-default-black);*/
+/*	border-radius: var(--outer-border-radius);*/
+/*	animation-duration: var(--default-animation-duration);*/
+/*	animation-delay: var(--default-anmiation-delay);*/
+/*}*/
 
-::view-transition-image-pair(border-outer-header) {
-	display: none;
-}
+/*::view-transition-image-pair(border-outer-header) {*/
+/*	display: none;*/
+/*}*/
 
 /* 헤더-이너 */
 ::view-transition-old(border-inner-header) {
@@ -126,23 +153,23 @@ h3 {
 
 /* 콘텐츠 */
 /* 콘텐츠-아우터 */
-::view-transition-group(border-outer-content) {
-	background-color: var(--color-default-black);
-	border-radius: var(--outer-border-radius);
-	animation-duration: var(--default-animation-duration);
-	animation-delay: var(--default-anmiation-delay);
-}
+/*::view-transition-group(border-outer-content) {*/
+/*	background-color: var(--color-default-black);*/
+/*	border-radius: var(--outer-border-radius);*/
+/*	animation-duration: var(--default-animation-duration);*/
+/*	animation-delay: var(--default-anmiation-delay);*/
+/*}*/
 
-::view-transition-image-pair(border-outer-content) {
-	display: none;
-}
+/*::view-transition-image-pair(border-outer-content) {*/
+/*	display: none;*/
+/*}*/
 
 /* 콘텐츠-이너, 콘텐츠는 배경 색이 달라서 그룹으로 배경색도 지정*/
 ::view-transition-group(border-inner-content) {
 	background-color: var(--color-default-white);
 	border-radius: var(--inner-border-radius);
-	animation-duration: var(--default-animation-duration);
-	animation-delay: var(--default-animation-duration);
+	/*animation-duration: var(--default-animation-duration);*/
+	/*animation-delay: var(--default-animation-duration);*/
 }
 
 ::view-transition-old(border-inner-content) {
@@ -157,10 +184,10 @@ h3 {
 }
 
 /* 푸터, 움직임만 추적 */
-::view-transition-group(footer) {
-	animation-duration: var(--default-animation-duration);
-	animation-delay: var(--default-animation-duration);
-}
+/*::view-transition-group(footer) {*/
+/*	animation-duration: var(--default-animation-duration);*/
+/*	animation-delay: var(--default-animation-duration);*/
+/*}*/
 
 @keyframes fade-out {
 	to {

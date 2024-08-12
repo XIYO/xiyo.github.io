@@ -20,7 +20,7 @@ export default function() {
 				// Git 로그 정보를 추출하여 프론트매터에 추가
 				const gitHistory = getGitHistory(id);
 
-				let title;
+				let frontmatter = {};
 				// 마크다운을 HTML로 변환합니다. title 은 여기서 추출합니다.
 				let processor = unified()
 					.use(remarkParse)
@@ -39,10 +39,10 @@ export default function() {
 					})
 					.use(() => {
 						return (tree) => {
-							visit(tree, 'element', (node) => {
+							visit(tree, 'element', (node, index, parent) => {
 								if (node.tagName === 'h1' && node.children && node.children.length > 0) {
-									// 첫 번째 h1 태그의 내용을 추출하여 title로 사용
-									title = node.children[0].value || '';
+									frontmatter.title = node.children[0].value || '';
+									parent.children.splice(index, 1, ...node.children);
 								}
 
 								// 이미지 태그의 src 속성에서 /static을 제거
@@ -57,13 +57,13 @@ export default function() {
 				const result = await processor.process(code);
 
 				// 기존 프론트매터에 Git 정보를 추가
-				const frontmatter = {
-					...result.data.frontmatter, firstCommitDate: gitHistory[gitHistory.length - 1].date, // 가장 오래된 커밋
+				frontmatter = { ...frontmatter,
+					...result.data.frontmatter,
+					firstCommitDate: gitHistory[gitHistory.length - 1].date, // 가장 오래된 커밋
 					lastCommitDate: gitHistory[0].date // 가장 최근 커밋
 				};
 
 				const markdown = {
-					title,
 					frontmatter,
 					content: result.value,
 				};

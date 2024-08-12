@@ -42,21 +42,21 @@
 </Border>
 
 <style>
-    .meta {
-        background-color: var(--color-primary);
-        display: flex;
-        /*flex-direction: column;*/
-        align-items: end;
-        gap: 0.5rem;
+	.meta {
+		background-color: var(--color-primary);
+		display: flex;
+		/*flex-direction: column;*/
+		align-items: end;
+		gap: 0.5rem;
 
-        justify-content: space-between;
+		justify-content: space-between;
 
-        padding-block: .5rem;
-        padding-inline: 1rem;
+		padding-block: 0.5rem;
+		padding-inline: 1rem;
 
-        .time {
-            text-align: end;
-            font-variant-numeric: tabular-nums;
-        }
-    }
+		.time {
+			text-align: end;
+			font-variant-numeric: tabular-nums;
+		}
+	}
 </style>

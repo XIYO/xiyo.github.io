@@ -11,12 +11,14 @@ import callouts from 'remark-callouts';
 import { execSync } from 'child_process';
 import { visit } from 'unist-util-visit';
 
-export default function() {
+export default function () {
 	return {
-		name: 'vite-plugin-xiyo', enforce: 'pre',
+		name: 'vite-plugin-xiyo',
+		enforce: 'pre',
 
 		async transform(code, id) {
-			if (id.endsWith('.md')) { // .md 파일인 경우에만 처리
+			if (id.endsWith('.md')) {
+				// .md 파일인 경우에만 처리
 				// Git 로그 정보를 추출하여 프론트매터에 추가
 				const gitHistory = getGitHistory(id);
 
@@ -57,7 +59,8 @@ export default function() {
 				const result = await processor.process(code);
 
 				// 기존 프론트매터에 Git 정보를 추가
-				frontmatter = { ...frontmatter,
+				frontmatter = {
+					...frontmatter,
 					...result.data.frontmatter,
 					firstCommitDate: gitHistory[gitHistory.length - 1].date, // 가장 오래된 커밋
 					lastCommitDate: gitHistory[0].date // 가장 최근 커밋
@@ -65,11 +68,12 @@ export default function() {
 
 				const markdown = {
 					frontmatter,
-					content: result.value,
+					content: result.value
 				};
 
 				return {
-					code: `export default ${JSON.stringify(markdown)};`, map: null
+					code: `export default ${JSON.stringify(markdown)};`,
+					map: null
 				};
 			}
 		}
@@ -79,9 +83,13 @@ export default function() {
 // Git 로그 정보를 추출하는 함수
 function getGitHistory(filePath) {
 	try {
-		const output = execSync(`git log --follow --pretty=format:"%ad, %s" --date=format:"%Y-%m-%dT%H:%M%z" "${filePath}"`).toString().trim();
+		const output = execSync(
+			`git log --follow --pretty=format:"%ad, %s" --date=format:"%Y-%m-%dT%H:%M%z" "${filePath}"`
+		)
+			.toString()
+			.trim();
 
-		return output.split('\n').map(line => {
+		return output.split('\n').map((line) => {
 			const [date, subject] = line.split(', ');
 			return { date, subject };
 		});

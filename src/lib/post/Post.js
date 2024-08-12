@@ -76,9 +76,9 @@ export default class Post {
 
 	toSimpleSerialize() {
 		return {
-			absolutePath: this.#absolutePath, name: this.#name,
-			frontmatter: this.#frontmatter,
+			absolutePath: this.#absolutePath,
+			name: this.#name,
+			frontmatter: this.#frontmatter
 		};
 	}
-
 }

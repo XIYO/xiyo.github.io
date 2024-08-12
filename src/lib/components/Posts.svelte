@@ -21,7 +21,7 @@
 		{#each category.posts as post}
 			<li>
 				<article>
-					<a href={post.absolutePath}>{post.title}</a>
+					<a href={post.absolutePath}>{post.frontmatter.title}</a>
 				</article>
 			</li>
 		{/each}

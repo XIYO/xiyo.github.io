@@ -5,15 +5,13 @@ import Post from '$lib/post/Post.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
-	const post = Post.getPosts(url.pathname);
-	const category = Category.getCategory(url.pathname);
-
-	const title = post?.title || category?.name || undefined;
+	const post = Post.getPosts(url.pathname)?.toSerialize();
+	const category = Category.getCategory(url.pathname)?.toSerialize();
 
 	return {
-		title,
-		post: post?.toSerialize(),
-		category: category?.toSerialize()
+		title: post?.frontmatter.title || category?.name || undefined,
+		post: post,
+		category: category
 	};
 
 	// return error(404, `Could not find ${url.pathname}`);

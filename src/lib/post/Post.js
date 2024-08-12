@@ -23,7 +23,6 @@ export default class Post {
 
 		this.#absolutePath = absolutePath;
 		this.#name = absolutePath.split('/').at(-1);
-		this.#title = markdown.title;
 		this.#convertedMarkdown = markdown.content;
 		this.#frontmatter = markdown.frontmatter;
 	}
@@ -77,8 +76,8 @@ export default class Post {
 
 	toSimpleSerialize() {
 		return {
-			absolutePath: this.#absolutePath, name: this.#name, title: this.#title,
-			firstCommitDate: this.#frontmatter.firstCommitDate, lastCommitDate: this.#frontmatter.lastCommitDate
+			absolutePath: this.#absolutePath, name: this.#name,
+			frontmatter: this.#frontmatter,
 		};
 	}
 

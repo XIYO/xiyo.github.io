@@ -14,6 +14,12 @@ MPA 에서 효과가 발생하는데, no JS에도 브라우저만 지원하면 �
 	navigation: auto;
 }
 
+::view-transition-group(border-outer-nav),
+::view-transition-group(border-inner-nav),
+::view-transition-group(border-content-nav) {
+	z-index: 1;
+}
+
 /* border-outer, border-inner, .border-content */
 /*::view-transition-group(.border-outer),*/
 /*::view-transition-group(.border-inner),*/

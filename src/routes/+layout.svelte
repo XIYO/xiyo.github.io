@@ -36,9 +36,7 @@
 
 <Nav />
 <main>
-	<Header>
-		{$page.data.title}
-	</Header>
+	<Header title={$page.data.title}/>
 	{@render children()}
 </main>
 <Footer></Footer>

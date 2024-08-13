@@ -1,16 +1,27 @@
 <script>
-	/** @type {{ children: import('svelte').Snippet, viewTransitionName: string, beforeViewTransitionClass?: string, afterViewTransitionClass?: string, padding?: boolean, content?: boolean, negative?: boolean, id?: string, tag?: string, rest?: any }} */
+	/** @type {{
+	 * children: import('svelte').Snippet,
+	 * viewTransitionName: string,
+	 * borderOuterViewTransitionClass?: string,
+	 * borderInnerViewTransitionClass?: string,
+	 * borderContentViewTransitionClass?: string,
+	 * padding?: boolean,
+	 * content?: boolean,
+	 * negative?: boolean,
+	 * id?: string,
+	 * tag?: string,
+	 * rest?: any
+	 * }}
+	 **/
 	const {
 		viewTransitionName,
-		beforeViewTransitionClass = 'before-view-transition',
-		afterViewTransitionClass = 'after-view-transition',
-		padding = false,
-		content = false,
+		borderOuterViewTransitionClass = 'border-outer',
+		borderInnerViewTransitionClass = 'border-inner',
+		borderContentViewTransitionClass = 'border-content',
 		negative = false,
-		children,
 		id,
 		tag = 'div',
-		...rest
+		children
 	} = $props();
 </script>
 
@@ -18,69 +29,57 @@
 	id={id ? `border-outer-${id}` : undefined}
 	class="border-outer"
 	style:view-transition-name={`border-outer-${viewTransitionName}`}
-style:view-transition-class={beforeViewTransitionClass}
-	{...rest}
+	style:view-transition-class={borderOuterViewTransitionClass}
 >
-	<svelte:element
-		this={tag}
-		id="border-inner-{id}"
-		class:padding
-		class:content
+	<div
+		id={id ? `border-inner-${id}` : undefined}
+		class="border-inner"
 		class:negative
 		style:view-transition-name={`border-inner-${viewTransitionName}`}
-		style:view-transition-class={afterViewTransitionClass}
+		style:view-transition-class={borderInnerViewTransitionClass}
 	>
-		{@render children()}
-	</svelte:element>
+		<svelte:element
+			this={tag}
+			id={id ? `border-content-${id}` : undefined}
+			class="border-content"
+			style:view-transition-name={`border-content-${viewTransitionName}`}
+			style:view-transition-class={borderContentViewTransitionClass}
+		>
+			{@render children()}
+		</svelte:element>
+	</div>
 </div>
 
 <style>
-	.border-outer {
-		background-color: var(--color-default-black);
-		border-radius: var(--outer-border-radius);
+    .border-outer {
+        background-color: var(--color-default-black);
+        border-radius: var(--outer-border-radius);
 
-		margin-block: var(--default-margin-block);
-		padding: var(--default-border-width);
-		box-sizing: border-box;
+        margin-block: var(--default-margin-block);
+        padding: var(--default-border-width);
+        box-sizing: border-box;
 
-		:global(&:has(:not(.content))) {
-			color: var(--color-default-white);
-		}
+        &:has(:not(.negative)) {
+            color: var(--color-default-white);
+        }
+    }
 
-		/* border-inner 를 명시하는 기능, 반드시 하나의 차일드만 존재 해야함 */
-		:global(& > :only-child) {
-			border-radius: var(--inner-border-radius);
-			block-size: 100%; /* 이너는 부모 영역을 꽉 채운다 */
+    .border-inner {
+        block-size: 100%; /* 이너는 부모 영역을 꽉 채운다 */
+        border-radius: var(--inner-border-radius);
+    }
 
-			overflow: hidden;
-		}
+		.border-content {
+        block-size: 100%;
+        border-radius: var(--inner-border-radius);
+        overflow: clip;
 
-		:global(.highlight-background) {
-			background-color: var(--color-primary);
-		}
+				/* 마진 콜리전을 방지하는 효과 */
+        display: flow-root;
+    }
 
-		:global(.padding) {
-			padding: var(--default-padding);
-		}
-
-		:global(.negative) {
-			color: var(--color-default-black);
-			background-color: var(--color-default-white);
-		}
-
-		:global(.content) {
-			:global(& > :first-child) {
-				margin-block-start: 0;
-			}
-
-			:global(& > :last-child) {
-				margin-block-end: 0;
-			}
-		}
-
-		:global(& > *:not(:only-child)) {
-			/* 디버깅 기능, 나와서는 안되는 여역이라 색상을 엉뚱하게 표시 */
-			background-color: red;
-		}
-	}
+    :global(.negative) {
+        color: var(--color-default-black);
+        background-color: var(--color-default-white);
+    }
 </style>

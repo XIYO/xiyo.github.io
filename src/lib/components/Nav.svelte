@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import Border from '$lib/Border.svelte';
+	import Border from '$lib/ui/Border.svelte';
 </script>
 
 <input checked={true} hidden id="nav-toggle" type="checkbox" />

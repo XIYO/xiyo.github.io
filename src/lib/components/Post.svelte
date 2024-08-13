@@ -1,6 +1,7 @@
 <script>
-	import Border from '$lib/Border.svelte';
+	import Border from '$lib/ui/Border.svelte';
 	import { onMount } from 'svelte';
+	import BorderSubTitle from '$lib/ui/BorderSubTitle.svelte';
 
 	const { post } = $props();
 
@@ -26,25 +27,9 @@
 </script>
 
 <Border viewTransitionName="article" negative>
-	<div class="highlight-background padding">
-		<div class="time">
-			<div>
-				최초 작성일: {firstCommitDateString}
-			</div>
-			<div>
-				마지막 수정일: {lastCommitDateString}
-			</div>
-		</div>
-	</div>
+	<BorderSubTitle title={`last modify : ${lastCommitDateString}`} />
 
 	<div class="content padding">
 		{@html post.convertedMarkdown}
 	</div>
 </Border>
-
-<style>
-	.time {
-		text-align: end;
-		font-variant-numeric: tabular-nums;
-	}
-</style>

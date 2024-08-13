@@ -1,5 +1,6 @@
 <script>
 	import '$lib/stylesheet/app.css';
+	import '$lib/stylesheet/view-transition.css';
 	import Nav from '$lib/components/Nav.svelte';
 	import { onNavigate } from '$app/navigation';
 	import Footer from '$lib/components/Footer.svelte';

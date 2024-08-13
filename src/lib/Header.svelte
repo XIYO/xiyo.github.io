@@ -32,7 +32,7 @@
             text-transform: uppercase;
 
             overflow-x: scroll; /* 의도적으로 스크롤을 노출하여 스크롤 높이도 미리 계산 하도록 한다 */
-            white-space: nowrap;
+						text-wrap: nowrap;
         }
 
         label {

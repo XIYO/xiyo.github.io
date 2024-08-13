@@ -40,4 +40,4 @@
 	<Header title={$page.data.title} />
 	{@render children()}
 </main>
-<Footer></Footer>
+<Footer />

@@ -1,12 +1,14 @@
 <script>
-	import Border from '$lib/Border.svelte';
+	import Border from '$lib/ui/Border.svelte';
+	import BorderSubTitle from '$lib/ui/BorderSubTitle.svelte';
 
 	const { category } = $props();
 </script>
 
 {#if category.childCategories.length}
 	<Border viewTransitionName="category" negative>
-		<h2 class="padding highlight-background">sub category</h2>
+		<BorderSubTitle title="categories" />
+
 		<ul>
 			{#each category.childCategories as childCategory}
 				<li>
@@ -20,7 +22,8 @@
 {/if}
 
 <Border viewTransitionName="article" negative>
-	<h2 class="padding highlight-background">sub posts</h2>
+	<BorderSubTitle title="posts" />
+
 	<ul>
 		{#each category.posts as post}
 			<li>
@@ -33,10 +36,6 @@
 </Border>
 
 <style>
-	h2 {
-		margin-block: unset;
-	}
-
 	ul {
 		/* reset */
 		list-style: none;

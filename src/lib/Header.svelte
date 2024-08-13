@@ -1,5 +1,5 @@
 <script>
-	import Border from '$lib/Border.svelte';
+	import Border from '$lib/ui/Border.svelte';
 
 	const { title, tag = 'h1' } = $props();
 </script>

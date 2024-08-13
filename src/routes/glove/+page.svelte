@@ -1,12 +1,12 @@
 <script>
-	import Border from '$lib/Border.svelte';
+	import Border from '$lib/ui/Border.svelte';
 	import jjakak from '$lib/assets/jjakak.jpeg?enhanced';
+	import BorderSubTitle from '$lib/ui/BorderSubTitle.svelte';
 </script>
 
 <Border viewTransitionName="article" negative id="article">
-	<div class="highlight-background padding">
-		글러브는 제가 만든 프로젝트들을 모아놓은 공간입니다.
-	</div>
+	<BorderSubTitle title="🥊" />
+
 	<div class="gloves padding">
 		<a class="glove content" href="https://jjakak.xiyo.dev" target="_blank">
 			<enhanced:img src={jjakak} alt="째깍 타이머 미리보기" />

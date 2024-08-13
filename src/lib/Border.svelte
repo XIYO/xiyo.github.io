@@ -51,35 +51,35 @@
 </div>
 
 <style>
-    .border-outer {
-        background-color: var(--color-default-black);
-        border-radius: var(--outer-border-radius);
+	.border-outer {
+		background-color: var(--color-default-black);
+		border-radius: var(--outer-border-radius);
 
-        margin-block: var(--default-margin-block);
-        padding: var(--default-border-width);
-        box-sizing: border-box;
+		margin-block: var(--default-margin-block);
+		padding: var(--default-border-width);
+		box-sizing: border-box;
 
-        &:has(:not(.negative)) {
-            color: var(--color-default-white);
-        }
-    }
+		&:has(:not(.negative)) {
+			color: var(--color-default-white);
+		}
+	}
 
-    .border-inner {
-        block-size: 100%; /* 이너는 부모 영역을 꽉 채운다 */
-        border-radius: var(--inner-border-radius);
-    }
+	.border-inner {
+		block-size: 100%; /* 이너는 부모 영역을 꽉 채운다 */
+		border-radius: var(--inner-border-radius);
+	}
 
-		.border-content {
-        block-size: 100%;
-        border-radius: var(--inner-border-radius);
-        overflow: clip;
+	.border-content {
+		block-size: 100%;
+		border-radius: var(--inner-border-radius);
+		overflow: clip;
 
-				/* 마진 콜리전을 방지하는 효과 */
-        display: flow-root;
-    }
+		/* 마진 콜리전을 방지하는 효과 */
+		display: flow-root;
+	}
 
-    :global(.negative) {
-        color: var(--color-default-black);
-        background-color: var(--color-default-white);
-    }
+	:global(.negative) {
+		color: var(--color-default-black);
+		background-color: var(--color-default-white);
+	}
 </style>

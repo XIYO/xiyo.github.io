@@ -5,7 +5,6 @@
 
 <input checked={true} hidden id="nav-toggle" type="checkbox" />
 <Border viewTransitionName="nav" tag="nav" id="nav">
-
 	<label aria-label="Close navigation" for="nav-toggle">
 		<span class="padding">Menu</span>
 		<span id="nav-toggle-span">
@@ -46,168 +45,169 @@
 </Border>
 
 <style>
-    /* 내비게이션은 보이는 상태를 스타일링 하고, (input:checked) 움직였을 때의 상태는 추가 스타일링(아래)으로 한다 */
-    /* body 는 내비게이션이 보이지 않는 상태를 스타일링 하고, 보이는 상태일 때(input:not(checked))를 스타일링하여 내비게이션의 여백을 확보한다 */
-    :global(#border-outer-nav) {
-        position: fixed;
-        /*
+	/* 내비게이션은 보이는 상태를 스타일링 하고, (input:checked) 움직였을 때의 상태는 추가 스타일링(아래)으로 한다 */
+	/* body 는 내비게이션이 보이지 않는 상태를 스타일링 하고, 보이는 상태일 때(input:not(checked))를 스타일링하여 내비게이션의 여백을 확보한다 */
+	:global(#border-outer-nav) {
+		position: fixed;
+		/*
 						내 생각에는 fixed 는 position 중에서 가장 최상위 레이어에 놓아져야한다 생각하는데,
 						문맥상 먼저 선언되면(최상위 +layout.svelte 에서 nav 가 가장 먼저 선언) 다른 다음 요소 밑에 깔리는 일이 발생.
 						사파리는 문제 없는데 엣지는 문제 발생해서 z-index 를 줌
 						그리고 사파리에서도 header 의 svg 보다 밑에 깔림... 이건 버그?
 						*/
-        z-index: 1;
+		z-index: 1;
 
-        /* 세로 */
-        inset-block: 0;
+		/* 세로 */
+		inset-block: 0;
 
-        block-size: calc(100% - (var(--default-margin-block) * 2));
-        min-block-size: var(--nav-min-block-size);
+		block-size: calc(100% - (var(--default-margin-block) * 2));
+		min-block-size: var(--nav-min-block-size);
 
-        /* 가로 */
-        inset-inline-start: calc(100% - (var(--nav-min-inline-size) + var(--default-margin-block) * 2));
-        inset-inline-end: 0;
-        min-inline-size: var(--nav-min-inline-size);
-        margin-inline: var(--default-margin-block);
-    }
+		/* 가로 */
+		inset-inline-start: calc(100% - (var(--nav-min-inline-size) + var(--default-margin-block) * 2));
+		inset-inline-end: 0;
+		min-inline-size: var(--nav-min-inline-size);
+		margin-inline: var(--default-margin-block);
+	}
 
-    :global(#border-content-nav) {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+	:global(#border-content-nav) {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 
-        font-size: 1.25em;
-        font-weight: 700;
+		font-size: 1.25em;
+		font-weight: 700;
 
-        overflow-wrap: break-word;
-        user-select: none;
-        text-transform: uppercase;
+		overflow-wrap: break-word;
+		user-select: none;
+		text-transform: uppercase;
 
-        & > label {
-            cursor: pointer;
-            fill: var(--color-default-black);
+		& > label {
+			cursor: pointer;
+			fill: var(--color-default-black);
 
-            &:hover {
-                color: var(--color-primary);
-                fill: var(--color-primary);
-            }
+			&:hover {
+				color: var(--color-primary);
+				fill: var(--color-primary);
+			}
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 
-            & > span:last-child {
-                block-size: 100%;
-                background-color: var(--color-default-white);
-                border-start-end-radius: var(--inner-border-radius);
+			& > span:last-child {
+				block-size: 100%;
+				background-color: var(--color-default-white);
+				border-start-end-radius: var(--inner-border-radius);
 
-                display: flex;
-                justify-content: center;
-                align-items: center;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 
-                border-block-end-style: solid;
-                border-block-end-width: var(--default-border-width);
-                border-block-end-color: var(--color-default-black);
-                box-sizing: border-box;
+				border-block-end-style: solid;
+				border-block-end-width: var(--default-border-width);
+				border-block-end-color: var(--color-default-black);
+				box-sizing: border-box;
 
-                & > svg {
-                    padding-inline: var(--default-margin-block);
-                    block-size: 100%;
-                }
-            }
-        }
+				& > svg {
+					padding-inline: var(--default-margin-block);
+					block-size: 100%;
+				}
+			}
+		}
 
-        ul {
-            flex-grow: 1;
-            list-style-type: none;
-            margin-block: unset;
+		ul {
+			flex-grow: 1;
+			list-style-type: none;
+			margin-block: unset;
 
-            li {
-                margin-block: var(--default-margin-block);
+			li {
+				margin-block: var(--default-margin-block);
 
-                &[aria-current='page'] {
-                    color: var(--color-primary);
-                }
-            }
-        }
+				&[aria-current='page'] {
+					color: var(--color-primary);
+				}
+			}
+		}
 
-        footer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+		footer {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
-            a {
-                font-size: 0; /* 폰트 사이즈 0을 주지 않으면 영역이 튀어나옴 */
+			a {
+				font-size: 0; /* 폰트 사이즈 0을 주지 않으면 영역이 튀어나옴 */
 
-                svg {
-                    fill: var(--color-default-white);
+				svg {
+					fill: var(--color-default-white);
 
-                    &:hover {
-                        fill: var(--color-primary);
-                    }
-                }
-            }
-        }
-    }
+					&:hover {
+						fill: var(--color-primary);
+					}
+				}
+			}
+		}
+	}
 
-    /* #nav-toggle:not(:checked) 상태의 내비게이션 스타일링 */
-    :root:has(#nav-toggle:not(:checked)) :global(#border-outer-nav) {
-        /* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
-        transform: translateX(calc(100% + var(--default-margin-block)));
-    }
+	/* #nav-toggle:not(:checked) 상태의 내비게이션 스타일링 */
+	:root:has(#nav-toggle:not(:checked)) :global(#border-outer-nav) {
+		/* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
+		transform: translateX(calc(100% + var(--default-margin-block)));
+	}
 
-    :root:has(#nav-toggle:checked) #nav-toggle-svg {
-        rotate: 180deg;
-    }
+	:root:has(#nav-toggle:checked) #nav-toggle-svg {
+		rotate: 180deg;
+	}
 
-    /* 내비게이션이 보이는 상태일 때의 스타일링
+	/* 내비게이션이 보이는 상태일 때의 스타일링
 			body 기본 의 스타일링은 전체를 사용하도록 디자인 되어 있어서, 내비게이션 컴포넌트에서 적절히 제어를 하여 공간을 확보해준다.
 			 */
-    @media (min-width: 426px) {
-        /* 내비게이션이 나타났을 때 본문이 덮혀서 안 보이는 일이 없도록 마진을 줘서 옆으로 밀어준다 */
-        :global(body:has(#nav-toggle:checked)) {
-            /* 상수 2는 nav 에 좌우에 여백이 두 개 있기 때문 */
-            margin-inline-end: calc(var(--nav-min-inline-size) + (var(--default-margin-block) * 2));
-        }
+	@media (min-width: 426px) {
+		/* 내비게이션이 나타났을 때 본문이 덮혀서 안 보이는 일이 없도록 마진을 줘서 옆으로 밀어준다 */
+		:global(body:has(#nav-toggle:checked)) {
+			/* 상수 2는 nav 에 좌우에 여백이 두 개 있기 때문 */
+			margin-inline-end: calc(var(--nav-min-inline-size) + (var(--default-margin-block) * 2));
+		}
 
-        #nav-toggle-span {
-            /* 내비게이션 헤더의 내비 하이드 쇼 버튼을 모바일 초과 해상도에서는 안 보이게 한다 */
-            opacity: 0;
-        }
-    }
+		#nav-toggle-span {
+			/* 내비게이션 헤더의 내비 하이드 쇼 버튼을 모바일 초과 해상도에서는 안 보이게 한다 */
+			opacity: 0;
+		}
+	}
 
-    /* 모바일 해상도 */
-    @media (max-width: 425px) {
-        :global(#border-outer-nav) {
-            inset-inline: 0;
-        }
+	/* 모바일 해상도 */
+	@media (max-width: 425px) {
+		:global(#border-outer-nav) {
+			inset-inline: 0;
+		}
 
-        #nav-toggle-span {
-            /* 내비게이션 헤더의 내비 하이드 쇼 버튼을 모바일 초과 해상도에서는 보이게 한다 */
-            opacity: 1;
-        }
-    }
+		#nav-toggle-span {
+			/* 내비게이션 헤더의 내비 하이드 쇼 버튼을 모바일 초과 해상도에서는 보이게 한다 */
+			opacity: 1;
+		}
+	}
 
-    /* 동작 활성화 모드일때만 트랜지션을 작동, 사용자를 존중 */
-    @media (prefers-reduced-motion: no-preference) {
-        :global(body) {
-            transition: margin 0.5s;
-        }
+	/* 동작 활성화 모드일때만 트랜지션을 작동, 사용자를 존중 */
+	@media (prefers-reduced-motion: no-preference) {
+		:global(body) {
+			transition: margin 0.5s;
+		}
 
-        :global(#border-outer-nav) {
-            transition: block-size 0.5s,
-            transform 0.5s,
-            block-size 0.5s,
-            inline-size 0.5s,
-            inset 0.5s;
-        }
+		:global(#border-outer-nav) {
+			transition:
+				block-size 0.5s,
+				transform 0.5s,
+				block-size 0.5s,
+				inline-size 0.5s,
+				inset 0.5s;
+		}
 
-        #nav-toggle-span {
-            transition: opacity 0.5s;
+		#nav-toggle-span {
+			transition: opacity 0.5s;
 
-            #nav-toggle-svg {
-                transition: rotate 0.5s;
-            }
-        }
-    }
+			#nav-toggle-svg {
+				transition: rotate 0.5s;
+			}
+		}
+	}
 </style>

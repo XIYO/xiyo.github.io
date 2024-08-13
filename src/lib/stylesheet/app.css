@@ -102,6 +102,10 @@ h3 {
 	background-color: var(--color-primary);
 }
 
+pre {
+	overflow-x: auto;
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	a {
 		transition: text-decoration-color var(--default-animation-duration);

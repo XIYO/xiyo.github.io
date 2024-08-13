@@ -31,9 +31,6 @@
 		<li aria-current={$page.url.pathname === '/glove' ? 'page' : undefined}>
 			<a href="/glove">glove</a>
 		</li>
-		<li aria-current={$page.url.pathname === '/test' ? 'page' : undefined}>
-			<a href="/test">test</a>
-		</li>
 	</ul>
 
 	<footer class="padding">

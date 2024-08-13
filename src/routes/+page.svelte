@@ -5,7 +5,6 @@
 </script>
 
 <Border viewTransitionName="article" negative>
-
 	<Canvas>
 		<Scene />
 	</Canvas>

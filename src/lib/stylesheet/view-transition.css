@@ -1,10 +1,9 @@
-
 @media (prefers-reduced-motion: reduce) {
-    ::view-transition-group(*),
-    ::view-transition-old(*),
-    ::view-transition-new(*) {
-        animation: none !important;
-    }
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
 }
 
 /*
@@ -12,14 +11,14 @@ MPA 에서 효과가 발생하는데, no JS에도 브라우저만 지원하면 �
 동작이 끊어지면서 재생됨
 */
 @view-transition {
-    navigation: auto;
+	navigation: auto;
 }
 
 /* border-outer, border-inner, .border-content */
 /*::view-transition-group(.border-outer),*/
 /*::view-transition-group(.border-inner),*/
 /*::view-transition-group(.border-content) {*/
-    /*border-radius: var(--outer-border-radius);*/
-    /*animation-duration: var(--default-animation-duration);*/
-    /*animation-delay: var(--default-anmiation-delay);*/
+/*border-radius: var(--outer-border-radius);*/
+/*animation-duration: var(--default-animation-duration);*/
+/*animation-delay: var(--default-anmiation-delay);*/
 /*}*/

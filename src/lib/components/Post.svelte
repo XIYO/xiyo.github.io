@@ -26,7 +26,6 @@
 </script>
 
 <Border viewTransitionName="article" negative>
-
 	<div class="highlight-background padding">
 		<div class="time">
 			<div>
@@ -41,12 +40,11 @@
 	<div class="content padding">
 		{@html post.convertedMarkdown}
 	</div>
-
 </Border>
 
 <style>
-		.time {
-			text-align: end;
-			font-variant-numeric: tabular-nums;
-		}
+	.time {
+		text-align: end;
+		font-variant-numeric: tabular-nums;
+	}
 </style>

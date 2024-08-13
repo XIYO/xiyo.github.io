@@ -5,13 +5,9 @@
 </script>
 
 <Border id="header" viewTransitionName="header" tag="header">
-
 	<h1>{title}</h1>
 
-	<label
-		aria-label="Close navigation"
-		for="nav-toggle"
-	>
+	<label aria-label="Close navigation" for="nav-toggle">
 		<svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
 			<!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
 			<path
@@ -19,68 +15,67 @@
 			/>
 		</svg>
 	</label>
-
 </Border>
 
 <style>
-    :global(#border-content-header) {
-        display: flex;
-        justify-content: space-between;
+	:global(#border-content-header) {
+		display: flex;
+		justify-content: space-between;
 
-        h1 {
-            margin: var(--default-padding);
-            text-transform: uppercase;
+		h1 {
+			margin: var(--default-padding);
+			text-transform: uppercase;
 
-            overflow-x: scroll; /* 의도적으로 스크롤을 노출하여 스크롤 높이도 미리 계산 하도록 한다 */
-						text-wrap: nowrap;
-        }
+			overflow-x: scroll; /* 의도적으로 스크롤을 노출하여 스크롤 높이도 미리 계산 하도록 한다 */
+			text-wrap: nowrap;
+		}
 
-        label {
-            background-color: var(--color-default-white);
-            color: var(--color-default-black);
+		label {
+			background-color: var(--color-default-white);
+			color: var(--color-default-black);
 
-            view-transition-name: header-label;
-            view-transition-class: border-content;
+			view-transition-name: header-label;
+			view-transition-class: border-content;
 
-            /*
+			/*
 						뷰 트랜지션시에 내비게이션 버튼은 사라지지 않도록 하고싶은데,
 						그렇게 하려면 뷰 트랜지션 요소를 적용해야하는데, 그렇게 하면 애니메이션 중간에 모서리가 나오게 됨
 						그래서 오른쪽을 라운딩 처리.
 						TODO: 미래에 뷰 트랜지션시 요소를 중첩하여 자식 요소로 넣을 수 있으면 좀 더 멋진 코드로 작성 가능...
 						 */
-            border-start-end-radius: 1rem;
-            border-end-end-radius: 1rem;
+			border-start-end-radius: 1rem;
+			border-end-end-radius: 1rem;
 
-            cursor: pointer;
-            user-select: none;
+			cursor: pointer;
+			user-select: none;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
-            /* 하위 svg 요소의 기본 색상을 지정 */
-            fill: var(--color-default-black);
+			/* 하위 svg 요소의 기본 색상을 지정 */
+			fill: var(--color-default-black);
 
-            &:hover {
-                /* 하위 svg 요소의 호버 색상을 지정 */
-                fill: var(--color-primary);
-            }
+			&:hover {
+				/* 하위 svg 요소의 호버 색상을 지정 */
+				fill: var(--color-primary);
+			}
 
-            svg {
-                padding-inline: var(--default-margin-block);
-            }
-        }
-    }
+			svg {
+				padding-inline: var(--default-margin-block);
+			}
+		}
+	}
 
-    :global(body:has(input#nav-toggle:checked)) {
-        svg {
-            rotate: 180deg;
-        }
-    }
+	:global(body:has(input#nav-toggle:checked)) {
+		svg {
+			rotate: 180deg;
+		}
+	}
 
-    @media (prefers-reduced-motion: no-preference) {
-        svg {
-            transition: rotate 0.5s;
-        }
-    }
+	@media (prefers-reduced-motion: no-preference) {
+		svg {
+			transition: rotate 0.5s;
+		}
+	}
 </style>

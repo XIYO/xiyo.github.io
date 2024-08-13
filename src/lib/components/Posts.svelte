@@ -4,20 +4,22 @@
 	const { category } = $props();
 </script>
 
-<Border viewTransitionName="content" negative>
-	{#if category.childCategories.length}
+{#if category.childCategories.length}
+	<Border viewTransitionName="category" negative>
 		<h2 class="padding highlight-background">sub category</h2>
 		<ul>
 			{#each category.childCategories as childCategory}
 				<li>
 					<a href={childCategory.absolutePath}
-						>{childCategory.name} ({childCategory.posts.length})</a
+					>{childCategory.name} ({childCategory.posts.length})</a
 					>
 				</li>
 			{/each}
 		</ul>
-	{/if}
+	</Border>
+{/if}
 
+<Border viewTransitionName="article" negative>
 	<h2 class="padding highlight-background">sub posts</h2>
 	<ul>
 		{#each category.posts as post}
@@ -31,18 +33,16 @@
 </Border>
 
 <style>
-	h2 {
-		margin-block: 0;
-	}
+    h2 {
+        margin-block: unset;
+    }
 
-	ul {
-		/* reset */
-		list-style: none;
+    ul {
+        /* reset */
+        list-style: none;
 
-		li {
-			&:not(:last-child) {
-				margin-block-end: 0.5rem;
-			}
-		}
-	}
+        li:not(:last-child) {
+            margin-block-end: 0.5rem;
+        }
+    }
 </style>

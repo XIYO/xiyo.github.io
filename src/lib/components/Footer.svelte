@@ -6,7 +6,7 @@
 		text-align: center;
 		margin-block: var(--default-margin-block);
 
-			view-transition-name: footer;
-			view-transition-class: after-view-transition;
+		view-transition-name: footer;
+		view-transition-class: after-view-transition;
 	}
 </style>

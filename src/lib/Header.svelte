@@ -1,13 +1,13 @@
 <script>
 	import Border from '$lib/Border.svelte';
 
-	const { children, tag = 'h1' } = $props();
+	const { title, tag = 'h1' } = $props();
 </script>
 
 <Border id="header" viewTransitionName="header" tag="header">
-	<svelte:element this={tag}>
-		{@render children()}
-	</svelte:element>
+
+	<h1>{title}</h1>
+
 	<label
 		aria-label="Close navigation"
 		for="nav-toggle"
@@ -19,75 +19,68 @@
 			/>
 		</svg>
 	</label>
+
 </Border>
 
 <style>
-	:global(#border-outer-header) {
-		:global(& > #border-inner-header) {
-			display: flex;
-			justify-content: space-between;
+    :global(#border-content-header) {
+        display: flex;
+        justify-content: space-between;
 
-			/* slot 으로 들어온 첫 번째 요소에 대한 핸들링 */
+        h1 {
+            margin: var(--default-padding);
+            text-transform: uppercase;
 
-			:global(& > :first-child) {
-				/* 내부에서 스크롤이 생길경우 보더에 가려지지 않도록 한다. */
-				margin-inline: var(--default-padding);
-				padding-block: var(--default-padding);
-				margin-block: 0;
-				text-transform: uppercase;
+            overflow-x: scroll; /* 의도적으로 스크롤을 노출하여 스크롤 높이도 미리 계산 하도록 한다 */
+            white-space: nowrap;
+        }
 
-				overflow-x: scroll; /* 의도적으로 스크롤을 노출하여 스크롤 높이도 미리 계산 하도록 한다 */
-				word-break: keep-all;
-				white-space: nowrap;
-			}
+        label {
+            background-color: var(--color-default-white);
+            color: var(--color-default-black);
 
-			label {
-				background-color: var(--color-default-white);
-				color: var(--color-default-black);
+            view-transition-name: header-label;
+            view-transition-class: border-content;
 
-				view-transition-name: header-label;
-				view-transition-class: after-view-transition;
+            /*
+						뷰 트랜지션시에 내비게이션 버튼은 사라지지 않도록 하고싶은데,
+						그렇게 하려면 뷰 트랜지션 요소를 적용해야하는데, 그렇게 하면 애니메이션 중간에 모서리가 나오게 됨
+						그래서 오른쪽을 라운딩 처리.
+						TODO: 미래에 뷰 트랜지션시 요소를 중첩하여 자식 요소로 넣을 수 있으면 좀 더 멋진 코드로 작성 가능...
+						 */
+            border-start-end-radius: 1rem;
+            border-end-end-radius: 1rem;
 
-				/*
-												뷰 트랜지션시에 내비게이션 버튼은 사라지지 않도록 하고싶은데,
-												그렇게 하려면 뷰 트랜지션 요소를 적용해야하는데, 그렇게 하면 애니메이션 중간에 모서리가 나오게 됨
-												그래서 오른쪽을 라운딩 처리.
-												TODO: 미래에 뷰 트랜지션시 요소를 중첩하여 자식 요소로 넣을 수 있으면 좀 더 멋진 코드로 작성 가능...
-												 */
-				border-start-end-radius: 1rem;
-				border-end-end-radius: 1rem;
+            cursor: pointer;
+            user-select: none;
 
-				cursor: pointer;
-				user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-				display: flex;
-				justify-content: center;
-				align-items: center;
+            /* 하위 svg 요소의 기본 색상을 지정 */
+            fill: var(--color-default-black);
 
-				/* 하위 svg 요소의 기본 색상을 지정 */
-				fill: var(--color-default-black);
+            &:hover {
+                /* 하위 svg 요소의 호버 색상을 지정 */
+                fill: var(--color-primary);
+            }
 
-				&:hover {
-					/* 하위 svg 요소의 호버 색상을 지정 */
-					fill: var(--color-primary);
-				}
+            svg {
+                padding-inline: var(--default-margin-block);
+            }
+        }
+    }
 
-				svg {
-					padding-inline: var(--default-margin-block);
-				}
-			}
-		}
-	}
+    :global(body:has(input#nav-toggle:checked)) {
+        svg {
+            rotate: 180deg;
+        }
+    }
 
-	:global(body:has(input#nav-toggle:checked)) {
-		svg {
-			rotate: 180deg;
-		}
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		svg {
-			transition: rotate 0.5s;
-		}
-	}
+    @media (prefers-reduced-motion: no-preference) {
+        svg {
+            transition: rotate 0.5s;
+        }
+    }
 </style>

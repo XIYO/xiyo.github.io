@@ -25,8 +25,9 @@
 	});
 </script>
 
-<Border viewTransitionName="content" negative>
-	<div class="meta">
+<Border viewTransitionName="article" negative>
+
+	<div class="highlight-background padding">
 		<div class="time">
 			<div>
 				최초 작성일: {firstCommitDateString}
@@ -36,27 +37,16 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="content padding">
 		{@html post.convertedMarkdown}
 	</div>
+
 </Border>
 
 <style>
-	.meta {
-		background-color: var(--color-primary);
-		display: flex;
-		/*flex-direction: column;*/
-		align-items: end;
-		gap: 0.5rem;
-
-		justify-content: space-between;
-
-		padding-block: 0.5rem;
-		padding-inline: 1rem;
-
 		.time {
 			text-align: end;
 			font-variant-numeric: tabular-nums;
 		}
-	}
 </style>

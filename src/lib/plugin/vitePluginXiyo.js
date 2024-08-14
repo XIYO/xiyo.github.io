@@ -38,13 +38,13 @@ export default function() {
 
 			const result = await unified()
 				.use(unifiedGitLog, { filePath: id })
+				.use(ExtractTitleAndPathRemove)
 				.use(remarkParse)
 				.use(remarkGfm)
 				.use(callouts)
 				.use(remarkRehype)
 				.use(rehypteMermaid, rehypeMermaidOptions)
 				.use(rehypeShiki, rehypeShikiOptions)
-				.use(extract)
 				.use(rehypeStringify)
 				.process(code);
 
@@ -55,17 +55,16 @@ export default function() {
 	};
 }
 
-function extract() {
+function ExtractTitleAndPathRemove() {
 	return (tree, file) => {
-		visit(tree, 'element', (node, index, parent) => {
-			if (node.tagName === 'h1' && node.children && node.children.length > 0) {
+		visit(tree, (node, index, parent) => {
+			if (node.type === 'heading' && node.depth === 1) {
 				file.data.title = node.children[0].value || '';
 				parent.children.splice(index, 1);
 			}
 
-			// 이미지 태그의 src 속성에서 /static을 제거
-			if (node.tagName === 'img' && node.properties && node.properties.src) {
-				node.properties.src = node.properties.src.replace(/^\/static/, '');
+			if (node.type === 'image' && node.url.startsWith('/static')) {
+				node.url = node.url.replace('/static', '');
 			}
 		});
 	}

@@ -16,7 +16,7 @@ vite 는 "_.jpg", "_.css"를 임포트할 수 있는데 "\*.md"를 임포트 할
 import myPost from './my-post.md?raw'
 
 const html = unified()
-  .(어떤 플러그인들)
+  .use(somePlugin)
   .process(myPost);
 
 // or
@@ -28,7 +28,7 @@ const markdowns = import.meta.glob('./posts/*.md', {
 htmls = []
 Object.entries(markdowns).forEach(([path, md]) => {
   const html = unified()
-    .(어떤 플러그인들)
+    .use(somePlugin)
     .process(md);
 
   htmls.push(html);

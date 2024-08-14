@@ -56,6 +56,9 @@ importers:
       three:
         specifier: ^0.167.1
         version: 0.167.1
+      unified-git-log:
+        specifier: ^1.0.7
+        version: 1.0.7
       unist-util-remove:
         specifier: ^4.0.0
         version: 4.0.0
@@ -2340,6 +2343,9 @@ packages:
 
   ufo@1.5.4:
     resolution: {integrity: sha512-UsUk3byDzKd04EyoZ7U4DOlxQaD14JUKQl6/P7wiX4FNvUfm3XL246n9W5AmqwW5RSFJ27NAuM0iLscAOYUiGQ==}
+
+  unified-git-log@1.0.7:
+    resolution: {integrity: sha512-2cmg8whsltFkRtaqI/LxbytCFspPDYv77+BzxkH0JHxVGb42MHQSsKVaRmHM7qz2AgJRs04u1Oxdt0AYRiuroA==}
 
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
@@ -5045,6 +5051,8 @@ snapshots:
   typescript@5.5.4: {}
 
   ufo@1.5.4: {}
+
+  unified-git-log@1.0.7: {}
 
   unified@11.0.5:
     dependencies:

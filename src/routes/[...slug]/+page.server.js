@@ -9,9 +9,9 @@ export async function load({ url }) {
 	const category = Category.getCategory(url.pathname)?.toSerialize();
 
 	return {
-		title: post?.frontmatter.title || category?.name || undefined,
-		post: post,
-		category: category
+		title: post?.title || category?.name || undefined,
+		post,
+		category
 	};
 
 	// return error(404, `Could not find ${url.pathname}`);

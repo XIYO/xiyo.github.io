@@ -4,12 +4,11 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeShiki from '@shikijs/rehype';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkParseFrontmatter from 'remark-parse-frontmatter';
 import callouts from 'remark-callouts';
 import { execSync } from 'child_process';
 import { visit } from 'unist-util-visit';
 import rehypteMermaid from 'rehype-mermaid';
+import unifiedGitLog from 'unified-git-log';
 
 /**
  * @type {import('rehype-mermaid').RehypeMermaidOptions}
@@ -20,6 +19,13 @@ const rehypeMermaidOptions = {
 		theme: 'dark',
 		fontFamily: 'inherit'
 	}
+};
+
+/**
+ * @type {import('@shikijs/rehype').RehypeShikiOptions}
+ */
+const rehypeShikiOptions = {
+	theme: 'dracula'
 };
 
 export default function () {
@@ -33,24 +39,20 @@ export default function () {
 				// Git 로그 정보를 추출하여 프론트매터에 추가
 				const gitHistory = getGitHistory(id);
 
-				let frontmatter = {};
 				// 마크다운을 HTML로 변환합니다. title 은 여기서 추출합니다.
 				let processor = unified()
+					.use(unifiedGitLog, { filePath: id })
 					.use(remarkParse)
-					.use(remarkFrontmatter)
-					.use(remarkParseFrontmatter)
 					.use(remarkGfm)
 					.use(callouts)
 					.use(remarkRehype)
 					.use(rehypteMermaid, rehypeMermaidOptions)
-					.use(rehypeShiki, {
-						theme: 'dracula'
-					})
+					.use(rehypeShiki, rehypeShikiOptions)
 					.use(() => {
-						return (tree) => {
+						return (tree, file) => {
 							visit(tree, 'element', (node, index, parent) => {
 								if (node.tagName === 'h1' && node.children && node.children.length > 0) {
-									frontmatter.title = node.children[0].value || '';
+									file.data.title = node.children[0].value || '';
 									parent.children.splice(index, 1);
 								}
 
@@ -66,15 +68,15 @@ export default function () {
 				const result = await processor.process(code);
 
 				// 기존 프론트매터에 Git 정보를 추가
-				frontmatter = {
-					...frontmatter,
+				const frontmatter = {
 					...result.data.frontmatter,
-					firstCommitDate: gitHistory[gitHistory.length - 1].date, // 가장 오래된 커밋
-					lastCommitDate: gitHistory[0].date // 가장 최근 커밋
+					title: result.data.title,
 				};
 
 				const markdown = {
 					frontmatter,
+					title: result.data.title,
+					gitLog : result.data.gitLog,
 					content: result.value
 				};
 

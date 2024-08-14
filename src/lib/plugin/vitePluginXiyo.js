@@ -44,7 +44,7 @@ export default function () {
 					.use(remarkRehype)
 					.use(rehypteMermaid, rehypeMermaidOptions)
 					.use(rehypeShiki, {
-						theme: 'vitesse-dark'
+						theme: 'dracula'
 					})
 					.use(() => {
 						return (tree) => {

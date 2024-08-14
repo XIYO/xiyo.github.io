@@ -1,17 +1,5 @@
-import Category from '$lib/post/Category.js';
-
 export default class Post {
 	static #posts = new Map();
-	/** @type {string} */
-	#absolutePath;
-	/** @type {string} */
-	#name;
-	/** @type {string} HTML 로 변환된 마크다운 */
-	#convertedMarkdown;
-	/** @type {string} 타이틀 */
-	#title;
-	/** @type {Object} 프론트매터 */
-	#frontmatter;
 
 	/**
 	 * Post 클래스의 생성자입니다. 이 생성자는 포스트의 제목, 내용, 작성 날짜, 그리고 슬러그를 인자로 받아 Post 인스턴스를 생성합니다.
@@ -21,41 +9,14 @@ export default class Post {
 	constructor({ absolutePath, markdown }) {
 		Post.#posts.set(absolutePath, this);
 
-		this.#absolutePath = absolutePath;
-		this.#name = absolutePath.split('/').at(-1);
-		this.#convertedMarkdown = markdown.content;
-		this.#frontmatter = markdown.frontmatter;
-	}
+		this.absolutePath = absolutePath;
+		this.name = absolutePath.split('/').at(-1);
 
-	get absolutePath() {
-		return this.#absolutePath;
-	}
+		Object.keys(markdown).forEach((key) => {
+			this[key] = markdown[key];
+		});
 
-	/**
-	 * 포스트가 가지는 실제 파일 명
-	 * @returns {string}
-	 */
-	get name() {
-		return this.#name;
-	}
-
-	/**
-	 * 웹에 노출될 제목
-	 * @returns {string}
-	 */
-	get title() {
-		return this.#title;
-	}
-
-	/**
-	 * 포스트의 부모 카테고리 목록을 반환
-	 * @returns {Category[]}
-	 */
-	get parentCategories() {
-		const paths = this.#absolutePath.split('/');
-		paths.pop();
-		const parentAbsolutePath = paths.join('/');
-		return Category.getCategory(parentAbsolutePath).parentCategories;
+		Object.freeze(this);
 	}
 
 	/**
@@ -68,17 +29,9 @@ export default class Post {
 	}
 
 	toSerialize() {
-		const simpleSerialize = this.toSimpleSerialize();
-		simpleSerialize.convertedMarkdown = this.#convertedMarkdown;
-
-		return simpleSerialize;
-	}
-
-	toSimpleSerialize() {
-		return {
-			absolutePath: this.#absolutePath,
-			name: this.#name,
-			frontmatter: this.#frontmatter
-		};
+		return Object.keys(this).reduce((acc, key) => {
+			acc[key] = this[key];
+			return acc;
+		}, {});
 	}
 }

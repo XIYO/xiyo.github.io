@@ -60,6 +60,7 @@
 		"remark-parse-frontmatter": "^1.0.3",
 		"remark-toc": "^9.0.0",
 		"three": "^0.167.1",
+		"unified-git-log": "^1.0.7",
 		"unist-util-remove": "^4.0.0",
 		"unist-util-visit": "^5.0.0"
 	},

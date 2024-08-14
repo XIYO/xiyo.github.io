@@ -3,13 +3,24 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
-import remarkMermaid from 'remark-mermaidjs';
 import rehypeShiki from '@shikijs/rehype';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkParseFrontmatter from 'remark-parse-frontmatter';
 import callouts from 'remark-callouts';
 import { execSync } from 'child_process';
 import { visit } from 'unist-util-visit';
+import rehypteMermaid from 'rehype-mermaid';
+
+/**
+ * @type {import('rehype-mermaid').RehypeMermaidOptions}
+ * mermaidConfig https://mermaid.js.org/config/theming.html
+ */
+const rehypeMermaidOptions = {
+	mermaidConfig: {
+		theme: 'dark',
+		fontFamily: 'inherit',
+	}
+}
 
 export default function () {
 	return {
@@ -30,12 +41,8 @@ export default function () {
 					.use(remarkParseFrontmatter)
 					.use(remarkGfm)
 					.use(callouts)
-					.use(remarkMermaid, {
-						mermaidConfig: {
-							theme: 'dark'
-						}
-					})
 					.use(remarkRehype)
+					.use(rehypteMermaid, rehypeMermaidOptions)
 					.use(rehypeShiki, {
 						theme: 'vitesse-dark'
 					})

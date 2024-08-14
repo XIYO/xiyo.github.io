@@ -17,27 +17,27 @@ npm i -D @shikijs/rehype
 Shiki를 사용하려면 `unified`와 함께 `remark`와 `rehype` 시리즈의 플러그인을 사용하여 Markdown 파일을 처리하고, HTML로 변환합니다. 다음은 기본적인 사용 예제입니다.
 
 ```typescript
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
-import rehypeShiki from '@shikijs/rehype'
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypeShiki from '@shikijs/rehype';
 
 const file = await unified()
-  .use(remarkParse) // Markdown을 파싱
-  .use(remarkRehype) // HTML로 변환
-  .use(rehypeShiki, {
-    // 단일 테마
-    // theme: 'vitesse-light' // 단일 테마 사용
-    
-    // 다중 테마
-    themes: {
-      light: 'vitesse-light', // 라이트 테마
-      dark: 'vitesse-dark', // 다크 테마
-    }
-  })
-  .use(rehypeStringify) // HTML 문자열로 변환
-  .process(await fs.readFile('./input.md')) // Markdown 파일을 읽고 처리
+	.use(remarkParse) // Markdown을 파싱
+	.use(remarkRehype) // HTML로 변환
+	.use(rehypeShiki, {
+		// 단일 테마
+		// theme: 'vitesse-light' // 단일 테마 사용
+
+		// 다중 테마
+		themes: {
+			light: 'vitesse-light', // 라이트 테마
+			dark: 'vitesse-dark' // 다크 테마
+		}
+	})
+	.use(rehypeStringify) // HTML 문자열로 변환
+	.process(await fs.readFile('./input.md')); // Markdown 파일을 읽고 처리
 ```
 
 이 코드는 `input.md`라는 파일을 읽어와서, 해당 파일의 코드 블록에 Shiki를 사용해 라이트/다크 테마를 적용한 후, HTML로 변환합니다.
@@ -51,36 +51,36 @@ const file = await unified()
 Shiki의 전체 번들 대신, 필요한 부분만 불러와 사용하고 싶다면 `rehypeShikiFromHighlighter`를 사용할 수 있습니다. 다음은 세분화된 번들을 사용하는 예제입니다.
 
 ```typescript
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
-import rehypeShikiFromHighlighter from '@shikijs/rehype/core'
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
 
-import { createHighlighterCore } from 'shiki/core'
+import { createHighlighterCore } from 'shiki/core';
 
 const highlighter = await createHighlighterCore({
-  themes: [
-    import('shiki/themes/vitesse-light.mjs') // 라이트 테마
-  ],
-  langs: [
-    import('shiki/langs/javascript.mjs'), // JavaScript 언어 하이라이팅
-  ],
-  loadWasm: import('shiki/wasm') // WASM 파일 로드
-})
+	themes: [
+		import('shiki/themes/vitesse-light.mjs') // 라이트 테마
+	],
+	langs: [
+		import('shiki/langs/javascript.mjs') // JavaScript 언어 하이라이팅
+	],
+	loadWasm: import('shiki/wasm') // WASM 파일 로드
+});
 
-const raw = await fs.readFile('./input.md')
+const raw = await fs.readFile('./input.md');
 const file = await unified()
-  .use(remarkParse)
-  .use(remarkRehype)
-  .use(rehypeShikiFromHighlighter, highlighter, {
-    themes: {
-      light: 'vitesse-light',
-      dark: 'vitesse-dark',
-    }
-  })
-  .use(rehypeStringify)
-  .processSync(raw) // 동기적으로 처리 가능
+	.use(remarkParse)
+	.use(remarkRehype)
+	.use(rehypeShikiFromHighlighter, highlighter, {
+		themes: {
+			light: 'vitesse-light',
+			dark: 'vitesse-dark'
+		}
+	})
+	.use(rehypeStringify)
+	.processSync(raw); // 동기적으로 처리 가능
 ```
 
 이 예제에서는 필요한 테마와 언어만 선택적으로 불러와서 사용할 수 있습니다. 이는 번들 크기를 줄이고, 더 나은 성능을 제공할 수 있습니다.

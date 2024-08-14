@@ -48,6 +48,5 @@
 		75% {
 			transform: translateY(-25%);
 		}
-
 	}
 </style>

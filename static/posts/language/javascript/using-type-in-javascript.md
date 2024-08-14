@@ -46,6 +46,7 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
 기본 원시 타입은 자바스크립트의 가장 기본적인 데이터 유형을 나타내며, JSDoc에서는 아래와 같은 타입들을 명시할 수 있습니다:
 
 - **`number`**: 숫자 타입. 정수와 부동소수점 숫자 모두를 포함합니다.
+
   ```javascript
   /**
    * @type {number}
@@ -54,14 +55,16 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
   ```
 
 - **`string`**: 문자열 타입. 텍스트 데이터를 표현합니다.
+
   ```javascript
   /**
    * @type {string}
    */
-  let name = "Alice";
+  let name = 'Alice';
   ```
 
 - **`boolean`**: 불리언 타입. 참(`true`) 또는 거짓(`false`) 값을 가집니다.
+
   ```javascript
   /**
    * @type {boolean}
@@ -70,6 +73,7 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
   ```
 
 - **`null`**: `null` 값. 명시적으로 "값이 없음"을 나타냅니다.
+
   ```javascript
   /**
    * @type {null}
@@ -78,6 +82,7 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
   ```
 
 - **`undefined`**: `undefined` 값. 변수는 선언되었지만 값이 할당되지 않은 상태를 나타냅니다.
+
   ```javascript
   /**
    * @type {undefined}
@@ -86,11 +91,12 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
   ```
 
 - **`symbol`**: 고유하고 변경 불가능한 원시값을 생성하는 데 사용되는 심볼 타입.
+
   ```javascript
   /**
    * @type {symbol}
    */
-  let uniqueKey = Symbol("key");
+  let uniqueKey = Symbol('key');
   ```
 
 - **`bigint`**: 아주 큰 정수를 표현할 수 있는 타입. 보통 2^53 이상의 정수를 다룰 때 사용합니다.
@@ -106,6 +112,7 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
 기본 원시 타입 외에도 JSDoc은 여러 타입을 조합한 복합 타입을 명시할 수 있습니다:
 
 - **객체 타입 (`Object`)**: 객체의 구조를 명시합니다.
+
   ```javascript
   /**
    * @typedef {Object} User
@@ -113,31 +120,33 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
    * @property {string} name - The user's name
    * @property {boolean} isActive - The user's active status
    */
-  
+
   /**
    * @type {User}
    */
   const user = {
-    id: 1,
-    name: "Alice",
-    isActive: true
+  	id: 1,
+  	name: 'Alice',
+  	isActive: true
   };
   ```
 
 - **배열 타입 (`Array`)**: 배열의 각 요소가 어떤 타입인지 명시합니다.
+
   ```javascript
   /**
    * @type {number[]}
    */
   let scores = [95, 85, 76];
-  
+
   /**
    * @type {Array<string>}
    */
-  let fruits = ["apple", "banana", "cherry"];
+  let fruits = ['apple', 'banana', 'cherry'];
   ```
 
 - **유니온 타입 (`Union Types`)**: 변수나 매개변수가 여러 타입 중 하나일 수 있음을 나타냅니다.
+
   ```javascript
   /**
    * @type {string | number}
@@ -146,25 +155,26 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
   ```
 
 - **인터섹션 타입 (`Intersection Types`)**: 여러 타입을 조합하여 하나의 타입으로 만듭니다.
+
   ```javascript
   /**
    * @typedef {Object} Person
    * @property {string} name
    * @property {number} age
    */
-  
+
   /**
    * @typedef {Object} Employee
    * @property {number} employeeId
    */
-  
+
   /**
    * @type {Person & Employee}
    */
   const employee = {
-    name: "Alice",
-    age: 30,
-    employeeId: 12345
+  	name: 'Alice',
+  	age: 30,
+  	employeeId: 12345
   };
   ```
 
@@ -173,6 +183,7 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
 함수의 매개변수와 반환값의 타입을 명시할 수 있습니다:
 
 - **함수의 타입 명시**: 함수의 매개변수와 반환값의 타입을 명시합니다.
+
   ```javascript
   /**
    * @param {number} x - The first number
@@ -180,7 +191,7 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
    * @returns {number} The sum of x and y
    */
   function add(x, y) {
-    return x + y;
+  	return x + y;
   }
   ```
 
@@ -204,7 +215,7 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
    * @returns {{ value: T }} The wrapped value
    */
   function wrapValue(value) {
-    return { value };
+  	return { value };
   }
   ```
 
@@ -217,7 +228,7 @@ JSDoc을 사용하면 다양한 타입을 명시할 수 있습니다. 이 섹션
   /**
    * @type {"success" | "error" | "pending"}
    */
-  let status = "success";
+  let status = 'success';
   ```
 
 이 외에도 JSDoc은 `Promise`, `Record`, `Tuple`, `Any` 등 다양한 타입 명시를 지원합니다. 이들을 활용하여 자바스크립트 코드에서 보다 명확한 타입 안전성을 확보할 수 있습니다.
@@ -229,6 +240,7 @@ JSDoc에서는 외부 모듈에서 정의된 타입을 가져와 사용할 수 �
 특히, 타입스크립트로 작성된 라이브러리의 경우에도 선언된 타입이나 인터페이스를 JSDoc을 통해 가져와 사용할 수 있습니다.
 
 - **타입 가져오기 및 따로 정의**: `import`를 사용하여 외부 모듈의 타입을 가져와 따로 정의할 수 있습니다.
+
   ```javascript
   /** @typedef {import('some-module').SomeType} SomeType */
 
@@ -237,14 +249,15 @@ JSDoc에서는 외부 모듈에서 정의된 타입을 가져와 사용할 수 �
    */
   let someVariable;
   ```
-  
+
 - **타입 가져오기 및 즉시 사용**: 타입을 직접 선언하여 사용할 수 있습니다.
+
   ```javascript
-    /**
-     * @type {import('some-module').SomeType}
-     */
-    let someVariable;
-    ```
+  /**
+   * @type {import('some-module').SomeType}
+   */
+  let someVariable;
+  ```
 
   위 예시에서는 `some-module`이라는 외부 모듈에서 `SomeType` 타입을 가져와 사용하고 있습니다. 이를 통해 타입을 재사용하고, 코드의 일관성을 유지할 수 있습니다.
 
@@ -253,6 +266,7 @@ JSDoc에서는 외부 모듈에서 정의된 타입을 가져와 사용할 수 �
 Nullable 타입은 변수나 매개변수가 `null` 또는 `undefined` 값을 가질 수 있음을 나타냅니다. JSDoc에서는 `?` 또는 `| null`, `| undefined`를 사용하여 Nullable 타입을 명시할 수 있습니다.
 
 - **Nullable 타입**: 특정 값이 `null` 또는 `undefined`가 될 수 있음을 나타냅니다.
+
   ```javascript
   /**
    * @type {?string}
@@ -272,13 +286,14 @@ Nullable 타입은 변수나 매개변수가 `null` 또는 `undefined` 값을 �
 자바스크립트의 비동기 함수는 주로 `Promise` 객체를 반환합니다. JSDoc에서는 비동기 함수의 반환 타입을 `Promise<Type>` 형식으로 명시할 수 있습니다.
 
 - **Promise 타입**: 비동기 함수가 반환하는 `Promise`의 타입을 명시합니다.
+
   ```javascript
   /**
    * 데이터를 비동기로 가져옵니다.
    * @returns {Promise<string>} 비동기 함수의 결과로 문자열을 반환하는 Promise
    */
   async function fetchData() {
-    return "data";
+  	return 'data';
   }
   ```
 
@@ -289,14 +304,15 @@ Nullable 타입은 변수나 매개변수가 `null` 또는 `undefined` 값을 �
 JSDoc에서는 `any` 타입을 사용할 수 있습니다. `any` 타입은 모든 타입을 허용하지만, 가능한 사용을 피하는 것이 좋습니다.
 
 - **Any 타입**: 특정 타입을 지정하지 않고, 모든 타입을 허용할 때 사용합니다. 그러나 이는 타입 안정성을 떨어뜨릴 수 있으므로 신중하게 사용해야 합니다.
+
   ```javascript
   /**
    * @type {any}
    */
   let anything;
-  
+
   anything = 42; // number 타입으로 사용 가능
-  anything = "Hello"; // string 타입으로 사용 가능
+  anything = 'Hello'; // string 타입으로 사용 가능
   ```
 
   `any` 타입은 유연하지만, 잘못된 타입 사용으로 인한 오류를 방지하기 어렵다는 단점이 있습니다.
@@ -306,13 +322,14 @@ JSDoc에서는 `any` 타입을 사용할 수 있습니다. `any` 타입은 모�
 레코드와 맵핑 타입을 사용하면 객체의 키와 값의 타입을 명시할 수 있습니다. 이는 특히 객체의 속성이 동적으로 생성될 때 유용합니다.
 
 - **Record 타입**: 키와 값의 타입을 명시합니다.
+
   ```javascript
   /**
    * @type {Record<string, number>}
    */
   const nameToAgeMap = {
-    Alice: 30,
-    Bob: 25,
+  	Alice: 30,
+  	Bob: 25
   };
   ```
 

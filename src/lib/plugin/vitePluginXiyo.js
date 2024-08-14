@@ -18,9 +18,9 @@ import rehypteMermaid from 'rehype-mermaid';
 const rehypeMermaidOptions = {
 	mermaidConfig: {
 		theme: 'dark',
-		fontFamily: 'inherit',
+		fontFamily: 'inherit'
 	}
-}
+};
 
 export default function () {
 	return {

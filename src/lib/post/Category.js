@@ -1,4 +1,3 @@
-import { execSync } from 'child_process';
 import Post from '$lib/post/Post.js';
 
 const symbol = Symbol('Category initialization');
@@ -122,10 +121,6 @@ export default class Category {
 		}
 	}
 
-	hasChildCategories() {
-		return this.#childCategories.size > 0;
-	}
-
 	/**
 	 * 카테고리 추가
 	 * @param {Category} category
@@ -147,7 +142,7 @@ export default class Category {
 			name: this.name,
 			absolutePath: this.#absolutePath,
 			childCategories: this.childCategories.map((category) => category.toSerialize()),
-			posts: this.allPosts.map((post) => post.toSimpleSerialize())
+			posts: this.allPosts.map((post) => post.toSerialize())
 		};
 	}
 }

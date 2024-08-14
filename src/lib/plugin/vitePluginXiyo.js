@@ -51,7 +51,7 @@ export default function () {
 							visit(tree, 'element', (node, index, parent) => {
 								if (node.tagName === 'h1' && node.children && node.children.length > 0) {
 									frontmatter.title = node.children[0].value || '';
-									parent.children.splice(index, 2);
+									parent.children.splice(index, 1);
 								}
 
 								// 이미지 태그의 src 속성에서 /static을 제거

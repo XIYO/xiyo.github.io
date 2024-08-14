@@ -44,32 +44,29 @@ export default function() {
 				.use(remarkRehype)
 				.use(rehypteMermaid, rehypeMermaidOptions)
 				.use(rehypeShiki, rehypeShikiOptions)
-				.use(() => {
-					return (tree, file) => {
-						visit(tree, 'element', (node, index, parent) => {
-							if (node.tagName === 'h1' && node.children && node.children.length > 0) {
-								file.data.title = node.children[0].value || '';
-								parent.children.splice(index, 1);
-							}
-
-							// 이미지 태그의 src 속성에서 /static을 제거
-							if (node.tagName === 'img' && node.properties && node.properties.src) {
-								node.properties.src = node.properties.src.replace(/^\/static/, '');
-							}
-						});
-					};
-				})
+				.use(extract)
 				.use(rehypeStringify)
 				.process(code);
 
-			const data = { content: result.value };
-			Object.keys(result.data).forEach((key) => {
-				data[key] = result.data[key];
-			});
-
 			return {
-				code: `export default ${JSON.stringify(data)};`, map: null
+				code: `export default ${JSON.stringify(result)};`, map: null
 			};
 		}
 	};
+}
+
+function extract() {
+	return (tree, file) => {
+		visit(tree, 'element', (node, index, parent) => {
+			if (node.tagName === 'h1' && node.children && node.children.length > 0) {
+				file.data.title = node.children[0].value || '';
+				parent.children.splice(index, 1);
+			}
+
+			// 이미지 태그의 src 속성에서 /static을 제거
+			if (node.tagName === 'img' && node.properties && node.properties.src) {
+				node.properties.src = node.properties.src.replace(/^\/static/, '');
+			}
+		});
+	}
 }

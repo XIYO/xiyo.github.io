@@ -1,154 +1,154 @@
 {
-	"main": {
-		"id": "7e7604fec883bd57",
-		"type": "split",
-		"children": [
-			{
-				"id": "9f410df17c640ea0",
-				"type": "tabs",
-				"children": [
-					{
-						"id": "a010af15aa46b6ba",
-						"type": "leaf",
-						"state": {
-							"type": "markdown",
-							"state": {
-								"file": "static/posts/dlog/svelte/pojo.md",
-								"mode": "source",
-								"source": false
-							}
-						}
-					}
-				]
-			}
-		],
-		"direction": "vertical"
-	},
-	"left": {
-		"id": "7fefbe9eccebe301",
-		"type": "split",
-		"children": [
-			{
-				"id": "01be3c35535c97a1",
-				"type": "tabs",
-				"children": [
-					{
-						"id": "75e7d4e75496f0eb",
-						"type": "leaf",
-						"state": {
-							"type": "file-explorer",
-							"state": {
-								"sortOrder": "alphabetical"
-							}
-						}
-					},
-					{
-						"id": "4045057264573ba5",
-						"type": "leaf",
-						"state": {
-							"type": "search",
-							"state": {
-								"query": "",
-								"matchingCase": false,
-								"explainSearch": false,
-								"collapseAll": false,
-								"extraContext": false,
-								"sortOrder": "alphabetical"
-							}
-						}
-					},
-					{
-						"id": "71fb567c377b415f",
-						"type": "leaf",
-						"state": {
-							"type": "bookmarks",
-							"state": {}
-						}
-					}
-				]
-			}
-		],
-		"direction": "horizontal",
-		"width": 300
-	},
-	"right": {
-		"id": "db278d2dcf91d7cc",
-		"type": "split",
-		"children": [
-			{
-				"id": "7fb068fb9f992452",
-				"type": "tabs",
-				"children": [
-					{
-						"id": "8e109c5205dabeaf",
-						"type": "leaf",
-						"state": {
-							"type": "backlink",
-							"state": {
-								"file": "static/posts/dlog/svelte/pojo.md",
-								"collapseAll": false,
-								"extraContext": false,
-								"sortOrder": "alphabetical",
-								"showSearch": false,
-								"searchQuery": "",
-								"backlinkCollapsed": false,
-								"unlinkedCollapsed": true
-							}
-						}
-					},
-					{
-						"id": "8c36b8ecb3af2f3d",
-						"type": "leaf",
-						"state": {
-							"type": "outgoing-link",
-							"state": {
-								"file": "static/posts/dlog/svelte/pojo.md",
-								"linksCollapsed": false,
-								"unlinkedCollapsed": true
-							}
-						}
-					},
-					{
-						"id": "9d44adf0c1096505",
-						"type": "leaf",
-						"state": {
-							"type": "tag",
-							"state": {
-								"sortOrder": "frequency",
-								"useHierarchy": true
-							}
-						}
-					},
-					{
-						"id": "f15303b8f39628b7",
-						"type": "leaf",
-						"state": {
-							"type": "outline",
-							"state": {
-								"file": "static/posts/dlog/svelte/pojo.md"
-							}
-						}
-					}
-				]
-			}
-		],
-		"direction": "horizontal",
-		"width": 300,
-		"collapsed": true
-	},
-	"left-ribbon": {
-		"hiddenItems": {
-			"switcher:퀵 스위처 열기": false,
-			"graph:그래프 뷰 열기": false,
-			"canvas:새 캔버스 만들기": false,
-			"daily-notes:오늘의 데일리 노트 열기": false,
-			"templates:템플릿 삽입": false,
-			"command-palette:명령어 팔레트 열기": false
-		}
-	},
-	"active": "a010af15aa46b6ba",
-	"lastOpenFiles": [
-		"static/about.md",
-		"static/record-2024-08-11-201239-ezgif.com-video-to-gif-converter.gif"
-	]
+  "main": {
+    "id": "7e7604fec883bd57",
+    "type": "split",
+    "children": [
+      {
+        "id": "9f410df17c640ea0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a010af15aa46b6ba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "static/posts/dlog/svelte/pojo.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7fefbe9eccebe301",
+    "type": "split",
+    "children": [
+      {
+        "id": "01be3c35535c97a1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75e7d4e75496f0eb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4045057264573ba5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "71fb567c377b415f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "db278d2dcf91d7cc",
+    "type": "split",
+    "children": [
+      {
+        "id": "7fb068fb9f992452",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8e109c5205dabeaf",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "static/posts/dlog/svelte/pojo.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8c36b8ecb3af2f3d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "static/posts/dlog/svelte/pojo.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9d44adf0c1096505",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "f15303b8f39628b7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "static/posts/dlog/svelte/pojo.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:퀵 스위처 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 데일리 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false
+    }
+  },
+  "active": "a010af15aa46b6ba",
+  "lastOpenFiles": [
+    "static/about.md",
+    "static/record-2024-08-11-201239-ezgif.com-video-to-gif-converter.gif"
+  ]
 }

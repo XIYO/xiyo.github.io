@@ -7,8 +7,8 @@
 
 	let locale = 'ko';
 
-	const firstCommitDate = new Date(post.gitLog[0].dateTime);
-	const lastCommitDate = new Date(post.gitLog.at(-1).dateTime);
+	const firstCommitDate = new Date(post.data.gitLog[0].dateTime);
+	const lastCommitDate = new Date(post.data.gitLog.at(-1).dateTime);
 
 	const dateFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
 	let dateTimeFormat = new Intl.DateTimeFormat(locale, dateFormatOptions);
@@ -30,6 +30,6 @@
 	<BorderSubTitle title={`last modify : ${lastCommitDateString}`} />
 
 	<div class="content padding">
-		{@html post.content}
+		{@html post.value}
 	</div>
 </Border>

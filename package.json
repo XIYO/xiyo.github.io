@@ -16,7 +16,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.46.0",
-		"@shikijs/rehype": "^1.12.1",
+		"@shikijs/rehype": "^1.13.0",
 		"@sveltejs/adapter-static": "^3.0.4",
 		"@sveltejs/enhanced-img": "^0.3.3",
 		"@sveltejs/kit": "^2.5.22",

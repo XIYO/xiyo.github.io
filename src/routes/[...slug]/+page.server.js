@@ -9,7 +9,7 @@ export async function load({ url }) {
 	const category = Category.getCategory(url.pathname)?.toSerialize();
 
 	return {
-		title: post?.title || category?.name || undefined,
+		title: post?.data.title || category?.name || undefined,
 		post,
 		category
 	};

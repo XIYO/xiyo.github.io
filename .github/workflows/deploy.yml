@@ -14,6 +14,7 @@ on:
     paths-ignore:
       - /.idea/**
 
+jobs:
   build_site:
     runs-on: ubuntu-latest
     steps:

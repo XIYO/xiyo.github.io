@@ -1,13 +1,12 @@
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
-import remarkDirective from 'remark-directive';
-import remarkCalloutDirectives from '@microflash/remark-callout-directives';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeShiki from '@shikijs/rehype';
 import { visit } from 'unist-util-visit';
 import rehypteMermaid from 'rehype-mermaid';
 import gitLog from './gitLog.js';
+import rehypeCallouts from 'rehype-callouts'
 
 /**
  * @type {import('rehype-mermaid').RehypeMermaidOptions}
@@ -41,10 +40,15 @@ export default function () {
 			const result = await unified()
 				.use(gitLog, { filePath: id })
 				.use(ExtractTitleAndPathRemove)
+
+				// remark
 				.use(remarkParse)
-				.use(remarkDirective)
-				.use(remarkCalloutDirectives)
+				// .use(remarkDirective)
+				// .use(remarkCalloutDirectives)
+
+				// rehype
 				.use(remarkRehype, { allowDangerousHtml: true })
+				.use(rehypeCallouts)
 				.use(rehypteMermaid, rehypeMermaidOptions)
 				.use(rehypeShiki, rehypeShikiOptions)
 				.use(rehypeStringify, { allowDangerousHtml: true })

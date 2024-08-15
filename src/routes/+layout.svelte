@@ -6,7 +6,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/Header.svelte';
 	import { page } from '$app/stores';
-	import '@microflash/remark-callout-directives/theme/vitepress';
+	import 'rehype-callouts/theme/github';
 
 	const { children } = $props();
 

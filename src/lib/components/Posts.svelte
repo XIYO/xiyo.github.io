@@ -9,7 +9,7 @@
 	<Border viewTransitionName="category" negative>
 		<BorderSubTitle title="categories" />
 
-		<ul>
+		<ul class="padding">
 			{#each category.childCategories as childCategory}
 				<li>
 					<a href={childCategory.absolutePath}
@@ -24,7 +24,7 @@
 <Border viewTransitionName="article" negative>
 	<BorderSubTitle title="posts" />
 
-	<ul>
+	<ul class="padding">
 		{#each category.allPosts as post}
 			<li>
 				<article>
@@ -39,6 +39,7 @@
 	ul {
 		/* reset */
 		list-style: none;
+		margin-block: unset;
 
 		li:not(:last-child) {
 			margin-block-end: 0.5rem;

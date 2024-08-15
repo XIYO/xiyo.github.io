@@ -52,6 +52,7 @@ jobs:
       - run: pnpx playwright install --with-deps chromium
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
+
       - name: build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'

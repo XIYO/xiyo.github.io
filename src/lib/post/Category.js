@@ -73,9 +73,6 @@ export default class Category {
 			posts.push(...childCategory.allPosts);
 		}
 
-		// TODO 카테고리에서 post를 호출 할때 정렬 기능 추가
-		// 내부에서 맵으로 저장하기 떄문에 꺼낼때만 정렬 가능
-
 		return posts;
 	}
 
@@ -145,12 +142,16 @@ export default class Category {
 			return this.#resolvedThis;
 		}
 
-		const postsPromise = Promise.all(this.allPosts.map((post) => post.toSimpleSerialize()));
+		const postsPromise = Promise.all(this.allPosts.map((post) => post.toSerialize()));
 		const childCategoriesPromise = Promise.all(
 			this.childCategories.map((category) => category.toSerialize())
 		);
 
 		const [posts, childCategories] = await Promise.all([postsPromise, childCategoriesPromise]);
+
+		posts.sort((a, b) => {
+			return new Date(b.data.gitLog.at(-1).datetime) - new Date(a.data.gitLog.at(-1).datetime);
+		});
 
 		this.#resolvedPosts = posts;
 		this.#resolvedChildCategories = childCategories;

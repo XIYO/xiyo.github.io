@@ -61,7 +61,7 @@ jobs:
         run: pnpm install
 
       - name: Install Playwright browsers
-        run: npx playwright install-deps chromium # install dependencies for Chromium only
+        run: npx playwright-core install --with-deps chromium
 
       - name: build
         env:

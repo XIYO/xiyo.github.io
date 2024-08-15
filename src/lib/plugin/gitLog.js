@@ -1,13 +1,13 @@
-import {execSync} from 'child_process';
+import { execSync } from 'child_process';
 
-export default function gitLog({filePath}) {
-    return (tree, file) => {
-        try {
-            file.data.gitLog = getGitLog(filePath);
-        } catch (error) {
-            console.error('Failed to retrieve git log:', error);
-        }
-    }
+export default function gitLog({ filePath }) {
+	return (tree, file) => {
+		try {
+			file.data.gitLog = getGitLog(filePath);
+		} catch (error) {
+			console.error('Failed to retrieve git log:', error);
+		}
+	};
 }
 
 /**
@@ -16,12 +16,16 @@ export default function gitLog({filePath}) {
  * @returns {{date: *, subject: *}[]|*[]}
  */
 function getGitLog(filePath) {
-    const output = execSync(`git log --follow --pretty=format:"%ad, %s" --date=format:"%Y-%m-%dT%H:%M%z" "${filePath}"`)
-        .toString()
-        .trim();
+	const output = execSync(
+		`git log --follow --pretty=format:"%ad, %s" --date=format:"%Y-%m-%dT%H:%M%z" "${filePath}"`
+	)
+		.toString()
+		.trim();
 
-    return output.split('\n').map((line) => {
-        const [datetime, comment] = line.split(', ');
-        return {datetime, comment};
-    }) || [];
+	return (
+		output.split('\n').map((line) => {
+			const [datetime, comment] = line.split(', ');
+			return { datetime, comment };
+		}) || []
+	);
 }

@@ -13,25 +13,23 @@ vite 는 "_.jpg", "_.css"를 임포트할 수 있는데 "\*.md"를 임포트 할
 동작원리를 몰랐기 때문에 초기에는 `raw` 코드를 불러와서 파싱을 했습니다.
 
 ```js
-import myPost from './my-post.md?raw'
+import myPost from './my-post.md?raw';
 
-const html = unified()
-  .use(somePlugin)
-  .process(myPost);
+const html = unified().use(somePlugin).process(myPost);
 
 // or
 
 const markdowns = import.meta.glob('./posts/*.md', {
-	query: '?raw', eager: true, import: 'default'
+	query: '?raw',
+	eager: true,
+	import: 'default'
 });
 
-htmls = []
+htmls = [];
 Object.entries(markdowns).forEach(([path, md]) => {
-  const html = unified()
-    .use(somePlugin)
-    .process(md);
+	const html = unified().use(somePlugin).process(md);
 
-  htmls.push(html);
+	htmls.push(html);
 });
 ```
 

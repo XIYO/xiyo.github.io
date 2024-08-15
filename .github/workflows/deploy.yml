@@ -60,6 +60,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+
       - name: build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'

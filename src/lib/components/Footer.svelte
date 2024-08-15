@@ -1,11 +1,23 @@
+<script>
+	import svelteLogo from '$lib/assets/svelteLogo.svg';
+</script>
+
 <footer>
-	Designed By chimi
+	Made By
+	<a href="https://svelte.dev" target="_blank">Svelte Rune<img src={svelteLogo} alt="svelte logo"/></a>
+	, Designed By chimi
 	<label>
 		<input type="checkbox" hidden />
 	</label>
 </footer>
 
 <style>
+		img {
+				block-size: 1rem;
+				inline-size: auto;
+				aspect-ratio: 1;
+		}
+
 	footer {
 		font-size: 0.75rem;
 		text-align: center;

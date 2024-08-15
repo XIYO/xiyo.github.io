@@ -1,4 +1,5 @@
 import adapter from '@sveltejs/adapter-static';
+import { execSync } from 'node:child_process';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -14,7 +15,10 @@ const config = {
 			fallback: undefined,
 			precompress: true,
 			strict: true
-		})
+		}),
+		version: {
+			name: execSync('git rev-parse HEAD').toString().trim()
+		}
 	}
 };
 

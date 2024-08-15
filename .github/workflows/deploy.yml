@@ -42,7 +42,7 @@ jobs:
         with:
           path: |
             ~/.pnpm-store
-            ~/.cache
+            ~/.cache/ms-playwright
           key: pnpm-store-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             pnpm-store-${{ runner.os }}-
@@ -61,7 +61,7 @@ jobs:
         run: pnpm install
 
       - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
+        run: npx playwright install-deps chromium # install dependencies for Chromium only
 
       - name: build
         env:

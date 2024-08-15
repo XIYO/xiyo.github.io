@@ -11,6 +11,9 @@ export default class Category {
 	#childCategories = new Map();
 	/** @type {Map<string, Post>} */
 	#posts = new Map();
+	#resolvedThis;
+	#resolvedPosts;
+	#resolvedChildCategories;
 
 	/**
 	 * 카테고리 생성자
@@ -64,10 +67,10 @@ export default class Category {
 	 * @returns {Post[]} 포스트 목록
 	 */
 	get allPosts() {
-		let posts = Array.from(this.#posts.values());
+		const posts = Array.from(this.#posts.values());
 
-		for (let childCategory of this.#childCategories.values()) {
-			posts = posts.concat(childCategory.allPosts);
+		for (const childCategory of this.#childCategories.values()) {
+			posts.push(...childCategory.allPosts);
 		}
 
 		// TODO 카테고리에서 post를 호출 할때 정렬 기능 추가
@@ -86,7 +89,7 @@ export default class Category {
 
 	static [symbol]() {
 		const markdowns = import.meta.glob('/static/**/*.md', {
-			eager: true,
+			// eager: true,
 			import: 'default'
 		});
 
@@ -137,13 +140,29 @@ export default class Category {
 		this.#posts.set(post.absolutePath, post);
 	}
 
-	toSerialize() {
-		return {
+	async toSerialize() {
+		if (this.#resolvedThis) {
+			return this.#resolvedThis;
+		}
+
+		const postsPromise = Promise.all(this.allPosts.map((post) => post.toSimpleSerialize()));
+		const childCategoriesPromise = Promise.all(
+			this.childCategories.map((category) => category.toSerialize())
+		);
+
+		const [posts, childCategories] = await Promise.all([postsPromise, childCategoriesPromise]);
+
+		this.#resolvedPosts = posts;
+		this.#resolvedChildCategories = childCategories;
+
+		this.#resolvedThis = {
 			name: this.name,
 			absolutePath: this.#absolutePath,
-			childCategories: this.childCategories.map((category) => category.toSerialize()),
-			posts: this.allPosts.map((post) => post.toSerialize())
+			childCategories: this.#resolvedChildCategories,
+			posts: this.#resolvedPosts
 		};
+
+		return this.#resolvedThis;
 	}
 }
 

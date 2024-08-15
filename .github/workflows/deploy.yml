@@ -58,7 +58,7 @@ jobs:
 
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --prefer-offline --frozen-lockfile
 
       - name: build
         env:

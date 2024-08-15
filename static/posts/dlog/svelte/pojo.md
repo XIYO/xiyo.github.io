@@ -6,9 +6,8 @@
 
 어떻게 해야 미리 파싱해서 보낼 수 있을까 고민하던 중 [remark-mermaidjs](https://github.com/remcohaszing/remark-mermaidjs) 플러그인을 발견하여 적용해보았습니다.
 
-:::note
-이 플러그인은 노드환경에서는 "playwright"를 사용하여 브라우저 환경을 시뮬레이션하여 머메이드를 렌더링한다.
-:::
+> [!note]
+> 이 플러그인은 노드환경에서는 "playwright"를 사용하여 브라우저 환경을 시뮬레이션하여 머메이드를 렌더링한다.
 
 ## 문제
 

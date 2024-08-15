@@ -89,7 +89,7 @@ jobs:
 +       run: echo "PLAYWRIGHT_VERSION=$(pnpm list @playwright/test --depth=0 | grep @playwright/test | awk '{print $2}')" >> $GITHUB_ENV
   
 +     - name: Cache playwright binaries  
-+       uses: actions/cache@v3  
++       uses: actions/cache@v4.0.2
 +       id: playwright-cache  
 +       with:  
 +         path: ~/.cache/ms-playwright          

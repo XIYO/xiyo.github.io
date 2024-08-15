@@ -60,9 +60,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install Playwright browsers
-        run: pnpx playwright-core install --with-deps chromium
-
       - name: build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'

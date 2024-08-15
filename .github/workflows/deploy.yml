@@ -52,7 +52,7 @@ jobs:
         with:
           path: |
             ~/.pnpm-store
-           node_modules
+            node_modules
             ~/.cache/ms-playwright
           key: pnpm-store-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |

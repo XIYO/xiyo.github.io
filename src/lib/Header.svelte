@@ -22,8 +22,14 @@
 		display: flex;
 		justify-content: space-between;
 
+		block-size: 4rem;
+
 		h1 {
-			margin: var(--default-padding);
+			/* reset */
+			margin-block: 0;
+			margin-inline: var(--default-padding);
+
+			align-content: center;
 			text-transform: uppercase;
 
 			overflow-x: scroll; /* 의도적으로 스크롤을 노출하여 스크롤 높이도 미리 계산 하도록 한다 */

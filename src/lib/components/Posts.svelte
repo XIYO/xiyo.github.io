@@ -13,7 +13,7 @@
 			{#each category.childCategories as childCategory}
 				<li>
 					<a href={childCategory.absolutePath}
-						>{childCategory.name} ({childCategory.posts.length})</a
+						>{childCategory.name} ({childCategory.allPosts.length})</a
 					>
 				</li>
 			{/each}
@@ -25,7 +25,7 @@
 	<BorderSubTitle title="posts" />
 
 	<ul>
-		{#each category.posts as post}
+		{#each category.allPosts as post}
 			<li>
 				<article>
 					<a href={post.absolutePath}>{post.data.title}</a>

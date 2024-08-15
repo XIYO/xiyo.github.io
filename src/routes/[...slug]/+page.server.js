@@ -5,13 +5,17 @@ import Post from '$lib/post/Post.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
-	const post = Post.getPosts(url.pathname)?.toSerialize();
-	const category = Category.getCategory(url.pathname)?.toSerialize();
+	const categoryPromise = Category.getCategory(url.pathname)?.toSerialize();
+	const postPromise = Post.getPosts(url.pathname)?.toSerialize();
+
+	const [category, post] = await Promise.all([categoryPromise, postPromise]);
+
+	const title = post?.data.title || category?.name || undefined;
 
 	return {
-		title: post?.data.title || category?.name || undefined,
-		post,
-		category
+		title,
+		category,
+		post
 	};
 
 	// return error(404, `Could not find ${url.pathname}`);

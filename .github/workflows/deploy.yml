@@ -61,7 +61,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright browsers
-        run: pnpx playwright-core install --with-deps chromium
+        run: pnpm exec playwright install chromium
 
       - name: build
         env:

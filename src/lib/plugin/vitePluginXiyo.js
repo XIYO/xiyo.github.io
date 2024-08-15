@@ -1,13 +1,13 @@
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
-import remarkGfm from 'remark-gfm';
+import remarkDirective from 'remark-directive';
+import remarkCalloutDirectives from '@microflash/remark-callout-directives';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeShiki from '@shikijs/rehype';
-import callouts from 'remark-callouts';
 import { visit } from 'unist-util-visit';
 import rehypteMermaid from 'rehype-mermaid';
-import unifiedGitLog from 'unified-git-log';
+import gitLog from './gitLog.js';
 
 /**
  * @type {import('rehype-mermaid').RehypeMermaidOptions}
@@ -15,7 +15,8 @@ import unifiedGitLog from 'unified-git-log';
  */
 const rehypeMermaidOptions = {
 	mermaidConfig: {
-		theme: 'dark', fontFamily: 'inherit'
+		theme: 'dark',
+		fontFamily: 'inherit'
 	}
 };
 
@@ -26,9 +27,10 @@ const rehypeShikiOptions = {
 	theme: 'dracula'
 };
 
-export default function() {
+export default function () {
 	return {
-		name: 'vite-plugin-xiyo', enforce: 'pre',
+		name: 'vite-plugin-xiyo',
+		enforce: 'pre',
 
 		async transform(code, id) {
 			// .md 파일인 경우에만 처리
@@ -37,19 +39,20 @@ export default function() {
 			}
 
 			const result = await unified()
-				.use(unifiedGitLog, { filePath: id })
+				.use(gitLog, { filePath: id })
 				.use(ExtractTitleAndPathRemove)
 				.use(remarkParse)
-				.use(remarkGfm)
-				.use(callouts)
-				.use(remarkRehype)
+				.use(remarkDirective)
+				.use(remarkCalloutDirectives)
+				.use(remarkRehype, { allowDangerousHtml: true })
 				.use(rehypteMermaid, rehypeMermaidOptions)
 				.use(rehypeShiki, rehypeShikiOptions)
-				.use(rehypeStringify)
+				.use(rehypeStringify, { allowDangerousHtml: true })
 				.process(code);
 
 			return {
-				code: `export default ${JSON.stringify(result)};`, map: null
+				code: `export default ${JSON.stringify(result)};`,
+				map: null
 			};
 		}
 	};
@@ -67,5 +70,5 @@ function ExtractTitleAndPathRemove() {
 				node.url = node.url.replace('/static', '');
 			}
 		});
-	}
+	};
 }

@@ -21,7 +21,8 @@
 		negative = false,
 		id,
 		tag = 'div',
-		children
+		children,
+		...rest
 	} = $props();
 </script>
 
@@ -30,6 +31,7 @@
 	class="border-outer"
 	style:view-transition-name={`border-outer-${viewTransitionName}`}
 	style:view-transition-class={borderOuterViewTransitionClass}
+	{...rest}
 >
 	<div
 		id={id ? `border-inner-${id}` : undefined}

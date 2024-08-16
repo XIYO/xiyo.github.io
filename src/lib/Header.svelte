@@ -7,14 +7,14 @@
 <Border id="header" viewTransitionName="header" tag="header">
 	<h1>{title}</h1>
 
-	<label aria-label="Close navigation" for="nav-toggle">
+	<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popoveraction="toggle">
 		<svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
 			<!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
 			<path
 				d="M9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 256c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-128-128z"
 			/>
 		</svg>
-	</label>
+	</button>
 </Border>
 
 <style>
@@ -36,7 +36,11 @@
 			text-wrap: nowrap;
 		}
 
-		label {
+		button {
+				/* reset */
+				padding-inline: unset;
+				border: unset;
+
 			background-color: var(--color-default-white);
 			color: var(--color-default-black);
 
@@ -73,10 +77,16 @@
 		}
 	}
 
-	:global(body:has(input#nav-toggle:checked)) {
-		svg {
-			rotate: 180deg;
-		}
+	/*:global(body:has(input#nav-toggle:checked)) {*/
+	/*	svg {*/
+	/*		rotate: 180deg;*/
+	/*	}*/
+	/*}*/
+
+	:global(:root:has(#border-outer-nav:popover-open)) {
+      svg {
+          rotate: 180deg;
+      }
 	}
 
 	@media (prefers-reduced-motion: no-preference) {

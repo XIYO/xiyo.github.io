@@ -3,9 +3,8 @@
 	import Border from '$lib/ui/Border.svelte';
 </script>
 
-<input checked={true} hidden id="nav-toggle" type="checkbox" />
-<Border viewTransitionName="nav" tag="nav" id="nav">
-	<label aria-label="Close navigation" for="nav-toggle">
+<Border viewTransitionName="nav" tag="nav" id="nav" popover>
+	<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popoveraction="hide">
 		<span class="padding">Menu</span>
 		<span id="nav-toggle-span">
 			<svg id="nav-toggle-svg" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
@@ -15,7 +14,7 @@
 				/>
 			</svg>
 		</span>
-	</label>
+	</button>
 
 	<ul class="padding content negative">
 		<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
@@ -48,6 +47,10 @@
 	/* 내비게이션은 보이는 상태를 스타일링 하고, (input:checked) 움직였을 때의 상태는 추가 스타일링(아래)으로 한다 */
 	/* body 는 내비게이션이 보이지 않는 상태를 스타일링 하고, 보이는 상태일 때(input:not(checked))를 스타일링하여 내비게이션의 여백을 확보한다 */
 	:global(#border-outer-nav) {
+			/* popover rest */
+		display: block;
+		border: unset;
+
 		position: fixed;
 		/*
 						내 생각에는 fixed 는 position 중에서 가장 최상위 레이어에 놓아져야한다 생각하는데,
@@ -60,7 +63,8 @@
 		/* 세로 */
 		inset-block: 0;
 
-		block-size: calc(100% - (var(--default-margin-block) * 2));
+		/*block-size: calc(100% - (var(--default-margin-block) * 2));*/
+		block-size: calc(100dvh - (var(--default-margin-block) * 2)); /* 왜 처음부터 이걸 안썻는지 무슨 문제가 있엇는게 기억이 안남	*/
 		min-block-size: var(--nav-min-block-size);
 
 		/* 가로 */
@@ -82,7 +86,15 @@
 		user-select: none;
 		text-transform: uppercase;
 
-		& > label {
+		& > button {
+				/* reset */
+				padding-inline: unset;
+				border: unset;
+				background: transparent;
+				font: unset;
+				text-transform: unset;
+				color: unset;
+
 			cursor: pointer;
 			fill: var(--color-default-black);
 
@@ -150,12 +162,12 @@
 	}
 
 	/* #nav-toggle:not(:checked) 상태의 내비게이션 스타일링 */
-	:root:has(#nav-toggle:not(:checked)) :global(#border-outer-nav) {
+	:root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
 		/* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
 		transform: translateX(calc(100% + var(--default-margin-block)));
 	}
 
-	:root:has(#nav-toggle:checked) #nav-toggle-svg {
+	:root:has(#border-outer-nav:popover-open) #nav-toggle-svg {
 		rotate: 180deg;
 	}
 
@@ -164,7 +176,7 @@
 			 */
 	@media (min-width: 426px) {
 		/* 내비게이션이 나타났을 때 본문이 덮혀서 안 보이는 일이 없도록 마진을 줘서 옆으로 밀어준다 */
-		:global(body:has(#nav-toggle:checked)) {
+		:global(body:has(#border-outer-nav:popover-open)) {
 			/* 상수 2는 nav 에 좌우에 여백이 두 개 있기 때문 */
 			margin-inline-end: calc(var(--nav-min-inline-size) + (var(--default-margin-block) * 2));
 		}
@@ -177,9 +189,10 @@
 
 	/* 모바일 해상도 */
 	@media (max-width: 425px) {
-		:global(#border-outer-nav) {
-			inset-inline: 0;
-		}
+			/* popover 로 바꾸고 난 뒤부터 인셋으로 사이즈 조절이 안댐 */
+		/*:global(#border-outer-nav) {*/
+		/*	inset-inline: 0;*/
+		/*}*/
 
 		#nav-toggle-span {
 			/* 내비게이션 헤더의 내비 하이드 쇼 버튼을 모바일 초과 해상도에서는 보이게 한다 */

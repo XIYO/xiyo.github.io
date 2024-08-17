@@ -148,9 +148,8 @@
 			align-items: center;
 
 			a {
-				font-size: 0; /* 폰트 사이즈 0을 주지 않으면 영역이 튀어나옴 */
-
 				svg {
+					display: block;
 					fill: var(--color-default-white);
 
 					&:hover {

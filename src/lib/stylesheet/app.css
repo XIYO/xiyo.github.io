@@ -7,9 +7,11 @@
 }
 
 :root {
+	color-scheme: light dark;
+
 	/* color */
-	--color-default-black: hsl(200, 4%, 16%);
-	--color-default-white: hsl(42, 66%, 93%);
+	--color-default-black: light-dark(hsl(200, 4%, 16%), hsl(42, 66%, 93%)) ;
+	--color-default-white: light-dark(hsl(42, 66%, 93%), hsl(200, 4%, 16%));
 	--color-primary: hsl(176, 89%, 37%);
 
 	/* margin, border */
@@ -55,13 +57,13 @@
 	text-wrap: pretty;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		/* TODO 변수 어감 변경하기 */
-		--color-default-white: hsl(200, 4%, 16%);
-		--color-default-black: hsl(42, 66%, 93%);
-	}
-}
+/* light-dark 를 사용하며 기존 미디어 쿼리 주석 처리 */
+/*@media (prefers-color-scheme: dark) {*/
+/*	:root {*/
+/*		--color-default-white: hsl(200, 4%, 16%);*/
+/*		--color-default-black: hsl(42, 66%, 93%);*/
+/*	}*/
+/*}*/
 
 a {
 	color: unset;

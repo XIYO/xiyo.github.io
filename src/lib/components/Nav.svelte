@@ -3,7 +3,7 @@
 	import Border from '$lib/ui/Border.svelte';
 </script>
 
-<Border viewTransitionName="nav" tag="nav" id="nav" popover>
+<Border viewTransitionName="nav" tag="nav" id="nav" popover="manual">
 	<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popoveraction="hide">
 		<span class="padding">Menu</span>
 		<span id="nav-toggle-span">

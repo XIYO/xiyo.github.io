@@ -15,7 +15,7 @@
 		"test:unit": "vitest"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.46.0",
+		"@playwright/test": "^1.46.1",
 		"@shikijs/rehype": "^1.13.0",
 		"@sveltejs/adapter-static": "^3.0.4",
 		"@sveltejs/enhanced-img": "^0.3.3",
@@ -31,7 +31,7 @@
 		"rehype-stringify": "^10.0.0",
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.0",
-		"svelte": "5.0.0-next.221",
+		"svelte": "5.0.0-next.223",
 		"svelte-check": "^3.8.5",
 		"typescript": "^5.5.4",
 		"unified": "^11.0.5",

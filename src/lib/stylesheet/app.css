@@ -40,6 +40,7 @@
 
 	/* 기본 스타일링 */
 	font-family: 'Pretendard Variable', sans-serif;
+	line-height: 1.25rem;
 
 	-ms-text-size-adjust: 100%; /* IE, old Edge */
 	-webkit-text-size-adjust: 100%; /* Chrome, Safari, new Edge */
@@ -139,20 +140,30 @@ pre {
 
 /* shiki custom css */
 
-pre > code {
-	counter-reset: line;
+pre {
+	&:has(code) {
+		border-radius: var(--inner-border-radius);
+		padding: var(--default-padding);
+	}
 
-	& > .line {
-		&::before {
-			counter-increment: line;
-			content: counter(line);
+	code {
+		counter-reset: line;
+		display: block;
 
-			/* Other styling */
-			display: inline-block;
-			width: 1rem;
-			margin-right: 2rem;
-			text-align: right;
-			color: gray;
+		overflow-y: scroll;
+
+		& > .line {
+			&::before {
+				counter-increment: line;
+				content: counter(line);
+
+				/* Other styling */
+				display: inline-block;
+				width: 1rem;
+				margin-right: 2rem;
+				text-align: right;
+				color: gray;
+			}
 		}
 	}
 }

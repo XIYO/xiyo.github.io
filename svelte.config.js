@@ -1,5 +1,9 @@
 import adapter from '@sveltejs/adapter-static';
 import { execSync } from 'node:child_process';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+const origin = `https://${readFileSync(join(process.cwd(), 'CNAME'), 'utf-8').trim()}`;
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -16,6 +20,9 @@ const config = {
 			precompress: true,
 			strict: true
 		}),
+		prerender: {
+			origin,
+		},
 		version: {
 			name: execSync('git rev-parse HEAD').toString().trim()
 		}

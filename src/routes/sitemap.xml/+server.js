@@ -4,7 +4,7 @@ import Post from '$lib/post/Post.js';
 
 export const prerender = true;
 
-export const GET = async () => {
+export const GET = async ({url}) => {
 	const categories = Category.rootCategory.allChildCategories;
 	const posts = Post.posts;
 
@@ -14,7 +14,7 @@ export const GET = async () => {
 	];
 
 	return await response({
-		origin: 'https://blog.xiyo.dev',
+		origin: url.origin,
 		paramValues: {
 			'/[...slug]': paths
 		},

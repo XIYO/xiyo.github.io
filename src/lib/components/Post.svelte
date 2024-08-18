@@ -40,19 +40,19 @@
 
 <style>
 	:global(#post-footer) {
-			padding: var(--default-padding);
+		padding: var(--default-padding);
 
-			& > div {
-					overflow-x: scroll;
+		& > div {
+			overflow-x: scroll;
 
-          &::-webkit-scrollbar-thumb {
-              background-color: var(--color-default-black);
-          }
+			&::-webkit-scrollbar-thumb {
+				background-color: var(--color-default-black);
+			}
 
-          &::-webkit-scrollbar-thumb:hover {
-              background-color: #494949;
-          }
-      }
+			&::-webkit-scrollbar-thumb:hover {
+				background-color: #494949;
+			}
+		}
 
 		/* typography */
 		text-align: end;

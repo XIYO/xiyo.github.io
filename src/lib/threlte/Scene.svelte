@@ -22,8 +22,7 @@
 		roughness.set($hovering ? 0.25 : 0.5);
 	});
 
-	let path = gem.split('/').slice(0, -1).join('/') ?? '';
-	path = path.replace(/\/?$/, '/'); // 마지막에 /를 추가합니다.
+	const path = gem.split('/').slice(0, -1).join('/') + '/' ?? '';
 	const filename = gem.split('/').at(-1) ?? '';
 
 	interactivity();

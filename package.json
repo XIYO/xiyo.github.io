@@ -31,28 +31,29 @@
 		"rehype-stringify": "^10.0.0",
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.0",
+		"super-sitemap": "^0.15.1",
 		"svelte": "5.0.0-next.223",
 		"svelte-check": "^3.8.5",
 		"typescript": "^5.5.4",
 		"unified": "^11.0.5",
 		"vite": "^5.4.1",
 		"vite-plugin-minify": "^2.0.0",
-		"vitest": "^1.6.0"
+		"vitest": "^1.6.0",
+		"rehype-callouts": "^1.0.3",
+		"rehype-mermaid": "^2.1.0",
+		"remark-mermaidjs": "^6.0.0",
+		"unist-util-visit": "^5.0.0",
+		"@eslint/js": "^9.9.0"
 	},
 	"type": "module",
 	"dependencies": {
-		"@eslint/js": "^9.9.0",
 		"@threlte/core": "8.0.0-next.15",
 		"@threlte/extras": "9.0.0-next.22",
 		"@threlte/flex": "2.0.0-next.5",
 		"@threlte/rapier": "3.0.0-next.8",
 		"@threlte/theatre": "3.0.0-next.4",
 		"@threlte/xr": "1.0.0-next.6",
-		"rehype-callouts": "^1.0.3",
-		"rehype-mermaid": "^2.1.0",
-		"remark-mermaidjs": "^6.0.0",
-		"three": "^0.167.1",
-		"unist-util-visit": "^5.0.0"
+		"three": "^0.167.1"
 	},
 	"packageManager": "pnpm@9.1.1+sha256.9551e803dcb7a1839fdf5416153a844060c7bce013218ce823410532504ac10b"
 }

@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@eslint/js':
-        specifier: ^9.9.0
-        version: 9.9.0
       '@threlte/core':
         specifier: 8.0.0-next.15
         version: 8.0.0-next.15(svelte@5.0.0-next.223)(three@0.167.1)
@@ -29,22 +26,13 @@ importers:
       '@threlte/xr':
         specifier: 1.0.0-next.6
         version: 1.0.0-next.6(svelte@5.0.0-next.223)(three@0.167.1)
-      rehype-callouts:
-        specifier: ^1.0.3
-        version: 1.0.3
-      rehype-mermaid:
-        specifier: ^2.1.0
-        version: 2.1.0
-      remark-mermaidjs:
-        specifier: ^6.0.0
-        version: 6.0.0
       three:
         specifier: ^0.167.1
         version: 0.167.1
-      unist-util-visit:
-        specifier: ^5.0.0
-        version: 5.0.0
     devDependencies:
+      '@eslint/js':
+        specifier: ^9.9.0
+        version: 9.9.0
       '@playwright/test':
         specifier: ^1.46.1
         version: 1.46.1
@@ -84,9 +72,18 @@ importers:
       prettier-plugin-svelte:
         specifier: ^3.2.6
         version: 3.2.6(prettier@3.3.3)(svelte@5.0.0-next.223)
+      rehype-callouts:
+        specifier: ^1.0.3
+        version: 1.0.3
+      rehype-mermaid:
+        specifier: ^2.1.0
+        version: 2.1.0
       rehype-stringify:
         specifier: ^10.0.0
         version: 10.0.0
+      remark-mermaidjs:
+        specifier: ^6.0.0
+        version: 6.0.0
       remark-parse:
         specifier: ^11.0.0
         version: 11.0.0
@@ -108,6 +105,9 @@ importers:
       unified:
         specifier: ^11.0.5
         version: 11.0.5
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
       vite:
         specifier: ^5.4.1
         version: 5.4.1(terser@5.31.6)

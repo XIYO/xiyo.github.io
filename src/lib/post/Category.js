@@ -46,6 +46,17 @@ export default class Category {
 		return parents.slice(0, -1); // 루트와 자신 제외
 	}
 
+	get allChildCategories() {
+		let allChildCategories = [];
+
+		for (const childCategory of this.#childCategories.values()) {
+			allChildCategories.push(childCategory);
+			allChildCategories.push(...childCategory.allChildCategories);
+		}
+
+		return allChildCategories;
+	}
+
 	/**
 	 * 자식 카테고리 목록 반환
 	 * @returns {Category[]}

@@ -32,7 +32,7 @@
 	</ul>
 
 	<footer class="padding">
-		<a href="https://github.com/XIYO" target="_blank">
+		<a href="https://github.com/XIYO" target="_blank" aria-label="이요의 깃허브">
 			<svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
 				<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
 				<path

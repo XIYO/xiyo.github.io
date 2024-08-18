@@ -1,7 +1,6 @@
 <footer>
 	Made By
-	<a id="made-by" href="https://svelte.dev" target="_blank">Svelte Rune</a>,
-	Designed By
+	<a id="made-by" href="https://svelte.dev" target="_blank">Svelte Rune</a>, Designed By
 	<label>
 		chimi
 		<input type="checkbox" hidden />
@@ -46,8 +45,8 @@
 
 		&::after {
 			content: '🎈';
-        display: inline-block;
-        margin-inline-start: 0.25rem;
+			display: inline-block;
+			margin-inline-start: 0.25rem;
 		}
 
 		&:has(input:checked)::after {

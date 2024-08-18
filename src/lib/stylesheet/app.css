@@ -85,6 +85,7 @@ h3 {
 
 :not(pre) > code {
 	color: var(--color-primary);
+	font-weight: bold;
 }
 
 .padding {

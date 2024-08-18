@@ -7,8 +7,8 @@
 
 	let locale = 'ko';
 
-	const firstCommitDate = new Date(post.data.gitLog[0].datetime);
-	const lastCommitDate = new Date(post.data.gitLog.at(-1).datetime);
+	const firstCommitDate = new Date(post.data.gitLog.at(-1).datetime);
+	const lastCommitDate = new Date(post.data.gitLog.at(0).datetime);
 
 	const dateFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
 	let dateTimeFormat = new Intl.DateTimeFormat(locale, dateFormatOptions);

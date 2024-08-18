@@ -1,8 +1,9 @@
 <footer>
 	Made By
 	<a id="made-by" href="https://svelte.dev" target="_blank">Svelte Rune</a>,
-	Designed By chimi
+	Designed By
 	<label>
+		chimi
 		<input type="checkbox" hidden />
 	</label>
 </footer>

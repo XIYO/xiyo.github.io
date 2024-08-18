@@ -16,8 +16,14 @@ export default function gitLog({ filePath }) {
  * @returns {{date: *, subject: *}[]|*[]}
  */
 function getGitLog(filePath) {
-	const gitCommand = ['log', '--follow', '--pretty=format:%ad,%s', '--date=format:%Y-%m-%dT%H:%M%z', filePath];
-	const { stdout } = spawnSync('git', gitCommand, { shell: false, encoding: 'utf8' })
+	const gitCommand = [
+		'log',
+		'--follow',
+		'--pretty=format:%ad,%s',
+		'--date=format:%Y-%m-%dT%H:%M%z',
+		filePath
+	];
+	const { stdout } = spawnSync('git', gitCommand, { shell: false, encoding: 'utf8' });
 
 	return (
 		stdout.split('\n').map((line) => {

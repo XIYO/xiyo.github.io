@@ -1,13 +1,7 @@
-<script>
-	import svelteLogo from '$lib/assets/svelteLogo.svg';
-</script>
-
 <footer>
 	Made By
-	<a href="https://svelte.dev" target="_blank"
-		>Svelte Rune<img src={svelteLogo} alt="svelte logo" /></a
-	>
-	, Designed By chimi
+	<a id="made-by" href="https://svelte.dev" target="_blank">Svelte Rune</a>,
+	Designed By chimi
 	<label>
 		<input type="checkbox" hidden />
 	</label>
@@ -31,11 +25,28 @@
 		user-select: none;
 	}
 
+	#made-by::after {
+		content: '';
+		display: inline-block;
+		margin-inline-start: 0.25rem;
+		width: 1rem;
+		height: 1rem;
+		background-image: url('/svelte-logo.svg');
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		vertical-align: middle;
+	}
+
 	label {
 		cursor: pointer;
+		text-align: center;
+		align-content: center;
 
 		&::after {
 			content: '🎈';
+        display: inline-block;
+        margin-inline-start: 0.25rem;
 		}
 
 		&:has(input:checked)::after {

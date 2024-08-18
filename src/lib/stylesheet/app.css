@@ -144,6 +144,7 @@ pre {
 
 pre {
 	&:has(code) {
+		border: var(--default-border-width) solid var(--color-primary);
 		border-radius: var(--inner-border-radius);
 		padding: var(--default-padding);
 	}

@@ -15,10 +15,6 @@ export default class Post {
 
 		this.markdown = markdown;
 
-		// Object.keys(markdown).forEach((key) => {
-		// 	this[key] = markdown[key];
-		// });
-
 		Object.freeze(this);
 	}
 

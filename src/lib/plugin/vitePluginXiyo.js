@@ -6,7 +6,7 @@ import rehypeShiki from '@shikijs/rehype';
 import { visit } from 'unist-util-visit';
 import rehypteMermaid from 'rehype-mermaid';
 import gitLog from './gitLog.js';
-import rehypeCallouts from 'rehype-callouts'
+import rehypeCallouts from 'rehype-callouts';
 
 /**
  * @type {import('rehype-mermaid').RehypeMermaidOptions}

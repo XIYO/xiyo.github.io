@@ -21,37 +21,38 @@ GitHub Actions를 사용하면서, 빌드 속도가 점차 느려지는 것을 �
 ## ## GitHub Workflow 수정
 
 `초기 Workflow` 중 일부
+
 ```yml
-jobs:  
-  build_site:  
-    runs-on: ubuntu-latest  
-    steps:  
-      - name: Checkout  
-        uses: actions/checkout@v4  
-        with:  
-          fetch-depth: 0  
-  
-      - name: Install pnpm  
-        uses: pnpm/action-setup@v3  
-        with:  
-          version: 8  
-  
-      - name: Install dependencies  
-        run: pnpm install  
-  
-      - name: Install Playwright browsers  
-        run: pnpm exec playwright install --with-deps chromium  
-  
-      - name: build  
-        env:  
-          BASE_PATH: '/${{ github.event.repository.name }}'  
-        run: |  
-          pnpm run build  
-      - name: Upload Artifacts  
-        uses: actions/upload-pages-artifact@v3  
-        with:  
-          # this should match the `pages` option in your adapter-static options  
-          path: 'build/'  
+jobs:
+  build_site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: build
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
+        run: |
+          pnpm run build
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # this should match the `pages` option in your adapter-static options
+          path: 'build/'
 ```
 
 초기 Workflow는 캐시를 전혀 활용하지 않았습니다. GitHub Actions와 Svelte를 처음 사용했던 시기여서, 일단 자동 빌드만 정상적으로 이루어지면 만족했기 때문입니다.
@@ -59,54 +60,54 @@ jobs:
 `최적화된 Workflow` 중 일부
 
 ```diff
-jobs:  
-  build_site:  
-    runs-on: ubuntu-latest  
-    steps:  
-      - name: Checkout  
-        uses: actions/checkout@v4  
-        with:  
-          fetch-depth: 0  
+jobs:
+  build_site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-	  - name: Install pnpm  
--       uses: pnpm/action-setup@v3  
-+       uses: pnpm/action-setup@v4  
-        with:  
+	  - name: Install pnpm
+-       uses: pnpm/action-setup@v3
++       uses: pnpm/action-setup@v4
+        with:
 -         version: 8
-+         run_install: false  
-  
-+     - name: Install Node.js  
-+       uses: actions/setup-node@v4  
-+       with:  
-+         node-version: 22  
++         run_install: false
+
++     - name: Install Node.js
++       uses: actions/setup-node@v4
++       with:
++         node-version: 22
 +         cache: 'pnpm'  # 노드 모듈에 대한 캐시 활성화(내장 기능 사용)
 
       - name: Install dependencies
         run: pnpm install # 캐시 되어 설치속도가 빨라짐
-  
-+     - name: Get installed Playwright version  
-+       id: playwright-version  
-+       run: echo "PLAYWRIGHT_VERSION=$(pnpm list @playwright/test --depth=0 | grep @playwright/test | awk '{print $2}')" >> $GITHUB_ENV
-  
-+     - name: Cache playwright binaries  
-+       uses: actions/cache@v4.0.2
-+       id: playwright-cache  
-+       with:  
-+         path: ~/.cache/ms-playwright          
-+         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}  
-  
-+     - run: pnpx playwright install --with-deps chromium  
-+       if: steps.playwright-cache.outputs.cache-hit != 'true'  
 
-      - name: build  
-        env:  
-          BASE_PATH: '/${{ github.event.repository.name }}'  
-        run: |  
-          pnpm run build  
-      - name: Upload Artifacts  
-        uses: actions/upload-pages-artifact@v3  
-        with:  
-          # this should match the `pages` option in your adapter-static options  
++     - name: Get installed Playwright version
++       id: playwright-version
++       run: echo "PLAYWRIGHT_VERSION=$(pnpm list @playwright/test --depth=0 | grep @playwright/test | awk '{print $2}')" >> $GITHUB_ENV
+
++     - name: Cache playwright binaries
++       uses: actions/cache@v4.0.2
++       id: playwright-cache
++       with:
++         path: ~/.cache/ms-playwright
++         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
++     - run: pnpx playwright install --with-deps chromium
++       if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      - name: build
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
+        run: |
+          pnpm run build
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # this should match the `pages` option in your adapter-static options
           path: 'build/'
 ```
 
@@ -118,6 +119,7 @@ Node.js 모듈 캐시는 `actions/setup-node@v4`에서 제공하는 `cache: pnpm
 
 > [!note]
 > 위 코드의 `playwright` 버전 추출 기능은 pnpm 패키지를 위한 것입니다. 다른 패키지 매니저를 사용한다면 다른 코드를 알아보세요....🥲
+
 ## 빌드 속도 변화
 
 ![최적화된 빌드 속도는 1분 10초쯤...](/static/resources/usging-cache-on-github-action-20240816000140052.png)

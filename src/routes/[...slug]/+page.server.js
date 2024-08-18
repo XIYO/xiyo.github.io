@@ -11,7 +11,7 @@ export async function load({ url }) {
 	const [category, post] = await Promise.all([categoryPromise, postPromise]);
 
 	return {
-		...(post && { title: post.data.title}),
+		...(post && { title: post.data.title }),
 		category,
 		post
 	};

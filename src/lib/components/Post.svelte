@@ -1,7 +1,6 @@
 <script>
 	import Border from '$lib/ui/Border.svelte';
 	import { onMount } from 'svelte';
-	import BorderSubTitle from '$lib/ui/BorderSubTitle.svelte';
 
 	const { post } = $props();
 
@@ -27,9 +26,38 @@
 </script>
 
 <Border viewTransitionName="article" negative>
-	<BorderSubTitle title={`last modify : ${lastCommitDateString}`} />
-
-	<div class="content padding">
+	<div id="post-content" class="content padding">
 		{@html post.value}
 	</div>
+
+	<div id="post-footer" class="highlight-background">
+		<div>
+			<div>first commit : {firstCommitDateString}</div>
+			<div>last commit : {lastCommitDateString}</div>
+		</div>
+	</div>
 </Border>
+
+<style>
+	:global(#post-footer) {
+			padding: var(--default-padding);
+
+			& > div {
+					overflow-x: scroll;
+
+          &::-webkit-scrollbar-thumb {
+              background-color: var(--color-default-black);
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+              background-color: #494949;
+          }
+      }
+
+		/* typography */
+		text-align: end;
+		font-variant-numeric: tabular-nums;
+		text-transform: uppercase;
+		text-wrap: nowrap;
+	}
+</style>

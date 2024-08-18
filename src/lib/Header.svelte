@@ -37,9 +37,9 @@
 		}
 
 		button {
-				/* reset */
-				padding-inline: unset;
-				border: unset;
+			/* reset */
+			padding-inline: unset;
+			border: unset;
 
 			background-color: var(--color-default-white);
 			color: var(--color-default-black);
@@ -84,9 +84,9 @@
 	/*}*/
 
 	:global(:root:has(#border-outer-nav:popover-open)) {
-      svg {
-          rotate: 180deg;
-      }
+		svg {
+			rotate: 180deg;
+		}
 	}
 
 	@media (prefers-reduced-motion: no-preference) {

@@ -3,11 +3,11 @@
 저의 블로그 내비게이션은 `input` 태그를 이용해 토글 기능을 구현했습니다.
 
 ```html
-<input id="toggle-nav" type="checkbox" hidden>
+<input id="toggle-nav" type="checkbox" hidden />
 
 <div id="nav">
-  <label for="toggle-nav">토글</label>
-  메뉴...
+	<label for="toggle-nav">토글</label>
+	메뉴...
 </div>
 ```
 

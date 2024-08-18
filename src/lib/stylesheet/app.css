@@ -10,7 +10,7 @@
 	color-scheme: light dark;
 
 	/* color */
-	--color-default-black: light-dark(hsl(200, 4%, 16%), hsl(42, 66%, 93%)) ;
+	--color-default-black: light-dark(hsl(200, 4%, 16%), hsl(42, 66%, 93%));
 	--color-default-white: light-dark(hsl(42, 66%, 93%), hsl(200, 4%, 16%));
 	--color-primary: hsl(176, 89%, 37%);
 

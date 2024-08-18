@@ -47,7 +47,7 @@
 	/* 내비게이션은 보이는 상태를 스타일링 하고, (input:checked) 움직였을 때의 상태는 추가 스타일링(아래)으로 한다 */
 	/* body 는 내비게이션이 보이지 않는 상태를 스타일링 하고, 보이는 상태일 때(input:not(checked))를 스타일링하여 내비게이션의 여백을 확보한다 */
 	:global(#border-outer-nav) {
-			/* popover rest */
+		/* popover rest */
 		display: block;
 		border: unset;
 
@@ -64,7 +64,9 @@
 		inset-block: 0;
 
 		/*block-size: calc(100% - (var(--default-margin-block) * 2));*/
-		block-size: calc(100dvh - (var(--default-margin-block) * 2)); /* 왜 처음부터 이걸 안썻는지 무슨 문제가 있엇는게 기억이 안남	*/
+		block-size: calc(
+			100dvh - (var(--default-margin-block) * 2)
+		); /* 왜 처음부터 이걸 안썻는지 무슨 문제가 있엇는게 기억이 안남	*/
 		min-block-size: var(--nav-min-block-size);
 
 		/* 가로 */
@@ -87,13 +89,13 @@
 		text-transform: uppercase;
 
 		& > button {
-				/* reset */
-				padding-inline: unset;
-				border: unset;
-				background: transparent;
-				font: unset;
-				text-transform: unset;
-				color: unset;
+			/* reset */
+			padding-inline: unset;
+			border: unset;
+			background: transparent;
+			font: unset;
+			text-transform: unset;
+			color: unset;
 
 			cursor: pointer;
 			fill: var(--color-default-black);
@@ -188,7 +190,7 @@
 
 	/* 모바일 해상도 */
 	@media (max-width: 425px) {
-			/* popover 로 바꾸고 난 뒤부터 인셋으로 사이즈 조절이 안댐 */
+		/* popover 로 바꾸고 난 뒤부터 인셋으로 사이즈 조절이 안댐 */
 		/*:global(#border-outer-nav) {*/
 		/*	inset-inline: 0;*/
 		/*}*/

@@ -10,10 +10,8 @@ export async function load({ url }) {
 
 	const [category, post] = await Promise.all([categoryPromise, postPromise]);
 
-	const title = post?.data.title || category?.name || undefined;
-
 	return {
-		title,
+		...(post && { title: post.data.title}),
 		category,
 		post
 	};

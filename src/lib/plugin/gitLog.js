@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { execSync, spawnSync } from 'child_process';
 
 export default function gitLog({ filePath }) {
 	return (tree, file) => {
@@ -16,15 +16,12 @@ export default function gitLog({ filePath }) {
  * @returns {{date: *, subject: *}[]|*[]}
  */
 function getGitLog(filePath) {
-	const output = execSync(
-		`git log --follow --pretty=format:"%ad, %s" --date=format:"%Y-%m-%dT%H:%M%z" "${filePath}"`
-	)
-		.toString()
-		.trim();
+	const gitCommand = ['log', '--follow', '--pretty=format:%ad,%s', '--date=format:%Y-%m-%dT%H:%M%z', filePath];
+	const { stdout } = spawnSync('git', gitCommand, { shell: false, encoding: 'utf8' })
 
 	return (
-		output.split('\n').map((line) => {
-			const [datetime, comment] = line.split(', ');
+		stdout.split('\n').map((line) => {
+			const [datetime, comment] = line.split(',');
 			return { datetime, comment };
 		}) || []
 	);

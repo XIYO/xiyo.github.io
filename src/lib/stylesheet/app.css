@@ -57,14 +57,6 @@
 	text-wrap: pretty;
 }
 
-/* light-dark 를 사용하며 기존 미디어 쿼리 주석 처리 */
-/*@media (prefers-color-scheme: dark) {*/
-/*	:root {*/
-/*		--color-default-white: hsl(200, 4%, 16%);*/
-/*		--color-default-black: hsl(42, 66%, 93%);*/
-/*	}*/
-/*}*/
-
 a {
 	color: unset;
 
@@ -104,10 +96,6 @@ h3 {
 
 .highlight-background {
 	background-color: var(--color-primary);
-}
-
-pre {
-	overflow-x: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -18,6 +18,9 @@ export const GET = async ({url}) => {
 		paramValues: {
 			'/[...slug]': paths
 		},
-		sort: 'alpha'
+		sort: 'alpha',
+		headers: {
+			'Content-Type': 'application/xml'
+		}
 	});
 };

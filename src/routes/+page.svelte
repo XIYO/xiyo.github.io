@@ -1,16 +1,10 @@
 <script>
 	import Border from '$lib/ui/Border.svelte';
-	import { Canvas } from '@threlte/core';
-	import Scene from '$lib/threlte/Scene.svelte';
 	import BorderSubTitle from '$lib/ui/BorderSubTitle.svelte';
 </script>
 
 <Border viewTransitionName="article" negative>
 	<BorderSubTitle title="🖐🏻 🥳" />
-
-	<!--	<Canvas>-->
-	<!--		<Scene />-->
-	<!--	</Canvas>-->
 
 	<div class="padding content">
 		<p>

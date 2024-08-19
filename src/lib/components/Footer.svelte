@@ -8,12 +8,6 @@
 </footer>
 
 <style>
-	img {
-		block-size: 1rem;
-		inline-size: auto;
-		aspect-ratio: 1;
-	}
-
 	footer {
 		font-size: 0.75rem;
 		text-align: center;

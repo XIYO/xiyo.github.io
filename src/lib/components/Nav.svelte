@@ -43,141 +43,137 @@
 </Border>
 
 <style>
-	/* 내비게이션은 보이는 상태를 스타일링 하고, (input:checked) 움직였을 때의 상태는 추가 스타일링(아래)으로 한다 */
-	/* body 는 내비게이션이 보이지 않는 상태를 스타일링 하고, 보이는 상태일 때(input:not(checked))를 스타일링하여 내비게이션의 여백을 확보한다 */
-	:global(#border-outer-nav) {
-		/* popover rest */
-		display: block;
-		border: unset;
-		margin: unset;
+    /* 내비게이션은 보이는 상태를 스타일링 하고, (input:checked) 움직였을 때의 상태는 추가 스타일링(아래)으로 한다 */
+    /* body 는 내비게이션이 보이지 않는 상태를 스타일링 하고, 보이는 상태일 때(input:not(checked))를 스타일링하여 내비게이션의 여백을 확보한다 */
+    :global(#border-outer-nav) {
+        /* popover rest */
+        display: block;
+        border: unset;
+        margin: unset;
 
-		position: fixed;
-		z-index: 1; /* 내비게이션이 레이아웃에서 문맥상 가장 위에 있기 때문에 이후 요소에 덮힌다. 그래서 z-index 1, 사파리에서 발생 */
+        position: fixed;
+        z-index: 1; /* 내비게이션이 레이아웃에서 문맥상 가장 위에 있기 때문에 이후 요소에 덮힌다. 그래서 z-index 1, 사파리에서 발생 */
 
-		/* 세로 */
-		inset-block-start: var(--default-margin);
-		block-size: calc(100dvh - (var(--default-margin) * 2));
-		min-block-size: var(--nav-min-block-size);
+        /* 세로 */
+        inset-block-start: var(--default-margin);
+        block-size: calc(100dvh - (var(--default-margin) * 2));
+        min-block-size: var(--nav-min-block-size);
 
-		/* 가로 */
-		inline-size: var(--nav-min-inline-size);
-		inset-inline-start: calc(100% - (var(--nav-min-inline-size) + var(--default-margin)));
-	}
+        /* 가로 */
+        inline-size: var(--nav-min-inline-size);
+        inset-inline-start: calc(100% - (var(--nav-min-inline-size) + var(--default-margin)));
+    }
 
-	:global(#border-content-nav) {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
+    :global(#border-content-nav) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-		font-size: 1.25em;
-		font-weight: 700;
+        font-size: 1.25em;
+        font-weight: 700;
 
-		overflow-wrap: break-word;
-		user-select: none;
-		text-transform: uppercase;
+        overflow-wrap: break-word;
+        user-select: none;
+        text-transform: uppercase;
 
-		#nav-header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
+        #nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-			block-size: calc(2rem + (var(--default-padding) * 2) + var(--scroll-bar-size));
+            block-size: calc(2rem + (var(--default-padding) * 2) + var(--scroll-bar-size));
 
-			button {
-				/* reset */
-				border: unset;
-				padding: unset;
+            button {
+                /* reset */
+                border: unset;
+                padding: unset;
 
-				background-color: var(--color-default-white);
-				border-block-end: var(--default-border-width) solid var(--color-default-black);
-				block-size: 100%;
-				aspect-ratio: 1;
+                background-color: var(--color-default-white);
+                border-block-end: var(--default-border-width) solid var(--color-default-black);
+                block-size: 100%;
+                aspect-ratio: 1;
 
-				&::after {
-					content: '🏖️';
-					display: inline-block;
-					font-size: 1.5rem;
-				}
-			}
-		}
+                &::after {
+                    content: '🏖️';
+                    display: inline-block;
+                    font-size: 1.5rem;
+                }
+            }
+        }
 
-		ul {
-			flex-grow: 1;
-			list-style-type: none;
-			margin-block: unset;
+        ul {
+            flex-grow: 1;
+            list-style-type: none;
+            margin-block: unset;
 
-			li {
-				margin-block: var(--default-margin);
+            li {
+                margin-block: var(--default-margin);
 
-				&[aria-current='page'] {
-					color: var(--color-primary);
-				}
-			}
-		}
+                &[aria-current='page'] {
+                    color: var(--color-primary);
+                }
+            }
+        }
 
-		footer {
-			display: flex;
-			justify-content: center;
-			align-items: center;
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-			a {
-				svg {
-					display: block;
-					fill: var(--color-default-white);
+            a {
+                svg {
+                    display: block;
+                    fill: var(--color-default-white);
 
-					&:hover {
-						fill: var(--color-primary);
-					}
-				}
-			}
-		}
-	}
+                    &:hover {
+                        fill: var(--color-primary);
+                    }
+                }
+            }
+        }
+    }
 
-	/* 데스크톱 */
-	@media (min-width: 769px) {
-		button {
-			pointer-events: none;
-			opacity: 0;
-		}
-	}
+    /* 데스크톱 */
+    @media (768px < width) {
+        button {
+            pointer-events: none;
+            opacity: 0;
+        }
+    }
 
-	/* 태블릿 */
-	@media (max-width: 768px) {
-		:root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
-			/* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
-			transform: translateX(calc(100% + var(--default-margin)));
-		}
+    /* 태블릿 */
+    @media (width <= 768px) {
+        :root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
+            /* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
+            transform: translateX(calc(100% + var(--default-margin)));
+        }
 
-		button {
-			cursor: pointer;
-			&:hover {
-				color: var(--color-primary);
-			}
-		}
-	}
+        button {
+            cursor: pointer;
+            &:hover {
+                color: var(--color-primary);
+            }
+        }
+    }
 
-	/* 모바일 이상의 해상도 */
-	@media (min-width: 426px) {
-	}
+    /* 모바일 이상의 해상도 */
+    @media (425px < width) {
+    }
 
-	/* 모바일 해상도 */
-	@media (max-width: 425px) {
-	}
+    /* 모바일 해상도 */
+    @media (width <= 425px) {
+    }
 
-	/* 동작 활성화 모드일때만 트랜지션을 작동, 사용자를 존중 */
-	@media (prefers-reduced-motion: no-preference) {
-		:global(main) {
-			transition: margin 0.5s;
-		}
+    /* 동작 활성화 모드일때만 트랜지션을 작동, 사용자를 존중 */
+    @media (prefers-reduced-motion: no-preference) {
+        :global(#border-outer-nav) {
+            transition:
+                    transform 0.5s,
+                    block-size 0.5s;
+        }
 
-		:global(#border-outer-nav) {
-			transition:
-				transform 0.5s,
-				block-size 0.5s;
-		}
-
-		button {
-			transition: opacity 0.5s;
-		}
-	}
+        button {
+            transition: opacity 0.5s;
+        }
+    }
 </style>

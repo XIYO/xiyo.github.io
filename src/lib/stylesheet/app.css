@@ -95,10 +95,6 @@ h3 {
 	background-color: var(--color-primary);
 }
 
-.no-css-only {
-	display: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
 	a {
 		transition: text-decoration-color var(--default-animation-duration);

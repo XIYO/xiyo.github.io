@@ -135,10 +135,6 @@
 
 	/* 데스크톱 */
 	@media (min-width: 769px) {
-		:global(body:has(#border-outer-nav)) {
-			margin-inline-end: calc(var(--nav-min-inline-size) + var(--default-margin));
-		}
-
 		button {
 			pointer-events: none;
 			opacity: 0;
@@ -170,13 +166,12 @@
 
 	/* 동작 활성화 모드일때만 트랜지션을 작동, 사용자를 존중 */
 	@media (prefers-reduced-motion: no-preference) {
-		:global(body) {
+		:global(main) {
 			transition: margin 0.5s;
 		}
 
 		:global(#border-outer-nav) {
 			transition:
-				inset 0.5s,
 				transform 0.5s,
 				block-size 0.5s;
 		}

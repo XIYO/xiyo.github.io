@@ -6,7 +6,7 @@
 </script>
 
 {#if category.childCategories.length}
-	<Border viewTransitionName="category" negative>
+	<Border id="category" viewTransitionName="category" negative>
 		<BorderSubTitle title="categories" />
 
 		<ul class="padding">
@@ -21,7 +21,7 @@
 	</Border>
 {/if}
 
-<Border viewTransitionName="article" negative>
+<Border id="article" viewTransitionName="article" negative>
 	<BorderSubTitle title="posts" />
 
 	<ul class="padding">
@@ -36,6 +36,10 @@
 </Border>
 
 <style>
+		:global(#border-outer-category, #border-outer-article) {
+				margin-block: var(--default-margin);
+		}
+
 	ul {
 		/* reset */
 		list-style: none;

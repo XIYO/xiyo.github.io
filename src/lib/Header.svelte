@@ -7,14 +7,18 @@
 <Border id="header" viewTransitionName="header" tag="header">
 	<h1>{title}</h1>
 
-	<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popovertargetaction="toggle">
+	<button
+		aria-label="Toggle navigation"
+		popovertarget="border-outer-nav"
+		popovertargetaction="toggle"
+	>
 		<span class="no-css-only">메뉴 토글</span>
 	</button>
 </Border>
 
 <style>
 	:global(#border-outer-header) {
-			margin-block: var(--default-margin);
+		margin-block: var(--default-margin);
 	}
 
 	:global(#border-content-header) {
@@ -52,22 +56,22 @@
 		}
 	}
 
-  @media (prefers-reduced-motion: no-preference) {
-      button {
-          transition: opacity var(--default-animation-duration)
-      }
-  }
+	@media (prefers-reduced-motion: no-preference) {
+		button {
+			transition: opacity var(--default-animation-duration);
+		}
+	}
 
-  @media (min-width: 769px) {
-      button {
-          pointer-events: none;
-          opacity: 0;
-      }
-  }
+	@media (min-width: 769px) {
+		button {
+			pointer-events: none;
+			opacity: 0;
+		}
+	}
 
-  @media (max-width: 768px) {
-      button {
-          cursor: pointer;
-      }
-  }
+	@media (max-width: 768px) {
+		button {
+			cursor: pointer;
+		}
+	}
 </style>

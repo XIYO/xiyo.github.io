@@ -39,9 +39,9 @@
 </Border>
 
 <style>
-		:global(#border-outer-post) {
-				margin-block: var(--default-margin);
-		}
+	:global(#border-outer-post) {
+		margin-block: var(--default-margin);
+	}
 
 	:global(#post-footer) {
 		padding: var(--default-padding);

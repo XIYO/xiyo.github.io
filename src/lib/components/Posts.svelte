@@ -36,9 +36,9 @@
 </Border>
 
 <style>
-		:global(#border-outer-category, #border-outer-article) {
-				margin-block: var(--default-margin);
-		}
+	:global(#border-outer-category, #border-outer-article) {
+		margin-block: var(--default-margin);
+	}
 
 	ul {
 		/* reset */

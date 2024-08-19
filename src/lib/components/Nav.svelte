@@ -6,7 +6,11 @@
 <Border viewTransitionName="nav" tag="nav" id="nav" popover="manual">
 	<div id="nav-header">
 		<span class="padding">Menu</span>
-		<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popovertargetaction="hide">
+		<button
+			aria-label="Toggle navigation"
+			popovertarget="border-outer-nav"
+			popovertargetaction="hide"
+		>
 			<span class="no-css-only">메뉴 숨기기</span>
 		</button>
 	</div>
@@ -90,9 +94,9 @@
 				aspect-ratio: 1;
 
 				&::after {
-						content: '🏖️';
-						display: inline-block;
-						font-size: 1.5rem;
+					content: '🏖️';
+					display: inline-block;
+					font-size: 1.5rem;
 				}
 			}
 		}
@@ -130,22 +134,22 @@
 	}
 
 	/* 데스크톱 */
-  @media (min-width: 769px) {
-      :global(body:has(#border-outer-nav)) {
-          margin-inline-end: calc(var(--nav-min-inline-size) + var(--default-margin));
-      }
+	@media (min-width: 769px) {
+		:global(body:has(#border-outer-nav)) {
+			margin-inline-end: calc(var(--nav-min-inline-size) + var(--default-margin));
+		}
 
-			button {
-				pointer-events: none;
-				/*opacity: 0;*/
-			}
-  }
+		button {
+			pointer-events: none;
+			/*opacity: 0;*/
+		}
+	}
 
 	/* 태블릿 */
 	@media (max-width: 768px) {
 		:root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
-				/* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
-				transform: translateX(calc(100% + var(--default-margin)));
+			/* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
+			transform: translateX(calc(100% + var(--default-margin)));
 		}
 
 		button {
@@ -171,7 +175,10 @@
 		}
 
 		:global(#border-outer-nav) {
-			transition: inset 0.5s, transform 0.5s, block-size 0.5s;
+			transition:
+				inset 0.5s,
+				transform 0.5s,
+				block-size 0.5s;
 		}
 
 		button {

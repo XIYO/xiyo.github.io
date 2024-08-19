@@ -1,13 +1,13 @@
 <script>
 	import Border from '$lib/ui/Border.svelte';
-	import BorderSubTitle from '$lib/ui/BorderSubTitle.svelte';
+	import BorderHeader from '$lib/ui/BorderHeader.svelte';
 
 	const { category } = $props();
 </script>
 
 {#if category.childCategories.length}
 	<Border id="category" viewTransitionName="category" negative>
-		<BorderSubTitle title="categories" />
+		<BorderHeader title="categories" />
 
 		<ul class="padding">
 			{#each category.childCategories as childCategory}
@@ -22,7 +22,7 @@
 {/if}
 
 <Border id="article" viewTransitionName="article" negative>
-	<BorderSubTitle title="posts" />
+	<BorderHeader title="posts" />
 
 	<ul class="padding">
 		{#each category.allPosts as post}

@@ -1,11 +1,8 @@
 <script>
 	import Border from '$lib/ui/Border.svelte';
-	import BorderSubTitle from '$lib/ui/BorderSubTitle.svelte';
 </script>
 
 <Border viewTransitionName="article" negative>
-	<BorderSubTitle title="🖐🏻 🥳" />
-
 	<div class="padding content">
 		<p>
 			"HTML"은 Hyper Text Markup Language의 약자로, 👌 마크업 랭귀지 입니다. 하지만 모던 웹은 그것을

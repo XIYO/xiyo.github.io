@@ -6,7 +6,7 @@
 <Border viewTransitionName="nav" tag="nav" id="nav" popover="manual">
 	<div id="nav-header">
 		<span class="padding">Menu</span>
-		<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popoveraction="hide">
+		<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popovertargetaction="hide">
 			<span class="no-css-only">메뉴 숨기기</span>
 		</button>
 	</div>

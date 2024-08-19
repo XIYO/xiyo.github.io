@@ -7,7 +7,7 @@
 <Border id="header" viewTransitionName="header" tag="header">
 	<h1>{title}</h1>
 
-	<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popoveraction="toggle">
+	<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popovertargetaction="toggle">
 		<span class="no-css-only">메뉴 토글</span>
 	</button>
 </Border>

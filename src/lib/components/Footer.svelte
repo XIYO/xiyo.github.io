@@ -17,7 +17,7 @@
 	footer {
 		font-size: 0.75rem;
 		text-align: center;
-		margin-block: var(--default-margin-block);
+		margin-block: var(--default-margin);
 
 		view-transition-name: footer;
 		view-transition-class: after-view-transition;

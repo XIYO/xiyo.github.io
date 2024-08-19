@@ -8,16 +8,15 @@
 	<h1>{title}</h1>
 
 	<button aria-label="Toggle navigation" popovertarget="border-outer-nav" popoveraction="toggle">
-		<svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
-			<!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-			<path
-				d="M9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 256c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-128-128z"
-			/>
-		</svg>
+		<span class="no-css-only">메뉴 토글</span>
 	</button>
 </Border>
 
 <style>
+	:global(#border-outer-header) {
+			margin-block: var(--default-margin);
+	}
+
 	:global(#border-content-header) {
 		display: flex;
 		justify-content: space-between;
@@ -38,60 +37,37 @@
 
 		button {
 			/* reset */
-			padding-inline: unset;
 			border: unset;
+			padding: unset;
 
+			block-size: 100%;
+			aspect-ratio: 1;
 			background-color: var(--color-default-white);
-			color: var(--color-default-black);
 
-			view-transition-name: header-label;
-			view-transition-class: border-content;
-
-			/*
-						뷰 트랜지션시에 내비게이션 버튼은 사라지지 않도록 하고싶은데,
-						그렇게 하려면 뷰 트랜지션 요소를 적용해야하는데, 그렇게 하면 애니메이션 중간에 모서리가 나오게 됨
-						그래서 오른쪽을 라운딩 처리.
-						TODO: 미래에 뷰 트랜지션시 요소를 중첩하여 자식 요소로 넣을 수 있으면 좀 더 멋진 코드로 작성 가능...
-						 */
-			border-start-end-radius: 1rem;
-			border-end-end-radius: 1rem;
-
-			cursor: pointer;
-			user-select: none;
-
-			display: flex;
-			justify-content: center;
-			align-items: center;
-
-			/* 하위 svg 요소의 기본 색상을 지정 */
-			fill: var(--color-default-black);
-
-			&:hover {
-				/* 하위 svg 요소의 호버 색상을 지정 */
-				fill: var(--color-primary);
-			}
-
-			svg {
-				padding-inline: var(--default-margin-block);
+			&::after {
+				content: '⛱️';
+				display: inline-block;
+				font-size: 1.5rem;
 			}
 		}
 	}
 
-	/*:global(body:has(input#nav-toggle:checked)) {*/
-	/*	svg {*/
-	/*		rotate: 180deg;*/
-	/*	}*/
-	/*}*/
+  @media (prefers-reduced-motion: no-preference) {
+      button {
+          transition: opacity var(--default-animation-duration)
+      }
+  }
 
-	:global(:root:has(#border-outer-nav:popover-open)) {
-		svg {
-			rotate: 180deg;
-		}
-	}
+  @media (min-width: 769px) {
+      button {
+          pointer-events: none;
+          opacity: 0;
+      }
+  }
 
-	@media (prefers-reduced-motion: no-preference) {
-		svg {
-			transition: rotate 0.5s;
-		}
-	}
+  @media (max-width: 768px) {
+      button {
+          cursor: pointer;
+      }
+  }
 </style>

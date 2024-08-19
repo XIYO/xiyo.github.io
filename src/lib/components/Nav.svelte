@@ -141,7 +141,7 @@
 
 		button {
 			pointer-events: none;
-			/*opacity: 0;*/
+			opacity: 0;
 		}
 	}
 

@@ -57,7 +57,6 @@
 		background-color: var(--color-default-black);
 		border-radius: var(--outer-border-radius);
 
-		margin-block: var(--default-margin-block);
 		padding: var(--default-border-width);
 		box-sizing: border-box;
 

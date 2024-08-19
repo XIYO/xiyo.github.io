@@ -4,7 +4,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeShiki from '@shikijs/rehype';
 import { visit } from 'unist-util-visit';
-import rehypteMermaid from 'rehype-mermaid';
+import rehypeMermaid from 'rehype-mermaid';
 import gitLog from './gitLog.js';
 import rehypeCallouts from 'rehype-callouts';
 
@@ -49,7 +49,7 @@ export default function () {
 				// rehype
 				.use(remarkRehype, { allowDangerousHtml: true })
 				.use(rehypeCallouts)
-				.use(rehypteMermaid, rehypeMermaidOptions)
+				.use(rehypeMermaid, rehypeMermaidOptions)
 				.use(rehypeShiki, rehypeShikiOptions)
 				.use(rehypeStringify, { allowDangerousHtml: true })
 				.process(code);

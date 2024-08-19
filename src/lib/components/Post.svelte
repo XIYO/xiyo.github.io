@@ -25,7 +25,7 @@
 	});
 </script>
 
-<Border viewTransitionName="article" negative>
+<Border viewTransitionName="post" negative>
 	<div id="post-content" class="content padding">
 		{@html post.value}
 	</div>
@@ -39,6 +39,10 @@
 </Border>
 
 <style>
+		:global(#border-outer-post) {
+				margin-block: var(--default-margin);
+		}
+
 	:global(#post-footer) {
 		padding: var(--default-padding);
 

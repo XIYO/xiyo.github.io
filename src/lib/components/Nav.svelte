@@ -1,18 +1,13 @@
 <script>
 	import { page } from '$app/stores';
 	import Border from '$lib/ui/Border.svelte';
+	import NavButton from '$lib/components/NavButton.svelte';
 </script>
 
 <Border viewTransitionName="nav" tag="nav" id="nav" popover="manual">
 	<div id="nav-header">
 		<span class="padding">Menu</span>
-		<button
-			aria-label="Toggle navigation"
-			popovertarget="border-outer-nav"
-			popovertargetaction="hide"
-		>
-			<span class="no-css-only">메뉴 숨기기</span>
-		</button>
+		<NavButton popovertargetaction="hide" />
 	</div>
 
 	<ul class="padding content negative">
@@ -81,24 +76,7 @@
             justify-content: space-between;
             align-items: center;
 
-            block-size: calc(2rem + (var(--default-padding) * 2) + var(--scroll-bar-size));
-
-            button {
-                /* reset */
-                border: unset;
-                padding: unset;
-
-                background-color: var(--color-default-white);
-                border-block-end: var(--default-border-width) solid var(--color-default-black);
-                block-size: 100%;
-                aspect-ratio: 1;
-
-                &::after {
-                    content: '🏖️';
-                    display: inline-block;
-                    font-size: 1.5rem;
-                }
-            }
+						border-bottom: var(--default-border-width) solid var(--color-default-black);
         }
 
         ul {
@@ -133,26 +111,11 @@
         }
     }
 
-    /* 데스크톱 */
-    @media (768px < width) {
-        button {
-            pointer-events: none;
-            opacity: 0;
-        }
-    }
-
     /* 태블릿 */
     @media (width <= 768px) {
         :root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
             /* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
             transform: translateX(calc(100% + var(--default-margin)));
-        }
-
-        button {
-            cursor: pointer;
-            &:hover {
-                color: var(--color-primary);
-            }
         }
     }
 
@@ -170,10 +133,6 @@
             transition:
                     transform 0.5s,
                     block-size 0.5s;
-        }
-
-        button {
-            transition: opacity 0.5s;
         }
     }
 </style>

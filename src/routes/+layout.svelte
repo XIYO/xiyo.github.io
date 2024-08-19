@@ -41,11 +41,11 @@
 <main>
 	<Header title={$page.data.title} />
 	{@render children()}
-  <Footer />
+	<Footer />
 </main>
 
 <style>
 	main {
-			margin: var(--default-margin);
+		margin: var(--default-margin);
 	}
 </style>

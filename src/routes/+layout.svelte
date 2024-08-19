@@ -47,5 +47,9 @@
 <style>
 	main {
 		margin: var(--default-margin);
+
+		@media (min-width: 769px) {
+			margin-inline-end: calc(var(--nav-min-inline-size) + calc(var(--default-margin) * 2)) !important;
+		}
 	}
 </style>

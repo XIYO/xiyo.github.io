@@ -10,6 +10,11 @@ export default function gitLog({ filePath }) {
 	};
 }
 
+const dummyDatetime = [{
+	datetime: new Date().toISOString(),
+	comment: 'dummy'
+}];
+
 /**
  * Git 로그 정보를 추출하는 함수
  * @param filePath
@@ -25,10 +30,8 @@ function getGitLog(filePath) {
 	];
 	const { stdout } = spawnSync('git', gitCommand, { shell: false, encoding: 'utf8' });
 
-	return (
-		stdout.split('\n').map((line) => {
+	return stdout ? stdout.split('\n').map((line) => {
 			const [datetime, comment] = line.split(',');
 			return { datetime, comment };
-		}) || []
-	);
+		}) : dummyDatetime;
 }

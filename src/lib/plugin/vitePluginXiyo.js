@@ -30,7 +30,7 @@ export default function () {
 				.use(ExtractTitleAndPathRemove)
 
 				// remark
-				.use(remarkParse)
+				.use(remarkParse, { allowDangerousHtml: true })
 				// .use(remarkDirective)
 				// .use(remarkCalloutDirectives)
 

@@ -56,21 +56,9 @@ console.timeEnd('Array.polyfillIsArray');
 
 수치가 낮을 수록 성능이 좋습니다.
 
-```mermaid
-xychart-beta
-    title "Array Check Performance in Deno 10 B times"
-    x-axis ["Array.isArray", "instanceof", "Array.polyfillIsArray"]
-    y-axis "Execution Time (sec)" 0 --> 80
-    bar [10.524, 39.733, 68.131]
-```
+[![디노에서 배열 확인 메서드 성능 체크](https://mermaid.ink/img/pako:eNpFkE9PwzAMxb-K5RNIbdVS_owekIBx4ICEBCeWHbzUXaO1SZWkUqtp3510YSIX51m_9-L4iNLUjBVOs2zJ-nTHnoSGcLzyHYPAZ2tphteW5QE-2TbG9qQlg9KwZm2gyOElwD07gdE5pTQpB5s_b6bcuQpMQpzSzi9-00QdkcF0c6O67v2CbmPUHKMEvk0sR6-Mhu_wFFw5ltcCIYc0fYJVHukdWdgUeXZ3c5tA-Zg9lGUC96usKIstJthzGF3V4bfHhRfoW-5ZYBWuNdnDMv8pcDR68zVriZW3IydozbhvL2IcavK8VrS31GPVUOdCdyD9Y8y_5lp5Yz_ibs8rPv0C4mF0cw?type=png)](https://mermaid.live/edit#pako:eNpFkE9PwzAMxb-K5RNIbdVS_owekIBx4ICEBCeWHbzUXaO1SZWkUqtp3510YSIX51m_9-L4iNLUjBVOs2zJ-nTHnoSGcLzyHYPAZ2tphteW5QE-2TbG9qQlg9KwZm2gyOElwD07gdE5pTQpB5s_b6bcuQpMQpzSzi9-00QdkcF0c6O67v2CbmPUHKMEvk0sR6-Mhu_wFFw5ltcCIYc0fYJVHukdWdgUeXZ3c5tA-Zg9lGUC96usKIstJthzGF3V4bfHhRfoW-5ZYBWuNdnDMv8pcDR68zVriZW3IydozbhvL2IcavK8VrS31GPVUOdCdyD9Y8y_5lp5Yz_ibs8rPv0C4mF0cw)
 
-```mermaid
-xychart-beta
-    title "Array Check Performance in Browser (Edge) 10 B times"
-    x-axis ["Array.isArray", "instanceof", "Array.polyfillIsArray"]
-    y-axis "Execution Time (sec)" 0 --> 80
-    bar [17.265, 54.592, 75.600]
-```
+[![엣지에서 배열 확인 메서드 성능 체크](https://mermaid.ink/img/pako:eNpFkMFuwjAMhl_F8gmktipoha2HSWPjsMOkSdtphINJXRrRJihJtVaId18gQ-SS_NGXz7FPKE3FWOIwyoasT3fsSWgIyyvfMgh8sZZGeG1YHuCTbW1sR1oyKA0ra34dW5isqz1PYZbDKjzr2AmMjiGlQTnY_Fsy5a67wCSIlXb-YjJ1zBE5mnasVdu-39BtVI1RJXA9sOy9Mhq-QymYOJZTgZBDmj7DYx7pHVnYzJbZfFEkUDxkxdM8gWWRLfJ8iwl2HJpQVej7dOEF-oY7FliGY0X2cPn_OXDUe_M1aomltz0naE2_b26hP1bk-U3R3lKHZU2tC7dH0j_G3DNXyhv7Ead8Hfb5D6fxd78?type=png)](https://mermaid.live/edit#pako:eNpFkMFuwjAMhl_F8gmktipoha2HSWPjsMOkSdtphINJXRrRJihJtVaId18gQ-SS_NGXz7FPKE3FWOIwyoasT3fsSWgIyyvfMgh8sZZGeG1YHuCTbW1sR1oyKA0ra34dW5isqz1PYZbDKjzr2AmMjiGlQTnY_Fsy5a67wCSIlXb-YjJ1zBE5mnasVdu-39BtVI1RJXA9sOy9Mhq-QymYOJZTgZBDmj7DYx7pHVnYzJbZfFEkUDxkxdM8gWWRLfJ8iwl2HJpQVej7dOEF-oY7FliGY0X2cPn_OXDUe_M1aomltz0naE2_b26hP1bk-U3R3lKHZU2tC7dH0j_G3DNXyhv7Ead8Hfb5D6fxd78)
 
 유의미한 결과를 만들기 위해서 100억번을 돌린 결과, `Array.isArray`가 가장 빠르게 나왔습니다.
 

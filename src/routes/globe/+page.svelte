@@ -8,9 +8,7 @@
 		<a class="glove content" href="https://jjakak.xiyo.dev" target="_blank">
 			<enhanced:img src={jjakak} alt="째깍 타이머 미리보기" />
 			<h2>JJaKaK</h2>
-			<p>
-				심플 타이머. PWA로 구현로 구현되어 있어 브라우저에서 앱으로 바로 설치가 가능합니다.
-			</p>
+			<p>심플 타이머. PWA로 구현로 구현되어 있어 브라우저에서 앱으로 바로 설치가 가능합니다.</p>
 		</a>
 	</div>
 </Border>

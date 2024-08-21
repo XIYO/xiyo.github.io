@@ -25,7 +25,7 @@ export default function () {
 				return;
 			}
 
-			const result = await unified()
+			const file = await unified()
 				.use(gitLog, { filePath: id })
 				.use(ExtractTitleAndPathRemove)
 
@@ -42,7 +42,7 @@ export default function () {
 				.process(code);
 
 			return {
-				code: `export default ${JSON.stringify(result)};`,
+				code: `export default ${JSON.stringify(file)};`,
 				map: null
 			};
 		}

@@ -10,7 +10,7 @@
 ## 예제
 
 `component.svelte`
-```html
+```svelte
 <script>  
   let { value = $bindable() } = $props();  
   

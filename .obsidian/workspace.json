@@ -1,179 +1,179 @@
 {
-	"main": {
-		"id": "7e7604fec883bd57",
-		"type": "split",
-		"children": [
-			{
-				"id": "466d30dc71dcc99c",
-				"type": "tabs",
-				"children": [
-					{
-						"id": "23f0b5cb87fbd82b",
-						"type": "leaf",
-						"state": {
-							"type": "markdown",
-							"state": {
-								"file": "static/posts/dlog/svelte/using-popover-api.md",
-								"mode": "source",
-								"source": false
-							}
-						}
-					}
-				]
-			}
-		],
-		"direction": "vertical"
-	},
-	"left": {
-		"id": "7fefbe9eccebe301",
-		"type": "split",
-		"children": [
-			{
-				"id": "01be3c35535c97a1",
-				"type": "tabs",
-				"children": [
-					{
-						"id": "75e7d4e75496f0eb",
-						"type": "leaf",
-						"state": {
-							"type": "file-explorer",
-							"state": {
-								"sortOrder": "alphabetical"
-							}
-						}
-					},
-					{
-						"id": "4045057264573ba5",
-						"type": "leaf",
-						"state": {
-							"type": "search",
-							"state": {
-								"query": "tag:#팝오버",
-								"matchingCase": false,
-								"explainSearch": false,
-								"collapseAll": false,
-								"extraContext": false,
-								"sortOrder": "alphabetical"
-							}
-						}
-					},
-					{
-						"id": "71fb567c377b415f",
-						"type": "leaf",
-						"state": {
-							"type": "bookmarks",
-							"state": {}
-						}
-					}
-				],
-				"currentTab": 1
-			}
-		],
-		"direction": "horizontal",
-		"width": 300,
-		"collapsed": true
-	},
-	"right": {
-		"id": "db278d2dcf91d7cc",
-		"type": "split",
-		"children": [
-			{
-				"id": "7fb068fb9f992452",
-				"type": "tabs",
-				"children": [
-					{
-						"id": "8e109c5205dabeaf",
-						"type": "leaf",
-						"state": {
-							"type": "backlink",
-							"state": {
-								"file": "static/posts/dlog/svelte/using-popover-api.md",
-								"collapseAll": false,
-								"extraContext": false,
-								"sortOrder": "alphabetical",
-								"showSearch": false,
-								"searchQuery": "",
-								"backlinkCollapsed": false,
-								"unlinkedCollapsed": true
-							}
-						}
-					},
-					{
-						"id": "8c36b8ecb3af2f3d",
-						"type": "leaf",
-						"state": {
-							"type": "outgoing-link",
-							"state": {
-								"file": "static/posts/dlog/svelte/using-popover-api.md",
-								"linksCollapsed": false,
-								"unlinkedCollapsed": true
-							}
-						}
-					},
-					{
-						"id": "9d44adf0c1096505",
-						"type": "leaf",
-						"state": {
-							"type": "tag",
-							"state": {
-								"sortOrder": "frequency",
-								"useHierarchy": true
-							}
-						}
-					},
-					{
-						"id": "f15303b8f39628b7",
-						"type": "leaf",
-						"state": {
-							"type": "outline",
-							"state": {
-								"file": "static/posts/dlog/svelte/using-popover-api.md"
-							}
-						}
-					}
-				]
-			}
-		],
-		"direction": "horizontal",
-		"width": 300,
-		"collapsed": true
-	},
-	"left-ribbon": {
-		"hiddenItems": {
-			"switcher:퀵 스위처 열기": false,
-			"graph:그래프 뷰 열기": false,
-			"canvas:새 캔버스 만들기": false,
-			"daily-notes:오늘의 데일리 노트 열기": false,
-			"templates:템플릿 삽입": false,
-			"command-palette:명령어 팔레트 열기": false
-		}
-	},
-	"active": "4045057264573ba5",
-	"lastOpenFiles": [
-		"static/posts/dlog/svelte/using-popover-api.md",
-		"vite.config.js.timestamp-1723738794418-d16eff83584d8.mjs",
-		"_tmp_3484_8e7c99e423fb47c796dd7dc244b9c763",
-		"vite.config.js.timestamp-1723738766715-5b4bee95b3dce.mjs",
-		"vite.config.js.timestamp-1723738764519-08ca69eae0ceb.mjs",
-		"package.json~",
-		"vite.config.js.timestamp-1723738568696-195861c38ff9.mjs",
-		"vite.config.js.timestamp-1723738549636-e4e211aff4745.mjs",
-		"vite.config.js.timestamp-1723738542862-f212584687ebb.mjs",
-		"vite.config.js.timestamp-1723738520764-24b9a1a7d4f86.mjs",
-		"package.json.4186916779",
-		"static/posts/dlog/svelte/usging-cache-on-github-action.md",
-		"static/posts/dlog/svelte/using-cache-on-github-action.md",
-		"static/resources/usging-cache-on-github-action-20240816000251502.png",
-		"static/resources/usging-cache-on-github-action-20240816000140052.png",
-		"static/resources/usging-cache-on-github-action-20240815233139668.png",
-		"static/resources/usging-cache-on-github-action-20240815232537900.png",
-		"static/resources/usging-cache-on-github-action-20240815232353052.png",
-		"static/resources/usging-cache-on-github-action-20240815232157267.png",
-		"static/resources/usging-cache-on-github-action-20240815232057698.png",
-		"static/resources/record-2024-08-11-201239.gif",
-		"static/resources/Pasted image 20240815231751.png",
-		"static/posts/dlog/svelte/pojo.md",
-		"static/about.md",
-		"static/record-2024-08-11-201239-ezgif.com-video-to-gif-converter.gif"
-	]
+  "main": {
+    "id": "7e7604fec883bd57",
+    "type": "split",
+    "children": [
+      {
+        "id": "466d30dc71dcc99c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "23f0b5cb87fbd82b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "static/posts/dlog/svelte/using-popover-api.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7fefbe9eccebe301",
+    "type": "split",
+    "children": [
+      {
+        "id": "01be3c35535c97a1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75e7d4e75496f0eb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4045057264573ba5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "71fb567c377b415f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "db278d2dcf91d7cc",
+    "type": "split",
+    "children": [
+      {
+        "id": "7fb068fb9f992452",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8e109c5205dabeaf",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "static/posts/dlog/svelte/using-popover-api.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8c36b8ecb3af2f3d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "static/posts/dlog/svelte/using-popover-api.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9d44adf0c1096505",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "f15303b8f39628b7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "static/posts/dlog/svelte/using-popover-api.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:퀵 스위처 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 데일리 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false
+    }
+  },
+  "active": "23f0b5cb87fbd82b",
+  "lastOpenFiles": [
+    "static/posts/dlog/svelte/make-vite-plugin-markdown.md",
+    "static/posts/dlog/deploying-to-cloudflare-pages.md",
+    "static/posts/dlog/svelte/using-popover-api.md",
+    "vite.config.js.timestamp-1723738794418-d16eff83584d8.mjs",
+    "_tmp_3484_8e7c99e423fb47c796dd7dc244b9c763",
+    "vite.config.js.timestamp-1723738766715-5b4bee95b3dce.mjs",
+    "vite.config.js.timestamp-1723738764519-08ca69eae0ceb.mjs",
+    "package.json~",
+    "vite.config.js.timestamp-1723738568696-195861c38ff9.mjs",
+    "vite.config.js.timestamp-1723738549636-e4e211aff4745.mjs",
+    "vite.config.js.timestamp-1723738542862-f212584687ebb.mjs",
+    "vite.config.js.timestamp-1723738520764-24b9a1a7d4f86.mjs",
+    "package.json.4186916779",
+    "static/posts/dlog/svelte/usging-cache-on-github-action.md",
+    "static/posts/dlog/svelte/using-cache-on-github-action.md",
+    "static/resources/usging-cache-on-github-action-20240816000251502.png",
+    "static/resources/usging-cache-on-github-action-20240816000140052.png",
+    "static/resources/usging-cache-on-github-action-20240815233139668.png",
+    "static/resources/usging-cache-on-github-action-20240815232537900.png",
+    "static/resources/usging-cache-on-github-action-20240815232353052.png",
+    "static/resources/usging-cache-on-github-action-20240815232157267.png",
+    "static/resources/usging-cache-on-github-action-20240815232057698.png",
+    "static/resources/record-2024-08-11-201239.gif",
+    "static/resources/Pasted image 20240815231751.png",
+    "static/posts/dlog/svelte/pojo.md",
+    "static/about.md",
+    "static/record-2024-08-11-201239-ezgif.com-video-to-gif-converter.gif"
+  ]
 }

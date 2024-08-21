@@ -68,12 +68,6 @@ img {
 	max-inline-size: 100%;
 }
 
-h1,
-h2,
-h3 {
-	text-transform: uppercase;
-}
-
 :not(pre) > code {
 	color: var(--color-primary);
 	font-weight: bold;

@@ -1,4 +1,4 @@
-# 새로운 룬, $state.link
+# 스벨트의 새로운 룬, state.link
 
 [svelte@5.0.0-next.229](https://github.com/sveltejs/svelte/releases/tag/svelte%405.0.0-next.229)에서 새로운 룬인 `$state.link`기능이 도입되었습니다.
 이 룬은 단방향 상태관리 기능입니다.

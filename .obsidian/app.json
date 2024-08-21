@@ -1,5 +1,5 @@
 {
-	"attachmentFolderPath": "static/resources",
-	"newLinkFormat": "absolute",
-	"useMarkdownLinks": true
+  "attachmentFolderPath": "static/resources",
+  "newLinkFormat": "absolute",
+  "useMarkdownLinks": true
 }

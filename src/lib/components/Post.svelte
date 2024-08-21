@@ -1,6 +1,7 @@
 <script>
 	import Border from '$lib/ui/Border.svelte';
 	import { onMount } from 'svelte';
+	import 'highlight.js/styles/github-dark.css';
 
 	const { post } = $props();
 

@@ -8,7 +8,7 @@
 <Border id="header" viewTransitionName="header" tag="header">
 	<h1>{title}</h1>
 
-	<NavButton popovertargetaction="toggle"/>
+	<NavButton popovertargetaction="toggle" />
 </Border>
 
 <style>

@@ -39,6 +39,8 @@
 </Border>
 
 <style>
+	@import 'https://unpkg.com/@kfonts/neodgm-code/index.css';
+
 	:global(#border-outer-post) {
 		margin-block: var(--default-margin);
 	}

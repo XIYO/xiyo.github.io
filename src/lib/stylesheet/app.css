@@ -138,6 +138,8 @@ pre {
 	}
 
 	code {
+		font-family: 'Neo둥근모 Code', monospace;
+
 		counter-reset: line;
 		display: block;
 

@@ -7,7 +7,6 @@
 	import Header from '$lib/Header.svelte';
 	import { page } from '$app/stores';
 	import 'rehype-callouts/theme/github';
-	// import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
 
 	const { children } = $props();
 

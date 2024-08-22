@@ -52,13 +52,13 @@ export default class Category {
 		return Array.from(this.#childCategories.values());
 	}
 
-	// /**
-	//  * 자신의 포스트 목록 반환
-	//  * @returns {Post[]}
-	//  */
-	// get posts() {
-	// 	return Array.from(this.#posts.values());
-	// }
+	/**
+	 * 자신의 포스트 목록 반환
+	 * @returns {Post[]}
+	 */
+	get posts() {
+		return Array.from(this.#posts.values());
+	}
 
 	/**
 	 * 자신과 하위 카테고리의 포스트 반환

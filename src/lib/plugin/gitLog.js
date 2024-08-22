@@ -62,7 +62,7 @@ export async function getGitLogAsync(filePath) {
 			if (code === 0) {
 				const output = stdout
 					.split('\n')
-					.filter(line => line)
+					.filter((line) => line)
 					.map((line) => {
 						const [datetime, comment] = line.split(',');
 						return { datetime, comment };

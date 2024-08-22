@@ -64,10 +64,10 @@ export default function () {
 
 				// stringify
 				.use(rehypeStringify, { allowDangerousHtml: true })
-				.process(code)
+				.process(code);
 
 			const [file, gitLog] = await Promise.all([filePromise, gitLogPromise]);
-			file.data.gitLog = gitLog
+			file.data.gitLog = gitLog;
 
 			return {
 				code: `export default ${JSON.stringify(file)};`,

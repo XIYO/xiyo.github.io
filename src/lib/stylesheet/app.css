@@ -14,6 +14,7 @@
 	--default-margin: 0.5rem;
 	--default-border-width: 0.25rem;
 	--default-padding: 1rem;
+	--default-padding-half: calc(var(--default-padding) / 2);
 	--inner-border-radius: 1rem;
 	--outer-border-radius: calc(var(--inner-border-radius) + var(--default-border-width));
 
@@ -38,7 +39,6 @@
 
 	/* 기본 스타일링 */
 	font-family: 'Pretendard Variable', sans-serif;
-	line-height: 2rem;
 
 	-ms-text-size-adjust: 100%; /* IE, old Edge */
 	-webkit-text-size-adjust: 100%; /* Chrome, Safari, new Edge */

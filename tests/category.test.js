@@ -11,7 +11,7 @@ describe('Category', () => {
 		const category = Category.getCategory('');
 		const allChildCategories = category.allChildCategories;
 
-		console.log(await category.toSerialize())
+		console.log(await category.toSerialize());
 		console.log(allChildCategories);
 	});
 });

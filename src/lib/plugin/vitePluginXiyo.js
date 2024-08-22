@@ -8,13 +8,12 @@ import gitLog from './gitLog.js';
 import rehypeCallouts from 'rehype-callouts';
 import rehypeFigureCaption from './rehypeFigureCaption';
 
-
 // 사용자 정의 메타 문자열 값을 처리하는 함수
 const metaValues = [
 	{
 		name: 'data-title',
-		regex: /data-title="(?<value>[^"]*)"/,
-	},
+		regex: /data-title="(?<value>[^"]*)"/
+	}
 ];
 
 const parseMetaString = (meta) => {

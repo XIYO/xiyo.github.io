@@ -94,10 +94,7 @@ export default class Category {
 		});
 	}
 
-	static #initCategories(
-		{ absolutePath, htmlPromise },
-		{ category = this.#root, index = 0 } = {}
-	) {
+	static #initCategories({ absolutePath, htmlPromise }, { category = this.#root, index = 0 } = {}) {
 		const splitPath = absolutePath.split('/');
 		const absolutePaths = splitPath;
 		const categoryAbsolutePath = splitPath.slice(0, index + 1).join('/');
@@ -148,12 +145,12 @@ export default class Category {
 			return new Date(b.data.gitLog.at(-1).datetime) - new Date(a.data.gitLog.at(-1).datetime);
 		});
 
-		return this.#serialized = {
+		return (this.#serialized = {
 			name: this.name,
 			absolutePath: this.#absolutePath,
 			childCategories: childCategories,
 			allPosts: posts
-		};
+		});
 	}
 }
 

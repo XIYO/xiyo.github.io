@@ -4,7 +4,6 @@ const symbol = Symbol('Category initialization');
 
 export default class Category {
 	static #categories = new Map();
-	static root = new Category(); // 순서 중요. 모든 static 필드가 초기화 된 후 초기화 되어야 함
 	/** @type {string} */
 	#absolutePath;
 	/** @type {Map<string, Category>} */
@@ -98,7 +97,7 @@ export default class Category {
 
 	static #initCategories(
 		{ absolutePath, htmlPromise },
-		{ category = this.#root, index = 0 } = {}
+		{ category = new Category(), index = 0 } = {}
 	) {
 		const absolutePaths = absolutePath.split('/');
 		const categoryAbsolutePath = absolutePath

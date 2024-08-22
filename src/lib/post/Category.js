@@ -10,26 +10,25 @@ export default class Category {
 	#childCategories = new Map();
 	/** @type {Map<string, Post>} */
 	#posts = new Map();
-	#resolvedThis;
+	#serialized;
 	#resolvedPosts;
 	#resolvedChildCategories;
 
 	/**
 	 * 카테고리 생성자
-	 * @param {string} [absolutePath] 접근 가능한 절대 경로
+	 * @param {string} absolutePath 접근 가능한 절대 경로
 	 */
-	constructor(absolutePath = '') {
+	constructor(absolutePath) {
 		Category.#categories.set(absolutePath, this);
 		this.#absolutePath = absolutePath;
 	}
 
 	get name() {
-		const name = this.#absolutePath.split('/').at(-1);
-		return name || 'root';
+		return this.#absolutePath.split('/').at(-1);
 	}
 
 	get absolutePath() {
-		return this.#absolutePath || '/';
+		return this.#absolutePath;
 	}
 
 	get allChildCategories() {
@@ -77,6 +76,11 @@ export default class Category {
 		return this.#categories.has(absolutePath);
 	}
 
+	/**
+	 * 최상위 경로를 찾을 때는 공백 문자열을 인자로 넘겨주세요.
+	 * @param {string} absolutePath
+	 * @returns {Category | undefined}
+	 */
 	static getCategory(absolutePath) {
 		return this.#categories.get(absolutePath);
 	}
@@ -97,7 +101,7 @@ export default class Category {
 
 	static #initCategories(
 		{ absolutePath, htmlPromise },
-		{ category = new Category(), index = 0 } = {}
+		{ category = new Category(''), index = 0 } = {}
 	) {
 		const absolutePaths = absolutePath.split('/');
 		const categoryAbsolutePath = absolutePath
@@ -135,8 +139,8 @@ export default class Category {
 	}
 
 	async toSerialize() {
-		if (this.#resolvedThis) {
-			return this.#resolvedThis;
+		if (this.#serialized) {
+			return this.#serialized;
 		}
 
 		const postsPromise = Promise.all(this.allPosts.map((post) => post.toSerialize()));
@@ -153,14 +157,12 @@ export default class Category {
 		this.#resolvedPosts = posts;
 		this.#resolvedChildCategories = childCategories;
 
-		this.#resolvedThis = {
+		return this.#serialized = {
 			name: this.name,
 			absolutePath: this.#absolutePath,
 			childCategories: this.#resolvedChildCategories,
 			allPosts: this.#resolvedPosts
 		};
-
-		return this.#resolvedThis;
 	}
 }
 

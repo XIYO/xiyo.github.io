@@ -154,14 +154,11 @@ export default class Category {
 			return new Date(b.data.gitLog.at(-1).datetime) - new Date(a.data.gitLog.at(-1).datetime);
 		});
 
-		this.#resolvedPosts = posts;
-		this.#resolvedChildCategories = childCategories;
-
 		return this.#serialized = {
 			name: this.name,
 			absolutePath: this.#absolutePath,
-			childCategories: this.#resolvedChildCategories,
-			allPosts: this.#resolvedPosts
+			childCategories: childCategories,
+			allPosts: posts
 		};
 	}
 }

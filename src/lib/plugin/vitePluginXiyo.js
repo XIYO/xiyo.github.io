@@ -6,7 +6,7 @@ import rehypeShiki from '@shikijs/rehype';
 import { visit } from 'unist-util-visit';
 import gitLog from './gitLog.js';
 import rehypeCallouts from 'rehype-callouts';
-import rehypeFigureCaption from './rehypeFigureCaption';
+import remarkFigureCaption from './remarkFigureCaption';
 
 // 사용자 정의 메타 문자열 값을 처리하는 함수
 const metaValues = [
@@ -55,12 +55,10 @@ export default function () {
 
 				// remark
 				.use(remarkParse, { allowDangerousHtml: true })
-				// .use(remarkDirective)
-				// .use(remarkCalloutDirectives)
+				.use(remarkFigureCaption)
 
 				// rehype
 				.use(remarkRehype, { allowDangerousHtml: true })
-				.use(rehypeFigureCaption)
 				.use(rehypeCallouts)
 				.use(rehypeShiki, rehypeShikiOptions)
 				.use(rehypeStringify, { allowDangerousHtml: true })

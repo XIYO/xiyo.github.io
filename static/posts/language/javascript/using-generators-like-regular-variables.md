@@ -8,7 +8,7 @@
 
 ## 문법
 
-```javascript data-title="제너레이터 문법"
+```javascript
 function* fibonacciGenerator() {
     let [prev, curr] = [0, 1];
     while (true) {

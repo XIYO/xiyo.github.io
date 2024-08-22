@@ -4,6 +4,7 @@ const symbol = Symbol('Category initialization');
 
 export default class Category {
 	static #categories = new Map();
+	static #root = new Category(''); // 순서 중요. 모든 static 필드가 초기화 된 후 초기화 되어야 함
 	/** @type {string} */
 	#absolutePath;
 	/** @type {Map<string, Category>} */
@@ -11,8 +12,6 @@ export default class Category {
 	/** @type {Map<string, Post>} */
 	#posts = new Map();
 	#serialized;
-	#resolvedPosts;
-	#resolvedChildCategories;
 
 	/**
 	 * 카테고리 생성자
@@ -72,10 +71,6 @@ export default class Category {
 		return posts;
 	}
 
-	static hasCategory(absolutePath) {
-		return this.#categories.has(absolutePath);
-	}
-
 	/**
 	 * 최상위 경로를 찾을 때는 공백 문자열을 인자로 넘겨주세요.
 	 * @param {string} absolutePath
@@ -101,20 +96,19 @@ export default class Category {
 
 	static #initCategories(
 		{ absolutePath, htmlPromise },
-		{ category = new Category(''), index = 0 } = {}
+		{ category = this.#root, index = 0 } = {}
 	) {
-		const absolutePaths = absolutePath.split('/');
-		const categoryAbsolutePath = absolutePath
-			.split('/')
-			.slice(0, index + 1)
-			.join('/');
+		const splitPath = absolutePath.split('/');
+		const absolutePaths = splitPath;
+		const categoryAbsolutePath = splitPath.slice(0, index + 1).join('/');
 		if (absolutePaths.length > index + 1) {
-			if (!this.hasCategory(categoryAbsolutePath))
+			if (!this.#categories.has(categoryAbsolutePath))
 				category.addChildCategory(new Category(categoryAbsolutePath));
-			const childCategory = this.getCategory(categoryAbsolutePath);
+			const targetCategory = this.#categories.get(categoryAbsolutePath);
+
 			this.#initCategories(
 				{ absolutePath, htmlPromise },
-				{ category: childCategory, index: index + 1 }
+				{ category: targetCategory, index: index + 1 }
 			);
 		} else {
 			const post = new Post({ absolutePath, htmlPromise });

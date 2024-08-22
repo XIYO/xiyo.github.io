@@ -20,13 +20,12 @@
 		display: flex;
 		justify-content: space-between;
 
-		block-size: 4rem;
-
 		h1 {
 			/* reset */
 			margin-block: 0;
 
-			padding: var(--default-padding);
+			padding-inline: var(--default-padding);
+			padding-block: var(--default-padding-half);
 			margin-block-end: 4px; /* 스크롤이 바닥에 붙지 않기 위해 */
 
 			align-content: center;

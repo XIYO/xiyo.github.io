@@ -33,19 +33,6 @@ export default class Category {
 		return this.#absolutePath || '/';
 	}
 
-	get parentCategories() {
-		let parents = [];
-
-		let paths = this.#absolutePath.split('/');
-
-		for (let i = 0; i < paths.length; i++) {
-			let parentAbsolutePath = paths.slice(0, i + 1).join('/');
-			parents.push(Category.getCategory(parentAbsolutePath));
-		}
-
-		return parents.slice(0, -1); // 루트와 자신 제외
-	}
-
 	get allChildCategories() {
 		let allChildCategories = [];
 

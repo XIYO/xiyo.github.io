@@ -14,13 +14,17 @@
 <style>
 	:global(#border-outer-header) {
 		margin-block: var(--default-margin);
+		block-size: 4rem;
 	}
 
 	:global(#border-content-header) {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 
 		h1 {
+			flex-grow: 1;
+
 			/* reset */
 			margin-block: 0;
 

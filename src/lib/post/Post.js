@@ -24,6 +24,10 @@ export default class Post {
 		return Post.#posts.get(absolutePath);
 	}
 
+	get absolutePath() {
+		return this.#absolutePath;
+	}
+
 	async toSerialize() {
 		if (this.#serialized) {
 			return this.#serialized;

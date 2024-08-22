@@ -6,7 +6,7 @@
 </script>
 
 <button aria-label="Toggle navigation" popovertarget="border-outer-nav" {popovertargetaction}>
-	<span class="no-css-only">menu {popovertargetaction}</span>
+	<span style="display: none">menu {popovertargetaction}</span>
 </button>
 
 <style>
@@ -41,9 +41,5 @@
 
 	:global(nav) button::after {
 		content: '🏖️';
-	}
-
-	.no-css-only {
-		display: none;
 	}
 </style>

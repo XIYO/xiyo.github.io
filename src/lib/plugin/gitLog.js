@@ -20,7 +20,7 @@ const dummyDatetime = [
 /**
  * Git 로그 정보를 추출하는 함수
  * @param filePath
- * @returns {{date: *, subject: *}[]|*[]}
+ * @returns {{datetime: string, comment: string}[]}
  */
 function getGitLog(filePath) {
 	const gitCommand = [

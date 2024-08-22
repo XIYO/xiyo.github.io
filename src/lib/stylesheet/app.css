@@ -128,17 +128,38 @@ img {
 }
 
 figure {
+	margin: unset;
+	border-radius: var(--inner-border-radius);
+	background-color: var(--color-primary);
+	overflow: clip;
+
 	figcaption {
-		background-color: var(--color-primary-sub);
 		padding: var(--default-padding);
-		border-radius: var(--inner-border-radius);
 
 		p {
 			/* reset */
 			margin-block: unset;
+
+			font-size: 0.825rem;
+			text-align: end;
+		}
+	}
+
+	pre {
+		margin-block-end: unset;
+	}
+
+	&:has(img) {
+		& > img {
+			border: var(--default-border-width) solid var(--color-primary);
+			border-radius: var(--inner-border-radius);
+			box-sizing: border-box;
+
+			background-color: var(--color-default-black);
 		}
 	}
 }
+
 /* shiki custom css */
 
 pre {

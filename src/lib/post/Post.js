@@ -1,6 +1,6 @@
 export default class Post {
 	static #posts = new Map();
-	#resolvedSerialize;
+	#serialized;
 	#htmlPromise;
 	#absolutePath;
 
@@ -11,12 +11,8 @@ export default class Post {
 	 */
 	constructor({ absolutePath, htmlPromise }) {
 		Post.#posts.set(absolutePath, this);
-
 		this.#absolutePath = absolutePath;
-
 		this.#htmlPromise = htmlPromise;
-
-		Object.freeze(this);
 	}
 
 	/**
@@ -29,17 +25,13 @@ export default class Post {
 	}
 
 	async toSerialize() {
-		if (this.#resolvedSerialize) {
-			return this.#resolvedSerialize;
+		if (this.#serialized) {
+			return this.#serialized;
 		}
 
-		const html = await this.#htmlPromise();
-
-		this.#resolvedSerialize = {
+		return this.#serialized = {
 			absolutePath: this.#absolutePath,
-			...html
+			...(await this.#htmlPromise())
 		};
-
-		return this.#resolvedSerialize;
 	}
 }

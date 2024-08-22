@@ -71,6 +71,9 @@ img {
 }
 
 :not(pre) > code {
+	background-color: var(--color-default-black);
+	border-radius: var(--inner-border-radius);
+	padding: 0.25rem 0.5rem;
 	color: var(--color-primary);
 	font-weight: bold;
 }

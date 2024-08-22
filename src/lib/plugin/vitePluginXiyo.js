@@ -6,12 +6,37 @@ import rehypeShiki from '@shikijs/rehype';
 import { visit } from 'unist-util-visit';
 import gitLog from './gitLog.js';
 import rehypeCallouts from 'rehype-callouts';
+import rehypeFigureCaption from './rehypeFigureCaption';
+
+
+// 사용자 정의 메타 문자열 값을 처리하는 함수
+const metaValues = [
+	{
+		name: 'data-title',
+		regex: /data-title="(?<value>[^"]*)"/,
+	},
+];
+
+const parseMetaString = (meta) => {
+	const map = {};
+
+	for (const value of metaValues) {
+		const result = value.regex.exec(meta);
+
+		if (result) {
+			map[`${value.name}`] = result.groups.value;
+		}
+	}
+
+	return map;
+};
 
 /**
  * @type {import('@shikijs/rehype').RehypeShikiOptions}
  */
 const rehypeShikiOptions = {
-	theme: 'dracula'
+	theme: 'dracula',
+	parseMetaString
 };
 
 export default function () {
@@ -36,6 +61,7 @@ export default function () {
 
 				// rehype
 				.use(remarkRehype, { allowDangerousHtml: true })
+				.use(rehypeFigureCaption)
 				.use(rehypeCallouts)
 				.use(rehypeShiki, rehypeShikiOptions)
 				.use(rehypeStringify, { allowDangerousHtml: true })

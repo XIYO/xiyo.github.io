@@ -7,6 +7,7 @@
 	--color-default-black: light-dark(hsl(200, 4%, 16%), hsl(42, 66%, 93%));
 	--color-default-white: light-dark(hsl(42, 66%, 93%), hsl(200, 4%, 16%));
 	--color-primary: hsl(176, 89%, 37%);
+	--color-primary-sub: light-dark(hsl(176, 89%, 47%), hsl(176, 89%, 27%));
 
 	/* margin, border */
 	--default-margin: 0.5rem;
@@ -122,13 +123,29 @@ img {
 	background-color: transparent;
 }
 
+figure {
+	figcaption {
+		background-color: var(--color-primary-sub);
+		padding: var(--default-padding);
+		border-radius: var(--inner-border-radius);
+
+		p {
+			/* reset */
+			margin-block: unset;
+		}
+	}
+}
 /* shiki custom css */
 
 pre {
+	position: relative;
+
 	&:has(code) {
 		border: var(--default-border-width) solid var(--color-primary);
 		border-radius: var(--inner-border-radius);
 		padding: var(--default-padding);
+
+		overflow: clip;
 	}
 
 	code {
@@ -137,6 +154,7 @@ pre {
 		counter-reset: line;
 		display: block;
 
+		padding-block-end: var(--default-padding);
 		overflow-y: scroll;
 
 		& > .line {
@@ -145,12 +163,33 @@ pre {
 				content: counter(line);
 
 				/* Other styling */
+				background-color: #282A36;
+				position: sticky;
+				inset-inline-start: 0;
 				display: inline-block;
 				width: 1rem;
-				margin-right: 2rem;
+				padding-inline-end: 1.5rem;
 				text-align: right;
 				color: gray;
 			}
 		}
+	}
+
+	&[data-title] {
+		padding-block-start: 4rem;
+	}
+
+	&[data-title]::before {
+		position: absolute;
+		inset-block-start: 0;
+
+		content: attr(data-title);
+		display: block;
+		padding: var(--default-padding);
+		background-color: var(--color-primary);
+		color: var(--color-default-white);
+
+		border-end-end-radius: var(--inner-border-radius);
+		border-end-start-radius: var(--inner-border-radius);
 	}
 }

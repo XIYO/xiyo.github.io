@@ -90,7 +90,7 @@ export default class Category {
 		Object.entries(htmlPromises).forEach(([path, htmlPromise]) => {
 			const absolutePath = path
 				.replace(/^\/static/, '') // 스태틱 경로 제거
-				// .replace(/\.md$/, ''); // 확장자 제거
+				.replace(/\.md$/, ''); // 확장자 제거
 			this.#initCategories({ absolutePath, htmlPromise });
 		});
 	}

@@ -4,7 +4,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeShiki from '@shikijs/rehype';
 import { visit } from 'unist-util-visit';
-import gitLog from './gitLog.js';
+import { getGitLogAsync } from './gitLog.js';
 import rehypeCallouts from 'rehype-callouts';
 import remarkFigureCaption from './remarkFigureCaption';
 
@@ -49,20 +49,25 @@ export default function () {
 				return;
 			}
 
-			const file = await unified()
-				.use(gitLog, { filePath: id })
-				.use(ExtractTitleAndPathRemove)
+			const gitLogPromise = getGitLogAsync(id);
 
+			const filePromise = unified()
 				// remark
 				.use(remarkParse, { allowDangerousHtml: true })
 				.use(remarkFigureCaption)
+				.use(ExtractTitleAndPathRemove)
 
 				// rehype
 				.use(remarkRehype, { allowDangerousHtml: true })
 				.use(rehypeCallouts)
 				.use(rehypeShiki, rehypeShikiOptions)
+
+				// stringify
 				.use(rehypeStringify, { allowDangerousHtml: true })
-				.process(code);
+				.process(code)
+
+			const [file, gitLog] = await Promise.all([filePromise, gitLogPromise]);
+			file.data.gitLog = gitLog
 
 			return {
 				code: `export default ${JSON.stringify(file)};`,

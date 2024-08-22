@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "static/posts/dlog/svelte/using-popover-api.md",
+                "file": "static/posts/dlog/svelte/removed-shiki.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "static/posts/dlog/svelte/using-popover-api.md",
+                "file": "static/posts/dlog/svelte/removed-shiki.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "static/posts/dlog/svelte/using-popover-api.md",
+                "file": "static/posts/dlog/svelte/removed-shiki.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "static/posts/dlog/svelte/using-popover-api.md"
+                "file": "static/posts/dlog/svelte/removed-shiki.md"
               }
             }
           }
@@ -148,19 +148,21 @@
   },
   "active": "23f0b5cb87fbd82b",
   "lastOpenFiles": [
+    "static/posts/dlog/svelte/new-rune-svelte@5.0.0-next-229.md",
+    "static/posts/dlog/svelte/removed-shiki.md",
+    "test-results",
+    "pnpm-lock.yaml.2664863971",
+    "_tmp_3500_7f33bb880f5cc1f238996bdbd8941d5b",
+    "package.json~",
+    "vite.config.js.timestamp-1724261715998-52e8f4888f516.mjs",
+    "vite.config.js.timestamp-1724261554543-5176b0268b2a6.mjs",
+    "src/lib/plugin/vitePluginXiyo.js~",
+    "vite.config.js.timestamp-1724261397585-47d9e75dc64b5.mjs",
+    "vite.config.js.timestamp-1724261335617-05eae340b2126.mjs",
+    "vite.config.js.timestamp-1724261206001-ecd05529a09b6.mjs",
+    "static/posts/dlog/svelte/using-popover-api.md",
     "static/posts/dlog/svelte/make-vite-plugin-markdown.md",
     "static/posts/dlog/deploying-to-cloudflare-pages.md",
-    "static/posts/dlog/svelte/using-popover-api.md",
-    "vite.config.js.timestamp-1723738794418-d16eff83584d8.mjs",
-    "_tmp_3484_8e7c99e423fb47c796dd7dc244b9c763",
-    "vite.config.js.timestamp-1723738766715-5b4bee95b3dce.mjs",
-    "vite.config.js.timestamp-1723738764519-08ca69eae0ceb.mjs",
-    "package.json~",
-    "vite.config.js.timestamp-1723738568696-195861c38ff9.mjs",
-    "vite.config.js.timestamp-1723738549636-e4e211aff4745.mjs",
-    "vite.config.js.timestamp-1723738542862-f212584687ebb.mjs",
-    "vite.config.js.timestamp-1723738520764-24b9a1a7d4f86.mjs",
-    "package.json.4186916779",
     "static/posts/dlog/svelte/usging-cache-on-github-action.md",
     "static/posts/dlog/svelte/using-cache-on-github-action.md",
     "static/resources/usging-cache-on-github-action-20240816000251502.png",

@@ -33,9 +33,9 @@ export default class Post {
 			return this.#serialized;
 		}
 
-		return this.#serialized = {
+		return (this.#serialized = {
 			absolutePath: this.#absolutePath,
 			...(await this.#htmlPromise())
-		};
+		});
 	}
 }

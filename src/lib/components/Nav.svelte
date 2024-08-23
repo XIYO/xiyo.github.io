@@ -49,14 +49,19 @@
 		position: fixed;
 		z-index: 1; /* 내비게이션이 레이아웃에서 문맥상 가장 위에 있기 때문에 이후 요소에 덮힌다. 그래서 z-index 1, 사파리에서 발생 */
 
-		/* 세로 */
+		/* 인라인 사이즈 */
+		inline-size: var(--nav-min-inline-size);
+		inset-inline-start: calc(100% - (var(--nav-min-inline-size) + var(--default-margin)));
+
+		/* 블록 사이즈 */
 		inset-block-start: var(--default-margin);
 		block-size: calc(100dvh - (var(--default-margin) * 2));
 		min-block-size: var(--nav-min-block-size);
 
-		/* 가로 */
-		inline-size: var(--nav-min-inline-size);
-		inset-inline-start: calc(100% - (var(--nav-min-inline-size) + var(--default-margin)));
+		/* 위에서 적용한 블록 사이즈에 종속적인 요소를 정희 */
+		:global(#border-inner-nav, #border-content-nav) {
+				block-size: 100%;
+		}
 	}
 
 	:global(#border-content-nav) {

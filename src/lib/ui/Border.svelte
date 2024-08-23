@@ -66,12 +66,10 @@
 	}
 
 	.border-inner {
-		/*block-size: 100%; !* 이너는 부모 영역을 꽉 채운다 *!*/
 		border-radius: var(--inner-border-radius);
 	}
 
 	.border-content {
-		/*block-size: 100%;*/
 		border-radius: var(--inner-border-radius);
 		overflow: clip;
 

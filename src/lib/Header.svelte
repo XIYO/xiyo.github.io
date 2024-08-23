@@ -28,9 +28,9 @@
 			/* reset */
 			margin-block: 0;
 
-			padding-inline: var(--default-padding);
-			padding-block: var(--default-padding-half);
-			margin-block-end: 4px; /* 스크롤이 바닥에 붙지 않기 위해 */
+			margin-inline: var(--default-padding);
+			padding-block: calc(var(--default-padding) / 2);
+			margin-block-end: calc(var(--default-padding) / 2); /* 스크롤이 바닥에 붙지 않기 위해 */
 
 			align-content: center;
 			text-transform: uppercase;

@@ -14,7 +14,6 @@
 	--default-margin: 0.5rem;
 	--default-border-width: 0.25rem;
 	--default-padding: 1rem;
-	--default-padding-half: calc(var(--default-padding) / 2);
 	--inner-border-radius: 1rem;
 	--outer-border-radius: calc(var(--inner-border-radius) + var(--default-border-width));
 

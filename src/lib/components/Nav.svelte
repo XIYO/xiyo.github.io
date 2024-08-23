@@ -10,7 +10,7 @@
 		<NavButton popovertargetaction="hide" />
 	</div>
 
-	<ul class="padding content negative">
+	<ul id="nav-main" class="padding content negative">
 		<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 			<a href="/">home</a>
 		</li>
@@ -25,7 +25,7 @@
 		</li>
 	</ul>
 
-	<footer class="padding">
+	<div id="nav-footer" class="padding">
 		<a href="https://github.com/XIYO" target="_blank" aria-label="이요의 깃허브">
 			<svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
 				<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -34,7 +34,7 @@
 				/>
 			</svg>
 		</a>
-	</footer>
+	</div>
 </Border>
 
 <style>
@@ -79,7 +79,7 @@
 			border-bottom: var(--default-border-width) solid var(--color-default-black);
 		}
 
-		ul {
+		ul#nav-main {
 			flex-grow: 1;
 			list-style-type: none;
 			margin-block: unset;
@@ -93,7 +93,7 @@
 			}
 		}
 
-		footer {
+		#nav-footer {
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -111,7 +111,7 @@
 		}
 	}
 
-	/* 데스크탑 */
+	/* 데스크톱 소형 디스플레이 */
 	@media (width <= 1024px) {
 		:root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
 			/* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */

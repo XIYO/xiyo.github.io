@@ -37,14 +37,14 @@
 </svelte:head>
 
 <Nav />
+<Header title={$page.data.title} />
 <main>
-	<Header title={$page.data.title} />
 	{@render children()}
-	<Footer />
 </main>
+<Footer />
 
 <style>
-	main {
+    :global(body) {
 		margin: var(--default-margin);
 		margin-inline-end: var(--default-margin);
 
@@ -54,7 +54,7 @@
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
-		main {
+		:global(body) {
 			transition: margin 0.5s;
 		}
 	}

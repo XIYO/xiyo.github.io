@@ -147,7 +147,7 @@ figure {
             /* reset */
             margin-block: unset;
 
-            font-size: 0.825rem;
+            font-size: .75rem;
             text-align: end;
         }
     }

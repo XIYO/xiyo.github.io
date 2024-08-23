@@ -79,8 +79,8 @@ img {
 :not(pre) > code {
     background-color: var(--color-default-black);
     border-radius: var(--inner-border-radius);
-    padding: 0.25rem 0.5rem;
-    color: var(--color-primary);
+    padding: 0.125rem 0.25rem;
+    color: var(--color-primary-sub);
     font-weight: bold;
 }
 
@@ -140,7 +140,8 @@ figure {
     overflow: clip;
 
     figcaption {
-        padding: var(--default-padding);
+        padding-inline: var(--default-padding);
+        padding-block-end: var(--default-border-width);
 
         p {
             /* reset */

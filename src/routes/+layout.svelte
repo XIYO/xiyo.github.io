@@ -49,7 +49,7 @@
 		margin: var(--default-margin);
 		margin-inline-end: var(--default-margin);
 
-		@media (768px <= width) {
+		@media (1024px <= width) {
 			margin-inline-end: calc(var(--nav-min-inline-size) + calc(var(--default-margin) * 2));
 		}
 	}

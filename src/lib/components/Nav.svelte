@@ -113,6 +113,10 @@
 
 	/* 데스크탑 */
 	@media (width <= 1024px) {
+		:root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
+			/* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
+			transform: translateX(calc(100% + var(--default-margin)));
+		}
 	}
 
 	/* 태블릿 초과 해상도 */
@@ -121,10 +125,6 @@
 
 	/* 태블릿 해상도 */
 	@media (width <= 768px) {
-		:root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
-			/* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
-			transform: translateX(calc(100% + var(--default-margin)));
-		}
 	}
 
 	/* 모바일 초과 해상도 */

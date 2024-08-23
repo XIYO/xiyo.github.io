@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "static/posts/dlog/svelte/removed-shiki.md",
+                "file": "static/posts/language/javascript/using-generators-like-regular-variables.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "db278d2dcf91d7cc",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "static/posts/dlog/svelte/removed-shiki.md",
+                "file": "static/posts/language/javascript/using-generators-like-regular-variables.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "static/posts/dlog/svelte/removed-shiki.md",
+                "file": "static/posts/language/javascript/using-generators-like-regular-variables.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "static/posts/dlog/svelte/removed-shiki.md"
+                "file": "static/posts/language/javascript/using-generators-like-regular-variables.md"
               }
             }
           }
@@ -148,18 +149,21 @@
   },
   "active": "23f0b5cb87fbd82b",
   "lastOpenFiles": [
-    "static/posts/dlog/svelte/new-rune-svelte@5.0.0-next-229.md",
-    "static/posts/dlog/svelte/removed-shiki.md",
-    "test-results",
-    "pnpm-lock.yaml.2664863971",
-    "_tmp_3500_7f33bb880f5cc1f238996bdbd8941d5b",
-    "package.json~",
-    "vite.config.js.timestamp-1724261715998-52e8f4888f516.mjs",
-    "vite.config.js.timestamp-1724261554543-5176b0268b2a6.mjs",
+    "src/lib/Header.svelte~",
+    "src/lib/components/NavButton.svelte~",
+    "src/lib/stylesheet/app.css~",
+    "src/lib/components/Nav.svelte~",
+    "vite.config.js.timestamp-1724366447396-f5700b9b6ad6b.mjs",
+    "static/posts/language/javascript/using-generators-like-regular-variables.md~",
+    "static/posts/dlog/deploying-to-cloudflare-pages.md~",
+    "vite.config.js.timestamp-1724362554635-161a9e173e66d.mjs",
+    "vite.config.js.timestamp-1724359410751-586de71483a1d.mjs",
     "src/lib/plugin/vitePluginXiyo.js~",
-    "vite.config.js.timestamp-1724261397585-47d9e75dc64b5.mjs",
-    "vite.config.js.timestamp-1724261335617-05eae340b2126.mjs",
-    "vite.config.js.timestamp-1724261206001-ecd05529a09b6.mjs",
+    "vite.config.js.timestamp-1724359227298-0f54f2bee5801.mjs",
+    "build/posts/language/javascript/using-generators-like-regular-variables.md",
+    "static/posts/dlog/svelte/removed-shiki.md",
+    "static/posts/language/javascript/using-generators-like-regular-variables.md",
+    "static/posts/dlog/svelte/new-rune-svelte@5.0.0-next-229.md",
     "static/posts/dlog/svelte/using-popover-api.md",
     "static/posts/dlog/svelte/make-vite-plugin-markdown.md",
     "static/posts/dlog/deploying-to-cloudflare-pages.md",

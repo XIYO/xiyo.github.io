@@ -29,12 +29,14 @@
 			transition: opacity var(--default-animation-duration);
 		}
 
-		@media (768px < width) {
+		/* 데스크톱 소형 디스플레이 초과 해상도 */
+		@media (1024px < width) {
 			pointer-events: none;
 			opacity: 0;
 		}
 
-		@media (width <= 768px) {
+		/* 데스크톱 소형 디스플레이 */
+		@media (width <= 1024px) {
 			cursor: pointer;
 		}
 	}

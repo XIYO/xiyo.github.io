@@ -2,7 +2,7 @@
 	import Border from '$lib/ui/Border.svelte';
 	import NavButton from '$lib/components/NavButton.svelte';
 
-	const { title, tag = 'h1' } = $props();
+	const { title } = $props();
 </script>
 
 <Border id="header" viewTransitionName="header" tag="header">

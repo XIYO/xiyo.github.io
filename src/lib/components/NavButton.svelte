@@ -13,10 +13,7 @@
 	button {
 		/* reset */
 		border: unset;
-		padding: unset;
 
-		block-size: 100%;
-		aspect-ratio: 1;
 		background-color: var(--color-default-white);
 
 		&::after {

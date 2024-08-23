@@ -34,6 +34,7 @@
 
 <svelte:head>
 	<title>{$page.data.title}</title>
+	<meta name="og:title" content={$page.data.title} />
 </svelte:head>
 
 <Nav />

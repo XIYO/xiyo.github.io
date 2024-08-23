@@ -33,7 +33,9 @@
 	<div id="post-footer" class="highlight-background">
 		<div>
 			<div>first commit : {firstCommitDateString}</div>
-			<div>last commit : {lastCommitDateString}</div>
+			{#if firstCommitDateString !== lastCommitDateString}
+				<div>last commit : {lastCommitDateString}</div>
+			{/if}
 		</div>
 	</div>
 </Border>
@@ -43,11 +45,12 @@
 		margin-block: var(--default-margin);
 	}
 
-	:global(#post-footer) {
-		padding: var(--default-padding);
+	#post-footer {
+		padding: calc(var(--default-padding) / 2) var(--default-padding);
+		font-size: .75rem;
 
 		& > div {
-			overflow-x: scroll;
+			overflow-x: auto;
 
 			&::-webkit-scrollbar-thumb {
 				background-color: var(--color-default-black);

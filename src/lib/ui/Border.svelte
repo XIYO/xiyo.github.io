@@ -26,7 +26,8 @@
 	} = $props();
 </script>
 
-<div
+<svelte:element
+	this={tag}
 	id={id ? `border-outer-${id}` : undefined}
 	class="border-outer"
 	style:view-transition-name={`border-outer-${viewTransitionName}`}
@@ -40,17 +41,16 @@
 		style:view-transition-name={`border-inner-${viewTransitionName}`}
 		style:view-transition-class={borderInnerViewTransitionClass}
 	>
-		<svelte:element
-			this={tag}
+		<div
 			id={id ? `border-content-${id}` : undefined}
 			class="border-content"
 			style:view-transition-name={`border-content-${viewTransitionName}`}
 			style:view-transition-class={borderContentViewTransitionClass}
 		>
 			{@render children()}
-		</svelte:element>
+		</div>
 	</div>
-</div>
+</svelte:element>
 
 <style>
 	.border-outer {
@@ -66,12 +66,12 @@
 	}
 
 	.border-inner {
-		block-size: 100%; /* 이너는 부모 영역을 꽉 채운다 */
+		/*block-size: 100%; !* 이너는 부모 영역을 꽉 채운다 *!*/
 		border-radius: var(--inner-border-radius);
 	}
 
 	.border-content {
-		block-size: 100%;
+		/*block-size: 100%;*/
 		border-radius: var(--inner-border-radius);
 		overflow: clip;
 

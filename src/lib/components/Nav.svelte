@@ -115,30 +115,6 @@
 		}
 	}
 
-	/* 데스크톱 소형 디스플레이 */
-	@media (width <= 1024px) {
-		:root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
-			/* 100%만써도 화면 밖으로 사라지는데, 데스크톱에스 스크롤바가 있다가 없어질 경우 100%를 사용하면 뷰 트랜지션시 내비게이션이 살짝 보임 */
-			transform: translateX(calc(100% + var(--default-margin)));
-		}
-	}
-
-	/* 태블릿 초과 해상도 */
-	@media (768px < width) {
-	}
-
-	/* 태블릿 해상도 */
-	@media (width <= 768px) {
-	}
-
-	/* 모바일 초과 해상도 */
-	@media (425px < width) {
-	}
-
-	/* 모바일 해상도 */
-	@media (width <= 425px) {
-	}
-
 	/* 동작 활성화 모드일때만 트랜지션을 작동, 사용자를 존중 */
 	@media (prefers-reduced-motion: no-preference) {
 		:global(#border-outer-nav) {

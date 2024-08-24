@@ -54,6 +54,7 @@
 }
 
 body {
+    margin: unset;
     min-block-size: 100lvh;
 }
 

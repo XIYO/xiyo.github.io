@@ -53,6 +53,9 @@ importers:
       rehype-stringify:
         specifier: ^10.0.0
         version: 10.0.0
+      remark-figure-caption:
+        specifier: ^1.0.1
+        version: 1.0.1
       remark-parse:
         specifier: ^11.0.0
         version: 11.0.0
@@ -1472,6 +1475,9 @@ packages:
 
   rehype-stringify@10.0.0:
     resolution: {integrity: sha512-1TX1i048LooI9QoecrXy7nGFFbFSufxVRAfc6Y9YMRAi56l+oB0zP51mLSV312uRuvVLPV1opSlJmslozR1XHQ==}
+
+  remark-figure-caption@1.0.1:
+    resolution: {integrity: sha512-pCwJa2S30s8l9Y0xQhoVj6LHP693viH0sIZTDXpVFGtpBJDJ53Qss/mMKhkqWLhOU8mzB4TnScfmEl+k1Mu+mg==}
 
   remark-parse@11.0.0:
     resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
@@ -3308,6 +3314,10 @@ snapshots:
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.1
       unified: 11.0.5
+
+  remark-figure-caption@1.0.1:
+    dependencies:
+      unist-util-visit: 5.0.0
 
   remark-parse@11.0.0:
     dependencies:

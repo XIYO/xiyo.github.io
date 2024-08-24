@@ -54,7 +54,7 @@
 }
 
 body {
-    min-block-size: 100vh;
+    min-block-size: 100lvh;
 }
 
 main {

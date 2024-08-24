@@ -8,7 +8,7 @@
     --color-default-black: light-dark(hsl(200, 4%, 16%), hsl(42, 66%, 93%));
     --color-default-white: light-dark(hsl(42, 66%, 93%), hsl(200, 4%, 16%));
     --color-primary: hsl(176, 89%, 37%);
-    --color-primary-sub: light-dark(hsl(176, 89%, 47%), hsl(176, 89%, 27%));
+    --color-primary-sub: hsl(176, 89%, 27%);
 
     /* margin, border */
     --default-margin: 0.5rem;
@@ -44,7 +44,7 @@
     text-size-adjust: 100%;
 
     color: var(--color-default-black);
-    background-color: var(--color-default-white);
+    background-color: var(--color-primary-sub);
 
     min-inline-size: var(--min-inline-size);
     overflow: scroll; /* 윈도우에서 의도적으로 스크롤바를 노출시켜 스크롤바 때문에 생기는 레이아웃의 뒤틀림 방지 */

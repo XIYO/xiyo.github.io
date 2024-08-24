@@ -44,23 +44,20 @@
 		/* popover rest */
 		display: block;
 		border: unset;
-		margin: unset;
+		margin-inline: unset;
 
-		position: fixed;
-		z-index: 1; /* 내비게이션이 레이아웃에서 문맥상 가장 위에 있기 때문에 이후 요소에 덮힌다. 그래서 z-index 1, 사파리에서 발생 */
+		margin-block: var(--default-margin);
 
 		/* 인라인 사이즈 */
 		inline-size: var(--nav-min-inline-size);
-		inset-inline-start: calc(100% - (var(--nav-min-inline-size) + var(--default-margin)));
 
 		/* 블록 사이즈 */
-		inset-block-start: var(--default-margin);
-		block-size: calc(100dvh - (var(--default-margin) * 2));
 		min-block-size: var(--nav-min-block-size);
+		block-size: calc(100dvh - (var(--default-margin) * 2));
 
-		/* 위에서 적용한 블록 사이즈에 종속적인 요소를 정희 */
+		/* 위에서 선언한 block-size 가 고정값이기 때문에 자식 요소도 100%를 사용하도록 선언 */
 		:global(#border-inner-nav, #border-content-nav) {
-				block-size: 100%;
+			block-size: 100%;
 		}
 	}
 

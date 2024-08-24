@@ -26,14 +26,16 @@
 			/* reset */
 			margin-block: 0;
 
+			/* 마진에 패딩값을 주는 이유,
+			 * 스크롤바가 보더 레이어스에 겹쳐 잘리기 때문
+			 */
 			margin-inline: var(--default-padding);
 			padding-block: calc(var(--default-padding) / 2);
-			margin-block-end: calc(var(--default-padding) / 2); /* 스크롤이 바닥에 붙지 않기 위해 */
 
 			align-content: center;
 			text-transform: uppercase;
 
-			overflow-x: scroll; /* 의도적으로 스크롤을 노출하여 스크롤 높이도 미리 계산 하도록 한다 */
+			overflow-x: auto; /* 의도적으로 스크롤을 노출하여 스크롤 높이도 미리 계산 하도록 한다 */
 			text-wrap: nowrap;
 		}
 	}

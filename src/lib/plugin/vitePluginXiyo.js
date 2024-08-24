@@ -6,7 +6,7 @@ import rehypeShiki from '@shikijs/rehype';
 import { visit } from 'unist-util-visit';
 import { getGitLogAsync } from './gitLog.js';
 import rehypeCallouts from 'rehype-callouts';
-import remarkFigureCaption from './remarkFigureCaption';
+import remarkFigureCaption from 'remark-figure-caption';
 
 // 사용자 정의 메타 문자열 값을 처리하는 함수
 const metaValues = [

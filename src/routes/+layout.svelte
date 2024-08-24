@@ -37,7 +37,6 @@
 	<meta name="og:title" content={$page.data.title} />
 </svelte:head>
 
-<Nav />
 <div id="container-content">
 	<Header title={$page.data.title} />
 	<main>
@@ -45,12 +44,22 @@
 	</main>
 	<Footer />
 </div>
+<Nav />
 
 <style>
 	#container-content {
 		margin: var(--default-margin);
-		margin-inline-end: var(--default-margin);
+		container: inline-size container-cotent;
+	}
 
+	/**
+	 * 내비게이션의 기본 위치 정의
+	 * 스벨트는 id 까지 캡슐화가 안 돼서 이런식으로 정의
+	 * 캡슐롸 방법이 아직은 없고, 트릭은 존재하는 듯...
+	 * TODO 트릭 자세히 확인해보기
+	 **/
+	:global(#border-outer-nav) {
+		margin-inline-start: calc(100% - (var(--nav-min-inline-size) + var(--default-margin)));
 	}
 
 	/* 최초의 컨테이너라서 컨테이너 쿼리로 지정할 수 없어 미디어 쿼리로 사이즈를 조절한다 */

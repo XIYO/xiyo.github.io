@@ -5,11 +5,19 @@
 			const userAgent = navigator.userAgent.toLowerCase();
 			const href = location.href;
 
-			userAgent.includes('kakaotalk') && openKakaoExternalBrowser();
+			if (userAgent.includes('kakaotalk')) {
+				openKakaoExternalBrowser();
+			}
 
 			function openKakaoExternalBrowser() {
 				location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(href);
-				setTimeout(() => {location.href = 'kakaotalk://web/close';});
+				closeKakaoInAppBrowser();
+			}
+
+			function closeKakaoInAppBrowser() {
+				setTimeout(() => {
+					location.href = 'kakaotalk://web/close';
+				});
 			}
 		</script>
 		<meta charset="utf-8" />

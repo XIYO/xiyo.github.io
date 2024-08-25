@@ -34,7 +34,36 @@
 
 <svelte:head>
 	<title>{$page.data.title}</title>
-	<meta name="og:title" content={$page.data.title} />
+	{#if $page.data.og.title}
+		<meta property="og:title" content={$page.data.og.title} />
+	{/if}
+	{#if $page.data.og.description}
+		<meta property="og:description" content={$page.data.og.description} />
+	{/if}
+	{#if $page.data.og.type}
+		<meta property="og:type" content={$page.data.og.type} />
+	{/if}
+	{#if $page.data.og.url}
+		<meta property="og:url" content={$page.data.og.url} />
+	{/if}
+	{#if $page.data.og.imageUrl}
+		<meta property="og:image" content={$page.data.og.imageUrl} />
+	{/if}
+	{#if $page.data.og.author}
+		<meta property="article:author" content={$page.data.og.author} />
+	{/if}
+	{#if $page.data.og.publishedTime}
+		<meta property="article:published_time" content={$page.data.og.publishedTime} />
+	{/if}
+	{#if $page.data.og.modifiedTime}
+		<meta property="article:modified_time" content={$page.data.og.modifiedTime} />
+	{/if}
+	{#if $page.data.og.section}
+		<meta property="article:section" content={$page.data.og.section} />
+	{/if}
+	{#if $page.data.og.tags}
+		<meta property="article:tag" content={$page.data.og.tags} />
+	{/if}
 </svelte:head>
 
 <div id="container-content">

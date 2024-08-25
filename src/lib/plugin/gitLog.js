@@ -3,9 +3,29 @@ import { spawnSync, spawn } from 'child_process';
 const dummyDatetime = [
 	{
 		datetime: new Date().toISOString(),
-		comment: 'dummy'
+		comment: 'dummy',
+		author: 'unknown'
 	}
 ];
+
+function getGitCommand(path) {
+	return [
+		'log',
+		'--follow',
+		'--pretty=format:%ad,%s,%an',
+		'--date=format:%Y-%m-%dT%H:%M%z',
+		path
+	];
+}
+
+function gitLogParser(stdout) {
+	return stdout
+		? stdout.split('\n').map((line) => {
+				const [datetime, comment, author] = line.split(',');
+				return { datetime, comment, author };
+			})
+		: dummyDatetime;
+}
 
 /**
  * Git 로그 정보를 추출하는 함수
@@ -13,21 +33,10 @@ const dummyDatetime = [
  * @returns {{datetime: string, comment: string}[]}
  */
 export function getGitLogSync(filePath) {
-	const gitCommand = [
-		'log',
-		'--follow',
-		'--pretty=format:%ad,%s',
-		'--date=format:%Y-%m-%dT%H:%M%z',
-		filePath
-	];
+	const gitCommand = getGitCommand(filePath);
 	const { stdout } = spawnSync('git', gitCommand, { shell: false, encoding: 'utf8' });
 
-	return stdout
-		? stdout.split('\n').map((line) => {
-				const [datetime, comment] = line.split(',');
-				return { datetime, comment };
-			})
-		: dummyDatetime;
+	return gitLogParser(stdout);
 }
 
 /**
@@ -36,14 +45,7 @@ export function getGitLogSync(filePath) {
  * @returns {Promise<{datetime: string, comment: string}[]>}
  */
 export async function getGitLogAsync(filePath) {
-	const gitCommand = [
-		'log',
-		'--follow',
-		'--pretty=format:%ad,%s',
-		'--date=format:%Y-%m-%dT%H:%M%z',
-		filePath
-	];
-
+	const gitCommand = getGitCommand(filePath);
 	return new Promise((resolve, reject) => {
 		const child = spawn('git', gitCommand, { shell: false });
 
@@ -60,13 +62,7 @@ export async function getGitLogAsync(filePath) {
 
 		child.on('close', (code) => {
 			if (code === 0) {
-				const output = stdout
-					.split('\n')
-					.filter((line) => line)
-					.map((line) => {
-						const [datetime, comment] = line.split(',');
-						return { datetime, comment };
-					});
+				const output = gitLogParser(stdout);
 
 				// 만약 출력이 비어있다면, 더미 데이터를 반환합니다.
 				if (output.length === 0) {

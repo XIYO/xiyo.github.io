@@ -70,11 +70,15 @@ function ExtractTitleAndPathRemove() {
 		visit(tree, (node, index, parent) => {
 			if (node.type === 'heading' && node.depth === 1) {
 				file.data.title = node.children[0].value || '';
-				parent.children.splice(index, 1);
 
-				if (parent.children[index + 1].type === 'paragraph') {
-					file.data.description = parent.children[index + 1].children[0].value || '';
+				if (
+					parent.children[index + 1].type === 'paragraph' &&
+					parent.children[index + 1].children[0].type === 'text'
+				) {
+					file.data.description = parent.children[index + 1].children[0].value;
 				}
+
+				parent.children.splice(index, 1);
 			}
 
 			if (node.type === 'image' && node.url.startsWith('/static')) {

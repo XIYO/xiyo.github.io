@@ -12,7 +12,7 @@ export async function load({ url }) {
 			title: post.data.title,
 			description: post.data.description,
 			type: post ? 'article' : 'website',
-			url: 'https://test.xiyo.dev' + url.pathname,
+			url: url.href,
 			author : Array.from(new Set(post.data.gitLog.map((entry) => entry.author))).join(', '),
 			publishedTime: post.data.gitLog.at(0).datetime,
 			modifiedTime: post.data.gitLog.at(-1).datetime,

@@ -95,7 +95,10 @@ export default class Category {
 		});
 	}
 
-	static #initCategories({ absolutePath, markdownAsync }, { category = this.#root, index = 0 } = {}) {
+	static #initCategories(
+		{ absolutePath, markdownAsync },
+		{ category = this.#root, index = 0 } = {}
+	) {
 		const splitPath = absolutePath.split('/');
 		const absolutePaths = splitPath;
 		const categoryAbsolutePath = splitPath.slice(0, index + 1).join('/');

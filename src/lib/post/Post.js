@@ -37,8 +37,11 @@ export default class Post {
 		}
 
 		const markdownPromise = this.#markdownAsync();
-		const systemPath = resolve(process.cwd(), 'static' ,this.#absolutePath.slice(1) + '.md');
-		const htmlFilePromise = markdownProcessAsync({markdown: await markdownPromise, path: systemPath});
+		const systemPath = resolve(process.cwd(), 'static', this.#absolutePath.slice(1) + '.md');
+		const htmlFilePromise = markdownProcessAsync({
+			markdown: await markdownPromise,
+			path: systemPath
+		});
 
 		return (this.#serialized = {
 			absolutePath: this.#absolutePath,

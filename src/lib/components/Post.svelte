@@ -47,7 +47,7 @@
 
 	#post-footer {
 		padding: calc(var(--default-padding) / 2) var(--default-padding);
-		font-size: .75rem;
+		font-size: 0.75rem;
 
 		& > div {
 			overflow-x: auto;

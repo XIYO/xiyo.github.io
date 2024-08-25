@@ -58,7 +58,7 @@ const parseMetaString = (meta) => {
  * @type {import('@shikijs/rehype').RehypeShikiOptions}
  */
 const rehypeShikiOptions = {
-	theme: 'dracula',
+		theme: 'solarized-light',
 	parseMetaString
 };
 

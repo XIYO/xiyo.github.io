@@ -81,20 +81,21 @@ export default class Category {
 	}
 
 	static [symbol]() {
-		const htmlPromises = import.meta.glob('/static/**/*.md', {
+		const markdowns = import.meta.glob('/static/**/*.md', {
 			// eager: true,
+			query: '?raw',
 			import: 'default'
 		});
 
-		Object.entries(htmlPromises).forEach(([path, htmlPromise]) => {
+		Object.entries(markdowns).forEach(([path, markdownAsync]) => {
 			const absolutePath = path
 				.replace(/^\/static/, '') // 스태틱 경로 제거
 				.replace(/\.md$/, ''); // 확장자 제거
-			this.#initCategories({ absolutePath, htmlPromise });
+			this.#initCategories({ absolutePath, markdownAsync });
 		});
 	}
 
-	static #initCategories({ absolutePath, htmlPromise }, { category = this.#root, index = 0 } = {}) {
+	static #initCategories({ absolutePath, markdownAsync }, { category = this.#root, index = 0 } = {}) {
 		const splitPath = absolutePath.split('/');
 		const absolutePaths = splitPath;
 		const categoryAbsolutePath = splitPath.slice(0, index + 1).join('/');
@@ -104,11 +105,11 @@ export default class Category {
 			const targetCategory = this.#categories.get(categoryAbsolutePath);
 
 			this.#initCategories(
-				{ absolutePath, htmlPromise },
+				{ absolutePath, markdownAsync },
 				{ category: targetCategory, index: index + 1 }
 			);
 		} else {
-			const post = new Post({ absolutePath, htmlPromise });
+			const post = new Post({ absolutePath, markdownAsync });
 			category.addPost(post);
 		}
 	}

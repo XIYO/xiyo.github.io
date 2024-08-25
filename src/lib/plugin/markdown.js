@@ -1,12 +1,36 @@
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import rehypeStringify from 'rehype-stringify';
-import rehypeShiki from '@shikijs/rehype';
-import { visit } from 'unist-util-visit';
-import rehypeCallouts from 'rehype-callouts';
 import remarkFigureCaption from 'remark-figure-caption';
+import remarkRehype from 'remark-rehype';
+import rehypeCallouts from 'rehype-callouts';
+import rehypeShiki from '@shikijs/rehype';
+import rehypeStringify from 'rehype-stringify';
+import { visit } from 'unist-util-visit';
 import { getGitLogAsync } from '$lib/plugin/gitLog.js';
+
+export default async function markdownAsync({markdown, path}) {
+	const gitLogPromise = getGitLogAsync(path);
+
+	const filePromise = unified()
+		// remark
+		.use(remarkParse, { allowDangerousHtml: true })
+		.use(remarkFigureCaption)
+		.use(ExtractTitleAndPathRemove)
+
+		// rehype
+		.use(remarkRehype, { allowDangerousHtml: true })
+		.use(rehypeCallouts)
+		.use(rehypeShiki, rehypeShikiOptions)
+
+		// stringify
+		.use(rehypeStringify, { allowDangerousHtml: true })
+		.process(markdown);
+
+	const [gitLog, file] = await Promise.all([gitLogPromise, filePromise]);
+	file.data.gitLog = gitLog;
+
+	return file;
+}
 
 // 사용자 정의 메타 문자열 값을 처리하는 함수
 const metaValues = [
@@ -37,45 +61,6 @@ const rehypeShikiOptions = {
 	theme: 'dracula',
 	parseMetaString
 };
-
-export default function () {
-	return {
-		name: 'vite-plugin-xiyo',
-		enforce: 'pre',
-
-		async transform(code, id) {
-			// .md 파일인 경우에만 처리
-			if (!id.endsWith('.md')) {
-				return;
-			}
-
-			const gitLogPromise = getGitLogAsync(id);
-
-			const filePromise = unified()
-				// remark
-				.use(remarkParse, { allowDangerousHtml: true })
-				.use(remarkFigureCaption)
-				.use(ExtractTitleAndPathRemove)
-
-				// rehype
-				.use(remarkRehype, { allowDangerousHtml: true })
-				.use(rehypeCallouts)
-				.use(rehypeShiki, rehypeShikiOptions)
-
-				// stringify
-				.use(rehypeStringify, { allowDangerousHtml: true })
-				.process(code);
-
-			const [gitLog, file] = await Promise.all([gitLogPromise, filePromise]);
-			file.data.gitLog = gitLog;
-
-			return {
-				code: `export default ${JSON.stringify(file)};`,
-				map: null
-			};
-		}
-	};
-}
 
 function ExtractTitleAndPathRemove() {
 	return (tree, file) => {

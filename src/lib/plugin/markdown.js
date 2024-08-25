@@ -8,7 +8,7 @@ import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
 import { getGitLogAsync } from '$lib/plugin/gitLog.js';
 
-export default async function markdownAsync({markdown, path}) {
+export default async function markdownAsync({ markdown, path }) {
 	const gitLogPromise = getGitLogAsync(path);
 
 	const filePromise = unified()
@@ -59,8 +59,8 @@ const parseMetaString = (meta) => {
  */
 const rehypeShikiOptions = {
 	themes: {
-			light: 'solarized-light',
-			dark: 'poimandres'
+		light: 'solarized-light',
+		dark: 'poimandres'
 	},
 	parseMetaString
 };
@@ -72,8 +72,8 @@ function ExtractTitleAndPathRemove() {
 				file.data.title = node.children[0].value || '';
 				parent.children.splice(index, 1);
 
-				if (parent.children[index+1].type === 'paragraph') {
-					file.data.description = parent.children[index+1].children[0].value || '';
+				if (parent.children[index + 1].type === 'paragraph') {
+					file.data.description = parent.children[index + 1].children[0].value || '';
 				}
 			}
 

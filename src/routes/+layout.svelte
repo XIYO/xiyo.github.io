@@ -71,28 +71,28 @@
 	}
 
 	/* 소형 모니터 미만 */
-  @media (width < 1024px) {
-  	:root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
+	@media (width < 1024px) {
+		:root:has(#border-outer-nav:not(:popover-open)) :global(#border-outer-nav) {
 			/* 화면밖으로 나갈때 사진의 영역 + 마진 까지 계산 */
-  		transform: translateX(calc(100% + var(--default-margin)));
-  	}
-  }
+			transform: translateX(calc(100% + var(--default-margin)));
+		}
+	}
 
-  /* 태블릿 이상 해상도 */
-  @media (768px <= width) {
-  }
+	/* 태블릿 이상 해상도 */
+	@media (768px <= width) {
+	}
 
-  /* 태블릿 미만 해상도 */
-  @media (width < 768px) {
-  }
+	/* 태블릿 미만 해상도 */
+	@media (width < 768px) {
+	}
 
-  /* 모바일 이상 해상도 */
-  @media (425px <= width) {
-  }
+	/* 모바일 이상 해상도 */
+	@media (425px <= width) {
+	}
 
-  /* 모바일 미만 해상도 */
-  @media (width < 425px) {
-  }
+	/* 모바일 미만 해상도 */
+	@media (width < 425px) {
+	}
 
 	@media (prefers-reduced-motion: no-preference) {
 		#container-content {

@@ -1,4 +1,3 @@
-import { resolve } from 'path';
 import markdownProcessAsync from '$lib/plugin/markdown.js';
 
 export default class Post {
@@ -37,14 +36,14 @@ export default class Post {
 		}
 
 		const markdownPromise = this.#markdownAsync();
-		const systemPath = resolve(process.cwd(), 'static', this.#absolutePath.slice(1) + '.md');
+		const markdownVFile = await markdownPromise;
 		const htmlFilePromise = markdownProcessAsync({
-			markdown: await markdownPromise,
-			path: systemPath
+			markdown: markdownVFile.default
 		});
 
 		return (this.#serialized = {
 			absolutePath: this.#absolutePath,
+			gitLog: markdownVFile.gitLog,
 			...(await htmlFilePromise)
 		});
 	}

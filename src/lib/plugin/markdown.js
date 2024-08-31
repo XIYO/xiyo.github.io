@@ -6,12 +6,9 @@ import rehypeCallouts from 'rehype-callouts';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
-import { getGitLogAsync } from '$lib/plugin/gitLog.js';
 
-export default async function markdownAsync({ markdown, path }) {
-	const gitLogPromise = getGitLogAsync(path);
-
-	const filePromise = unified()
+export default async function markdownAsync({ markdown }) {
+	return unified()
 		// remark
 		.use(remarkParse, { allowDangerousHtml: true })
 		.use(remarkFigureCaption)
@@ -25,11 +22,6 @@ export default async function markdownAsync({ markdown, path }) {
 		// stringify
 		.use(rehypeStringify, { allowDangerousHtml: true })
 		.process(markdown);
-
-	const [gitLog, file] = await Promise.all([gitLogPromise, filePromise]);
-	file.data.gitLog = gitLog;
-
-	return file;
 }
 
 // 사용자 정의 메타 문자열 값을 처리하는 함수

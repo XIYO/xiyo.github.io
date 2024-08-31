@@ -81,11 +81,7 @@ export default class Category {
 	}
 
 	static [symbol]() {
-		const markdowns = import.meta.glob('/static/**/*.md', {
-			// eager: true,
-			query: '?raw',
-			import: 'default'
-		});
+		const markdowns = import.meta.glob('/static/**/*.md');
 
 		Object.entries(markdowns).forEach(([path, markdownAsync]) => {
 			const absolutePath = path
@@ -146,7 +142,7 @@ export default class Category {
 		const [posts, childCategories] = await Promise.all([postsPromise, childCategoriesPromise]);
 
 		posts.sort((a, b) => {
-			return new Date(b.data.gitLog.at(-1).datetime) - new Date(a.data.gitLog.at(-1).datetime);
+			return new Date(b.gitLog.at(-1).datetime) < new Date(a.gitLog.at(-1).datetime);
 		});
 
 		return (this.#serialized = {

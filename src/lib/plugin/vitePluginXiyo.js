@@ -1,42 +1,4 @@
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import rehypeStringify from 'rehype-stringify';
-import rehypeShiki from '@shikijs/rehype';
-import { visit } from 'unist-util-visit';
-import rehypeCallouts from 'rehype-callouts';
-import remarkFigureCaption from 'remark-figure-caption';
-import { getGitLogAsync } from '$lib/plugin/gitLog.js';
-
-// 사용자 정의 메타 문자열 값을 처리하는 함수
-const metaValues = [
-	{
-		name: 'data-title',
-		regex: /data-title="(?<value>[^"]*)"/
-	}
-];
-
-const parseMetaString = (meta) => {
-	const map = {};
-
-	for (const value of metaValues) {
-		const result = value.regex.exec(meta);
-
-		if (result) {
-			map[`${value.name}`] = result.groups.value;
-		}
-	}
-
-	return map;
-};
-
-/**
- * @type {import('@shikijs/rehype').RehypeShikiOptions}
- */
-const rehypeShikiOptions = {
-	theme: 'dracula',
-	parseMetaString
-};
+import { getGitLogAsync } from './gitLog.js';
 
 export default function () {
 	return {
@@ -44,50 +6,23 @@ export default function () {
 		enforce: 'pre',
 
 		async transform(code, id) {
-			// .md 파일인 경우에만 처리
 			if (!id.endsWith('.md')) {
 				return;
 			}
 
-			const gitLogPromise = getGitLogAsync(id);
+			// Git 로그를 비동기적으로 가져옴
+			const gitLog = await getGitLogAsync(id);
 
-			const filePromise = unified()
-				// remark
-				.use(remarkParse, { allowDangerousHtml: true })
-				.use(remarkFigureCaption)
-				.use(ExtractTitleAndPathRemove)
-
-				// rehype
-				.use(remarkRehype, { allowDangerousHtml: true })
-				.use(rehypeCallouts)
-				.use(rehypeShiki, rehypeShikiOptions)
-
-				// stringify
-				.use(rehypeStringify, { allowDangerousHtml: true })
-				.process(code);
-
-			const [gitLog, file] = await Promise.all([gitLogPromise, filePromise]);
-			file.data.gitLog = gitLog;
+			// Git 로그를 별도의 export로 추가
+			const resultCode = `
+        export default ${JSON.stringify(code)}
+        export const gitLog = ${JSON.stringify(gitLog)};
+      `;
 
 			return {
-				code: `export default ${JSON.stringify(file)};`,
+				code: resultCode,
 				map: null
 			};
 		}
-	};
-}
-
-function ExtractTitleAndPathRemove() {
-	return (tree, file) => {
-		visit(tree, (node, index, parent) => {
-			if (node.type === 'heading' && node.depth === 1) {
-				file.data.title = node.children[0].value || '';
-				parent.children.splice(index, 1);
-			}
-
-			if (node.type === 'image' && node.url.startsWith('/static')) {
-				node.url = node.url.replace('/static', '');
-			}
-		});
 	};
 }

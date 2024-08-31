@@ -13,5 +13,5 @@ describe('Category', () => {
 
 		console.log(await category.toSerialize());
 		console.log(allChildCategories);
-	});
+	}, 0);
 });

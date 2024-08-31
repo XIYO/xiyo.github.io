@@ -13,9 +13,9 @@ export async function load({ url }) {
 			description: post.data.description,
 			type: post ? 'article' : 'website',
 			url: url.href,
-			author : Array.from(new Set(post.data.gitLog.map((entry) => entry.author))).join(', '),
-			publishedTime: post.data.gitLog.at(0).datetime,
-			modifiedTime: post.data.gitLog.at(-1).datetime,
+			author : Array.from(new Set(post.gitLog.map((entry) => entry.author))).join(', '),
+			publishedTime: post.gitLog.at(0).datetime,
+			modifiedTime: post.gitLog.at(-1).datetime,
 		} : {};
 
 	return {

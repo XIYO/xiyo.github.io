@@ -1,13 +1,13 @@
 # ABOUT
 
-**Nick:**
+**Nickname:**
 
-- XIYO(이요라고 발음, `두근두근 비밀친구`에 나오는 토끼 이름에서 따옴)
+- XIYO (Pronounced as "Ee-yo," taken from the name of the rabbit in "Exciting Secret Friend")
 
-**좋아하는 것:**
+**Likes:**
 
-- 표준
+- Standards
 
-**싫어하는 것:**
+**Dislikes:**
 
-- 비표준
+- Non-standards

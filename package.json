@@ -17,7 +17,7 @@
 	"devDependencies": {
 		"@inlang/paraglide-js": "1.11.2",
 		"@playwright/test": "^1.46.1",
-		"@shikijs/rehype": "^1.15.1",
+		"@shikijs/rehype": "^1.15.2",
 		"@sveltejs/adapter-static": "^3.0.4",
 		"@sveltejs/enhanced-img": "^0.3.4",
 		"@sveltejs/kit": "^2.5.25",

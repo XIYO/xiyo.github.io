@@ -2,7 +2,7 @@
 
 **Nickname:**
 
-- XIYO (Pronounced as "Ee-yo," taken from the name of the rabbit in "Exciting Secret Friend")
+- XIYO (Pronounced as "Ee-yo," taken from the name of the rabbit in `Animal Yokochou`)
 
 **Likes:**
 

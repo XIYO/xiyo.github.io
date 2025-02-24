@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - blog
-      - amp
     paths-ignore:
       - /.idea/**
 
@@ -16,11 +15,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        with:
-          run_install: false
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -34,8 +28,7 @@ jobs:
       - name: build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
-        run: |
-          pnpm run build
+        run: pnpm run build
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4

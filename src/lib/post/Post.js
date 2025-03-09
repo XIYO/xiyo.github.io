@@ -6,7 +6,7 @@ export default class Post {
 	#serialized;
 	/** @type {Promise<unknown>} */ #markdownAsync;
 	/** @type {string} */ #absolutePath;
-	/** @type {string} */ 
+	/** @type {string} */
 	get absolutePath() {
 		return this.#absolutePath;
 	}

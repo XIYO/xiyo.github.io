@@ -105,7 +105,7 @@ export default class Category {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param {{ absolutePath: string, markdownAsync: Promise<unknown> }} param0
 	 * @param {{ category: Category, index: number }} param1
 	 */
@@ -149,9 +149,7 @@ export default class Category {
 	}
 
 	async toSerialize() {
-		if (this.#serialized) {
-			return this.#serialized;
-		}
+		if (this.#serialized) return this.#serialized;
 
 		const postsPromise = Promise.all(this.allPosts.map((post) => post.toSerialize()));
 		const childCategoriesPromise = Promise.all(

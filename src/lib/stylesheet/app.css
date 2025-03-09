@@ -190,7 +190,7 @@ img {
 figure {
 	margin-inline: unset;
 	border-radius: var(--inner-border-radius);
-	background-color: var(--color-primary);
+	background-color: var(--color-primary-sub);
 	max-inline-size: 100%;
 	inline-size: fit-content;
 
@@ -216,7 +216,7 @@ figure {
 
 	& > img,
 	a:has(img) {
-		border: var(--default-border-width) solid var(--color-primary);
+		border: var(--default-border-width) solid var(--color-primary-sub);
 		border-radius: var(--inner-border-radius);
 
 		&:is(img) {
@@ -294,7 +294,7 @@ pre.shiki {
 		/* reset */
 		margin-block: unset;
 
-		border: var(--default-border-width) solid var(--color-primary);
+		border: var(--default-border-width) solid var(--color-primary-sub);
 		border-radius: var(--inner-border-radius);
 		padding: var(--default-padding);
 	}

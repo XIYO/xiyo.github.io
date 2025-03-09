@@ -6,53 +6,39 @@
 	const { category } = $props();
 </script>
 
-<div id="posts-post-container">
-	<Card id="category" viewTransitionName="category" negative>
-		<CardHeader>categories</CardHeader>
+<Card class="margin-block" id="category" negative viewTransitionName="category">
+	<CardHeader>categories</CardHeader>
 
-		{#if category.childCategories.length}
-			<ul class="padding">
-				{#each category.childCategories as childCategory (childCategory.absolutePath)}
-					<li>
-						<a href={childCategory.absolutePath}>
-							{childCategory.name} ({childCategory.allPosts.length})
-						</a>
-					</li>
-				{/each}
-			</ul>
-		{:else}
-			<p class="padding margin-block-reset">{m.subCategoryEmpty()}</p>
-		{/if}
-	</Card>
-
-	<Card id="article" viewTransitionName="posts" negative>
-		<CardHeader>posts</CardHeader>
-
+	{#if category.childCategories.length}
 		<ul class="padding">
-			{#each category.allPosts as post (post.absolutePath)}
+			{#each category.childCategories as childCategory (childCategory.absolutePath)}
 				<li>
-					<article>
-						<a href={post.absolutePath}>{post.data.title}</a>
-					</article>
+					<a href={childCategory.absolutePath}>
+						{childCategory.name} ({childCategory.allPosts.length})
+					</a>
 				</li>
 			{/each}
 		</ul>
-	</Card>
-</div>
+	{:else}
+		<p class="padding margin-block-reset">{m.subCategoryEmpty()}</p>
+	{/if}
+</Card>
+
+<Card class="margin-block" id="article" negative viewTransitionName="posts">
+	<CardHeader>posts</CardHeader>
+
+	<ul class="padding">
+		{#each category.allPosts as post (post.absolutePath)}
+			<li>
+				<article>
+					<a href={post.absolutePath}>{post.data.title}</a>
+				</article>
+			</li>
+		{/each}
+	</ul>
+</Card>
 
 <style>
-	#posts-post-container {
-		display: grid;
-		gap: var(--default-margin);
-
-		@media (768px <= width) {
-			grid-template-columns: repeat(2, 1fr);
-			& > :global(*) {
-				block-size: fit-content;
-			}
-		}
-	}
-
 	ul {
 		/* reset */
 		list-style: none;

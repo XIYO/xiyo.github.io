@@ -6,7 +6,7 @@ import rehypeCallouts from 'rehype-callouts';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
-import sizeOf from 'image-size';
+import { imageSizeFromFile } from 'image-size/fromFile';
 import { join } from 'node:path';
 import { transformerNotationDiff, transformerNotationFocus } from '@shikijs/transformers';
 import { createCssVariablesTheme } from 'shiki/core';
@@ -113,7 +113,7 @@ function ExtractTitleAndPathRemove() {
 				let height;
 
 				try {
-					({ width, height } = sizeOf(imagePath));
+					({ width, height } = imageSizeFromFile(imagePath));
 				} catch (err) {
 					console.error(`Error reading image size for ${imagePath}:`, err);
 				}

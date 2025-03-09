@@ -10,5 +10,8 @@ export default defineConfig({
 		enhancedImages(),
 		sveltekit(),
 		vitePluginXiyo()
-	]
+	],
+	ssr: {
+		noExternal: ['@inlang/paraglide-js']
+	}
 });

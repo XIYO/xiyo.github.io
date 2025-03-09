@@ -4,7 +4,7 @@
 	import { page } from '$app/state';
 </script>
 
-{#snippet switcher({href, lang})}
+{#snippet switcher({ href, lang })}
 	<li>
 		<a {href} hreflang={lang}>
 			{lang}
@@ -13,8 +13,8 @@
 {/snippet}
 
 <ul>
-	{#each availableLanguageTags as lang}
-		{@render switcher({href: i18n.route(page.url.pathname), lang})}
+	{#each availableLanguageTags as lang (lang)}
+		{@render switcher({ href: i18n.route(page.url.pathname), lang })}
 	{/each}
 </ul>
 

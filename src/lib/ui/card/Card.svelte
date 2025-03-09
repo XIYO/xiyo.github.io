@@ -21,7 +21,9 @@
 	this={tag}
 	id={id ? [BORDER_OUTER, id].join(SEPARATOR) : undefined}
 	class:border-outer={true}
-	style:view-transition-name={viewTransitionName ? [BORDER_OUTER, viewTransitionName].join(SEPARATOR) : undefined}
+	style:view-transition-name={viewTransitionName
+		? [BORDER_OUTER, viewTransitionName].join(SEPARATOR)
+		: undefined}
 	style:view-transition-class={BORDER_OUTER}
 	{...rest}
 >
@@ -29,13 +31,17 @@
 		id={id ? [BORDER_INNER, id].join(SEPARATOR) : undefined}
 		class:border-inner={true}
 		class:negative
-		style:view-transition-name={viewTransitionName ? [BORDER_INNER, viewTransitionName].join(SEPARATOR) : undefined}
+		style:view-transition-name={viewTransitionName
+			? [BORDER_INNER, viewTransitionName].join(SEPARATOR)
+			: undefined}
 		style:view-transition-class={BORDER_INNER}
 	>
 		<div
 			id={id ? [BORDER_CONTENT, id].join(SEPARATOR) : undefined}
 			class:border-content={true}
-			style:view-transition-name={viewTransitionName ? [BORDER_CONTENT, viewTransitionName].join(SEPARATOR) : undefined}
+			style:view-transition-name={viewTransitionName
+				? [BORDER_CONTENT, viewTransitionName].join(SEPARATOR)
+				: undefined}
 			style:view-transition-class={BORDER_CONTENT}
 		>
 			{@render children()}

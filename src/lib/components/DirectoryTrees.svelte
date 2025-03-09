@@ -3,7 +3,7 @@
 </script>
 
 <div>
-	{#each path as p, i}
+	{#each path as p, i (p)}
 		<a href={path.slice(0, i + 1).join('/') || '/'} style:--padding-line-start={i}>
 			{i === path.length - 1 ? '📂' : '📁'}{p ? p : '/'}
 		</a>

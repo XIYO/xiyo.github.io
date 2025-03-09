@@ -23,7 +23,7 @@ export async function load({ url }) {
 				author: Array.from(new Set(post.gitLog.map((entry) => entry.author))).join(', '),
 				publishedTime: post.gitLog.at(0).datetime,
 				modifiedTime: post.gitLog.at(-1).datetime,
-				tags: post?.data?.tags,
+				tags: post?.data?.tags
 			}
 		: {};
 

@@ -18,7 +18,7 @@
 		Made By
 		<a id="made-by" href="https://svelte.dev" target="_blank">Svelte Rune</a>, Designed By
 		<span id="design-by" tabindex="-1">
-			{#each 'chimi' as letter, i}
+			{#each 'chimi' as letter, i (i)}
 				<span style:--delay={i}>{letter}</span>
 			{/each}
 		</span>

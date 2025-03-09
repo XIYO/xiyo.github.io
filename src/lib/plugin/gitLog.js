@@ -61,7 +61,7 @@ export function getGitLogSync(gitCommand) {
  */
 export async function getGitLogAsync(filePath) {
 	const gitCommand = getGitCommand(filePath);
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve) => {
 		const child = spawn('git', gitCommand, { shell: false });
 
 		let stdout = '';

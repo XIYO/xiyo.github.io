@@ -8,13 +8,11 @@
 
 <div id="posts-post-container">
 	<Card id="category" viewTransitionName="category" negative>
-		<CardHeader>
-			categories
-		</CardHeader>
+		<CardHeader>categories</CardHeader>
 
 		{#if category.childCategories.length}
 			<ul class="padding">
-				{#each category.childCategories as childCategory}
+				{#each category.childCategories as childCategory (childCategory.absolutePath)}
 					<li>
 						<a href={childCategory.absolutePath}>
 							{childCategory.name} ({childCategory.allPosts.length})
@@ -28,12 +26,10 @@
 	</Card>
 
 	<Card id="article" viewTransitionName="posts" negative>
-		<CardHeader>
-			posts
-		</CardHeader>
+		<CardHeader>posts</CardHeader>
 
 		<ul class="padding">
-			{#each category.allPosts as post}
+			{#each category.allPosts as post (post.absolutePath)}
 				<li>
 					<article>
 						<a href={post.absolutePath}>{post.data.title}</a>

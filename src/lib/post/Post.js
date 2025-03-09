@@ -2,10 +2,13 @@ import markdownProcessAsync from '$lib/plugin/markdown.js';
 import { i18n } from '$lib/i18n.js';
 
 export default class Post {
-	static #posts = new Map();
+	static #posts = /** @type {Map<symbol, Post>} */ (new Map());
 	#serialized;
 	#markdownAsync;
 	#absolutePath;
+	get absolutePath() {
+		return this.#absolutePath;
+	}
 
 	/**
 	 * Post 클래스의 생성자입니다. 이 생성자는 포스트의 제목, 내용, 작성 날짜, 그리고 슬러그를 인자로 받아 Post 인스턴스를 생성합니다.
@@ -21,24 +24,24 @@ export default class Post {
 	}
 
 	/**
-	 * 포스트의 카테고리를 반환
+	 * Post 인스턴스를 반환합니다.
 	 * @param absolutePath
-	 * @returns {Post | undefined}
+	 * @returns { Post }
 	 */
 	static getPosts(absolutePath) {
 		const key = Symbol.for(absolutePath);
-		let post = Post.#posts.get(key);
-
-		if (!post) {
-			const alternativePath = i18n.route(absolutePath);
-			const alternativeKey = Symbol.for(alternativePath);
-			post = this.#posts.get(alternativeKey);
-		}
-
-		return post;
+		return Post.#posts.get(key) ?? this.#originPost(absolutePath);
 	}
 
-	get absolutePath() {return this.#absolutePath;}
+	/**
+	 * 원본 포스트 반환
+	 * @return {Post}
+	 */
+	static #originPost(absolutePath) {
+		const alternativePath = i18n.route(absolutePath);
+		const key = Symbol.for(alternativePath);
+		return Post.#posts.get(key);
+	}
 
 	async toSerialize() {
 		if (this.#serialized) {

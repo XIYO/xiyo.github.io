@@ -9,8 +9,9 @@ AC88U 라우터에 Nginx를 설치하고 SSL 인증서를 설정해두었지만,
 
 저는 여러 개의 하위 도메인을 사용하고 있습니다.
 
-- `blog.xiyo.dev`
 - `xiyo.dev`
+- `blog.xiyo.dev`
+- `test.xiyo.dev`
 
 이처럼 하위 도메인이 많을 경우, 와일드카드(`*.xiyo.dev`)를 사용하여 한 번에 인증서를 발급하는 것이 효율적입니다.
 

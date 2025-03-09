@@ -51,6 +51,8 @@ OptionsAlt:
 - **Global API Key 방식**은 관리하는 도메인이 많을 때 유용하며, 키 하나로 여러 도메인의 인증서를 쉽게 발급할 수 있습니다.
 - **API Token 방식**은 특정 도메인에만 권한을 부여할 수 있어 보안성이 더 뛰어납니다.
 
+토큰 발급은 [Cloudflare 토큰 발급 페이지](https://dash.cloudflare.com/profile/api-tokens)를 참고하시면 됩니다.
+
 > [!NOTE]
 > 저는 `xiyo.dev` 외에도 다른 도메인이 있기 때문에 **Global API Key 방식**을 사용했습니다.
 
@@ -76,7 +78,7 @@ wget -O /jffs/scripts/dnsapi/dns_cf "https://raw.githubusercontent.com/acmesh-of
 
 ### 3. Cloudflare API 키 추가
 
-`CF_KEY`와 `CF_EMAIL`을 `dns_cf` 스크립트의 두 번째 줄에 추가합니다.
+`dns_cf` 스크립트의 두 번째 줄에 `CF_KEY`와 `CF_EMAIL`을 추가하고 발급받은 토큰을 입력합니다.
 
 ```sh data-title="dns_cf"
 #!/usr/bin/env sh

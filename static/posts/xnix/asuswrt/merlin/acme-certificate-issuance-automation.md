@@ -60,7 +60,7 @@ OptionsAlt:
 
 ### 1. SSH로 라우터에 접속
 
-```sh
+```sh data-title="terminal"
 ssh admin@router-ip
 ```
 
@@ -68,7 +68,7 @@ ssh admin@router-ip
 
 AC88U 라우터는 기본적으로 DNS 플러그인을 제공하지 않으므로 직접 추가해야 합니다.
 
-```sh
+```sh data-title="terminal"
 wget -O /jffs/scripts/dnsapi/dns_cf "https://raw.githubusercontent.com/acmesh-official/acme.sh/master/dnsapi/dns_cf.sh"
 ```
 
@@ -78,11 +78,11 @@ wget -O /jffs/scripts/dnsapi/dns_cf "https://raw.githubusercontent.com/acmesh-of
 
 `CF_KEY`와 `CF_EMAIL`을 `dns_cf` 스크립트의 두 번째 줄에 추가합니다.
 
-```sh
+```sh data-title="dns_cf"
 #!/usr/bin/env sh
 
-export CF_Key="my_key"
-export CF_Email="my_email"
+export CF_Key="my_key" # Added by XIYO // [!code focus]
+export CF_Email="my_email" # Added by XIYO // [!code focus]
 
 dns_cf_info=CloudFlare
 Site: CloudFlare.com
@@ -94,22 +94,23 @@ Site: CloudFlare.com
 
 라우터가 부팅될 때 자동으로 DNS 플러그인 마운트 및 인증서 갱신 작업을 수행하도록 설정해야 합니다.
 
-다음 내용을 `/jffs/scripts/service-start` 스크립트에 추가합니다.
+`/jffs/scripts/service-start` 파일에 아래 내용을 추가합니다.
 
-```sh title=/jffs/scripts/service-start
+```sh data-title="service-start"
 #!/bin/sh
 
-/jffs/scripts/scmerlin startup &  # scMerlin
+/jffs/scripts/scmerlin startup &  # scMerlin 
 ln -s /jffs/.config /home/root/.config # Added by XIYO
-mount --bind /jffs/acme/dnsapi /usr/sbin/dnsapi  # Added by XIYO, for ACME
 
-# 매일 새벽 3시에 인증서 갱신 실행 & 로그를 웹 UI(System Log)에 기록
-cru a AcmeRenew "0 3 * * * acme.sh --cron --home /jffs/.le 2>&1 | logger -t AcmeRenew"
+# acme.sh 가 참조하는 디렉토리에 DNS 플러그인 마운트 // [!code focus]
+mount --bind /jffs/acme/dnsapi /usr/sbin/dnsapi  # Added by XIYO, for ACME // [!code focus]
+# 매일 새벽 3시에 인증서 갱신 실행 & 로그를 웹 UI(System Log)에 기록 // [!code focus]
+cru a AcmeRenew "0 3 * * * acme.sh --cron --home /jffs/.le 2>&1 | logger -t AcmeRenew" # Added by XIYO // [!code focus]
 ```
 
 해당 스크립트가 없을 경우 생성하고 실행 권한을 부여합니다.
 
-```sh
+```sh data-title="terminal"
 touch /jffs/scripts/service-start
 chmod +x /jffs/scripts/service-start
 ```
@@ -118,9 +119,9 @@ chmod +x /jffs/scripts/service-start
 
 ### 5. 수동 마운트 실행 및 크론잡 등록
 
-서비스가 시작되기 전, 수동으로 DNS 플러그인을 마운트하고, 크론잡에 인증서 발급을 등록해야합니다.
+저는 라우터를 리부트 할 생각이 없기 때문에 서비스가 수동으로 DNS 플러그인을 마운트하고, 크론잡에 인증서 발급 프로세스를 등록했습니다.
 
-```sh
+```sh data-title="terminal"
 mount --bind /jffs/acme/dnsapi /usr/sbin/dnsapi
 cru a AcmeRenew "0 3 * * * acme.sh --cron --home /jffs/.le 2>&1 | logger -t AcmeRenew"
 ```
@@ -129,7 +130,7 @@ cru a AcmeRenew "0 3 * * * acme.sh --cron --home /jffs/.le 2>&1 | logger -t Acme
 
 다음 명령어를 실행하여 와일드카드 인증서를 발급합니다.
 
-```sh
+```sh data-title="terminal"
 acme.sh --issue --dns dns_cf \
 -d xiyo.dev -d *.xiyo.dev \
 --cert-home /jffs/.le \

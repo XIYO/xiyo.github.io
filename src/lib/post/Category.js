@@ -4,12 +4,9 @@ import { i18n } from '$lib/i18n.js';
 export default class Category {
 	static #categories = new Map();
 	static #root;
-	/** @type {string} */
-	#absolutePath;
-	/** @type {Map<string, Category>} */
-	#childCategories = new Map();
-	/** @type {Map<string, Post>} */
-	#posts = new Map();
+	/** @type {string} */ #absolutePath;
+	/** @type {Map<string, Category>} */ #childCategories = new Map();
+	/** @type {Map<string, Post>} */ #posts = new Map();
 	#serialized;
 
 	static {
@@ -77,7 +74,7 @@ export default class Category {
 	get allPosts() {
 		return [
 			...this.#posts.values(),
-			...[...this.#childCategories.values()].flatMap(child => child.allPosts)
+			...[...this.#childCategories.values()].flatMap((child) => child.allPosts)
 		];
 	}
 
@@ -95,7 +92,8 @@ export default class Category {
 		const categoryAbsolutePath = splitPath.slice(0, index + 1).join('/');
 
 		if (absolutePaths.length > index + 1) {
-			if (!this.#categories.has(categoryAbsolutePath)) category.addChildCategory(new Category(categoryAbsolutePath));
+			if (!this.#categories.has(categoryAbsolutePath))
+				category.addChildCategory(new Category(categoryAbsolutePath));
 			const targetCategory = this.#categories.get(categoryAbsolutePath);
 
 			this.#initCategories(

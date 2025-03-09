@@ -1,5 +1,4 @@
 import Post from '$lib/post/Post.js';
-import { availableLanguageTags } from '$lib/paraglide/runtime.js';
 import { i18n } from '$lib/i18n.js';
 
 export default class Category {
@@ -14,9 +13,8 @@ export default class Category {
 	#serialized;
 
 	static {
-		this.#root = new Category(''); // 정적 필드 초기화
+		this.#root = new Category('');
 
-		// 기존의 Category[symbol]()에서 하던 초기화 작업
 		const markdowns = import.meta.glob('/static/**/*.md');
 
 		Object.entries(markdowns).forEach(([path, markdownAsync]) => {
@@ -36,13 +34,7 @@ export default class Category {
 		const key = Symbol.for(absolutePath);
 		Category.#categories.set(key, this);
 
-		const split = absolutePath.split('/');
-		if (availableLanguageTags.includes(split[1])) {
-			// 언어 코드가 포함되어 있으면 제거
-			split.splice(1, 1); // 1번 인덱스의 요소를 제거
-		}
-
-		this.#absolutePath = split.join('/');
+		this.#absolutePath = i18n.route(absolutePath);
 	}
 
 	get name() {
@@ -112,6 +104,11 @@ export default class Category {
 		return category;
 	}
 
+	/**
+	 * 
+	 * @param {{ absolutePath: string, markdownAsync: Promise<unknown> }} param0
+	 * @param {{ category: Category, index: number }} param1
+	 */
 	static #initCategories(
 		{ absolutePath, markdownAsync },
 		{ category = this.#root, index = 0 } = {}

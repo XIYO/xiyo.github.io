@@ -31,9 +31,7 @@ export default class Category {
 	 * @param {string} absolutePath 접근 가능한 절대 경로
 	 */
 	constructor(absolutePath) {
-		const key = Symbol.for(absolutePath);
-		Category.#categories.set(key, this);
-
+		Category.#categories.set(absolutePath, this);
 		this.#absolutePath = i18n.route(absolutePath);
 	}
 
@@ -77,38 +75,17 @@ export default class Category {
 	 * @returns {Post[]} 포스트 목록
 	 */
 	get allPosts() {
-		const posts = Array.from(this.#posts.values());
-
-		for (const childCategory of this.#childCategories.values()) {
-			posts.push(...childCategory.allPosts);
-		}
-
-		return posts;
+		return [
+			...this.#posts.values(),
+			...[...this.#childCategories.values()].flatMap(child => child.allPosts)
+		];
 	}
 
-	/**
-	 * 최상위 경로를 찾을 때는 공백 문자열을 인자로 넘겨주세요.
-	 * @param {string} absolutePath
-	 * @returns {Category | undefined}
-	 */
+	/** 대체 언어가 없는 경우, 원본을 반환 합니다 */
 	static getCategory(absolutePath) {
-		const key = Symbol.for(absolutePath);
-		let category = this.#categories.get(key);
-
-		if (!category) {
-			const alternativePath = i18n.route(absolutePath);
-			const alternativeKey = Symbol.for(alternativePath);
-			category = this.#categories.get(alternativeKey);
-		}
-
-		return category;
+		return this.#categories.get(absolutePath) ?? Category.#categories.get(i18n.route(absolutePath));
 	}
 
-	/**
-	 *
-	 * @param {{ absolutePath: string, markdownAsync: Promise<unknown> }} param0
-	 * @param {{ category: Category, index: number }} param1
-	 */
 	static #initCategories(
 		{ absolutePath, markdownAsync },
 		{ category = this.#root, index = 0 } = {}
@@ -118,9 +95,8 @@ export default class Category {
 		const categoryAbsolutePath = splitPath.slice(0, index + 1).join('/');
 
 		if (absolutePaths.length > index + 1) {
-			const key = Symbol.for(categoryAbsolutePath);
-			if (!this.#categories.has(key)) category.addChildCategory(new Category(categoryAbsolutePath));
-			const targetCategory = this.#categories.get(key);
+			if (!this.#categories.has(categoryAbsolutePath)) category.addChildCategory(new Category(categoryAbsolutePath));
+			const targetCategory = this.#categories.get(categoryAbsolutePath);
 
 			this.#initCategories(
 				{ absolutePath, markdownAsync },

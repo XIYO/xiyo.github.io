@@ -1,5 +1,4 @@
 import markdownProcessAsync from '$lib/plugin/markdown.js';
-import { availableLanguageTags } from '$lib/paraglide/runtime.js';
 import { i18n } from '$lib/i18n.js';
 
 export default class Post {
@@ -17,11 +16,7 @@ export default class Post {
 		const key = Symbol.for(absolutePath);
 		Post.#posts.set(key, this);
 
-		const split = absolutePath.split('/');
-		if (availableLanguageTags.includes(split[1])) {
-			split.splice(1, 1); // 1번 인덱스의 요소를 제거
-		}
-		this.#absolutePath = split.join('/');
+		this.#absolutePath = i18n.route(absolutePath);
 		this.#markdownAsync = markdownAsync;
 	}
 
@@ -43,9 +38,7 @@ export default class Post {
 		return post;
 	}
 
-	get absolutePath() {
-		return this.#absolutePath;
-	}
+	get absolutePath() {return this.#absolutePath;}
 
 	async toSerialize() {
 		if (this.#serialized) {

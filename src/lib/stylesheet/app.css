@@ -14,6 +14,11 @@
 	--inner-border-radius: 1rem;
 	--outer-border-radius: calc(var(--inner-border-radius) + var(--default-border-width));
 
+	@media (max-width: 720px) {
+		--default-margin: 0.25rem;
+		--default-padding: 0.5rem;
+	}
+
 	/* size */
 	--scroll-bar-size: 0.25rem;
 	--min-inline-size: 320px;
@@ -69,6 +74,12 @@
 	overflow: scroll; /* 윈도우에서 의도적으로 스크롤바를 노출시켜 스크롤바 때문에 생기는 레이아웃의 뒤틀림 방지 */
 
 	text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	* {
+		transition: margin .5s ease-in-out, padding .5s ease-in-out;
+	}
 }
 
 body {

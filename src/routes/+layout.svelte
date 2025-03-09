@@ -106,7 +106,9 @@
 
 <style>
 	#container-content {
-		margin: var(--default-margin);
+		> :global(*) {
+				margin: var(--default-margin);
+		}
 	}
 
 	/**
@@ -146,11 +148,5 @@
 
 	/* 모바일 미만 해상도 */
 	@media (width < 425px) {
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		#container-content {
-			transition: margin 0.5s;
-		}
 	}
 </style>

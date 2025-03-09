@@ -107,7 +107,7 @@
 <style>
 	#container-content {
 		> :global(*) {
-				margin: var(--default-margin);
+			margin: var(--default-margin);
 		}
 	}
 

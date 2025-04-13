@@ -1,20 +1,13 @@
 <script>
-	import { availableLanguageTags } from '$lib/paraglide/runtime.js';
-	import { i18n } from '$lib/i18n.js';
 	import { page } from '$app/state';
+	import { locales, localizeHref } from '$lib/paraglide/runtime.js';
 </script>
 
-{#snippet switcher({ href, lang })}
-	<li>
-		<a {href} hreflang={lang}>
-			{lang}
-		</a>
-	</li>
-{/snippet}
-
 <ul>
-	{#each availableLanguageTags as lang (lang)}
-		{@render switcher({ href: i18n.route(page.url.pathname), lang })}
+	{#each locales as locale (locale)}
+		<li>
+			<a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
+		</li>
 	{/each}
 </ul>
 

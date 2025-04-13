@@ -1,5 +1,5 @@
 import markdownProcessAsync from '$lib/plugin/markdown.js';
-import { i18n } from '$lib/i18n.js';
+import { deLocalizeHref } from '$lib/paraglide/runtime.js';
 
 export default class Post {
 	static #posts = /** @type {Map<string, Post>} */ (new Map());
@@ -13,13 +13,13 @@ export default class Post {
 	 */
 	constructor({ absolutePath, markdownAsync }) {
 		Post.#posts.set(absolutePath, this);
-		this.#absolutePath = i18n.route(absolutePath);
+		this.#absolutePath = deLocalizeHref(absolutePath);
 		this.#markdownAsync = markdownAsync;
 	}
 
 	/** 대체 언어가 없는 경우, 원본을 반환 합니다 */
 	static getPosts(absolutePath) {
-		return Post.#posts.get(absolutePath) ?? Post.#posts.get(i18n.route(absolutePath));
+		return Post.#posts.get(absolutePath) ?? Post.#posts.get(deLocalizeHref(absolutePath));
 	}
 
 	get absolutePath() {

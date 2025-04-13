@@ -1,9 +1,6 @@
 <script>
-	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
-	import { i18n } from '$lib/i18n';
-	import { invalidate, onNavigate } from '$app/navigation';
+	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
-	import { onSetLanguageTag } from '$lib/paraglide/runtime.js';
 
 	// components
 	import Nav from '$lib/components/Nav.svelte';
@@ -19,10 +16,6 @@
 	import '@kfonts/neodgm-code/index.css';
 
 	const { children } = $props();
-
-	onSetLanguageTag(() => {
-		invalidate('language:current');
-	});
 
 	onNavigate((navigation) => {
 		// 모션 감소 설정 감지
@@ -54,8 +47,8 @@
 
 <svelte:head>
 	<title>{page.data.title}</title>
-	<meta name="description" content={page.data.description} />
-	<link rel="canonical" href={page.url.origin + page.url.pathname} />
+	<meta content={page.data.description} name="description" />
+	<link href={page.url.origin + page.url.pathname} rel="canonical" />
 	{#if page.data.og.title}
 		<meta property="og:title" content={page.data.og.title} />
 	{/if}
@@ -93,16 +86,14 @@
 	<!--{/if}-->
 </svelte:head>
 
-<ParaglideJS {i18n}>
-	<div id="container-content">
-		<Header title={page.data.title} />
-		<main class="margin-block">
-			{@render children()}
-		</main>
-		<Footer gitLog={page.data.gitLog} />
-	</div>
-	<Nav />
-</ParaglideJS>
+<div id="container-content">
+	<Header title={page.data.title} />
+	<main class="margin-block">
+		{@render children()}
+	</main>
+	<Footer gitLog={page.data.gitLog} />
+</div>
+<Nav />
 
 <style>
 	#container-content {
@@ -112,8 +103,8 @@
 	}
 
 	/**
-	 * 내비게이션의 기본 위치 정의
-	 **/
+		 * 내비게이션의 기본 위치 정의
+		 **/
 	:global(#border-outer-nav) {
 		margin-inline-start: calc(100% - (var(--nav-min-inline-size) + var(--default-margin)));
 	}

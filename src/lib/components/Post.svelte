@@ -1,19 +1,18 @@
 <script>
+	import { datetime } from '$lib/paraglide/registry.js';
+	import { getLocale } from '$lib/paraglide/runtime.js';
 	import Card from '$lib/ui/card/Card.svelte';
-	import { languageTag } from '$lib/paraglide/runtime.js';
 
 	const { post } = $props();
-
-	const locale = new Intl.Locale(languageTag());
 
 	const firstCommitDate = new Date(post.gitLog.at(-1).datetime);
 	const lastCommitDate = new Date(post.gitLog.at(0).datetime);
 
+	/** @type {Intl.DateTimeFormatOptions} */
 	const dateFormatOptions = { year: '2-digit', month: '2-digit', day: '2-digit' };
-	const dateTimeFormat = new Intl.DateTimeFormat(locale.baseName, dateFormatOptions);
 
-	const firstCommitDateString = dateTimeFormat.format(firstCommitDate);
-	const lastCommitDateString = dateTimeFormat.format(lastCommitDate);
+	const firstCommitDateString = datetime(getLocale(), firstCommitDate, dateFormatOptions);
+	const lastCommitDateString = datetime(getLocale(), lastCommitDate, dateFormatOptions);
 </script>
 
 <Card viewTransitionName="post" negative>

@@ -1,5 +1,5 @@
 import Post from '$lib/post/Post.js';
-import { i18n } from '$lib/i18n.js';
+import { deLocalizeHref } from '$lib/paraglide/runtime.js';
 
 export default class Category {
 	static #categories = new Map();
@@ -29,7 +29,7 @@ export default class Category {
 	 */
 	constructor(absolutePath) {
 		Category.#categories.set(absolutePath, this);
-		this.#absolutePath = i18n.route(absolutePath);
+		this.#absolutePath = deLocalizeHref(absolutePath);
 	}
 
 	get name() {
@@ -80,7 +80,9 @@ export default class Category {
 
 	/** 대체 언어가 없는 경우, 원본을 반환 합니다 */
 	static getCategory(absolutePath) {
-		return this.#categories.get(absolutePath) ?? Category.#categories.get(i18n.route(absolutePath));
+		return (
+			this.#categories.get(absolutePath) ?? Category.#categories.get(deLocalizeHref(absolutePath))
+		);
 	}
 
 	static #initCategories(

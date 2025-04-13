@@ -1,16 +1,14 @@
 <script>
-	import { languageTag } from '$lib/paraglide/runtime.js';
+	import { datetime } from '$lib/paraglide/registry.js';
+	import { getLocale } from '$lib/paraglide/runtime.js';
 
 	const { gitLog } = $props();
 
-	const locale = new Intl.Locale(languageTag());
-
 	const firstCommitDate = new Date(gitLog.at(0).datetime);
 
+	/** @type {Intl.DateTimeFormatOptions} */
 	const dateFormatOptions = { year: '2-digit', month: '2-digit', day: '2-digit' };
-	const dateTimeFormat = new Intl.DateTimeFormat(locale.baseName, dateFormatOptions);
-
-	const firstCommitDateString = dateTimeFormat.format(firstCommitDate);
+	const firstCommitDateString = datetime(getLocale(), firstCommitDate, dateFormatOptions);
 </script>
 
 <footer>

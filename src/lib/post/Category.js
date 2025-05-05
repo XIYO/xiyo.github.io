@@ -125,29 +125,19 @@ export default class Category {
 	}
 
 	async toSerialize() {
-		if (this.#serialized) return this.#serialized;
-
 		const postsPromise = Promise.all(this.allPosts.map((post) => post.toSerialize()));
 		const childCategoriesPromise = Promise.all(
 			this.childCategories.map((category) => category.toSerialize())
 		);
 
 		const [posts, childCategories] = await Promise.all([postsPromise, childCategoriesPromise]);
-
-		posts.sort((a, b) => {
-			const dateA = new Date(a.gitLog.at(-1).datetime);
-			const dateB = new Date(b.gitLog.at(-1).datetime);
-
-			if (dateA > dateB) return -1; // 최신 글이 앞으로
-			if (dateA < dateB) return 1; // 오래된 글이 뒤로
-			return 0; // 날짜가 같을 경우
-		});
+		const filteredPosts = posts.map(post => ({gitLog: post.gitLog, absolutePath: post.absolutePath, data: post.data}));
 
 		return (this.#serialized = {
 			name: this.name,
 			absolutePath: this.#absolutePath,
 			childCategories: childCategories,
-			allPosts: posts
+			allPosts: filteredPosts
 		});
 	}
 }

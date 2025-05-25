@@ -39,7 +39,6 @@ export default class Post {
 
 		return (this.#serialized = {
 			absolutePath: this.#absolutePath,
-			gitLog: markdownVFile.gitLog,
 			...(await htmlFilePromise)
 		});
 	}

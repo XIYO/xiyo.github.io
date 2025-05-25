@@ -5,8 +5,8 @@
 
 	const { post } = $props();
 
-	const firstCommitDate = new Date(post.gitLog.at(-1).datetime);
-	const lastCommitDate = new Date(post.gitLog.at(0).datetime);
+	const firstCommitDate = new Date(post.data.dates.at(-1));
+	const lastCommitDate = new Date(post.data.dates.at(0));
 
 	/** @type {Intl.DateTimeFormatOptions} */
 	const dateFormatOptions = { year: '2-digit', month: '2-digit', day: '2-digit' };

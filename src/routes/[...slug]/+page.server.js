@@ -20,9 +20,9 @@ export async function load({ url }) {
 				keywords: post.data.keywords,
 				type: post ? 'article' : 'website',
 				url: url.href,
-				author: Array.from(new Set(post.gitLog.map((entry) => entry.author))).join(', '),
-				publishedTime: post.gitLog.at(0).datetime,
-				modifiedTime: post.gitLog.at(-1).datetime,
+				author: Array.from(new Set(post.data.authors.map((entry) => entry.author))).join(', '),
+				publishedTime: post.data.dates.at(0),
+				modifiedTime: post.data.dates.at(-1),
 				tags: post?.data?.tags
 			}
 		: {};

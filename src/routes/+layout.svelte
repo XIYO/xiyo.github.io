@@ -91,7 +91,7 @@
 	<main class="margin-block">
 		{@render children()}
 	</main>
-	<Footer gitLog={page.data.gitLog} />
+	<Footer />
 </div>
 <Nav />
 

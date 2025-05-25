@@ -84,7 +84,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
 
   
 
-**Svelte 5에서는 컴포넌트의 <script> 영역에서 바로 await를 사용할 수 있게 되었습니다.** 다시 말해, **컴포넌트 자체를 async 함수처럼 다뤄** 비동기 데이터를 직접 가져올 수 있습니다. 이는 “최소한의 세레모니(minimal ceremony)” 원칙에 부합하며, **프레임워크 전용 API 없이도 그냥 JavaScript 코드 작성하듯** 사용할 수 있는 기능입니다 . 개발자는 더 이상 페이지별 load 함수나 onMount에 의존하지 않고, **필요한 곳에서 곧바로 데이터를 fetch**할 수 있게 되었습니다.
+**Svelte 5에서는 컴포넌트의 \<script\> 영역에서 바로 await를 사용할 수 있게 되었습니다.** 다시 말해, **컴포넌트 자체를 async 함수처럼 다뤄** 비동기 데이터를 직접 가져올 수 있습니다. 이는 “최소한의 세레모니(minimal ceremony)” 원칙에 부합하며, **프레임워크 전용 API 없이도 그냥 JavaScript 코드 작성하듯** 사용할 수 있는 기능입니다 . 개발자는 더 이상 페이지별 load 함수나 onMount에 의존하지 않고, **필요한 곳에서 곧바로 데이터를 fetch**할 수 있게 되었습니다.
 
   
 

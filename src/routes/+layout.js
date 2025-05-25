@@ -1,8 +1,6 @@
 import * as m from '$lib/paraglide/messages.js';
 
-export function load({ data, depends }) {
-	depends('language:current');
-
+export function load({ data }) {
 	return {
 		title: m.title(),
 		description: m.description(),

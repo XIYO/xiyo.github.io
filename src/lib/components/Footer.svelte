@@ -1,16 +1,3 @@
-<script>
-	import { datetime } from '$lib/paraglide/registry.js';
-	import { getLocale } from '$lib/paraglide/runtime.js';
-
-	const { gitLog } = $props();
-
-	const firstCommitDate = new Date(gitLog.at(0).datetime);
-
-	/** @type {Intl.DateTimeFormatOptions} */
-	const dateFormatOptions = { year: '2-digit', month: '2-digit', day: '2-digit' };
-	const firstCommitDateString = datetime(getLocale(), firstCommitDate, dateFormatOptions);
-</script>
-
 <footer>
 	<div id="by">
 		Made By
@@ -20,10 +7,6 @@
 				<span style:--delay={i}>{letter}</span>
 			{/each}
 		</span>
-	</div>
-	<div id="git-log">
-		<span><span class="heading">last commit :</span> {firstCommitDateString}</span>
-		<span><span class="heading">comment :</span> {gitLog.at(0).comment}</span>
 	</div>
 </footer>
 
@@ -72,19 +55,6 @@
 
 		&:focus::after {
 			content: '💥';
-		}
-	}
-
-	#git-log {
-		text-align: end;
-
-		& > * {
-			display: block;
-		}
-
-		.heading {
-			text-transform: uppercase;
-			font-weight: bold;
 		}
 	}
 

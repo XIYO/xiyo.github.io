@@ -131,6 +131,14 @@ export default class Category {
 		);
 
 		const [posts, childCategories] = await Promise.all([postsPromise, childCategoriesPromise]);
+		// 날짜 기준 내림차순 정렬 (최신 글이 앞으로)
+		posts.sort((a, b) => {
+			const dateA = new Date(a.gitLog?.at?.(-1)?.datetime ?? 0);
+			const dateB = new Date(b.gitLog?.at?.(-1)?.datetime ?? 0);
+			if (dateA > dateB) return -1;
+			if (dateA < dateB) return 1;
+			return 0;
+		});
 		const filteredPosts = posts.map(post => ({gitLog: post.gitLog, absolutePath: post.absolutePath, data: post.data}));
 
 		return (this.#serialized = {

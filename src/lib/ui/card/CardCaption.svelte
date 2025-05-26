@@ -1,16 +1,7 @@
 <script>
-	const { children } = $props();
+	const { children, tag = 'div' } = $props();
 </script>
 
-<div class="highlight-background">
+<svelte:element this={tag}>
 	{@render children()}
-</div>
-
-<style>
-	div {
-		/* reset */
-		margin-block: 0;
-
-		padding: var(--default-padding);
-	}
-</style>
+</svelte:element>

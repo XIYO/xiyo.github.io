@@ -4,8 +4,8 @@
 	import terminalBrowsing from '$lib/assets/terminal_browsing.png?enhanced';
 </script>
 
-<Card viewTransitionName="post" negative>
-	<div class="padding content">
+<Card negative>
+	<div class="p-4">
 		<p>{@html m.welcome()}</p>
 
 		<figure>

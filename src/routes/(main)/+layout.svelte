@@ -8,7 +8,6 @@
 
 	// styles
 	import '$lib/stylesheet/app.css';
-
 	import '$lib/stylesheet/tailwind.css';
 
 	const { children } = $props();
@@ -55,4 +54,6 @@
 	<!--{/if}-->
 </svelte:head>
 
+<Header />
 {@render children()}
+<Footer />

@@ -10,15 +10,3 @@
 		</li>
 	{/each}
 </ul>
-
-<style>
-	ul {
-		/* reset */
-		padding-inline-start: unset;
-		list-style-type: none;
-
-		display: grid;
-		gap: var(--default-margin);
-		text-align: end;
-	}
-</style>

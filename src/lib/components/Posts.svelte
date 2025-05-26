@@ -1,51 +1,43 @@
 <script>
 	import Card from '$lib/ui/card/Card.svelte';
-	import CardHeader from '$lib/ui/card/CardHeader.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 
 	const { category } = $props();
 </script>
 
-<Card class="margin-block" id="category" negative viewTransitionName="category">
-	<CardHeader>categories</CardHeader>
+<Card  negative>
+	<h2 class="bg-primary p-4 font-black text-xl uppercase">
+		categories
+	</h2>
 
-	{#if category.childCategories.length}
-		<ul class="padding">
-			{#each category.childCategories as childCategory (childCategory.absolutePath)}
-				<li>
-					<a href={childCategory.absolutePath}>
-						{childCategory.name} ({childCategory.allPosts.length})
-					</a>
-				</li>
-			{/each}
-		</ul>
-	{:else}
-		<p class="padding margin-block-reset">{m.subCategoryEmpty()}</p>
-	{/if}
+	<div class="p-4">
+		{#if category.childCategories.length}
+			<ul class="flex flex-col gap-2">
+				{#each category.childCategories as childCategory (childCategory.absolutePath)}
+					<li>
+						<a href={childCategory.absolutePath}>
+							{childCategory.name}
+							<!-- ({childCategory.allPosts.length}) -->
+						</a>
+					</li>
+				{/each}
+			</ul>
+		{:else}
+			{m.subCategoryEmpty()}
+		{/if}
+	</div>
 </Card>
 
-<Card class="margin-block" id="article" negative viewTransitionName="posts">
-	<CardHeader>posts</CardHeader>
+<Card negative >
+	<h2 class="bg-primary p-4 font-black text-xl uppercase">
+		posts
+	</h2>
 
-	<ul class="padding">
+	<ul class="p-4 flex flex-col gap-2">
 		{#each category.allPosts as post (post.absolutePath)}
 			<li>
-				<article>
-					<a href={post.absolutePath}>{post.data.title}</a>
-				</article>
+				<a href={post.absolutePath}>{post.data.title}</a>
 			</li>
 		{/each}
 	</ul>
 </Card>
-
-<style>
-	ul {
-		/* reset */
-		list-style: none;
-		margin-block: unset;
-
-		li:not(:last-child) {
-			margin-block-end: 0.5rem;
-		}
-	}
-</style>

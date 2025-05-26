@@ -15,46 +15,15 @@
 	const lastCommitDateString = datetime(getLocale(), lastCommitDate, dateFormatOptions);
 </script>
 
-<Card viewTransitionName="post" negative>
-	<div id="post-content" class="content padding">
+<Card negative>
+	<div id="post-content" class="p-4">
 		{@html post.value}
 	</div>
 
-	<div id="post-footer" class="highlight-background">
-		<div>
-			<div>first commit : {firstCommitDateString}</div>
-			{#if firstCommitDateString !== lastCommitDateString}
-				<div>last commit : {lastCommitDateString}</div>
-			{/if}
-		</div>
-	</div>
+	<ul class="bg-primary p-2 text-right text-xs">
+		<li>First commit : {firstCommitDateString}</li>
+		{#if firstCommitDateString !== lastCommitDateString}
+			<li>Last commit : {lastCommitDateString}</li>
+		{/if}
+	</ul>
 </Card>
-
-<style>
-	:global(#border-outer-post) {
-		margin-block: var(--default-margin);
-	}
-
-	#post-footer {
-		padding: calc(var(--default-padding) / 2) var(--default-padding);
-		font-size: 0.75rem;
-
-		& > div {
-			overflow-x: auto;
-
-			&::-webkit-scrollbar-thumb {
-				background-color: var(--color-default-black);
-			}
-
-			&::-webkit-scrollbar-thumb:hover {
-				background-color: #494949;
-			}
-		}
-
-		/* typography */
-		text-align: end;
-		font-variant-numeric: tabular-nums;
-		text-transform: uppercase;
-		text-wrap: nowrap;
-	}
-</style>

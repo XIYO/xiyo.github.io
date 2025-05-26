@@ -1,13 +1,19 @@
 import Post from '$lib/post/Post.js';
 import { deLocalizeHref } from '$lib/paraglide/runtime.js';
 
+/**
+ * 카테고리(Category) 클래스
+ */
 export default class Category {
+	/** @type {Map<string, Category>} */
 	static #categories = new Map();
 	static #root;
-	/** @type {string} */ #absolutePath;
-	/** @type {Map<string, Category>} */ #childCategories = new Map();
-	/** @type {Map<string, Post>} */ #posts = new Map();
-	#serialized;
+	/** @type {string} */
+	#absolutePath;
+	/** @type {Map<string, Category>} */
+	#childCategories = new Map();
+	/** @type {Map<string, import('./Post.js').default>} */
+	#posts = new Map();
 
 	static {
 		this.#root = new Category('');
@@ -32,22 +38,32 @@ export default class Category {
 		this.#absolutePath = deLocalizeHref(absolutePath);
 	}
 
+	/**
+	 * 카테고리명 반환
+	 * @returns {string}
+	 */
 	get name() {
 		return this.#absolutePath.split('/').at(-1);
 	}
 
+	/**
+	 * 카테고리 절대 경로 반환
+	 * @returns {string}
+	 */
 	get absolutePath() {
 		return this.#absolutePath;
 	}
 
+	/**
+	 * 모든 하위 카테고리 반환
+	 * @returns {Category[]}
+	 */
 	get allChildCategories() {
 		let allChildCategories = [];
-
 		for (const childCategory of this.#childCategories.values()) {
 			allChildCategories.push(childCategory);
 			allChildCategories.push(...childCategory.allChildCategories);
 		}
-
 		return allChildCategories;
 	}
 
@@ -61,7 +77,7 @@ export default class Category {
 
 	/**
 	 * 자신의 포스트 목록 반환
-	 * @returns {Post[]}
+	 * @returns {import('./Post.js').default[]}
 	 */
 	get posts() {
 		return Array.from(this.#posts.values());
@@ -69,7 +85,7 @@ export default class Category {
 
 	/**
 	 * 자신과 하위 카테고리의 포스트 반환
-	 * @returns {Post[]} 포스트 목록
+	 * @returns {import('./Post.js').default[]}
 	 */
 	get allPosts() {
 		return [
@@ -78,7 +94,11 @@ export default class Category {
 		];
 	}
 
-	/** 대체 언어가 없는 경우, 원본을 반환 합니다 */
+	/**
+	 * 대체 언어가 없는 경우, 원본을 반환 합니다
+	 * @param {string} absolutePath
+	 * @returns {Category | undefined}
+	 */
 	static getCategory(absolutePath) {
 		return (
 			this.#categories.get(absolutePath) ?? Category.#categories.get(deLocalizeHref(absolutePath))
@@ -118,12 +138,16 @@ export default class Category {
 
 	/**
 	 * 포스트 추가
-	 * @param {Post} post 추가할 포스트
+	 * @param {import('./Post.js').default} post 추가할 포스트
 	 */
 	addPost(post) {
 		this.#posts.set(post.absolutePath, post);
 	}
 
+	/**
+	 * 카테고리 직렬화
+	 * @returns {Promise<{ name: string, absolutePath: string, childCategories: any[], allPosts: any[] }>}
+	 */
 	async toSerialize() {
 		const postsPromise = Promise.all(this.allPosts.map((post) => post.toSerialize()));
 		const childCategoriesPromise = Promise.all(
@@ -139,13 +163,13 @@ export default class Category {
 			if (dateA < dateB) return 1;
 			return 0;
 		});
-		const filteredPosts = posts.map(post => ({absolutePath: post.absolutePath, data: post.data}));
+		const filteredPosts = posts.map(post => ({ absolutePath: post.absolutePath, date: post.date, data: post.data }));
 
-		return (this.#serialized = {
+		return {
 			name: this.name,
 			absolutePath: this.#absolutePath,
 			childCategories: childCategories,
 			allPosts: filteredPosts
-		});
+		};
 	}
 }

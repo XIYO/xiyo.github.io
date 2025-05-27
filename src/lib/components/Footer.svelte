@@ -1,84 +1,20 @@
-<footer>
-	<div id="by">
+<footer class="text-xs text-center my-[var(--default-margin)]">
+	<div class="mb-[var(--default-margin)]">
 		Made By
-		<a id="made-by" href="https://svelte.dev" target="_blank">Svelte Rune</a>, Designed By
-		<span id="design-by" tabindex="-1">
+		<a href="https://svelte.dev" target="_blank" class="inline-flex items-center gap-1">
+			Svelte Rune
+			<img src="/svelte-logo.svg" alt="Svelte Logo" class="w-4 h-4 ml-1" />
+		</a>, Designed By
+		<span tabindex="-1" class="inline-block text-center align-middle focus:outline-none cursor-pointer group">
 			{#each 'chimi' as letter, i (i)}
-				<span style:--delay={i}>{letter}</span>
+				<span class="inline-block animate-bounce  [animation-delay:var(--delay)]"
+				style:--delay="{i * 0.1}s"
+				>{letter}</span>
 			{/each}
+			<span class="ml-1 inline-block">
+				<span class="group-focus:hidden">🎈</span>
+				<span class="hidden group-focus:inline">💥</span>
+			</span>
 		</span>
 	</div>
 </footer>
-
-<style>
-	footer {
-		font-size: 0.75rem;
-		text-align: center;
-		margin-block: var(--default-margin);
-
-		view-transition-name: footer;
-		view-transition-class: after-view-transition;
-
-		user-select: none;
-	}
-
-	#by {
-		margin-block-end: var(--default-margin);
-	}
-
-	#made-by::after {
-		content: '';
-		display: inline-block;
-		margin-inline-start: 0.25rem;
-		width: 1rem;
-		height: 1rem;
-		background-image: url('/svelte-logo.svg');
-		background-repeat: no-repeat;
-		background-size: contain;
-		background-position: center;
-		vertical-align: middle;
-	}
-
-	#design-by {
-		text-align: center;
-		align-content: center;
-
-		&::after {
-			content: '🎈';
-			display: inline-block;
-			margin-inline-start: 0.25rem;
-		}
-
-		&:not(:focus) {
-			cursor: pointer;
-		}
-
-		&:focus::after {
-			content: '💥';
-		}
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		#design-by {
-			span {
-				display: inline-block;
-				animation: float 3s infinite linear;
-				animation-delay: calc(var(--delay) * 0.25s);
-			}
-
-			&:focus {
-				animation-play-state: paused;
-			}
-		}
-	}
-
-	@keyframes float {
-		25% {
-			transform: translateY(25%);
-		}
-
-		75% {
-			transform: translateY(-25%);
-		}
-	}
-</style>

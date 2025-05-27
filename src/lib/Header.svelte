@@ -4,17 +4,25 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import { afterNavigate } from '$app/navigation';
 
-	/** @type {HTMLDialogElement | undefined} */
-	let navRef = $state();
+	/** @type {HTMLDialogElement} */
+	let navRef;
 
+	/**
+	 * Progressive Enhancement(점진적 향상) 패턴 적용.
+	 *
+	 * - JS 환경(SPA): 기본 내비게이션을 막고 모달을 띄움
+	 * - JS 미지원 환경(SSR/정적): 표준 링크 이동 허용
+	 *
+	 * @param {MouseEvent} e
+	 */
 	const handleShowNav = (e) => {
 		e.preventDefault();
-		navRef?.showModal();
+		navRef.showModal();
 	};
 
-	const handleCloseNav = () => {
-		afterNavigate(navRef?.close);
-	};
+	afterNavigate(() => {
+		navRef.close();
+	});
 </script>
 
 <Card tag="header" class="flex justify-between items-center">
@@ -50,7 +58,7 @@
 				height="36"
 				viewBox="0 0 24 24"
 				fill="none"
-				stroke="#000000"
+				stroke="currentColor"
 				stroke-width="2"
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -58,5 +66,5 @@
 			>
 		</button>
 	</form>
-	<Nav handleAfter={handleCloseNav} />
+	<Nav />
 </dialog>

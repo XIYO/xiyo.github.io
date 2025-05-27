@@ -3,7 +3,7 @@
 	import { deLocalizeHref } from '$lib/paraglide/runtime.js';
 	import { locales, localizeHref } from '$lib/paraglide/runtime.js';
 
-	const { handleAfter, ...rest } = $props();
+	const { ...rest } = $props();
 
 	const menu = {
 		home: { href: '/' },
@@ -20,7 +20,7 @@
 				class="aria-[current=page]:text-primary"
 				aria-current={deLocalizeHref(page.url.pathname) === href ? 'page' : undefined}
 			>
-				<a onclick={handleAfter} {href}>{key}</a>
+				<a {href}>{key}</a>
 			</li>
 		{/each}
 	</ul>
@@ -30,7 +30,7 @@
 	<ul class="flex flex-col gap-4 text-right">
 		{#each locales as locale (locale)}
 			<li>
-				<a onclick={handleAfter} href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
+				<a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
 			</li>
 		{/each}
 	</ul>

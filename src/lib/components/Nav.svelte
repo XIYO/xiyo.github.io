@@ -13,13 +13,16 @@
 	};
 </script>
 
-<nav class='p-4 uppercase text-2xl font-black' {...rest}>
+<nav class="p-4 uppercase text-2xl font-black" {...rest}>
 	<ul class="flex flex-col gap-4 items-center">
 		{#each Object.entries(menu) as [key, { href }] (key)}
-			<li class="aria-[current=page]:text-primary" aria-current={deLocalizeHref(page.url.pathname) === href ? 'page' : undefined}>
-				<a onclick={handleAfter} href={href}>{key}</a>
+			<li
+				class="aria-[current=page]:text-primary"
+				aria-current={deLocalizeHref(page.url.pathname) === href ? 'page' : undefined}
+			>
+				<a onclick={handleAfter} {href}>{key}</a>
 			</li>
-		{/each}	
+		{/each}
 	</ul>
 
 	<hr class="my-4" />

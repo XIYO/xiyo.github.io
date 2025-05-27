@@ -16,9 +16,9 @@ export default function () {
 
 			// gray-matter로 프론트매터 파싱 및 gitLog 관련 필드 주입
 			const parsed = matter(code);
-			parsed.data.authors = gitLog.map(x => x.author || '');
-			parsed.data.dates = gitLog.map(x => x.datetime || '');
-			parsed.data.messages = gitLog.map(x => x.comment || '');
+			parsed.data.authors = gitLog.map((x) => x.author || '');
+			parsed.data.dates = gitLog.map((x) => x.datetime || '');
+			parsed.data.messages = gitLog.map((x) => x.comment || '');
 			const newMarkdown = matter.stringify(parsed.content, parsed.data);
 
 			// Git 로그를 별도의 export로 추가

@@ -163,7 +163,11 @@ export default class Category {
 			if (dateA < dateB) return 1;
 			return 0;
 		});
-		const filteredPosts = posts.map(post => ({ absolutePath: post.absolutePath, date: post.date, data: post.data }));
+		const filteredPosts = posts.map((post) => ({
+			absolutePath: post.absolutePath,
+			date: post.date,
+			data: post.data
+		}));
 
 		return {
 			name: this.name,

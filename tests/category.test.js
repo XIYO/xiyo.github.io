@@ -20,8 +20,8 @@ describe('Category', () => {
 		expect(category).toBeDefined();
 		if (!category) throw new Error('카테고리 루트가 없습니다');
 		const all = [category, ...category.allChildCategories];
-		const names = all.map(cat => cat && cat.name);
+		const names = all.map((cat) => cat && cat.name);
 		console.log('카테고리 이름 목록:', names);
-		names.forEach(name => expect(typeof name).toBe('string'));
+		names.forEach((name) => expect(typeof name).toBe('string'));
 	});
 });

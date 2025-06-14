@@ -51,8 +51,4 @@
 			sans-serif;
 		font-feature-settings: 'ss05';
 	}
-
-	body {
-		@apply container mx-auto;
-	}
 }

@@ -1,8 +1,4 @@
 <script>
-	import { page } from '$app/state';
-
-	// components
-	import Nav from '$lib/components/Nav.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/Header.svelte';
 

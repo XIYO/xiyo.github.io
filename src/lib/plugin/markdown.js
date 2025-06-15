@@ -7,6 +7,21 @@ import remarkRehype from 'remark-rehype';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeStringify from 'rehype-stringify';
 import matter from 'gray-matter';
+import { visit } from 'unist-util-visit';
+
+/**
+ * 이미지 경로에서 /static을 제거하는 remark 플러그인
+ * 마크다운에서는 /static/image.png로 작성하지만, 빌드 시 /image.png로 변환됩니다.
+ */
+function remarkStaticImagePath() {
+	return (/** @type {any} */ tree) => {
+		visit(tree, 'image', (node) => {
+			if (node.url && node.url.startsWith('/static/')) {
+				node.url = node.url.replace('/static/', '/');
+			}
+		});
+	};
+}
 
 /**
  * 마크다운을 HTML로 변환하고 메타데이터를 추출합니다.
@@ -26,6 +41,7 @@ export default async function markdownAsync({ markdown }) {
 		.use(remarkGfm) // GitHub Flavored Markdown 지원 (테이블, 취소선, 작업 목록 등)
 		.use(remarkCallout) // Obsidian 스타일 콜아웃 지원
 		.use(remarkFigureCaption)
+		.use(remarkStaticImagePath) // 이미지 경로에서 /static 제거
 
 		// rehype 단계: HTML 변환 및 처리
 		.use(remarkRehype, { allowDangerousHtml: true })

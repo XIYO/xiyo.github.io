@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# 커밋 메시지 파일 경로
+commit_msg_file="$1"
+commit_msg=$(cat "$commit_msg_file")
+
+# 자동 커밋 메시지인지 확인 (무한루프 방지)
+if [[ "$commit_msg" == *"[AUTO]"* ]]; then
+  exit 0
+fi
+
+# 이번 커밋에서 변경된 마크다운 파일 찾기
+changed_md_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(md|markdown)$' || true)
+
+# 마크다운 파일이 변경된 경우에만 프론트매터 업데이트
+if [ -n "$changed_md_files" ]; then
+  echo "🔄 커밋 메시지 확정 후 프론트매터를 업데이트합니다..."
+  
+  # 변경된 마크다운 파일들의 프론트매터 업데이트
+  for file in $changed_md_files; do
+    if [ -f "$file" ]; then
+      echo "  📝 $file (커밋 메시지: $commit_msg)"
+      HUSKY_COMMIT_MSG="$commit_msg" node scripts/clean-frontmatter.js "$file"
+    fi
+  done
+  
+  # 업데이트된 파일들을 다시 스테이징
+  for file in $changed_md_files; do
+    if [ -f "$file" ]; then
+      git add "$file"
+    fi
+  done
+  
+  echo "✅ 프론트매터 업데이트 완료!"
+fi

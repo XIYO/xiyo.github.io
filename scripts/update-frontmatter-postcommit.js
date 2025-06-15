@@ -314,12 +314,12 @@ function main() {
 			execSync(`git commit --amend --no-verify --no-edit`);
 			console.log('✅ 커밋 amend 완료!');
 
-			// lint 실행
-			console.log('Lint 실행 중...');
-			execSync('pnpm run lint', { stdio: 'inherit' });
-			console.log('Lint 완료');
+			// format 실행
+			console.log('Format 실행 중...');
+			execSync('pnpm run format', { stdio: 'inherit' });
+			console.log('Format 완료');
 		} catch (error) {
-			console.error('❌ 커밋 amend 실패:', error.message);
+			console.error('Format 실패:', error.message);
 		}
 	} else {
 		console.log('\n⏭️  프론트매터 업데이트할 내용이 없습니다.');

@@ -1,0 +1,34 @@
+# 변경된 마크다운 파일 찾기
+changed_md_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(md|markdown)$' || true)
+
+if [ -n "$changed_md_files" ]; then
+  echo "🔄 변경된 마크다운 파일의 프론트매터를 업데이트합니다..."
+  
+  # 변경된 마크다운 파일들의 프론트매터 업데이트
+  for file in $changed_md_files; do
+    if [ -f "$file" ]; then
+      echo "  📝 $file"
+      node scripts/clean-frontmatter.js "$file"
+    fi
+  done
+  
+  # 업데이트된 파일들을 다시 스테이징
+  for file in $changed_md_files; do
+    if [ -f "$file" ]; then
+      git add "$file"
+    fi
+  done
+  
+  echo "✅ 프론트매터 업데이트 완료!"
+fi
+
+# 코드 포맷팅
+echo "🎨 코드 포맷팅을 실행합니다..."
+pnpm format
+
+# 다시 스테이징 (포맷팅 후 변경된 파일들)
+git add .
+
+# 린트 체크
+echo "🔍 코드 품질 검사를 실행합니다..."
+pnpm lint

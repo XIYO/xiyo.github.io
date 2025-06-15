@@ -25,7 +25,10 @@ export default class Category {
 				.replace(/^\/static/, '') // 스태틱 경로 제거
 				.replace(/\.md$/, ''); // 확장자 제거
 
-			this.#initCategories({ absolutePath, markdownAsync: /** @type {() => Promise<string>} */ (markdownAsync) });
+			this.#initCategories({
+				absolutePath,
+				markdownAsync: /** @type {() => Promise<string>} */ (markdownAsync)
+			});
 		});
 	}
 
@@ -106,7 +109,10 @@ export default class Category {
 	}
 
 	static #initCategories(
-		/** @type {{ absolutePath: string, markdownAsync: () => Promise<string> }} */ { absolutePath, markdownAsync },
+		/** @type {{ absolutePath: string, markdownAsync: () => Promise<string> }} */ {
+			absolutePath,
+			markdownAsync
+		},
 		/** @type {{ category?: Category, index?: number }} */ { category = this.#root, index = 0 } = {}
 	) {
 		const splitPath = absolutePath.split('/');

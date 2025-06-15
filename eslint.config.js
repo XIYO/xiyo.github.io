@@ -1,5 +1,5 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
+import storybook from 'eslint-plugin-storybook';
 
 import js from '@eslint/js';
 import svelte from 'eslint-plugin-svelte';
@@ -8,11 +8,11 @@ import globals from 'globals';
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
-    js.configs.recommended,
-    ...svelte.configs['flat/recommended'],
-    prettier,
-    ...svelte.configs['flat/prettier'],
-    {
+	js.configs.recommended,
+	...svelte.configs['flat/recommended'],
+	prettier,
+	...svelte.configs['flat/prettier'],
+	{
 		languageOptions: {
 			globals: {
 				...globals.browser,
@@ -20,7 +20,7 @@ export default [
 			}
 		}
 	},
-    {
+	{
 		ignores: [
 			'build/',
 			'.svelte-kit/',
@@ -30,6 +30,6 @@ export default [
 			'node_modules/'
 		]
 	},
-    ...storybook.configs["flat/recommended"],
-    ...storybook.configs["flat/recommended"]
+	...storybook.configs['flat/recommended'],
+	...storybook.configs['flat/recommended']
 ];

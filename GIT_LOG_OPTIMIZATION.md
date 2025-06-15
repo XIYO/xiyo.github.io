@@ -7,6 +7,7 @@ messages:
   - Initial commit
 title: Git Log 최적화 및 런타임 마크다운 파싱 마이그레이션 완료 ✅
 ---
+
 # Git Log 최적화 및 런타임 마크다운 파싱 마이그레이션 완료 ✅
 
 ## 🎯 마이그레이션 완료 상태
@@ -83,7 +84,7 @@ Git push 시 → pre-push 훅 실행 → 변경된 마크다운 파일 감지 �
 # 모든 마크다운 파일 업데이트
 pnpm run update-frontmatter
 
-# 변경된 파일만 업데이트  
+# 변경된 파일만 업데이트
 pnpm run update-frontmatter:incremental
 
 # 프론트매터 정리
@@ -104,9 +105,9 @@ authors:
   - author1
   - author2
 dates:
-  - 2025-06-15T13:40+0900  # 최신 수정 시간 (배열의 첫 번째)
-  - 2025-06-14T10:20+0900  # 이전 수정 시간들...
-  - 2025-06-13T09:15+0900  # 최초 생성 시간 (배열의 마지막)
+  - 2025-06-15T13:40+0900 # 최신 수정 시간 (배열의 첫 번째)
+  - 2025-06-14T10:20+0900 # 이전 수정 시간들...
+  - 2025-06-13T09:15+0900 # 최초 생성 시간 (배열의 마지막)
 messages:
   - commit message 1
   - commit message 2

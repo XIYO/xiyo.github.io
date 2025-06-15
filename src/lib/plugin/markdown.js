@@ -18,12 +18,12 @@ import { load as yamlLoad } from 'js-yaml';
 /**
  * 마크다운을 HTML로 변환하고 메타데이터를 추출합니다.
  * unified 파이프라인을 통해 단일 처리 과정으로 마크다운을 파싱하고 HTML로 변환합니다.
- * 
+ *
  * file.data의 목적:
  * - unified 파이프라인에서 플러그인 간 메타데이터 공유
  * - 프론트매터에서 추출된 데이터 저장 (제목, 설명, 태그 등)
  * - 커스텀 플러그인에서 추출한 정보 저장 (예: 자동 추출된 제목)
- * 
+ *
  * @param {{ markdown: string }} options
  * @returns {Promise<{ value: string, data: Record<string, any> }>}
  */
@@ -149,7 +149,11 @@ function processImages() {
 	 */
 	return (tree) => {
 		visit(tree, (node) => {
-			if (node.type === 'element' && node.tagName === 'img' && node.properties?.src?.startsWith('/static')) {
+			if (
+				node.type === 'element' &&
+				node.tagName === 'img' &&
+				node.properties?.src?.startsWith('/static')
+			) {
 				const imagePath = join(process.cwd(), node.properties.src);
 
 				let width = 768;

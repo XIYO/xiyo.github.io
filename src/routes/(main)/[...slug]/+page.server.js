@@ -6,14 +6,14 @@ import * as m from '$lib/paraglide/messages.js';
 export async function load({ url }) {
 	const categoryPromise = Category.getCategory(url.pathname)?.toSerialize();
 	const postInstance = Post.getPosts(url.pathname);
-	
+
 	// 포스트가 있으면 메타데이터와 콘텐츠를 분리해서 가져오기
 	const postMetadataPromise = postInstance?.getMetadata();
 	const postContentPromise = postInstance?.getContent();
 
 	const [category, postMetadata, postContent] = await Promise.all([
-		categoryPromise, 
-		postMetadataPromise, 
+		categoryPromise,
+		postMetadataPromise,
 		postContentPromise
 	]);
 

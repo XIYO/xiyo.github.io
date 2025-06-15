@@ -13,8 +13,12 @@
 	/** @type {Intl.DateTimeFormatOptions} */
 	const dateFormatOptions = { year: '2-digit', month: '2-digit', day: '2-digit' };
 
-	const firstCommitDateString = firstCommitDate ? datetime(getLocale(), firstCommitDate, dateFormatOptions) : '';
-	const lastCommitDateString = lastCommitDate ? datetime(getLocale(), lastCommitDate, dateFormatOptions) : '';
+	const firstCommitDateString = firstCommitDate
+		? datetime(getLocale(), firstCommitDate, dateFormatOptions)
+		: '';
+	const lastCommitDateString = lastCommitDate
+		? datetime(getLocale(), lastCommitDate, dateFormatOptions)
+		: '';
 </script>
 
 <Card negative>

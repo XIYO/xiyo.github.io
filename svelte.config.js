@@ -1,26 +1,20 @@
 import adapter from '@sveltejs/adapter-cloudflare';
-import { execSync } from 'node:child_process';
-import { readFileSync } from 'fs';
-import { join } from 'path';
 
-const origin = `https://${readFileSync(join(process.cwd(), 'CNAME'), 'utf-8').trim()}`;
-
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-	compilerOptions: {
-		experimental: {
-			async: true
-		}
-	},
+export default {
 	kit: {
-		adapter: adapter(),
-		prerender: {
-			origin
-		},
-		version: {
-			name: execSync('git rev-parse HEAD').toString().trim()
-		}
+		adapter: adapter({
+			// See below for an explanation of these options
+			config: undefined,
+			platformProxy: {
+				configPath: undefined,
+				environment: undefined,
+				persist: undefined
+			},
+			fallback: 'plaintext',
+			routes: {
+				include: ['/*'],
+				exclude: ['<all>']
+			}
+		})
 	}
 };
-
-export default config;

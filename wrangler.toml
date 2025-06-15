@@ -1,10 +1,8 @@
-name = "xiyo-blog"
-main = ".svelte-kit/output/server/index.js"
+name = 'blog.xiyo.dev'
 compatibility_date = "2024-12-01"
 
-[assets]
-directory = "./.svelte-kit/output/client"
-binding = "ASSETS"
+[site]
+bucket = "./build"
 
 [env.production]
 name = "xiyo-blog"

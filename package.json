@@ -6,6 +6,8 @@
     "dev": "vite dev --host",
     "build": "vite build",
     "preview": "vite preview --host",
+    "deploy": "pnpm build && wrangler deploy",
+    "deploy:production": "pnpm build && wrangler deploy --env production",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
     "test": "pnpm run test:unit && pnpm build --logLevel silent && pnpm run test:e2e",
@@ -39,6 +41,7 @@
     "@storybook/sveltekit": "^9.0.9",
     "@storybook/test-runner": "^0.23.0",
     "@storybook/testing-library": "^0.2.2",
+    "@sveltejs/adapter-cloudflare": "^7.0.4",
     "@sveltejs/adapter-static": "^3.0.8",
     "@sveltejs/enhanced-img": "0.6.0",
     "@sveltejs/kit": "2.21.5",
@@ -73,7 +76,8 @@
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "vite": "6.3.5",
-    "vitest": "^3.2.3"
+    "vitest": "^3.2.3",
+    "wrangler": "^4.20.0"
   },
   "type": "module",
   "packageManager": "pnpm@9.1.1+sha256.9551e803dcb7a1839fdf5416153a844060c7bce013218ce823410532504ac10b",

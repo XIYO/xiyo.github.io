@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname "$0")/h"
 
+# 훅 실행 로그
+echo "🔥 Husky pre-commit 훅이 실행되었습니다!"
+
 # 프론트매터 업데이트 실행
 node scripts/update-frontmatter.js

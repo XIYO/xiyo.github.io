@@ -165,36 +165,29 @@ function extractTitle(content) {
 }
 
 /**
- * 마크다운 본문에서 디스크립션 추출
+ * 마크다운 본문에서 디스크립션 추출 (헤딩1 바로 아래 패러그래프만)
  */
 function extractDescription(content) {
-  // 제목 이후 첫 번째 문단 찾기
   const lines = content.split('\n');
-  let foundTitle = false;
-  let description = '';
-  
-  for (const line of lines) {
-    const trimmed = line.trim();
-    
-    // 제목(#, ##) 발견
-    if (trimmed.match(/^#{1,2}\s+/)) {
-      foundTitle = true;
+  let foundH1 = false;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!foundH1) {
+      if (line.startsWith('# ')) {
+        foundH1 = true;
+      }
       continue;
     }
-    
-    // 제목을 발견한 후 첫 번째 비어있지 않은 텍스트 라인
-    if (foundTitle && trimmed && !trimmed.startsWith('#') && !trimmed.startsWith('<!--')) {
-      description = trimmed;
+    // 헤딩1 바로 아래 첫 번째 비어있지 않은 텍스트(패러그래프)
+    if (foundH1 && line && !line.startsWith('#') && !line.startsWith('<!--')) {
+      return line;
+    }
+    // 헤딩1 이후 빈 줄/주석/헤딩만 나오면 디스크립션 없음
+    if (foundH1 && (line.startsWith('#') || line.startsWith('<!--'))) {
       break;
     }
   }
-  
-  // 100자로 제한
-  if (description.length > 100) {
-    description = description.substring(0, 97) + '...';
-  }
-  
-  return description;
+  return '';
 }
 
 /**

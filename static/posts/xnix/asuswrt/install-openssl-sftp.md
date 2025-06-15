@@ -1,3 +1,30 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-08-11T03:10+0900'
+  - '2024-08-11T00:26+0900'
+  - '2024-03-23T22:30+0900'
+  - '2024-03-16T12:06+0900'
+  - '2024-03-12T20:50+0900'
+  - '2023-10-17T22:43+0900'
+  - '2023-10-17T21:42+0900'
+messages:
+  - 'Revert ":truck: 포스트 데이터 이동"'
+  - ':truck: 포스트 데이터 이동'
+  - ':truck: 마크다운 파일명 변경 및 구조 변경'
+  - ':fire: asuswrt를 xnix 하위로 이동'
+  - ':lipstick: 스벨트킷으로 변경'
+  - "\U0001F527 Add Prefix for Error Prevention"
+  - "\U0001F331 INSTALL OPENSSL AND SFTP ON ASUSWRT"
+title: INSTALL OPENSSL AND SFTP ON ASUSWRT
+---
 # INSTALL OPENSSL AND SFTP ON ASUSWRT
 
 `Dropbear`에 `SFTP` 기능을 추가하는 방법을 설명합니다.

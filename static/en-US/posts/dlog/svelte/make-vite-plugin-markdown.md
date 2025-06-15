@@ -1,3 +1,28 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-09-08T12:40+0900'
+  - '2024-09-05T23:19+0900'
+  - '2024-08-15T19:20+0900'
+  - '2024-08-15T02:33+0900'
+  - '2024-08-15T02:25+0900'
+  - '2024-08-13T21:22+0900'
+messages:
+  - ':art: 로케일 코드 제거하고, 번역된 파일을 기존 처럼 /static/{locale} 구조로 저장'
+  - ':globe_with_meridians: 기존 국제화 방식을 제거하고 새로운 방식으로 번역본 추가'
+  - ':art: run format'
+  - ':art: 문법 수정'
+  - ':art: run format'
+  - ':memo: vite-plugin 만들기'
+title: Creating a Markdown Parser Plugin
+description: 'While building this blog, I needed a Markdown parser.'
+---
 # Creating a Markdown Parser Plugin
 
 While building this blog, I needed a Markdown parser.

@@ -8,7 +8,6 @@ const origin = `https://${readFileSync(join(process.cwd(), 'CNAME'), 'utf-8').tr
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	compilerOptions: {
-		runes: true,
 		experimental: {
 			async: true
 		}

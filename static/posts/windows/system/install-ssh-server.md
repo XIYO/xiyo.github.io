@@ -1,3 +1,28 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-08-11T03:10+0900'
+  - '2024-08-11T00:26+0900'
+  - '2024-08-09T19:22+0900'
+  - '2024-03-23T22:30+0900'
+  - '2024-03-12T20:50+0900'
+  - '2023-10-30T12:33+0900'
+messages:
+  - 'Revert ":truck: 포스트 데이터 이동"'
+  - ':truck: 포스트 데이터 이동'
+  - ':art: 프리티어 실행'
+  - ':truck: 마크다운 파일명 변경 및 구조 변경'
+  - ':lipstick: 스벨트킷으로 변경'
+  - "\U0001F331  INSTALL SSH SERVER"
+title: INSTALL SSH SERVER
+description: '윈도우즈에서 '
+---
 # INSTALL SSH SERVER
 
 윈도우즈에서 _SSH_ 서버를 설치하는 방법을 알아봅니다.

@@ -3,27 +3,31 @@
 	import { getLocale } from '$lib/paraglide/runtime.js';
 	import Card from '$lib/ui/card/Card.svelte';
 
-	const { post } = $props();
+	const { postMetadata, postContent } = $props();
 
-	const firstCommitDate = new Date(post.data.dates.at(-1));
-	const lastCommitDate = new Date(post.data.dates.at(0));
+	// dates가 있을 때만 날짜 표시
+	const hasDates = postMetadata?.data?.dates && postMetadata.data.dates.length > 0;
+	const firstCommitDate = hasDates ? new Date(postMetadata.data.dates.at(-1)) : null;
+	const lastCommitDate = hasDates ? new Date(postMetadata.data.dates.at(0)) : null;
 
 	/** @type {Intl.DateTimeFormatOptions} */
 	const dateFormatOptions = { year: '2-digit', month: '2-digit', day: '2-digit' };
 
-	const firstCommitDateString = datetime(getLocale(), firstCommitDate, dateFormatOptions);
-	const lastCommitDateString = datetime(getLocale(), lastCommitDate, dateFormatOptions);
+	const firstCommitDateString = firstCommitDate ? datetime(getLocale(), firstCommitDate, dateFormatOptions) : '';
+	const lastCommitDateString = lastCommitDate ? datetime(getLocale(), lastCommitDate, dateFormatOptions) : '';
 </script>
 
 <Card negative>
 	<div id="post-content" class="p-4">
-		{@html post.value}
+		{@html postContent?.value}
 	</div>
 
-	<ul class="bg-primary p-2 text-right text-xs">
-		<li>First commit : {firstCommitDateString}</li>
-		{#if firstCommitDateString !== lastCommitDateString}
-			<li>Last commit : {lastCommitDateString}</li>
-		{/if}
-	</ul>
+	{#if hasDates}
+		<ul class="bg-primary p-2 text-right text-xs">
+			<li>First commit : {firstCommitDateString}</li>
+			{#if firstCommitDateString !== lastCommitDateString}
+				<li>Last commit : {lastCommitDateString}</li>
+			{/if}
+		</ul>
+	{/if}
 </Card>

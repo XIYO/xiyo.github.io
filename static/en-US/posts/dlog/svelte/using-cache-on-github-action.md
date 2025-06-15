@@ -1,3 +1,19 @@
+---
+authors:
+  - XIYO
+  - XIYO
+dates:
+  - '2024-09-08T12:40+0900'
+  - '2024-09-05T23:19+0900'
+messages:
+  - ':art: 로케일 코드 제거하고, 번역된 파일을 기존 처럼 /static/{locale} 구조로 저장'
+  - ':globe_with_meridians: 기존 국제화 방식을 제거하고 새로운 방식으로 번역본 추가'
+title: Using GitHub Action Cache
+description: >-
+  While using GitHub Actions, I experienced a gradual slowdown in build speed.
+  To improve this, I implemented caching strategies to save time on dependency
+  installation.
+---
 # Using GitHub Action Cache
 
 While using GitHub Actions, I experienced a gradual slowdown in build speed. To improve this, I implemented caching strategies to save time on dependency installation.

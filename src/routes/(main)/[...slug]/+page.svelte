@@ -5,8 +5,8 @@
 	const { data } = $props();
 </script>
 
-{#if data.post}
-	<Post post={data.post} />
+{#if data.postMetadata && data.postContent}
+	<Post postMetadata={data.postMetadata} postContent={data.postContent} />
 {:else if data.category}
 	<Posts category={data.category} />
 {/if}

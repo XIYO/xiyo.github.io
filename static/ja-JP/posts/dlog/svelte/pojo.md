@@ -1,3 +1,16 @@
+---
+authors:
+  - XIYO
+  - XIYO
+dates:
+  - '2024-09-08T12:40+0900'
+  - '2024-09-07T19:43+0900'
+messages:
+  - ':art: 로케일 코드 제거하고, 번역된 파일을 기존 처럼 /static/{locale} 구조로 저장'
+  - ':globe_with_meridians: 일본어 추가'
+title: 'スヴェルト開発日誌 1, POJO'
+description: '私はマークダウンが好きで、その中でも特に好きな文法は '
+---
 # スヴェルト開発日誌 1, POJO
 
 私はマークダウンが好きで、その中でも特に好きな文法は [mermaidjs](https://mermaid.js.org/) です。

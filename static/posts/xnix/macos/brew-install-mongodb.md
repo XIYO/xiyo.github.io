@@ -1,3 +1,60 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-08-11T03:10+0900'
+  - '2024-08-11T00:26+0900'
+  - '2024-08-09T19:22+0900'
+  - '2024-03-23T22:30+0900'
+  - '2024-03-12T20:50+0900'
+  - '2023-12-26T22:11+0900'
+  - '2023-10-18T15:45+0900'
+  - '2023-10-17T22:39+0900'
+  - '2023-10-17T22:37+0900'
+  - '2023-10-11T11:12+0900'
+  - '2023-10-11T11:10+0900'
+  - '2023-10-11T11:06+0900'
+  - '2023-10-11T11:05+0900'
+  - '2023-10-10T22:10+0900'
+  - '2023-10-10T22:05+0900'
+  - '2023-10-10T22:02+0900'
+  - '2023-10-10T21:55+0900'
+messages:
+  - 'Revert ":truck: 포스트 데이터 이동"'
+  - ':truck: 포스트 데이터 이동'
+  - ':art: 프리티어 실행'
+  - ':truck: 마크다운 파일명 변경 및 구조 변경'
+  - ':lipstick: 스벨트킷으로 변경'
+  - ':truck: unix-and-unix-like -> xnix'
+  - '✏️ update, text -> emoji'
+  - "\U0001F69A unix -> unix-and-unix-like"
+  - "\U0001F527 move categories, _config.yml -> md files"
+  - ✏️ Polish sentences for better readability
+  - ✏️ Refine MongoDB guide
+  - ✏️ `cloud` -> cloud
+  - ✏️ mongDB -> mongoDB
+  - ✏️ 브루 단어와 버전 사이에 콤마 제거거
+  - ✏️ Add brew version
+  - ✏️
+  - "\U0001F484 \U0001F331 new post and update ui"
+title: BREW INSTALL MONGODB
+---
 # BREW INSTALL MONGODB
 
 `intel`, `macOS 14.0`, `sonoma` 환경에서 `brew 4.1.14`를 사용해 `mongoDB`를 설치하는 과정을 정리합니다.

@@ -1,3 +1,37 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-09-08T12:40+0900'
+  - '2024-09-05T23:19+0900'
+  - '2024-09-03T23:20+0900'
+  - '2024-09-01T20:51+0900'
+  - '2024-08-23T07:18+0900'
+  - '2024-08-23T06:39+0900'
+  - '2024-08-23T04:02+0900'
+  - '2024-08-22T18:47+0900'
+  - '2024-08-22T18:45+0900'
+messages:
+  - ':art: 로케일 코드 제거하고, 번역된 파일을 기존 처럼 /static/{locale} 구조로 저장'
+  - ':globe_with_meridians: 기존 국제화 방식을 제거하고 새로운 방식으로 번역본 추가'
+  - ':globe_with_meridians: translate'
+  - Paraglidejs (#35)
+  - ':pencil2: 오타 수정'
+  - ':fire: 테스트용 코드 삭제'
+  - ':art: run format'
+  - ':memo: 제목 변경'
+  - ':memo: 제너레이터 포스팅'
+title: Using Generators Like Regular Variables
+description: 'In JavaScript, you can create iterable objects using generators.'
+---
 # Using Generators Like Regular Variables
 
 In JavaScript, you can create iterable objects using generators.

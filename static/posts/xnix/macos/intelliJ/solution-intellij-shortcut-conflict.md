@@ -1,3 +1,39 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-09-10T20:23+0900'
+  - '2024-08-11T03:10+0900'
+  - '2024-08-11T00:26+0900'
+  - '2024-08-09T19:22+0900'
+  - '2024-03-23T22:30+0900'
+  - '2024-03-12T20:50+0900'
+  - '2023-12-26T22:11+0900'
+  - '2023-10-27T14:19+0900'
+  - '2023-10-27T13:25+0900'
+  - '2023-10-27T13:20+0900'
+messages:
+  - ':art: 리소스 경로를 규격에 맞게 통일'
+  - 'Revert ":truck: 포스트 데이터 이동"'
+  - ':truck: 포스트 데이터 이동'
+  - ':art: 프리티어 실행'
+  - ':truck: 마크다운 파일명 변경 및 구조 변경'
+  - ':lipstick: 스벨트킷으로 변경'
+  - ':truck: unix-and-unix-like -> xnix'
+  - "\U0001F69A 파일명을 타이틀과 일치"
+  - ✏️ intelliJ -> intellij 소문자로 변경
+  - "\U0001F331  인텔리제이 단축키 충돌"
+title: SOLUTION INTELLIJ SHORTCUT CONFLICT
+---
 # SOLUTION INTELLIJ SHORTCUT CONFLICT
 
 _IntelliJ_ 단축키 충돌 문제를 해결하는 방법을 알아봅니다.

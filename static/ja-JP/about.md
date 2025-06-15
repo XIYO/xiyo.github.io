@@ -1,3 +1,22 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-09-17T13:51+0900'
+  - '2024-09-08T12:56+0900'
+  - '2024-09-08T12:40+0900'
+  - '2024-09-07T19:43+0900'
+messages:
+  - ':memo: 디스크립션 문장에 대응하는 멘트 추가'
+  - ':pencil2: 글 강조 변경'
+  - ':art: 로케일 코드 제거하고, 번역된 파일을 기존 처럼 /static/{locale} 구조로 저장'
+  - ':globe_with_meridians: 일본어 추가'
+title: ABOUT
+description: 自己紹介
+---
 # ABOUT
 
 自己紹介

@@ -18,14 +18,14 @@ export default class Category {
 	static {
 		this.#root = new Category('');
 
-		const markdowns = import.meta.glob('/static/**/*.md');
+		const markdowns = import.meta.glob('/static/**/*.md', { query: '?raw', import: 'default' });
 
 		Object.entries(markdowns).forEach(([path, markdownAsync]) => {
 			let absolutePath = path
 				.replace(/^\/static/, '') // 스태틱 경로 제거
 				.replace(/\.md$/, ''); // 확장자 제거
 
-			this.#initCategories({ absolutePath, markdownAsync });
+			this.#initCategories({ absolutePath, markdownAsync: /** @type {() => Promise<string>} */ (markdownAsync) });
 		});
 	}
 
@@ -43,7 +43,7 @@ export default class Category {
 	 * @returns {string}
 	 */
 	get name() {
-		return this.#absolutePath.split('/').at(-1);
+		return this.#absolutePath.split('/').at(-1) || '';
 	}
 
 	/**
@@ -106,8 +106,8 @@ export default class Category {
 	}
 
 	static #initCategories(
-		{ absolutePath, markdownAsync },
-		{ category = this.#root, index = 0 } = {}
+		/** @type {{ absolutePath: string, markdownAsync: () => Promise<string> }} */ { absolutePath, markdownAsync },
+		/** @type {{ category?: Category, index?: number }} */ { category = this.#root, index = 0 } = {}
 	) {
 		const splitPath = absolutePath.split('/');
 		const absolutePaths = splitPath;
@@ -149,7 +149,8 @@ export default class Category {
 	 * @returns {Promise<{ name: string, absolutePath: string, childCategories: any[], allPosts: any[] }>}
 	 */
 	async toSerialize() {
-		const postsPromise = Promise.all(this.allPosts.map((post) => post.toSerialize()));
+		// 메타데이터만 필요하므로 getMetadata() 사용
+		const postsPromise = Promise.all(this.allPosts.map((post) => post.getMetadata()));
 		const childCategoriesPromise = Promise.all(
 			this.childCategories.map((category) => category.toSerialize())
 		);
@@ -157,15 +158,14 @@ export default class Category {
 		const [posts, childCategories] = await Promise.all([postsPromise, childCategoriesPromise]);
 		// 날짜 기준 내림차순 정렬 (최신 글이 앞으로)
 		posts.sort((a, b) => {
-			const dateA = new Date(a.data.dates.at(-1) ?? 0);
-			const dateB = new Date(b.data.dates.at(-1) ?? 0);
+			const dateA = new Date(a.data?.dates?.at(-1) ?? 0);
+			const dateB = new Date(b.data?.dates?.at(-1) ?? 0);
 			if (dateA > dateB) return -1;
 			if (dateA < dateB) return 1;
 			return 0;
 		});
 		const filteredPosts = posts.map((post) => ({
 			absolutePath: post.absolutePath,
-			date: post.date,
 			data: post.data
 		}));
 

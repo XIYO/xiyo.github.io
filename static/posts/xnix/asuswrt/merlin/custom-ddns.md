@@ -1,3 +1,28 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-09-18T11:16+0900'
+  - '2024-08-11T03:10+0900'
+  - '2024-08-11T00:26+0900'
+  - '2024-08-09T19:22+0900'
+  - '2024-03-23T22:30+0900'
+  - '2024-03-16T16:54+0900'
+messages:
+  - ':truck: 이미지 경로를 전부 /static/resource 로 이동'
+  - 'Revert ":truck: 포스트 데이터 이동"'
+  - ':truck: 포스트 데이터 이동'
+  - ':art: 프리티어 실행'
+  - ':truck: 마크다운 파일명 변경 및 구조 변경'
+  - ':memo: asuswrt-merlin 커스텀 DDNS 설정 방법'
+title: CUSTOM DDNS
+description: asuswrt-merlin 펌웨어에서 커스텀 도메인을 연결하는 방법을 정리합니다.
+---
 # CUSTOM DDNS
 
 asuswrt-merlin 펌웨어에서 커스텀 도메인을 연결하는 방법을 정리합니다.

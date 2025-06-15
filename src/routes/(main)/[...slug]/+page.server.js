@@ -5,25 +5,32 @@ import * as m from '$lib/paraglide/messages.js';
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
 	const categoryPromise = Category.getCategory(url.pathname)?.toSerialize();
-	const postPromise = Post.getPosts(url.pathname)?.toSerialize();
+	const postInstance = Post.getPosts(url.pathname);
+	
+	// 포스트가 있으면 메타데이터와 콘텐츠를 분리해서 가져오기
+	const postMetadataPromise = postInstance?.getMetadata();
+	const postContentPromise = postInstance?.getContent();
 
-	const [category, post] = await Promise.all([categoryPromise, postPromise]);
+	const [category, postMetadata, postContent] = await Promise.all([
+		categoryPromise, 
+		postMetadataPromise, 
+		postContentPromise
+	]);
 
-	// post 가 있으면 반드시 post.data 가 있기 때문에 null 체크를 하지 않아도 된다.
-	const title = post ? post.data.title : category ? category.name : m.title();
-	const description = post ? post.data.description : m.description();
+	// post 가 있으면 반드시 postMetadata.data 가 있기 때문에 null 체크를 하지 않아도 된다.
+	const title = postMetadata ? postMetadata.data.title : category ? category.name : m.title();
+	const description = postMetadata ? postMetadata.data.description : m.description();
 
-	const og = post
+	const og = postMetadata
 		? {
-				title: post.data.title,
-				description: post.data.description,
-				keywords: post.data.keywords,
-				type: post ? 'article' : 'website',
+				title: postMetadata.data.title,
+				description: postMetadata.data.description,
+				keywords: postMetadata.data.keywords,
+				type: 'article',
 				url: url.href,
-				author: Array.from(new Set(post.data.authors.map((entry) => entry.author))).join(', '),
-				publishedTime: post.data.dates.at(0),
-				modifiedTime: post.data.dates.at(-1),
-				tags: post?.data?.tags
+				publishedTime: postMetadata.data.dates?.at(0),
+				modifiedTime: postMetadata.data.dates?.at(-1),
+				tags: postMetadata.data.tags
 			}
 		: {};
 
@@ -31,7 +38,8 @@ export async function load({ url }) {
 		title,
 		description,
 		category,
-		post,
+		postMetadata,
+		postContent,
 		og
 	};
 }

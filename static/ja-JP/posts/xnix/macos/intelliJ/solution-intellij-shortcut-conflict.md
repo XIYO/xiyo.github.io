@@ -1,3 +1,18 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-09-10T20:23+0900'
+  - '2024-09-08T12:40+0900'
+  - '2024-09-07T19:43+0900'
+messages:
+  - ':art: 리소스 경로를 규격에 맞게 통일'
+  - ':art: 로케일 코드 제거하고, 번역된 파일을 기존 처럼 /static/{locale} 구조로 저장'
+  - ':globe_with_meridians: 일본어 추가'
+title: SOLUTION INTELLIJ SHORTCUT CONFLICT
+---
 # SOLUTION INTELLIJ SHORTCUT CONFLICT
 
 *IntelliJ* のショートカットの競合問題を解決する方法を見ていきます。

@@ -10,5 +10,6 @@
 	"jjakakDescription": "シンプルなタイマー。 PWAで実装で実装されており、ブラウザからアプリに直接インストールが可能です。",
 	"subCategoryEmpty": "サブカテゴリはありません。",
 	"terminalBrowsing": "端末ブラウザから接続した画面",
-	"terminal": "ターミナル"
+	"terminal": "ターミナル",
+	"back": "戻る"
 }

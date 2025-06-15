@@ -1,3 +1,57 @@
+---
+authors:
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+  - XIYO
+dates:
+  - '2024-08-11T03:10+0900'
+  - '2024-08-11T00:26+0900'
+  - '2024-08-09T19:22+0900'
+  - '2024-03-23T22:30+0900'
+  - '2024-03-12T20:50+0900'
+  - '2023-12-26T22:11+0900'
+  - '2023-10-17T22:44+0900'
+  - '2023-10-17T22:42+0900'
+  - '2023-10-17T22:40+0900'
+  - '2023-10-17T22:39+0900'
+  - '2023-10-17T22:37+0900'
+  - '2023-10-07T18:30+0900'
+  - '2023-10-07T18:30+0900'
+  - '2023-10-07T16:54+0900'
+  - '2023-10-07T16:27+0900'
+  - '2023-10-07T16:23+0900'
+messages:
+  - 'Revert ":truck: 포스트 데이터 이동"'
+  - ':truck: 포스트 데이터 이동'
+  - ':art: 프리티어 실행'
+  - ':truck: 마크다운 파일명 변경 및 구조 변경'
+  - ':lipstick: 스벨트킷으로 변경'
+  - ':truck: unix-and-unix-like -> xnix'
+  - '✏️ kor -> eng, 셸, 포어그라운드, 백그라운드'
+  - "\U0001F527 set frontmatter, description"
+  - "\U0001F69Atitle kor -> eng"
+  - "\U0001F69A unix -> unix-and-unix-like"
+  - "\U0001F527 move categories, _config.yml -> md files"
+  - "\U0001F4DD update title"
+  - "\U0001F69A update file name"
+  - "\U0001F4AC update, title to korean"
+  - "\U0001F331 add, new line"
+  - "\U0001F331 publish, checking-running-background-jobs"
+title: CHECKING BACKGROUND JOBS
+---
 # CHECKING BACKGROUND JOBS
 
 `UNIX`와 `UNIX LIKE`에서 `Job control` 일부인 `jobs` 명령어를 설명합니다.

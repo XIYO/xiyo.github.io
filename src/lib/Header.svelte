@@ -40,8 +40,8 @@
 <Card tag="header" class="flex h-16">
 	{#if !isRoot}
 		<a href="./" class="w-16 text-center content-center-safe">
-		    <span class="text-3xl">↖️</span>
-			<span class="sr-only">Go Back</span>
+		    <span class="text-3xl">✈️</span>
+			<span class="sr-only">Go Up</span>
 		</a>
 		{:else}
 		<button class="w-16 text-center content-center-safe" onclick={handleConfetti}>

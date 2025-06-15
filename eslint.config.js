@@ -30,5 +30,6 @@ export default [
 			'node_modules/'
 		]
 	},
+    ...storybook.configs["flat/recommended"],
     ...storybook.configs["flat/recommended"]
 ];

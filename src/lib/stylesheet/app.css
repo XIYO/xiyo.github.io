@@ -1,281 +1,150 @@
+@import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
+@import 'pretendard-jp/dist/web/variable/pretendardvariable-jp-dynamic-subset.css';
+@import '@kfonts/neodgm-code/index.css';
+@import 'tailwindcss';
+
 :root {
 	color-scheme: light dark;
+}
 
-	/* color */
-	--color-default-black: light-dark(hsl(200, 4%, 16%), hsl(42, 66%, 93%));
-	--color-default-white: light-dark(hsl(42, 66%, 93%), hsl(200, 4%, 16%));
+@theme {
+	--color-surface: light-dark(hsl(200, 4%, 16%), hsl(42, 66%, 93%));
+	--color-surface-muted: light-dark(hsl(240, 4%, 95%), hsl(200, 5%, 15%));
+	--color-surface-inverse: light-dark(hsl(42, 66%, 93%), hsl(200, 4%, 16%));
+
+	--color-content: light-dark(hsl(200, 5%, 10%), hsl(0, 0%, 100%));
+	--color-content-muted: light-dark(hsl(200, 4%, 50%), hsl(0, 0%, 60%));
+	--color-content-inverse: light-dark(hsl(0, 0%, 100%), hsl(200, 5%, 10%));
+
 	--color-primary: hsl(176, 89%, 37%);
-	--color-primary-sub: hsl(176, 89%, 27%);
+	--color-primary-hover: hsl(176, 89%, 30%);
+	--color-primary-active: hsl(176, 89%, 25%);
 
-	/* margin, border */
-	--default-margin: 0.5rem;
-	--default-border-width: 0.25rem;
-	--default-padding: 1rem;
-	--inner-border-radius: 1rem;
-	--outer-border-radius: calc(var(--inner-border-radius) + var(--default-border-width));
+	--color-border: light-dark(hsl(200, 6%, 85%), hsl(200, 6%, 35%));
+	--color-border-strong: light-dark(hsl(200, 6%, 60%), hsl(200, 6%, 50%));
 
-	@media (max-width: 720px) {
-		--default-margin: 0.25rem;
-		--default-padding: 0.5rem;
-	}
+	--color-focus: hsl(220, 90%, 56%);
+	--color-accent: hsl(280, 80%, 60%);
+	--color-destructive: hsl(0, 85%, 60%);
 
-	/* size */
-	--scroll-bar-size: 0.25rem;
-	--min-inline-size: 320px;
-	--min-block-size: 375px; /* 아이폰 SE 3 사이즈 */
-	--nav-min-inline-size: 10rem;
-	--nav-min-block-size: calc(var(--min-block-size) - (var(--default-margin) * 2));
-
-	--ratio-three-quarters-of-three-quarter: 0.875;
-	--ratio-three-quarter: 0.75;
-	--ratio-half: 0.5;
-	--ratio-quarter: 0.25;
-	--ratio-three-quarters-of-quarter: 0.1875;
-	--ratio-eighth: 0.125;
-
-	/* animation */
-	--default-animation-duration: 0.5s;
-	--default-anmiation-delay: var(--default-animation-duration);
-	--default-anmiation-delay-new: calc(var(--default-animation-duration) * 2);
-
-	-ms-text-size-adjust: 100%; /* IE, old Edge */
-	-webkit-text-size-adjust: 100%; /* Chrome, Safari, new Edge */
-	text-size-adjust: 100%;
-
-	min-inline-size: var(--min-inline-size);
-	overflow: scroll; /* 윈도우에서 의도적으로 스크롤바를 노출시켜 스크롤바 때문에 생기는 레이아웃의 뒤틀림 방지 */
-
-	text-wrap: pretty;
+	--font-mono: 'Neo둥근모 Code', 'Pretendard Variable', 'Pretendard', sans-serif;
 }
 
-figure {
-	margin-inline: unset;
-	border-radius: var(--inner-border-radius);
-	background-color: var(--color-primary-sub);
-	max-inline-size: 100%;
-	inline-size: fit-content;
-
-	figcaption {
-		padding-inline: var(--default-padding);
-		padding-block-end: var(--default-border-width);
-
-		font-size: 0.875rem;
-		text-align: end;
-
-		:first-child {
-			margin-block-start: 0;
-		}
-
-		:last-child {
-			margin-block-end: 0;
-		}
+@layer base {
+	:root {
+		@apply bg-primary-active text-content overscroll-none;
+		font-family: 'Pretendard Variable', Pretendard, sans-serif;
+		font-feature-settings: 'ss05';
 	}
 
-	pre {
-		margin-block-end: unset;
-	}
-
-	& > img,
-	a:has(img) {
-		border: var(--default-border-width) solid var(--color-primary-sub);
-		border-radius: var(--inner-border-radius);
-
-		&:is(img) {
-			box-sizing: border-box;
-			background-color: var(--color-default-black);
+	#post-content {
+		& h1 {
+			@apply text-4xl font-bold mt-8 mb-4 leading-tight; /* text-4xl, font-bold, mt-8, mb-4, leading-tight */
 		}
 
-		&:is(a:has(img)) {
-			display: block;
-			background-color: var(--color-primary-sub);
+		& h2 {
+			@apply text-3xl font-semibold mt-8 mb-4 leading-tight; /* text-3xl, font-semibold, mt-8, mb-4, leading-tight */
 		}
-	}
-}
 
-code {
-	font-family: 'Neo둥근모 Code', monospace;
-}
+		& h3 {
+			@apply text-2xl font-semibold mt-6 mb-3 leading-tight; /* text-2xl, font-semibold, mt-6, mb-3, leading-tight */
+		}
 
-:not(pre) > code {
-	background-color: var(--color-default-black);
-	border-radius: var(--inner-border-radius);
-	padding: 0.125rem 0.25rem;
-	color: var(--color-default-white);
-}
+		& h4 {
+			@apply text-xl font-medium mt-6 mb-3 leading-tight; /* text-xl, font-medium, mt-6, mb-3, leading-tight */
+		}
 
-/* shiki custom css */
-pre.shiki {
-	--shiki-foreground: light-dark(#657b83, #a6accd);
-	--shiki-background: light-dark(#fdf6e3, #1b1e28);
-	--shiki-token-constant: light-dark(#d33682, #5de4c7);
-	--shiki-token-string: light-dark(#2aa198, #5de4c7);
-	--shiki-token-comment: light-dark(#93a1a1, #767c9db0);
-	--shiki-token-keyword: light-dark(#859900, #a6accd);
-	--shiki-token-parameter: light-dark(#657b83, #e4f0fb);
-	--shiki-token-function: light-dark(#268bd2, #add7ff);
-	--shiki-token-string-expression: light-dark(#dc322f, #5fb3a1);
-	--shiki-token-punctuation: light-dark(#859900, #a6accd);
-	--shiki-token-link: light-dark(#268bd2, #add7ff);
+		& h5 {
+			@apply text-lg font-medium mt-4 mb-2 leading-tight; /* text-lg, font-medium, mt-4, mb-2, leading-tight */
+		}
 
-	/* ANSI colors */
-	--shiki-ansi-black: light-dark(#073642, #1b1e28);
-	--shiki-ansi-black-dim: light-dark(#07364280, #1b1e2880);
-	--shiki-ansi-red: light-dark(#dc322f, #d0679d);
-	--shiki-ansi-red-dim: light-dark(#dc322f80, #d0679d80);
-	--shiki-ansi-green: light-dark(#859900, #5de4c7);
-	--shiki-ansi-green-dim: light-dark(#85990080, #5de4c780);
-	--shiki-ansi-yellow: light-dark(#b58900, #fffac2);
-	--shiki-ansi-yellow-dim: light-dark(#b5890080, #fffac280);
-	--shiki-ansi-blue: light-dark(#268bd2, #89ddff);
-	--shiki-ansi-blue-dim: light-dark(#268bd280, #89ddff80);
-	--shiki-ansi-magenta: light-dark(#d33682, #f087bd);
-	--shiki-ansi-magenta-dim: light-dark(#d3368280, #f087bd80);
-	--shiki-ansi-cyan: light-dark(#2aa198, #89ddff);
-	--shiki-ansi-cyan-dim: light-dark(#2aa19880, #89ddff80);
-	--shiki-ansi-white: light-dark(#eee8d5, #ffffff);
-	--shiki-ansi-white-dim: light-dark(#eee8d580, #ffffff80);
-	--shiki-ansi-bright-black: light-dark(#002b36, #a6accd);
-	--shiki-ansi-bright-black-dim: light-dark(#002b3680, #a6accd80);
-	--shiki-ansi-bright-red: light-dark(#cb4b16, #d0679d);
-	--shiki-ansi-bright-red-dim: light-dark(#cb4b1680, #d0679d80);
-	--shiki-ansi-bright-green: light-dark(#586e75, #5de4c7);
-	--shiki-ansi-bright-green-dim: light-dark(#586e7580, #5de4c780);
-	--shiki-ansi-bright-yellow: light-dark(#657b83, #fffac2);
-	--shiki-ansi-bright-yellow-dim: light-dark(#657b8380, #fffac280);
-	--shiki-ansi-bright-blue: light-dark(#839496, #add7ff);
-	--shiki-ansi-bright-blue-dim: light-dark(#83949680, #add7ff80);
-	--shiki-ansi-bright-magenta: light-dark(#6c71c4, #f087bd);
-	--shiki-ansi-bright-magenta-dim: light-dark(#6c71c480, #f087bd80);
-	--shiki-ansi-bright-cyan: light-dark(#93a1a1, #add7ff);
-	--shiki-ansi-bright-cyan-dim: light-dark(#93a1a180, #add7ff80);
-	--shiki-ansi-bright-white: light-dark(#fdf6e3, #ffffff);
-	--shiki-ansi-bright-white-dim: light-dark(#fdf6e380, #ffffff80);
+		& h6 {
+			@apply text-base font-medium mt-4 mb-2 leading-tight; /* text-base, font-medium, mt-4, mb-2, leading-tight */
+		}
 
-	&:has(code) {
-		/* reset */
-		margin-block: unset;
+		& table {
+			@apply w-full my-6 border-collapse;
 
-		border: var(--default-border-width) solid var(--color-primary-sub);
-		border-radius: var(--inner-border-radius);
-		padding: var(--default-padding);
-	}
-
-	code {
-		counter-reset: line;
-
-		display: block;
-		overflow-y: scroll;
-
-		& > .line {
-			&::before {
-				counter-increment: line;
-				content: counter(line);
-
-				/* Other styling */
-				backdrop-filter: blur(1rem);
-				position: sticky;
-				inset-inline-start: 0;
-				display: inline-block;
-				inline-size: 1rem;
-				padding-inline-end: var(--default-padding);
-				text-align: right;
-
-				/* 코드와 간격 */
-				border-inline-end: var(--default-border-width) solid var(--color-primary);
-				margin-inline-end: var(--default-margin);
+			& th {
+				@apply px-4 py-3 text-left font-semibold text-content-inverse bg-primary border-b-2 border-primary-active;
 			}
 
-			/* transformerNotationDiff */
+			& td {
+				@apply px-4 py-3 border-b border-border;
+			}
 
-			&.diff {
-				&.remove {
-					background-color: light-dark(hsl(0, 100%, 90%), hsl(0, 100%, 25%));
+			& tr:hover {
+				@apply bg-primary/5;
+			}
+		}
 
-					&::before {
-						content: counter(line) ' -';
-						inline-size: calc(1rem + var(--default-padding));
-						padding-inline-end: unset;
-					}
-				}
+		& figure {
+			@apply my-6;
 
-				&.add {
-					background-color: light-dark(hsl(120, 100%, 90%), hsl(120, 100%, 15%));
+			& pre {
+				@apply p-4 rounded-lg overflow-x-auto;
+			}
 
-					&::before {
-						content: counter(line) ' +';
-						inline-size: calc(1rem + var(--default-padding));
-						padding-inline-end: unset;
-					}
+			& figcaption {
+				@apply text-sm text-content-muted mt-2;
+			}
+		}
+
+		/* 콜아웃 스타일 */
+		& [data-callout] {
+			@apply p-4 my-4 border-l-4 rounded-r-lg bg-surface-muted/50;
+
+			& [data-callout-title] {
+				@apply font-semibold mb-2 text-content flex items-center;
+			}
+
+			& [data-callout-body] {
+				@apply text-content-muted;
+
+				& > *:last-child {
+					@apply mb-0;
 				}
 			}
 		}
-	}
 
-	/* transformerNotationFocus */
+		& [data-callout-type='note'] {
+			@apply border-blue-500 bg-blue-50/50;
 
-	&.has-focused {
-		&:not(:hover) .line:not(.focused) {
-			filter: blur(0.1rem);
-			opacity: 0.4;
+			& [data-callout-title] {
+				@apply text-blue-700;
+			}
 		}
 
-		@media (prefers-reduced-motion: no-preference) {
-			& .line {
-				transition-property: filter, opacity;
-				transition-duration: var(--default-animation-duration);
+		& [data-callout-type='warning'] {
+			@apply border-yellow-500 bg-yellow-50/50;
+
+			& [data-callout-title] {
+				@apply text-yellow-700;
+			}
+		}
+
+		& [data-callout-type='tip'] {
+			@apply border-green-500 bg-green-50/50;
+
+			& [data-callout-title] {
+				@apply text-green-700;
+			}
+		}
+
+		& [data-callout-type='important'] {
+			@apply border-purple-500 bg-purple-50/50;
+
+			& [data-callout-title] {
+				@apply text-purple-700;
+			}
+		}
+
+		& [data-callout-type='caution'] {
+			@apply border-red-500 bg-red-50/50;
+
+			& [data-callout-title] {
+				@apply text-red-700;
 			}
 		}
 	}
-
-	&[data-title] {
-		position: relative;
-		padding-block-start: calc(var(--default-padding) * 1.25);
-
-		&::before {
-			position: absolute;
-			inset-block-start: 0;
-			transform: translateY(-50%);
-
-			content: attr(data-title);
-			display: block;
-			padding: calc(var(--default-padding) / 2);
-			background-color: var(--color-primary);
-			border-radius: var(--inner-border-radius);
-
-			/* typography */
-			color: var(--color-default-black);
-			font-weight: bold;
-		}
-	}
-}
-
-/* https://meta.superuser.com/questions/4788/css-for-the-new-kbd-style */
-kbd {
-	-moz-border-radius: 3px;
-	-moz-box-shadow:
-		0 1px 0 rgba(0, 0, 0, 0.2),
-		0 0 0 2px #fff inset;
-	-webkit-border-radius: 3px;
-	-webkit-box-shadow:
-		0 1px 0 rgba(0, 0, 0, 0.2),
-		0 0 0 2px #fff inset;
-	background-color: #f7f7f7;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	box-shadow:
-		0 1px 0 rgba(0, 0, 0, 0.2),
-		0 0 0 2px #fff inset;
-	color: #333;
-	display: inline-block;
-	font-size: 1rem;
-	line-height: 1.4;
-	margin: 0 0.1em;
-	padding: 0.1em 0.6em;
-	text-shadow: 0 1px 0 #fff;
-}
-
-blockquote {
-	font-style: italic;
-	border-left: 4px solid #ddd;
-	color: gray;
 }

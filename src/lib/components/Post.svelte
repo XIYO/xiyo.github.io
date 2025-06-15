@@ -23,7 +23,9 @@
 
 <Card negative>
 	<div id="post-content" class="p-4">
+		<!-- eslint-disable svelte/no-at-html-tags -->
 		{@html postContent?.value}
+		<!-- eslint-enable svelte/no-at-html-tags -->
 	</div>
 
 	{#if hasDates}

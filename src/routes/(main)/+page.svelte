@@ -6,7 +6,9 @@
 
 <Card negative>
 	<div class="p-4">
+		<!-- eslint-disable svelte/no-at-html-tags -->
 		<p>{@html m.welcome()}</p>
+		<!-- eslint-enable svelte/no-at-html-tags -->
 
 		<figure>
 			<enhanced:img src={terminalBrowsing} alt={m.terminalBrowsing()} data-title={m.terminal()} />

@@ -1,6 +1,7 @@
 # 변경된 마크다운 파일 찾기
 changed_md_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(md|markdown)$' || true)
 
+# 마크다운 파일 처리
 if [ -n "$changed_md_files" ]; then
   echo "🔄 변경된 마크다운 파일의 프론트매터를 업데이트합니다..."
   
@@ -22,13 +23,19 @@ if [ -n "$changed_md_files" ]; then
   echo "✅ 프론트매터 업데이트 완료!"
 fi
 
-# 코드 포맷팅
-echo "🎨 코드 포맷팅을 실행합니다..."
-pnpm format
+# 변경된 코드 파일 찾기 (js, ts, svelte, css, html 등)
+changed_code_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|ts|svelte|css|html|json)$' || true)
 
-# 다시 스테이징 (포맷팅 후 변경된 파일들)
-git add .
-
-# 린트 체크
-echo "🔍 코드 품질 검사를 실행합니다..."
-pnpm lint
+# 코드 파일이 변경되었을 때만 포맷팅과 린트 실행
+if [ -n "$changed_code_files" ] || [ -n "$changed_md_files" ]; then
+  echo "🎨 코드 포맷팅을 실행합니다..."
+  pnpm format
+  
+  # 다시 스테이징 (포맷팅 후 변경된 파일들)
+  git add .
+  
+  echo "🔍 코드 품질 검사를 실행합니다..."
+  pnpm lint
+else
+  echo "📝 변경된 파일이 없어 포맷팅과 린트를 건너뜁니다."
+fi

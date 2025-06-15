@@ -60,7 +60,6 @@
 		"playwright": "^1.53.0",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.4.0",
-		"rehype-callouts": "^2.1.1",
 		"rehype-stringify": "^10.0.1",
 		"remark-extract-frontmatter": "^3.2.0",
 		"remark-figure-caption": "^1.0.6",
@@ -74,7 +73,6 @@
 		"svelte-check": "^4.2.1",
 		"typescript": "^5.8.3",
 		"unified": "^11.0.5",
-		"unist-util-visit": "^5.0.0",
 		"vite": "6.3.5",
 		"vitest": "^3.2.3",
 		"wrangler": "^4.20.0"
@@ -86,12 +84,13 @@
 		"@kfonts/neodgm-code": "^0.5.0",
 		"@lobehub/i18n-cli": "^1.23.0",
 		"@lunariajs/core": "^0.1.1",
+		"@r4ai/remark-callout": "^0.6.2",
 		"@tailwindcss/vite": "^4.1.10",
 		"fast-glob": "^3.3.3",
 		"gray-matter": "^4.0.3",
-		"image-size": "^2.0.2",
 		"pretendard": "^1.3.9",
 		"pretendard-jp": "^1.3.9",
+		"remark-gfm": "^4.0.1",
 		"tailwindcss": "^4.1.10"
 	},
 	"pnpm": {

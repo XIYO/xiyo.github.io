@@ -124,10 +124,37 @@ function cleanMarkdownFrontmatter(filePath, currentCommitMsg = null) {
 		// Git 로그 정보 가져오기 (현재 커밋 메시지 포함)
 		const gitLog = getGitLogForFile(filePath, currentCommitMsg);
 
-		// 프론트매터에 Git 로그 정보 추가 (시간순으로 정렬된 상태)
-		parsed.data.authors = gitLog.map((x) => x.author || '');
-		parsed.data.dates = gitLog.map((x) => x.datetime || '');
-		parsed.data.messages = gitLog.map((x) => x.comment || '');
+		// 기존 배열들을 초기화 (배열이 아니면 빈 배열로)
+		const existingAuthors = Array.isArray(parsed.data.authors) ? parsed.data.authors : [];
+		const existingDates = Array.isArray(parsed.data.dates) ? parsed.data.dates : [];
+		const existingMessages = Array.isArray(parsed.data.messages) ? parsed.data.messages : [];
+
+		// 새로운 항목들만 추가 (중복 제거)
+		const newAuthors = [...existingAuthors];
+		const newDates = [...existingDates];
+		const newMessages = [...existingMessages];
+
+		gitLog.forEach((entry) => {
+			const author = entry.author || '';
+			const datetime = entry.datetime || '';
+			const message = entry.comment || '';
+
+			// 중복 체크: 같은 날짜와 메시지가 이미 있는지 확인
+			const isDuplicate = existingDates.some(
+				(existingDate, index) => existingDate === datetime && existingMessages[index] === message
+			);
+
+			if (!isDuplicate) {
+				newAuthors.unshift(author); // 최신 항목을 앞에 추가
+				newDates.unshift(datetime);
+				newMessages.unshift(message);
+			}
+		});
+
+		// 프론트매터에 업데이트된 정보 설정
+		parsed.data.authors = newAuthors;
+		parsed.data.dates = newDates;
+		parsed.data.messages = newMessages;
 
 		// 불필요한 필드 제거
 		delete parsed.data.lastUpdated;

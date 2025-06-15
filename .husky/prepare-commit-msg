@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# 커밋 메시지를 임시 파일에 저장 (pre-commit에서 사용하기 위해)
+commit_msg_file="$1"
+if [ -f "$commit_msg_file" ]; then
+    # 커밋 메시지를 환경변수로 설정할 수 있도록 임시 파일에 저장
+    echo "export HUSKY_COMMIT_MSG=\"$(cat "$commit_msg_file")\"" > .git/husky_commit_msg
+fi

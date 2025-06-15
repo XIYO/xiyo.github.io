@@ -132,8 +132,18 @@ function cleanMarkdownFrontmatter(filePath, currentCommitMsg = null) {
 		delete parsed.data.lastUpdated;
 		delete parsed.data.firstCreated;
 
-		// 새로운 마크다운 내용 생성
-		const newContent = matter.stringify(parsed.content, parsed.data);
+		// 새로운 마크다운 내용 생성 (이모지를 올바르게 처리하도록 설정)
+		const newContent = matter.stringify(parsed.content, parsed.data, {
+			engines: {
+				yaml: {
+					stringify: (obj) => {
+						// YAML 문자열화 시 이모지가 유니코드 이스케이프되지 않도록 설정
+						const yaml = matter.stringify('', obj).split('---\n')[1].split('\n---')[0];
+						return yaml;
+					}
+				}
+			}
+		});
 
 		// 파일 쓰기
 		writeFileSync(filePath, newContent, 'utf8');

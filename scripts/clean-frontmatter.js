@@ -2,8 +2,8 @@
 
 import { spawnSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
+import { glob } from 'fs/promises';
 import matter from 'gray-matter';
-import glob from 'fast-glob';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import { visit } from 'unist-util-visit';
@@ -137,7 +137,8 @@ async function main() {
 			const matched = await glob(arg, {
 				ignore: ['node_modules/**', 'build/**', '.git/**', 'storybook-static/**']
 			});
-			files.push(...matched);
+			// glob 결과를 배열로 변환
+			files.push(...Array.from(matched));
 		} else {
 			files.push(arg);
 		}

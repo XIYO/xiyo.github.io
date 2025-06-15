@@ -27,7 +27,9 @@ export default [
 			'dist/',
 			'.obsidian/',
 			'playwright.config.cjs',
-			'node_modules/'
+			'node_modules/',
+			'storybook-static/',
+			'storybook-static/**/*'
 		]
 	},
 	...storybook.configs['flat/recommended'],

@@ -1,2 +1,2 @@
 #!/bin/sh
-# pre-commit 훅은 비워둡니다 (prepare-commit-msg에서 처리)
+# pre-commit은 비워둠 (commit-msg에서 처리)

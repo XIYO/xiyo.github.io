@@ -1,3 +1,4 @@
+test-results
 .DS_Store
 node_modules
 /build
@@ -10,3 +11,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .idea
 .obsidian
+
+*storybook.log
+storybook-static

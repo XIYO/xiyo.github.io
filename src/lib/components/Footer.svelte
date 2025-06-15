@@ -5,11 +5,15 @@
 			Svelte Rune
 			<img src="/svelte-logo.svg" alt="Svelte Logo" class="w-4 h-4 ml-1" />
 		</a>, Designed By
-		<span tabindex="-1" class="inline-block text-center align-middle focus:outline-none cursor-pointer group">
+		<span
+			tabindex="-1"
+			class="inline-block text-center align-middle focus:outline-none cursor-pointer group"
+		>
 			{#each 'chimi' as letter, i (i)}
-				<span class="inline-block animate-bounce  [animation-delay:var(--delay)]"
-				style:--delay="{i * 0.1}s"
-				>{letter}</span>
+				<span
+					class="inline-block animate-bounce [animation-delay:var(--delay)]"
+					style:--delay="{i * 0.1}s">{letter}</span
+				>
 			{/each}
 			<span class="ml-1 inline-block">
 				<span class="group-focus:hidden">🎈</span>

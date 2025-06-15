@@ -3,9 +3,13 @@
 	import Card from '$lib/ui/card/Card.svelte';
 	import Nav from '$lib/components/Nav.svelte';
 	import { afterNavigate } from '$app/navigation';
+	import { deLocalizeHref, deLocalizeUrl } from './paraglide/runtime';
+	import confetti from 'canvas-confetti';
 
 	/** @type {HTMLDialogElement} */
 	let navRef;
+
+	let isRoot = $derived(deLocalizeHref(page.url.pathname) === '/');
 
 	/**
 	 * Progressive Enhancement(점진적 향상) 패턴 적용.
@@ -20,14 +24,33 @@
 		navRef.showModal();
 	};
 
+	const handleConfetti = () => {
+		confetti({
+			particleCount: 120,
+			spread: 90,
+			origin: { y: 0.6 }
+		});
+	}
+
 	afterNavigate(() => {
 		navRef.close();
 	});
 </script>
 
-<Card tag="header" class="flex justify-between items-center">
-	<h1 class="font-black text-2xl uppercase p-4">{page.data.title}</h1>
-	<a href="/nav" class="p-4" onclick={handleShowNav}>
+<Card tag="header" class="flex h-16">
+	{#if !isRoot}
+		<a href="./" class="w-16 text-center content-center-safe">
+		    <span class="text-3xl">↖️</span>
+			<span class="sr-only">Go Back</span>
+		</a>
+		{:else}
+		<button class="w-16 text-center content-center-safe" onclick={handleConfetti}>
+			<span class="text-3xl">🪂</span>
+			<span class="sr-only">Home</span>
+		</button>
+		{/if}
+	<h1 class="flex-1 text-center content-center-safe font-black text-2xl uppercase">{page.data.title}</h1>
+	<a href="/nav" class="w-16 text-center content-center-safe" onclick={handleShowNav}>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			width="36"
@@ -38,7 +61,7 @@
 			stroke-width="2"
 			stroke-linecap="round"
 			stroke-linejoin="round"
-			class="lucide lucide-menu-icon lucide-menu"
+			class="inline lucide lucide-menu-icon lucide-menu"
 			><path d="M4 12h16" /><path d="M4 18h16" /><path d="M4 6h16" /></svg
 		>
 		<span class="sr-only">Go to Nav</span>

@@ -2,5 +2,18 @@
 	"sonarlint.connectedMode.project": {
 		"connectionId": "xiyo",
 		"projectKey": "XIYO_xiyo.github.io"
-	}
+	},
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"tailwindCSS.includeLanguages": {
+		"css": "css",
+		"html": "html"
+	},
+	"tailwindCSS.experimental.classRegex": [
+		["class:\\s*['\"`]([^'\"`]*)['\"`]", "['\"`]([^'\"`]*)['\"`]"]
+	]
 }

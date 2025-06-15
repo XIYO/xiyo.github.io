@@ -31,18 +31,22 @@ function getStagedMarkdownFiles() {
  */
 function getCurrentCommitMessage() {
   try {
-    // prepare-commit-msg 훅에서 전달된 커밋 메시지 파일 경로
+    // 1. 환경변수에서 커밋 메시지 확인
+    if (process.env.COMMIT_MESSAGE) {
+      return process.env.COMMIT_MESSAGE;
+    }
+    
+    // 2. prepare-commit-msg 훅에서 전달된 커밋 메시지 파일 경로
     const commitMsgFile = process.env.COMMIT_MSG_FILE;
     if (commitMsgFile && fs.existsSync(commitMsgFile)) {
       const content = fs.readFileSync(commitMsgFile, 'utf8').trim();
-      // 첫 번째 줄만 사용 (제목)
       const firstLine = content.split('\n')[0].trim();
       if (firstLine && !firstLine.startsWith('#')) {
         return firstLine;
       }
     }
     
-    // .git/COMMIT_EDITMSG에서 커밋 메시지 읽기
+    // 3. .git/COMMIT_EDITMSG에서 커밋 메시지 읽기
     const commitMsgPath = path.join('.git', 'COMMIT_EDITMSG');
     if (fs.existsSync(commitMsgPath)) {
       const content = fs.readFileSync(commitMsgPath, 'utf8').trim();
@@ -52,12 +56,16 @@ function getCurrentCommitMessage() {
       }
     }
     
-    // 환경변수에서 시도
-    if (process.env.COMMIT_MESSAGE) {
-      return process.env.COMMIT_MESSAGE;
+    // 4. Git 커밋 메시지를 프로세스 인자에서 확인
+    const commitArgs = process.argv.slice(2);
+    for (let i = 0; i < commitArgs.length; i++) {
+      if (commitArgs[i] === '-m' && commitArgs[i + 1]) {
+        return commitArgs[i + 1];
+      }
     }
     
-    // 기본값 사용
+    // 5. 기본값 사용 (하지만 경고 메시지 출력)
+    console.warn('⚠️  커밋 메시지를 찾을 수 없어 기본값을 사용합니다.');
     return '문서 업데이트';
   } catch (error) {
     console.warn('커밋 메시지 조회 실패, 기본값 사용:', error.message);

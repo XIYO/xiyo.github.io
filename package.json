@@ -17,7 +17,8 @@
 		"lunaria:preview": "lunaria preview",
 		"test:e2e": "playwright test",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"test:stories": "test-storybook"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^4",
@@ -29,6 +30,7 @@
 		"@storybook/addon-docs": "^9.0.9",
 		"@storybook/addon-svelte-csf": "^5.0.3",
 		"@storybook/addon-vitest": "^9.0.9",
+		"@storybook/cli": "^9.0.9",
 		"@storybook/jest": "^0.2.3",
 		"@storybook/sveltekit": "^9.0.9",
 		"@storybook/test": "^8.6.14",

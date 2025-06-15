@@ -10,5 +10,6 @@
 	"jjakakDescription": "Simple timer. Implemented as PWA, so you can install it as an app directly from your browser.",
 	"subCategoryEmpty": "There are no subcategories.",
 	"terminalBrowsing": "Screen accessed from terminal browser",
-	"terminal": "Terminal"
+	"terminal": "Terminal",
+	"back": "Back"
 }

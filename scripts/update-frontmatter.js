@@ -29,44 +29,26 @@ function getStagedMarkdownFiles() {
 /**
  * 현재 커밋 메시지 가져오기
  */
-function getCurrentCommitMessage() {
+function getCurrentCommitMessage(commitMsgFileArg, cliMessage) {
   try {
-    // 1. prepare-commit-msg 훅에서 전달된 커밋 메시지 파일 경로
-    const commitMsgFile = process.env.COMMIT_MSG_FILE;
-    if (commitMsgFile && fs.existsSync(commitMsgFile)) {
-      const content = fs.readFileSync(commitMsgFile, 'utf8').trim();
-      // 커밋 메시지에서 주석 라인(#으로 시작)을 제외하고 첫 번째 유효한 라인 가져오기
-      const lines = content.split('\n');
-      for (const line of lines) {
-        const trimmedLine = line.trim();
-        if (trimmedLine && !trimmedLine.startsWith('#')) {
-          console.log(`📋 커밋 메시지 파일에서 찾음: "${trimmedLine}"`);
-          return trimmedLine;
-        }
-      }
+    // 0. CLI 인자로 메시지 직접 전달
+    if (cliMessage) {
+      return cliMessage;
     }
-    
-    // 2. 환경변수에서 커밋 메시지 확인
+    // 1. 환경변수에서 커밋 메시지 확인
     if (process.env.COMMIT_MESSAGE) {
-      console.log(`📋 환경변수에서 커밋 메시지 찾음: "${process.env.COMMIT_MESSAGE}"`);
       return process.env.COMMIT_MESSAGE;
     }
-    
-    // 3. .git/COMMIT_EDITMSG에서 커밋 메시지 읽기 (fallback)
-    const commitMsgPath = path.join('.git', 'COMMIT_EDITMSG');
-    if (fs.existsSync(commitMsgPath)) {
-      const content = fs.readFileSync(commitMsgPath, 'utf8').trim();
-      const lines = content.split('\n');
-      for (const line of lines) {
-        const trimmedLine = line.trim();
-        if (trimmedLine && !trimmedLine.startsWith('#')) {
-          console.log(`📋 COMMIT_EDITMSG에서 커밋 메시지 찾음: "${trimmedLine}"`);
-          return trimmedLine;
-        }
+    // 2. 인자로 받은 커밋 메시지 파일 경로 (commit-msg 훅에서만 동작)
+    if (commitMsgFileArg && fs.existsSync(commitMsgFileArg)) {
+      const content = fs.readFileSync(commitMsgFileArg, 'utf8').trim();
+      const firstLine = content.split('\n')[0].trim();
+      if (firstLine && !firstLine.startsWith('#')) {
+        return firstLine;
       }
     }
-    
-    // 4. 기본값 사용 (하지만 경고 메시지 출력)
+    // fallback 제거: .git/COMMIT_EDITMSG 등은 읽지 않음
+    // 3. 기본값 사용 (경고)
     console.warn('⚠️  커밋 메시지를 찾을 수 없어 기본값을 사용합니다.');
     return '문서 업데이트';
   } catch (error) {
@@ -183,6 +165,58 @@ function stringifyFrontmatter(frontmatter) {
 }
 
 /**
+ * 마크다운 본문에서 제목 추출
+ */
+function extractTitle(content) {
+  // H1 태그 찾기 (# 제목)
+  const h1Match = content.match(/^#\s+(.+)$/m);
+  if (h1Match) {
+    return h1Match[1].trim();
+  }
+  
+  // H2 태그 찾기 (## 제목)
+  const h2Match = content.match(/^##\s+(.+)$/m);
+  if (h2Match) {
+    return h2Match[1].trim();
+  }
+  
+  return '제목 없음';
+}
+
+/**
+ * 마크다운 본문에서 디스크립션 추출
+ */
+function extractDescription(content) {
+  // 제목 이후 첫 번째 문단 찾기
+  const lines = content.split('\n');
+  let foundTitle = false;
+  let description = '';
+  
+  for (const line of lines) {
+    const trimmed = line.trim();
+    
+    // 제목(#, ##) 발견
+    if (trimmed.match(/^#{1,2}\s+/)) {
+      foundTitle = true;
+      continue;
+    }
+    
+    // 제목을 발견한 후 첫 번째 비어있지 않은 텍스트 라인
+    if (foundTitle && trimmed && !trimmed.startsWith('#') && !trimmed.startsWith('<!--')) {
+      description = trimmed;
+      break;
+    }
+  }
+  
+  // 100자로 제한
+  if (description.length > 100) {
+    description = description.substring(0, 97) + '...';
+  }
+  
+  return description;
+}
+
+/**
  * 마크다운 파일의 프론트매터 업데이트
  */
 function updateMarkdownFrontmatter(filePath, commitMessage, author) {
@@ -193,17 +227,24 @@ function updateMarkdownFrontmatter(filePath, commitMessage, author) {
     // 현재 시간 (ISO 8601 형식)
     const now = new Date().toISOString();
     
+    // 새로운 파일(프론트매터 없음)이면 깨끗하게 시작
+    const isNewFile = !frontmatter.authors && !frontmatter.dates && !frontmatter.messages;
+    
+    // 제목과 디스크립션 자동 추출
+    const extractedTitle = extractTitle(bodyContent);
+    const extractedDescription = extractDescription(bodyContent);
+    
     // 프론트매터 업데이트
     const updatedFrontmatter = {
       ...frontmatter,
-      title: frontmatter.title || '제목 없음',
-      description: frontmatter.description || '',
-      authors: [...(frontmatter.authors || []), author],
-      dates: [...(frontmatter.dates || []), now],
-      messages: [...(frontmatter.messages || []), commitMessage]
+      title: frontmatter.title || extractedTitle,
+      description: frontmatter.description || extractedDescription,
+      authors: isNewFile ? [author] : [...(frontmatter.authors || []), author],
+      dates: isNewFile ? [now] : [...(frontmatter.dates || []), now],
+      messages: isNewFile ? [commitMessage] : [...(frontmatter.messages || []), commitMessage]
     };
     
-    // 중복 제거 (동일한 작성자/날짜 조합)
+    // 중복 제거 (동일한 작성자/날짜/메시지 조합)
     const uniqueEntries = [];
     const seen = new Set();
     
@@ -248,39 +289,40 @@ function updateMarkdownFrontmatter(filePath, commitMessage, author) {
  */
 function main() {
   console.log('🚀 프론트매터 자동 업데이트 시작...');
-  
   const stagedFiles = getStagedMarkdownFiles();
-  
   if (stagedFiles.length === 0) {
     console.log('📝 업데이트할 마크다운 파일이 없습니다.');
     return;
   }
-  
-  const commitMessage = getCurrentCommitMessage();
+  // CLI 인자 파싱
+  let commitMsgFileArg = undefined;
+  let cliMessage = undefined;
+  for (let i = 2; i < process.argv.length; i++) {
+    if (process.argv[i] === '--message' && process.argv[i + 1]) {
+      cliMessage = process.argv[i + 1];
+      break;
+    } else if (!process.argv[i].startsWith('-')) {
+      commitMsgFileArg = process.argv[i];
+    }
+  }
+  const commitMessage = getCurrentCommitMessage(commitMsgFileArg, cliMessage);
   const author = getGitUser();
-  
   console.log(`📋 커밋 메시지: "${commitMessage}"`);
   console.log(`👤 작성자: ${author}`);
   console.log(`📄 대상 파일:`);
   stagedFiles.forEach(f => console.log(`  - ${path.relative(process.cwd(), f)}`));
-  
   let successCount = 0;
-  
   for (const filePath of stagedFiles) {
     if (updateMarkdownFrontmatter(filePath, commitMessage, author)) {
       successCount++;
-      
-      // 업데이트된 파일을 다시 스테이징
       try {
         execSync(`git add "${filePath}"`);
         console.log(`📦 재스테이징 완료: ${path.relative(process.cwd(), filePath)}`);
       } catch (error) {
         console.error(`❌ 재스테이징 실패 (${filePath}):`, error.message);
-        // 스테이징 실패는 치명적이지 않으므로 계속 진행
       }
     }
   }
-  
   if (successCount > 0) {
     console.log(`\n✨ 프론트매터 업데이트 완료: ${successCount}/${stagedFiles.length} 파일`);
     console.log('🎯 커밋에 자동으로 프론트매터 변경사항이 포함됩니다.');
@@ -289,7 +331,4 @@ function main() {
   }
 }
 
-// 스크립트 실행
-if (import.meta.url === `file://${process.argv[1]}`) {
-  main();
-}
+main();

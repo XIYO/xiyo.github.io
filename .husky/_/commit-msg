@@ -1,10 +1,2 @@
 #!/usr/bin/env sh
 . "$(dirname "$0")/h"
-
-echo "🔥 Husky commit-msg 훅 실행됨!"
-
-# 커밋 메시지 파일을 환경변수로 설정
-export COMMIT_MSG_FILE="$1"
-
-# 프론트매터 업데이트 실행
-node scripts/update-frontmatter-postcommit.js

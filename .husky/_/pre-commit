@@ -1,3 +1,2 @@
 #!/bin/sh
-echo "🔥 Husky pre-commit 훅 실행됨!"
-node scripts/update-frontmatter.js
+# pre-commit 훅은 비워둡니다 (prepare-commit-msg에서 처리)

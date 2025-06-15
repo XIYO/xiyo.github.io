@@ -31,40 +31,42 @@ function getStagedMarkdownFiles() {
  */
 function getCurrentCommitMessage() {
   try {
-    // 1. 환경변수에서 커밋 메시지 확인
-    if (process.env.COMMIT_MESSAGE) {
-      return process.env.COMMIT_MESSAGE;
-    }
-    
-    // 2. prepare-commit-msg 훅에서 전달된 커밋 메시지 파일 경로
+    // 1. prepare-commit-msg 훅에서 전달된 커밋 메시지 파일 경로
     const commitMsgFile = process.env.COMMIT_MSG_FILE;
     if (commitMsgFile && fs.existsSync(commitMsgFile)) {
       const content = fs.readFileSync(commitMsgFile, 'utf8').trim();
-      const firstLine = content.split('\n')[0].trim();
-      if (firstLine && !firstLine.startsWith('#')) {
-        return firstLine;
+      // 커밋 메시지에서 주석 라인(#으로 시작)을 제외하고 첫 번째 유효한 라인 가져오기
+      const lines = content.split('\n');
+      for (const line of lines) {
+        const trimmedLine = line.trim();
+        if (trimmedLine && !trimmedLine.startsWith('#')) {
+          console.log(`📋 커밋 메시지 파일에서 찾음: "${trimmedLine}"`);
+          return trimmedLine;
+        }
       }
     }
     
-    // 3. .git/COMMIT_EDITMSG에서 커밋 메시지 읽기
+    // 2. 환경변수에서 커밋 메시지 확인
+    if (process.env.COMMIT_MESSAGE) {
+      console.log(`📋 환경변수에서 커밋 메시지 찾음: "${process.env.COMMIT_MESSAGE}"`);
+      return process.env.COMMIT_MESSAGE;
+    }
+    
+    // 3. .git/COMMIT_EDITMSG에서 커밋 메시지 읽기 (fallback)
     const commitMsgPath = path.join('.git', 'COMMIT_EDITMSG');
     if (fs.existsSync(commitMsgPath)) {
       const content = fs.readFileSync(commitMsgPath, 'utf8').trim();
-      const firstLine = content.split('\n')[0].trim();
-      if (firstLine && !firstLine.startsWith('#')) {
-        return firstLine;
+      const lines = content.split('\n');
+      for (const line of lines) {
+        const trimmedLine = line.trim();
+        if (trimmedLine && !trimmedLine.startsWith('#')) {
+          console.log(`📋 COMMIT_EDITMSG에서 커밋 메시지 찾음: "${trimmedLine}"`);
+          return trimmedLine;
+        }
       }
     }
     
-    // 4. Git 커밋 메시지를 프로세스 인자에서 확인
-    const commitArgs = process.argv.slice(2);
-    for (let i = 0; i < commitArgs.length; i++) {
-      if (commitArgs[i] === '-m' && commitArgs[i + 1]) {
-        return commitArgs[i + 1];
-      }
-    }
-    
-    // 5. 기본값 사용 (하지만 경고 메시지 출력)
+    // 4. 기본값 사용 (하지만 경고 메시지 출력)
     console.warn('⚠️  커밋 메시지를 찾을 수 없어 기본값을 사용합니다.');
     return '문서 업데이트';
   } catch (error) {

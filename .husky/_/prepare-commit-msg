@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname "$0")/h"
 
+echo "🔥 Husky prepare-commit-msg 훅 실행됨!"
+
 # 커밋 메시지 파일 경로를 환경변수로 설정
 export COMMIT_MSG_FILE="$1"
 

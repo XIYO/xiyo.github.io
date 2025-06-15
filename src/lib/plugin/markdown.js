@@ -3,11 +3,13 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkCallout from '@r4ai/remark-callout';
 import remarkFigureCaption from 'remark-figure-caption';
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkExtractFrontmatter from 'remark-extract-frontmatter';
 import remarkRehype from 'remark-rehype';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeStringify from 'rehype-stringify';
-import matter from 'gray-matter';
 import { visit } from 'unist-util-visit';
+import { load as yamlLoad } from 'js-yaml';
 
 /**
  * 이미지 경로에서 /static을 제거하는 remark 플러그인
@@ -25,19 +27,19 @@ function remarkStaticImagePath() {
 
 /**
  * 마크다운을 HTML로 변환하고 메타데이터를 추출합니다.
- * gray-matter로 프론트매터를 먼저 파싱하고, unified 파이프라인으로 마크다운을 HTML로 변환합니다.
+ * remark-frontmatter와 remark-extract-frontmatter로 프론트매터를 파싱하고,
+ * unified 파이프라인으로 마크다운을 HTML로 변환합니다.
  *
  * @param {{ markdown: string }} options
  * @returns {Promise<{ value: string, data: Record<string, any> }>}
  */
 export default async function markdownAsync({ markdown }) {
-	// 1. gray-matter로 프론트매터와 콘텐츠 분리
-	const { data, content } = matter(markdown);
-
-	// 2. 콘텐츠만 unified 파이프라인으로 처리
+	// unified 파이프라인으로 처리
 	const result = await unified()
 		// remark 단계: 마크다운 파싱
 		.use(remarkParse, { allowDangerousHtml: true })
+		.use(remarkFrontmatter, ['yaml']) // YAML frontmatter 파싱
+		.use(remarkExtractFrontmatter, { yaml: yamlLoad }) // yamlLoad 함수를 직접 로더로 전달
 		.use(remarkGfm) // GitHub Flavored Markdown 지원 (테이블, 취소선, 작업 목록 등)
 		.use(remarkCallout) // Obsidian 스타일 콜아웃 지원
 		.use(remarkFigureCaption)
@@ -49,11 +51,11 @@ export default async function markdownAsync({ markdown }) {
 
 		// stringify 단계: 최종 HTML 생성
 		.use(rehypeStringify, { allowDangerousHtml: true })
-		.process(content);
+		.process(markdown);
 
 	return {
 		value: String(result.value),
-		data // gray-matter에서 파싱된 프론트매터 데이터
+		data: result.data
 	};
 }
 

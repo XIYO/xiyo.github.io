@@ -13,11 +13,9 @@ test.describe('Main page internationalization', () => {
 
 		// Check main content
 		const mainContent = page.locator('p').first();
-		await expect(mainContent).toContainText('no js, no css 를 위한!');
 		await expect(mainContent).toContainText(
-			'터미널 브라우저까지 고려한... svelte 로 직접 만든 블로그! 입니다.'
+			'웹을 사랑하는 개발자입니다. 접근성과 국제화를 중요하게 생각하며, 모두가 편하게 사용할 수 있는 웹을 목표로 합니다.'
 		);
-		await expect(mainContent).toContainText('JS 가 활성화 되어 있으면 반응성이 향상됩니다!');
 
 		// Check figure caption
 		const figureCaption = page.locator('figcaption');
@@ -40,11 +38,9 @@ test.describe('Main page internationalization', () => {
 
 		// Check main content
 		const mainContent = page.locator('p').first();
-		await expect(mainContent).toContainText('For no js, no css!');
 		await expect(mainContent).toContainText(
-			'A blog made directly with Svelte, taking even the terminal browser into consideration!'
+			'I am a developer who loves the web. I consider accessibility and internationalization important, and aim for a web that everyone can use comfortably.'
 		);
-		await expect(mainContent).toContainText('Responsiveness is improved when JS is enabled!');
 
 		// Check figure caption
 		const figureCaption = page.locator('figcaption');
@@ -67,11 +63,9 @@ test.describe('Main page internationalization', () => {
 
 		// Check main content
 		const mainContent = page.locator('p').first();
-		await expect(mainContent).toContainText('no js、no cssのための！');
 		await expect(mainContent).toContainText(
-			'ターミナルブラウザまで考えた…svelteで自分で作ったブログ！です。'
+			'ウェブを愛する開発者です。アクセシビリティと国際化を大切に考え、誰もが快適に使えるウェブを目指しています。'
 		);
-		await expect(mainContent).toContainText('JSが有効になっていると反応性が向上します！');
 
 		// Check figure caption
 		const figureCaption = page.locator('figcaption');

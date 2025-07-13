@@ -4,6 +4,7 @@ import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
+import yaml from 'js-yaml';
 
 try {
   // 마지막 커밋에서 변경된 파일들 가져오기
@@ -81,8 +82,16 @@ try {
       data.dates = dates;
       data.messages = messages;
 
-      // 파일 다시 쓰기
-      const updatedContent = matter.stringify(markdownContent, data);
+      // 파일 다시 쓰기 - 이모지 유니코드 이스케이프 방지
+      const yamlStr = yaml.dump(data, {
+        lineWidth: -1,
+        noRefs: true,
+        sortKeys: false,
+        quotingType: "'",
+        forceQuotes: false
+      });
+      
+      const updatedContent = `---\n${yamlStr}---\n${markdownContent}`;
       writeFileSync(filePath, updatedContent);
       hasChanges = true;
 

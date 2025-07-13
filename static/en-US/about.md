@@ -3,12 +3,16 @@ title: ABOUT
 description: Hello, I'm a developer who loves the web.
 authors:
   - xiyo
+  - xiyo
+  - xiyo
   - XIYO
   - XIYO
   - XIYO
   - XIYO
   - XIYO
 dates:
+  - '2025-07-13T17:44:25+09:00'
+  - '2025-07-13T16:42:47+09:00'
   - '2025-07-13T16:42:47+09:00'
   - '2025-06-15T15:10:59+09:00'
   - '2024-09-17T13:51:41+09:00'
@@ -16,6 +20,8 @@ dates:
   - '2024-09-07T19:44:19+09:00'
   - '2024-09-05T23:19:14+09:00'
 messages:
+  - '✨ About 페이지 업데이트: 연락처 섹션 추가 및 날짜, 저자 정보 수정'
+  - 🌐 About 페이지 영어/일본어 번역 완료
   - 🌐 About 페이지 영어/일본어 번역 완료
   - 🚧
   - ':memo: 디스크립션 문장에 대응하는 멘트 추가'
@@ -76,6 +82,7 @@ I like it because it's an inevitable K-playground... 😊
 
 Isn't it the last gateway to creating products? I can't help but love it.
 
-## Closing
+## Contact
 
-I always want to be a developer who learns new technologies and continues to grow.
+GitHub: [@XIYO](https://github.com/XIYO)
+Email: [bunny@xiyo.dev](mailto:bunny@xiyo.dev)

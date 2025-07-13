@@ -3,7 +3,7 @@
 	import Card from '$lib/ui/card/Card.svelte';
 	import Nav from '$lib/components/Nav.svelte';
 	import { afterNavigate } from '$app/navigation';
-	import { deLocalizeHref, deLocalizeUrl } from './paraglide/runtime';
+	import { deLocalizeHref } from './paraglide/runtime';
 	import confetti from 'canvas-confetti';
 
 	/** @type {HTMLDialogElement} */
@@ -30,7 +30,7 @@
 			spread: 90,
 			origin: { y: 0.6 }
 		});
-	}
+	};
 
 	afterNavigate(() => {
 		navRef.close();
@@ -40,16 +40,18 @@
 <Card tag="header" class="flex h-16">
 	{#if !isRoot}
 		<a href="./" class="w-16 text-center content-center-safe">
-		    <span class="text-3xl">✈️</span>
+			<span class="text-3xl">✈️</span>
 			<span class="sr-only">Go Up</span>
 		</a>
-		{:else}
+	{:else}
 		<button class="w-16 text-center content-center-safe" onclick={handleConfetti}>
 			<span class="text-3xl">🪂</span>
 			<span class="sr-only">Home</span>
 		</button>
-		{/if}
-	<h1 class="flex-1 text-center content-center-safe font-black text-2xl uppercase">{page.data.title}</h1>
+	{/if}
+	<h1 class="flex-1 text-center content-center-safe font-black text-2xl uppercase">
+		{page.data.title}
+	</h1>
 	<a href="/nav" class="w-16 text-center content-center-safe" onclick={handleShowNav}>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

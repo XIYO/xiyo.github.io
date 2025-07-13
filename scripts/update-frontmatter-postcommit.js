@@ -28,8 +28,8 @@ try {
       const content = readFileSync(filePath, 'utf-8');
       const { data, content: markdownContent } = matter(content);
 
-      // 해당 파일의 git 로그 가져오기 (최근 10개)
-      const gitLog = execSync(`git log --pretty=format:"%an|%aI|%s" --follow -10 -- "${file}"`, { encoding: 'utf-8' })
+      // 해당 파일의 전체 git 로그 가져오기
+      const gitLog = execSync(`git log --pretty=format:"%an|%aI|%s" --follow -- "${file}"`, { encoding: 'utf-8' })
         .trim()
         .split('\n')
         .filter(line => line);

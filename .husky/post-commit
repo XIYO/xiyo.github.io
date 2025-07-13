@@ -1,16 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# 무한루프 방지: 이미 실행 중이면 종료
-if [ "$FRONTMATTER_UPDATE_RUNNING" = "1" ]; then
-  echo "🔄 프론트매터 업데이트가 이미 실행 중입니다. 건너뜁니다."
-  exit 0
-fi
-
 echo "🚀 Running post-commit hook..."
-
-# 환경변수 설정하여 무한루프 방지
-export FRONTMATTER_UPDATE_RUNNING=1
 
 # 마지막 커밋에서 변경된 마크다운 파일들을 찾아서 프론트매터 업데이트
 if pnpm exec node scripts/update-frontmatter-postcommit.js; then
@@ -18,6 +9,3 @@ if pnpm exec node scripts/update-frontmatter-postcommit.js; then
 else
   echo "❌ Post-commit frontmatter update failed."
 fi
-
-# 환경변수 해제
-unset FRONTMATTER_UPDATE_RUNNING

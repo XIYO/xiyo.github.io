@@ -103,8 +103,13 @@ try {
 
   // 변경사항이 있으면 커밋
   if (hasChanges) {
-    execSync('git add *.md', { stdio: 'inherit' });
-    execSync(`git commit --amend --no-edit`, { stdio: 'inherit' });
+    // 변경된 파일들만 추가
+    changedFiles.forEach(file => {
+      execSync(`git add "${file}"`, { stdio: 'inherit' });
+    });
+    
+    // amend commit
+    execSync(`git commit --amend --no-edit --no-verify`, { stdio: 'inherit' });
     console.log('✅ 프론트매터 업데이트가 커밋에 포함되었습니다.');
   }
 

@@ -28,13 +28,12 @@
 	--color-destructive: hsl(0, 85%, 60%);
 
 	--font-mono: 'Neo둥근모 Code', 'Pretendard Variable', 'Pretendard', sans-serif;
+	--font-sans: 'Pretendard Variable', 'Pretendard', sans-serif;
 }
 
 @layer base {
 	:root {
 		@apply bg-primary-active text-content overscroll-none;
-		font-family: 'Pretendard Variable', Pretendard, sans-serif;
-		font-feature-settings: 'ss05';
 	}
 
 	#post-content {

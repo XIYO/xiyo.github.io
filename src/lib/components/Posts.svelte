@@ -1,6 +1,7 @@
 <script>
 	import Card from '$lib/ui/card/Card.svelte';
 	import * as m from '$lib/paraglide/messages.js';
+	import { localizeHref } from '$lib/paraglide/runtime.js';
 
 	const { category } = $props();
 </script>
@@ -13,7 +14,7 @@
 			<ul class="flex flex-col gap-2">
 				{#each category.childCategories as childCategory (childCategory.absolutePath)}
 					<li>
-						<a href={childCategory.absolutePath}>
+						<a href={localizeHref(childCategory.absolutePath)}>
 							{childCategory.name}
 							<!-- ({childCategory.allPosts.length}) -->
 						</a>
@@ -32,7 +33,7 @@
 	<ul class="p-4 flex flex-col gap-2">
 		{#each category.allPosts as post (post.absolutePath)}
 			<li>
-				<a href={post.absolutePath}>{post.data.title}</a>
+				<a href={localizeHref(post.absolutePath)}>{post.data.title}</a>
 			</li>
 		{/each}
 	</ul>

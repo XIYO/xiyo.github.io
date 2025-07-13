@@ -11,5 +11,6 @@
 	"subCategoryEmpty": "There are no subcategories.",
 	"terminalBrowsing": "Screen accessed from terminal browser",
 	"terminal": "Terminal",
-	"back": "Back"
+	"back": "Back",
+	"terminalCaption": "Accessed using w3m from the terminal."
 }

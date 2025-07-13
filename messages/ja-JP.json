@@ -11,5 +11,6 @@
 	"subCategoryEmpty": "サブカテゴリはありません。",
 	"terminalBrowsing": "端末ブラウザから接続した画面",
 	"terminal": "ターミナル",
-	"back": "戻る"
+	"back": "戻る",
+	"terminalCaption": "ターミナルからw3mを使用してアクセスしました。"
 }

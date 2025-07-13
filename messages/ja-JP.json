@@ -12,5 +12,8 @@
 	"terminalBrowsing": "端末ブラウザから接続した画面",
 	"terminal": "ターミナル",
 	"back": "戻る",
-	"terminalCaption": "ターミナルからw3mを使用してアクセスしました。"
+	"terminalCaption": "ターミナルからw3mを使用してアクセスしました。",
+	"introduction": "ウェブを愛する開発者です。アクセシビリティと国際化を大切に考え、誰もが快適に使えるウェブを目指しています。no js、no css環境でもしっかり表示されるよう最大限努力しています。",
+	"ttodoImgAlt": "ttodo Todoアプリ画像",
+	"ttodoDescription": "シンプルなTodoアプリ。PWAで実装されており、ブラウザからアプリに直接インストールが可能です。"
 }

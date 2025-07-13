@@ -11,6 +11,7 @@ authors:
   - xiyo
   - xiyo
   - xiyo
+  - xiyo
   - XIYO
   - XIYO
   - XIYO
@@ -24,6 +25,7 @@ authors:
   - XIYO
   - XIYO
 dates:
+  - '2025-07-13T16:50:02+09:00'
   - '2025-07-13T16:49:38+09:00'
   - '2025-07-13T16:46:23+09:00'
   - '2025-07-13T16:39:20+09:00'
@@ -46,6 +48,7 @@ dates:
   - '2024-03-27T21:15:50+09:00'
   - '2024-03-12T20:50:16+09:00'
 messages:
+  - 🔧 연락처 섹션의 이메일 주소를 업데이트
   - '✨ About 페이지 개선: 마무리 섹션 제거 및 연락처 정보 추가'
   - ✨ About 페이지에 마무리 및 연락처 섹션 추가
   - 🐛 post-commit 훅 무한루프 수정
@@ -117,5 +120,4 @@ messages:
 ## 연락처
 
 GitHub: [@XIYO](https://github.com/XIYO)
-Blog: [xiyo.dev](https://xiyo.dev)
-Email: [xiyo@xiyo.dev](mailto:xiyo@xiyo.dev)
+Email: [bunny@xiyo.dev](mailto:bunny@xiyo.dev)

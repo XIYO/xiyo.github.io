@@ -1,0 +1,54 @@
+#!/bin/sh
+
+# prepare-commit-msg hook
+# $1 = commit message file path
+# $2 = commit source (message, template, merge, squash, commit)
+# $3 = commit SHA (for amend/commit -c)
+
+echo "📝 Running prepare-commit-msg hook..."
+
+# 커밋 메시지 읽기
+COMMIT_MSG_FILE="$1"
+COMMIT_SOURCE="$2"
+
+# 프론트매터 업데이트 방지 체크 (무한루프 방지)
+if [ "$FRONTMATTER_UPDATE_RUNNING" = "1" ]; then
+  echo "🔄 프론트매터 업데이트 중이므로 건너뜁니다."
+  exit 0
+fi
+
+# 특정 상황에서만 실행 (일반 커밋, merge 제외)
+if [ "$COMMIT_SOURCE" = "message" ] || [ -z "$COMMIT_SOURCE" ]; then
+  echo "🔍 Processing frontmatter for markdown files..."
+  
+  # 현재 커밋 메시지 읽기
+  CURRENT_MSG=$(cat "$COMMIT_MSG_FILE")
+  
+  # 스테이징된 마크다운 파일들 찾기
+  STAGED_MD_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' || true)
+  
+  if [ -n "$STAGED_MD_FILES" ]; then
+    echo "📄 Found staged markdown files:"
+    echo "$STAGED_MD_FILES"
+    
+    # 환경변수 설정하여 무한루프 방지
+    export FRONTMATTER_UPDATE_RUNNING=1
+    export COMMIT_MESSAGE="$CURRENT_MSG"
+    
+    if pnpm exec node scripts/update-frontmatter-prepare.js; then
+      echo "✅ Frontmatter updated and re-staged successfully"
+    else
+      echo "❌ Frontmatter update failed"
+      exit 1
+    fi
+    
+    # 환경변수 해제
+    unset FRONTMATTER_UPDATE_RUNNING
+  else
+    echo "ℹ️  No staged markdown files found"
+  fi
+else
+  echo "⏩ Skipping frontmatter update for commit source: $COMMIT_SOURCE"
+fi
+
+echo "✅ prepare-commit-msg completed"

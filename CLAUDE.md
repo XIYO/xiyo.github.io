@@ -1,3 +1,16 @@
+---
+title: CLAUDE.md
+description: This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+authors:
+  - XIYO
+dates:
+  - '2025-07-20T09:40:47.994Z'
+messages:
+  - ✨ 새로운 prepare-commit-msg 방식 테스트
+created: '2025-07-20T09:40:47.994Z'
+modified: '2025-07-20T09:40:47.994Z'
+---
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.

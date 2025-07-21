@@ -2,6 +2,8 @@
 @import 'pretendard-jp/dist/web/variable/pretendardvariable-jp-dynamic-subset.css';
 @import '@kfonts/neodgm-code/index.css';
 @import 'tailwindcss';
+@import './markdown.css';
+@import './callouts-obsidian.css';
 
 :root {
 	color-scheme: light dark;
@@ -34,116 +36,5 @@
 @layer base {
 	:root {
 		@apply bg-primary-active text-content overscroll-none;
-	}
-
-	#post-content {
-		& h1 {
-			@apply text-4xl font-bold mt-8 mb-4 leading-tight; /* text-4xl, font-bold, mt-8, mb-4, leading-tight */
-		}
-
-		& h2 {
-			@apply text-3xl font-semibold mt-8 mb-4 leading-tight; /* text-3xl, font-semibold, mt-8, mb-4, leading-tight */
-		}
-
-		& h3 {
-			@apply text-2xl font-semibold mt-6 mb-3 leading-tight; /* text-2xl, font-semibold, mt-6, mb-3, leading-tight */
-		}
-
-		& h4 {
-			@apply text-xl font-medium mt-6 mb-3 leading-tight; /* text-xl, font-medium, mt-6, mb-3, leading-tight */
-		}
-
-		& h5 {
-			@apply text-lg font-medium mt-4 mb-2 leading-tight; /* text-lg, font-medium, mt-4, mb-2, leading-tight */
-		}
-
-		& h6 {
-			@apply text-base font-medium mt-4 mb-2 leading-tight; /* text-base, font-medium, mt-4, mb-2, leading-tight */
-		}
-
-		& table {
-			@apply w-full my-6 border-collapse;
-
-			& th {
-				@apply px-4 py-3 text-left font-semibold text-content-inverse bg-primary border-b-2 border-primary-active;
-			}
-
-			& td {
-				@apply px-4 py-3 border-b border-border;
-			}
-
-			& tr:hover {
-				@apply bg-primary/5;
-			}
-		}
-
-		& figure {
-			@apply my-6;
-
-			& pre {
-				@apply p-4 rounded-lg overflow-x-auto;
-			}
-
-			& figcaption {
-				@apply text-sm text-content-muted mt-2;
-			}
-		}
-
-		/* 콜아웃 스타일 */
-		& [data-callout] {
-			@apply p-4 my-4 border-l-4 rounded-r-lg bg-surface-muted/50;
-
-			& [data-callout-title] {
-				@apply font-semibold mb-2 text-content flex items-center;
-			}
-
-			& [data-callout-body] {
-				@apply text-content-muted;
-
-				& > *:last-child {
-					@apply mb-0;
-				}
-			}
-		}
-
-		& [data-callout-type='note'] {
-			@apply border-blue-500 bg-blue-50/50;
-
-			& [data-callout-title] {
-				@apply text-blue-700;
-			}
-		}
-
-		& [data-callout-type='warning'] {
-			@apply border-yellow-500 bg-yellow-50/50;
-
-			& [data-callout-title] {
-				@apply text-yellow-700;
-			}
-		}
-
-		& [data-callout-type='tip'] {
-			@apply border-green-500 bg-green-50/50;
-
-			& [data-callout-title] {
-				@apply text-green-700;
-			}
-		}
-
-		& [data-callout-type='important'] {
-			@apply border-purple-500 bg-purple-50/50;
-
-			& [data-callout-title] {
-				@apply text-purple-700;
-			}
-		}
-
-		& [data-callout-type='caution'] {
-			@apply border-red-500 bg-red-50/50;
-
-			& [data-callout-title] {
-				@apply text-red-700;
-			}
-		}
 	}
 }

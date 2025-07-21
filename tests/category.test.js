@@ -47,17 +47,19 @@ describe('Category and Post baseLocale fallback', () => {
 		// 프리픽스 없는 경로로 접근 시 baseLocale 콘텐츠를 찾아야 함
 		const postsCategory = Category.getCategory('/posts');
 		expect(postsCategory).toBeDefined();
-		expect(postsCategory).toBe(categoryByLocale[baseLocale]);
+		// Category는 deLocalized path를 저장하므로 absolutePath는 '/posts'여야 함
+		expect(postsCategory.absolutePath).toBe('/posts');
 		
 		// Post 테스트: about 파일이 baseLocale에 있는지 확인
 		const baseAboutPost = Post.getPosts(`/${baseLocaleLower}/about`);
 		const aboutPost = Post.getPosts('/about');
 		
-		console.log(`${baseLocale} about post:`, baseAboutPost !== undefined);
-		console.log('About post without prefix:', aboutPost !== undefined);
+		console.log(`${baseLocale} about post:`, baseAboutPost);
+		console.log('About post without prefix:', aboutPost);
 		
-		// 두 경로 모두 Post를 찾을 수 있어야 함
+		// baseLocale 경로로 about 파일이 존재해야 함
 		expect(baseAboutPost).toBeDefined();
+		// 프리픽스 없는 경로로도 찾을 수 있어야 함
 		expect(aboutPost).toBeDefined();
 	});
 });

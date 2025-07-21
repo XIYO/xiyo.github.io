@@ -3,6 +3,7 @@
 @import '@kfonts/neodgm-code/index.css';
 @import 'tailwindcss';
 @import './markdown.css';
+@import './callouts-obsidian.css';
 
 :root {
 	color-scheme: light dark;

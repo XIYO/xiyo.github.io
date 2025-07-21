@@ -1,12 +1,13 @@
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
-import remarkCallout from '@r4ai/remark-callout';
+// import remarkCallout from '@r4ai/remark-callout';
 import remarkFigureCaption from 'remark-figure-caption';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkExtractFrontmatter from 'remark-extract-frontmatter';
 import remarkRehype from 'remark-rehype';
 import rehypeShiki from '@shikijs/rehype';
+import rehypeCallouts from 'rehype-callouts';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
 import { load as yamlLoad } from 'js-yaml';
@@ -41,13 +42,16 @@ export default async function markdownAsync({ markdown }) {
 		.use(remarkFrontmatter, ['yaml']) // YAML frontmatter 파싱
 		.use(remarkExtractFrontmatter, { yaml: yamlLoad }) // yamlLoad 함수를 직접 로더로 전달
 		.use(remarkGfm) // GitHub Flavored Markdown 지원 (테이블, 취소선, 작업 목록 등)
-		.use(remarkCallout) // Obsidian 스타일 콜아웃 지원
+		// .use(remarkCallout) // Obsidian 스타일 콜아웃 지원
 		.use(remarkFigureCaption)
 		.use(remarkStaticImagePath) // 이미지 경로에서 /static 제거
 
 		// rehype 단계: HTML 변환 및 처리
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeShiki, rehypeShikiOptions)
+		.use(rehypeCallouts, {
+			theme: 'obsidian' // Obsidian 테마 사용
+		})
 
 		// stringify 단계: 최종 HTML 생성
 		.use(rehypeStringify, { allowDangerousHtml: true })
@@ -64,7 +68,7 @@ export default async function markdownAsync({ markdown }) {
  */
 const rehypeShikiOptions = {
 	themes: {
-		light: 'github-light',
-		dark: 'github-dark'
+		light: 'dracula',
+		dark: 'dracula'
 	}
 };

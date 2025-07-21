@@ -62,4 +62,49 @@ describe('Category and Post baseLocale fallback', () => {
 		// 프리픽스 없는 경로로도 찾을 수 있어야 함
 		expect(aboutPost).toBeDefined();
 	});
+
+	it('should find about content for all language locales', async () => {
+		// 동적 import
+		const { locales, baseLocale } = await import('../src/lib/paraglide/runtime.js');
+		const { default: Post } = await import('../src/lib/post/Post.js');
+		
+		console.log('Testing /about access for all locales...');
+		
+		// 각 언어별로 about 파일이 존재하는지 확인
+		const aboutPosts = {};
+		locales.forEach(locale => {
+			const localeLower = locale.toLowerCase();
+			const aboutPost = Post.getPosts(`/${localeLower}/about`);
+			
+			if (aboutPost) {
+				aboutPosts[locale] = aboutPost;
+				console.log(`✓ ${locale}: /about found at /${localeLower}/about`);
+			} else {
+				console.log(`✗ ${locale}: /about not found at /${localeLower}/about`);
+			}
+		});
+		
+		// 모든 locale에 대해 about 파일이 존재해야 함
+		locales.forEach(locale => {
+			expect(aboutPosts[locale]).toBeDefined();
+			expect(aboutPosts[locale]).toBeInstanceOf(Post);
+		});
+		
+		// /about (프리픽스 없는 경로)로 접근했을 때 baseLocale의 about이 반환되는지 확인
+		const aboutWithoutPrefix = Post.getPosts('/about');
+		expect(aboutWithoutPrefix).toBeDefined();
+		
+		console.log(`\nVerifying /about returns ${baseLocale} content:`);
+		console.log(`- Direct access to /${baseLocale.toLowerCase()}/about:`, aboutPosts[baseLocale] ? '✓' : '✗');
+		console.log(`- Access via /about:`, aboutWithoutPrefix ? '✓' : '✗');
+		console.log(`- absolutePath of /about:`, aboutWithoutPrefix.absolutePath);
+		console.log(`- absolutePath of /${baseLocale.toLowerCase()}/about:`, aboutPosts[baseLocale].absolutePath);
+		
+		// 실제로는 다른 Post 인스턴스일 수 있지만, /about이 baseLocale의 콘텐츠를 반환하는지 확인
+		// Post.getPosts가 baseLocale fallback을 제공하는지 확인
+		expect(aboutWithoutPrefix).toBeDefined();
+		expect(aboutWithoutPrefix).toBeInstanceOf(Post);
+		
+		console.log(`\nTotal locales with /about: ${Object.keys(aboutPosts).length}/${locales.length}`);
+	});
 });

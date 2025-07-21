@@ -1,5 +1,5 @@
 import Post from '$lib/post/Post.js';
-import { deLocalizeHref } from '$lib/paraglide/runtime.js';
+import { deLocalizeHref, baseLocale } from '$lib/paraglide/runtime.js';
 
 /**
  * 카테고리(Category) 클래스
@@ -104,7 +104,9 @@ export default class Category {
 	 */
 	static getCategory(absolutePath) {
 		return (
-			this.#categories.get(absolutePath) ?? Category.#categories.get(deLocalizeHref(absolutePath))
+			this.#categories.get(absolutePath) ?? 
+			this.#categories.get(`/${baseLocale.toLowerCase()}${absolutePath}`) ??
+			this.#categories.get(deLocalizeHref(absolutePath))
 		);
 	}
 

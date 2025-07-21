@@ -1,5 +1,5 @@
 import markdownProcessAsync from '$lib/plugin/markdown.js';
-import { deLocalizeHref } from '$lib/paraglide/runtime.js';
+import { deLocalizeHref, baseLocale } from '$lib/paraglide/runtime.js';
 
 /**
  * 게시글(Post) 클래스
@@ -30,7 +30,9 @@ export default class Post {
 	 * @returns {Post | undefined} Post 인스턴스 또는 undefined
 	 */
 	static getPosts(absolutePath) {
-		return Post.#posts.get(absolutePath) ?? Post.#posts.get(deLocalizeHref(absolutePath));
+		return Post.#posts.get(absolutePath) ?? 
+			Post.#posts.get(`/${baseLocale.toLowerCase()}${absolutePath}`) ??
+			Post.#posts.get(deLocalizeHref(absolutePath));
 	}
 
 	/**

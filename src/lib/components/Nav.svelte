@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/state';
-	import { deLocalizeHref, setLocale } from '$lib/paraglide/runtime.js';
+	import { deLocalizeHref } from '$lib/paraglide/runtime.js';
 	import { locales, localizeHref } from '$lib/paraglide/runtime.js';
 
 	const { ...rest } = $props();
@@ -11,11 +11,6 @@
 		about: { href: '/about' },
 		globe: { href: '/globe' }
 	};
-
-	function handleLanguageChange(e, locale) {
-		e.preventDefault();
-		setLocale(locale);
-	}
 </script>
 
 <nav class="p-4 uppercase text-2xl font-black" {...rest}>
@@ -35,10 +30,7 @@
 	<ul class="flex flex-col gap-4 text-right">
 		{#each locales as locale (locale)}
 			<li>
-				<a
-					href={localizeHref(page.url.pathname, { locale })}
-					onclick={(e) => handleLanguageChange(e, locale)}>{locale}</a
-				>
+				<a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
 			</li>
 		{/each}
 	</ul>

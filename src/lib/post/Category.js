@@ -23,6 +23,8 @@ export default class Category {
 		Object.entries(markdowns).forEach(([path, markdownAsync]) => {
 			let absolutePath = path
 				.replace(/^\/static/, '') // 스태틱 경로 제거
+				// baseLocale가 있는 경우 제거
+				.replace(new RegExp(`^/${baseLocale.toLowerCase()}`), '')
 				.replace(/\.md$/, ''); // 확장자 제거
 
 			this.#initCategories({
@@ -103,11 +105,7 @@ export default class Category {
 	 * @returns {Category | undefined}
 	 */
 	static getCategory(absolutePath) {
-		return (
-			this.#categories.get(absolutePath) ?? 
-			this.#categories.get(`/${baseLocale.toLowerCase()}${absolutePath}`) ??
-			this.#categories.get(deLocalizeHref(absolutePath))
-		);
+		return this.#categories.get(absolutePath) ?? this.#categories.get(deLocalizeHref(absolutePath));
 	}
 
 	static #initCategories(

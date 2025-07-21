@@ -15,6 +15,9 @@ export default {
 				include: ['/*'],
 				exclude: ['<all>']
 			}
-		})
+		}),
+		prerender: {
+			handleMissingId: 'warn'
+		}
 	}
 };

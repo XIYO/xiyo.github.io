@@ -4,8 +4,8 @@
 
 # Array of directories to rename
 declare -A directories=(
-    ["static/posts/en-US"]="static/posts/en-us"
-    ["static/posts/ja-JP"]="static/posts/ja-jp"
+    ["static/posts/en-us"]="static/posts/en-us"
+    ["static/posts/ja-jp"]="static/posts/ja-jp"
 )
 
 # Function to rename directory

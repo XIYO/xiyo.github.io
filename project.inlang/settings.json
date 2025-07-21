@@ -7,6 +7,6 @@
 	"plugin.inlang.messageFormat": {
 		"pathPattern": "./messages/{locale}.json"
 	},
-	"baseLocale": "ko-KR",
-	"locales": ["ko-KR", "en-US", "ja-JP"]
+	"baseLocale": "ko-kr",
+	"locales": ["ko-kr", "en-us", "ja-jp"]
 }

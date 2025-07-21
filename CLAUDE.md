@@ -76,15 +76,15 @@ src/
 │   └── plugin/         # Markdown plugins
 static/
 ├── posts/              # Markdown blog posts
-│   ├── en-US/         # English translations
-│   └── ja-JP/         # Japanese translations
+│   ├── en-us/         # English translations
+│   └── ja-jp/         # Japanese translations
 scripts/                # Automation scripts
 ```
 
 ### Content Management
 
 - Blog posts are markdown files in `/static/posts/`
-- Multi-language posts in `en-US/` and `ja-JP/` subdirectories
+- Multi-language posts in `en-us/` and `ja-jp/` subdirectories
 - Frontmatter is automatically updated from git history via post-commit hook
 - Custom markdown processing with Shiki syntax highlighting
 

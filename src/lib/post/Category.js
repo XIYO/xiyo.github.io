@@ -73,30 +73,53 @@ export default class Category {
 	}
 
 	/**
-	 * 자식 카테고리 목록 반환
+	 * 자식 카테고리 목록 반환 (최신 포스트 순으로 정렬)
 	 * @returns {Category[]}
 	 */
 	get childCategories() {
-		return Array.from(this.#childCategories.values());
+		return [...this.#childCategories.values()].sort((a, b) => {
+			const aLatest = a.latestPostDate;
+			const bLatest = b.latestPostDate;
+			return bLatest.getTime() - aLatest.getTime();
+		});
 	}
 
 	/**
-	 * 자신의 포스트 목록 반환
+	 * 자신의 포스트 목록 반환 (최신순으로 정렬)
 	 * @returns {import('./Post.js').default[]}
 	 */
 	get posts() {
-		return Array.from(this.#posts.values());
+		return [...this.#posts.values()].sort((a, b) => {
+			return b.sortDate.getTime() - a.sortDate.getTime();
+		});
 	}
 
 	/**
-	 * 자신과 하위 카테고리의 포스트 반환
+	 * 카테고리의 가장 최신 포스트 날짜
+	 * @returns {Date}
+	 */
+	get latestPostDate() {
+		const allPosts = this.allPosts;
+		if (allPosts.length === 0) return new Date(0);
+
+		// 모든 포스트의 날짜 중 가장 최신 날짜 반환
+		const dates = allPosts.map((post) => post.sortDate);
+		return new Date(Math.max(...dates.map((d) => d.getTime())));
+	}
+
+	/**
+	 * 자신과 하위 카테고리의 포스트 반환 (최신순으로 정렬)
 	 * @returns {import('./Post.js').default[]}
 	 */
 	get allPosts() {
-		return [
+		const allPosts = [
 			...this.#posts.values(),
 			...[...this.#childCategories.values()].flatMap((child) => child.allPosts)
 		];
+		
+		return allPosts.sort((a, b) => {
+			return b.sortDate.getTime() - a.sortDate.getTime();
+		});
 	}
 
 	/**
@@ -156,20 +179,15 @@ export default class Category {
 	 */
 	async toSerialize() {
 		// 메타데이터만 필요하므로 getMetadata() 사용
-		const postsPromise = Promise.all(this.allPosts.map((post) => post.getMetadata()));
+		const postsPromise = Promise.all(
+			this.allPosts.map((post) => post.getMetadata())
+		);
 		const childCategoriesPromise = Promise.all(
 			this.childCategories.map((category) => category.toSerialize())
 		);
 
 		const [posts, childCategories] = await Promise.all([postsPromise, childCategoriesPromise]);
-		// 날짜 기준 내림차순 정렬 (최신 글이 앞으로)
-		posts.sort((a, b) => {
-			const dateA = new Date(a.data?.dates?.at(-1) ?? 0);
-			const dateB = new Date(b.data?.dates?.at(-1) ?? 0);
-			if (dateA > dateB) return -1;
-			if (dateA < dateB) return 1;
-			return 0;
-		});
+
 		const filteredPosts = posts.map((post) => ({
 			absolutePath: post.absolutePath,
 			data: post.data

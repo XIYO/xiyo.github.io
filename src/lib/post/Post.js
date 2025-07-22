@@ -13,6 +13,8 @@ export default class Post {
 	#absolutePath;
 	/** @type {Promise<any> | null} */
 	#processedMarkdownCache = null;
+	/** @type {any} */
+	#metadata = null;
 
 	/**
 	 * Post 클래스의 생성자입니다.
@@ -42,6 +44,28 @@ export default class Post {
 	}
 
 	/**
+	 * 포스트의 정렬 날짜 반환 (동기)
+	 * @returns {Date}
+	 */
+	get sortDate() {
+		// 메타데이터가 아직 로드되지 않았으면 기본값
+		if (!this.#metadata) {
+			return new Date(0);
+		}
+		
+		// published 필드가 있으면 우선 사용
+		if (this.#metadata.data?.published) {
+			return new Date(this.#metadata.data.published);
+		}
+		// dates 배열의 첫 번째 값을 published로 사용
+		if (this.#metadata.data?.dates?.length > 0) {
+			return new Date(this.#metadata.data.dates[0]);
+		}
+		// 날짜가 없으면 기본값
+		return new Date(0);
+	}
+
+	/**
 	 * 마크다운을 처리하고 캐시합니다.
 	 * @returns {Promise<any>}
 	 */
@@ -61,10 +85,11 @@ export default class Post {
 	 */
 	async getMetadata() {
 		const processed = await this.#getProcessedMarkdown();
-		return {
+		this.#metadata = {
 			absolutePath: this.#absolutePath,
 			data: processed.data
 		};
+		return this.#metadata;
 	}
 
 	/**

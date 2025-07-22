@@ -37,7 +37,7 @@
 		<meta property="article:section" content={page.data.og.section} />
 	{/if}
 	{#if page.data.og.tags}
-		{#each page.data.og.tags as tag (tag)}
+		{#each page.data.og.tags as tag, i (i)}
 			<meta property="article:tag" content={tag} />
 		{/each}
 	{/if}

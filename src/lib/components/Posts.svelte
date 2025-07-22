@@ -11,7 +11,7 @@
 
 	<div class="p-4">
 		{#if category.childCategories.length}
-			<ul class="flex flex-col gap-2">
+			<ul class="flex uppercase flex-col gap-2">
 				{#each category.childCategories as childCategory (childCategory.absolutePath)}
 					<li>
 						<a href={localizeHref(childCategory.absolutePath)}>

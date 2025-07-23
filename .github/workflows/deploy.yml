@@ -30,6 +30,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check paraglide messages
+        run: |
+          echo "Checking paraglide structure..."
+          ls -la src/lib/paraglide/
+          ls -la src/lib/paraglide/messages/ || echo "Messages directory not found"
+          
       - name: Build project
         run: pnpm build
 

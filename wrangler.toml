@@ -13,9 +13,9 @@ html_handling = "auto-trailing-slash"
 not_found_handling = "single-page-application"
 
 # Routes configuration - 커스텀 도메인 설정 (필요시 활성화)
-# [[routes]]
-# pattern = "blog.xiyo.dev/*"
-# zone_name = "xiyo.dev"
+[[routes]]
+pattern = "blog.xiyo.dev/*"
+zone_name = "xiyo.dev"
 
 # Production environment
 [env.production]

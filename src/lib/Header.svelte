@@ -4,12 +4,16 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { deLocalizeHref } from './paraglide/runtime';
+	import * as m from '$lib/paraglide/messages.js';
 	import confetti from 'canvas-confetti';
 
 	/** @type {HTMLDialogElement} */
 	let navRef;
 
 	let isRoot = $derived(deLocalizeHref(page.url.pathname) === '/');
+	
+	// Get title dynamically to ensure it updates with language changes
+	const title = $derived(m.title());
 
 	/**
 	 * Progressive Enhancement(점진적 향상) 패턴 적용.
@@ -50,7 +54,7 @@
 		</button>
 	{/if}
 	<h1 class="flex-1 text-center content-center-safe font-black text-2xl uppercase">
-		{page.data.title}
+		{title}
 	</h1>
 	<a href="/nav" class="w-16 text-center content-center-safe" onclick={handleShowNav}>
 		<svg

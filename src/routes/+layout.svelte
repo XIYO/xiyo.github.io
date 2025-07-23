@@ -1,13 +1,18 @@
 <script>
 	import { page } from '$app/state';
+	import * as m from '$lib/paraglide/messages.js';
 	import '../app.css';
 
 	const { children } = $props();
+	
+	// Get title and description dynamically to ensure they update with language changes
+	const title = $derived(m.title());
+	const description = $derived(m.description());
 </script>
 
 <svelte:head>
-	<title>{page.data.title}</title>
-	<meta content={page.data.description} name="description" />
+	<title>{title}</title>
+	<meta content={description} name="description" />
 	<link href={page.url.origin + page.url.pathname} rel="canonical" />
 	{#if page.data.og.title}
 		<meta property="og:title" content={page.data.og.title} />

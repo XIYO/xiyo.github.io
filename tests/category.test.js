@@ -37,7 +37,6 @@ describe('Category and Post baseLocale fallback', () => {
 			const category = Category.getCategory(`/${localeLower}/posts`);
 			if (category) {
 				categoryByLocale[locale] = category;
-				console.log(`${locale} posts category found`);
 			}
 		});
 
@@ -54,8 +53,7 @@ describe('Category and Post baseLocale fallback', () => {
 		const baseAboutPost = Post.getPosts(`/${baseLocaleLower}/about`);
 		const aboutPost = Post.getPosts('/about');
 
-		console.log(`${baseLocale} about post:`, baseAboutPost);
-		console.log('About post without prefix:', aboutPost);
+		// Verify baseLocale about post accessibility
 
 		// baseLocale 경로로 about 파일이 존재해야 함
 		expect(baseAboutPost).toBeDefined();
@@ -68,7 +66,7 @@ describe('Category and Post baseLocale fallback', () => {
 		const { locales, baseLocale } = await import('../src/lib/paraglide/runtime.js');
 		const { default: Post } = await import('../src/lib/post/Post.js');
 
-		console.log('Testing /about access for all locales...');
+		// Testing /about access for all locales
 
 		// 각 언어별로 about 파일이 존재하는지 확인
 		const aboutPosts = {};
@@ -78,9 +76,6 @@ describe('Category and Post baseLocale fallback', () => {
 
 			if (aboutPost) {
 				aboutPosts[locale] = aboutPost;
-				console.log(`✓ ${locale}: /about found at /${localeLower}/about`);
-			} else {
-				console.log(`✗ ${locale}: /about not found at /${localeLower}/about`);
 			}
 		});
 
@@ -94,23 +89,13 @@ describe('Category and Post baseLocale fallback', () => {
 		const aboutWithoutPrefix = Post.getPosts('/about');
 		expect(aboutWithoutPrefix).toBeDefined();
 
-		console.log(`\nVerifying /about returns ${baseLocale} content:`);
-		console.log(
-			`- Direct access to /${baseLocale.toLowerCase()}/about:`,
-			aboutPosts[baseLocale] ? '✓' : '✗'
-		);
-		console.log(`- Access via /about:`, aboutWithoutPrefix ? '✓' : '✗');
-		console.log(`- absolutePath of /about:`, aboutWithoutPrefix.absolutePath);
-		console.log(
-			`- absolutePath of /${baseLocale.toLowerCase()}/about:`,
-			aboutPosts[baseLocale].absolutePath
-		);
+		// Verify /about returns baseLocale content
 
 		// 실제로는 다른 Post 인스턴스일 수 있지만, /about이 baseLocale의 콘텐츠를 반환하는지 확인
 		// Post.getPosts가 baseLocale fallback을 제공하는지 확인
 		expect(aboutWithoutPrefix).toBeDefined();
 		expect(aboutWithoutPrefix).toBeInstanceOf(Post);
 
-		console.log(`\nTotal locales with /about: ${Object.keys(aboutPosts).length}/${locales.length}`);
+		// All locales should have accessible /about pages
 	});
 });

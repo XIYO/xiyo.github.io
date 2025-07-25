@@ -6,7 +6,7 @@ describe('Category and Post Sorting', () => {
 	it('should sort posts by sortDate in descending order', async () => {
 		const category = Category.getCategory('/posts');
 		if (!category) {
-			console.log('posts category not found, skipping test');
+			// posts category not found, skipping test
 			return;
 		}
 
@@ -20,13 +20,13 @@ describe('Category and Post Sorting', () => {
 			expect(currentDate.getTime()).toBeGreaterThanOrEqual(nextDate.getTime());
 		}
 		
-		console.log(`✓ ${posts.length} posts are sorted correctly`);
+		// Verify posts are sorted correctly by date
 	});
 	
 	it('should sort child categories by latest post date', async () => {
 		const rootCategory = Category.getCategory('/posts');
 		if (!rootCategory) {
-			console.log('posts category not found, skipping test');
+			// posts category not found, skipping test
 			return;
 		}
 
@@ -40,14 +40,14 @@ describe('Category and Post Sorting', () => {
 			expect(currentLatest.getTime()).toBeGreaterThanOrEqual(nextLatest.getTime());
 		}
 		
-		console.log(`✓ ${childCategories.length} child categories are sorted correctly`);
+		// Verify child categories are sorted correctly
 	});
 	
 	it('should calculate correct sortDate from Post metadata', async () => {
 		// 특정 포스트를 찾아서 테스트
 		const testPost = Post.getPosts('/posts/tools/ide/intellij/enable-force-push');
 		if (!testPost) {
-			console.log('test post not found, skipping test');
+			// test post not found, skipping test
 			return;
 		}
 		
@@ -62,7 +62,7 @@ describe('Category and Post Sorting', () => {
 			expect(sortDate).toEqual(new Date(metadata.data.dates[0]));
 		}
 		
-		console.log(`✓ Post sortDate is correctly calculated: ${sortDate.toISOString()}`);
+		// Verify post sortDate is correctly calculated
 	});
 	
 	it('should handle posts without dates correctly', () => {

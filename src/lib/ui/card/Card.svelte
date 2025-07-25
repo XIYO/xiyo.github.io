@@ -1,12 +1,14 @@
 <script>
-	/** @type {{
-	 * children: import('svelte').Snippet,
-	 * negative?: boolean,
-	 * tag?: string,
-	 * rest?: any
-	 * class?: string
-	 * }}
-	 **/
+	/**
+	 * @typedef {import('../../types/components.js').CardProps & {
+	 *   children: import('svelte').Snippet,
+	 *   tag?: string,
+	 *   class?: string,
+	 *   [key: string]: unknown
+	 * }} CardComponentProps
+	 */
+
+	/** @type {CardComponentProps} */
 	const { children, tag = 'div', negative, class: className, ...rest } = $props();
 </script>
 

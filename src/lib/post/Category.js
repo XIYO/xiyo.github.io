@@ -2,6 +2,11 @@ import Post from '$lib/post/Post.js';
 import { deLocalizeHref, baseLocale } from '$lib/paraglide/runtime.js';
 
 /**
+ * @typedef {import('../types/markdown.js').SerializedCategory} SerializedCategory
+ * @typedef {import('../types/markdown.js').PostData} PostData
+ */
+
+/**
  * 카테고리(Category) 클래스
  */
 export default class Category {
@@ -131,6 +136,18 @@ export default class Category {
 		return this.#categories.get(absolutePath) ?? this.#categories.get(deLocalizeHref(absolutePath));
 	}
 
+	/**
+	 * 정적 메서드: 모든 카테고리의 캐시를 정리
+	 */
+	static clearAllCaches() {
+		// 루트 카테고리에서 시작하여 모든 포스트 캐시 정리
+		if (this.#root) {
+			for (const post of this.#root.allPosts) {
+				post.clearCache();
+			}
+		}
+	}
+
 	static #initCategories(
 		/** @type {{ absolutePath: string, markdownAsync: () => Promise<string> }} */ {
 			absolutePath,
@@ -174,21 +191,32 @@ export default class Category {
 	}
 
 	/**
-	 * 카테고리 직렬화
-	 * @returns {Promise<{ name: string, absolutePath: string, childCategories: any[], allPosts: any[] }>}
+	 * 카테고리 직렬화 (성능 최적화)
+	 * @param {number} [maxDepth] - 최대 직렬화 깊이 (무한 순환 방지)
+	 * @returns {Promise<SerializedCategory>}
 	 */
-	async toSerialize() {
+	async toSerialize(maxDepth = 10) {
+		if (maxDepth <= 0) {
+			// 깊이 제한 달성 시 기본 데이터만 반환
+			return {
+				name: this.name,
+				absolutePath: this.#absolutePath,
+				childCategories: [],
+				allPosts: []
+			};
+		}
+
 		// 메타데이터만 필요하므로 getMetadata() 사용
-		const postsPromise = Promise.all(
-			this.allPosts.map((post) => post.getMetadata())
-		);
-		const childCategoriesPromise = Promise.all(
-			this.childCategories.map((category) => category.toSerialize())
-		);
+		// 병렬 처리를 위해 쉬어진 방식 사용
+		const [posts, childCategories] = await Promise.all([
+			// Posts 메타데이터 캐시된 방식으로 처리
+			Promise.all(this.allPosts.map(post => post.getMetadata())),
+			// 자식 카테고리 순차 직렬화
+			Promise.all(this.childCategories.map(category => category.toSerialize(maxDepth - 1)))
+		]);
 
-		const [posts, childCategories] = await Promise.all([postsPromise, childCategoriesPromise]);
-
-		const filteredPosts = posts.map((post) => ({
+		// 메모리 효율적 방식으로 필터링
+		const filteredPosts = posts.map(post => ({
 			absolutePath: post.absolutePath,
 			data: post.data
 		}));
@@ -196,7 +224,7 @@ export default class Category {
 		return {
 			name: this.name,
 			absolutePath: this.#absolutePath,
-			childCategories: childCategories,
+			childCategories,
 			allPosts: filteredPosts
 		};
 	}

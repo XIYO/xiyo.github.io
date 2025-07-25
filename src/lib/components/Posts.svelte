@@ -3,6 +3,11 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/paraglide/runtime.js';
 
+	/**
+	 * @typedef {import('../types/components.js').PostsProps} PostsProps
+	 */
+
+	/** @type {PostsProps} */
 	const { category } = $props();
 </script>
 

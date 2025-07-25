@@ -9,7 +9,12 @@
 		<p>{m.introduction()}</p>
 
 		<figure>
-			<enhanced:img src={terminalBrowsing} alt={m.terminalBrowsing()} data-title={m.terminal()} />
+			<enhanced:img 
+				src={terminalBrowsing} 
+				alt={m.terminalBrowsing()} 
+				data-title={m.terminal()}
+				loading="lazy"
+				decoding="async" />
 			<figcaption>{m.terminalCaption()}</figcaption>
 		</figure>
 	</div>

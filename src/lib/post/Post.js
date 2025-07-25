@@ -2,6 +2,13 @@ import markdownProcessAsync from '$lib/plugin/markdown.js';
 import { deLocalizeHref } from '$lib/paraglide/runtime.js';
 
 /**
+ * @typedef {import('../types/markdown.js').ProcessedMarkdown} ProcessedMarkdown
+ * @typedef {import('../types/markdown.js').PostData} PostData
+ * @typedef {import('../types/markdown.js').PostContent} PostContent
+ * @typedef {import('../types/markdown.js').PostWithContent} PostWithContent
+ */
+
+/**
  * 게시글(Post) 클래스
  */
 export default class Post {
@@ -11,10 +18,12 @@ export default class Post {
 	#markdownAsync;
 	/** @type {string} */
 	#absolutePath;
-	/** @type {Promise<any> | null} */
+	/** @type {Promise<ProcessedMarkdown> | null} */
 	#processedMarkdownCache = null;
-	/** @type {any} */
+	/** @type {PostData | null} */
 	#metadata = null;
+	/** @type {WeakRef<{content: string}> | {deref: () => {content: string}} | null} */
+	#rawMarkdownCache = null;
 
 	/**
 	 * Post 클래스의 생성자입니다.
@@ -54,11 +63,11 @@ export default class Post {
 		}
 		
 		// published 필드가 있으면 우선 사용
-		if (this.#metadata.data?.published) {
+		if (this.#metadata?.data?.published) {
 			return new Date(this.#metadata.data.published);
 		}
 		// dates 배열의 첫 번째 값을 published로 사용
-		if (this.#metadata.data?.dates?.length > 0) {
+		if (this.#metadata?.data?.dates?.length > 0 && this.#metadata.data.dates?.[0]) {
 			return new Date(this.#metadata.data.dates[0]);
 		}
 		// 날짜가 없으면 기본값
@@ -66,62 +75,163 @@ export default class Post {
 	}
 
 	/**
+	 * 마크다운 원본을 캐시하고 반환합니다.
+	 * @returns {Promise<string>}
+	 */
+	async #getRawMarkdown() {
+		// WeakRef를 사용해 메모리 압박 시 GC 허용
+		let cachedMarkdown = this.#rawMarkdownCache?.deref();
+		if (cachedMarkdown) {
+			return cachedMarkdown.content;
+		}
+		
+		const markdownContent = await this.#markdownAsync();
+		if (!markdownContent || typeof markdownContent !== 'string') {
+			throw new Error(`Invalid markdown content for ${this.#absolutePath}`);
+		}
+		
+		// WeakRef는 객체만 참조 가능하므로 문자열을 객체로 감싸서 캐시
+		try {
+			this.#rawMarkdownCache = new WeakRef({ content: markdownContent });
+		} catch (error) {
+			// WeakRef가 지원되지 않는 환경에서는 일반 캐시 사용
+			this.#rawMarkdownCache = { deref: () => ({ content: markdownContent }) };
+		}
+		return markdownContent;
+	}
+
+	/**
 	 * 마크다운을 처리하고 캐시합니다.
-	 * @returns {Promise<any>}
+	 * @returns {Promise<ProcessedMarkdown>}
 	 */
 	async #getProcessedMarkdown() {
 		if (!this.#processedMarkdownCache) {
-			const markdownContent = await this.#markdownAsync();
-			this.#processedMarkdownCache = markdownProcessAsync({
-				markdown: markdownContent
-			});
+			try {
+				const markdownContent = await this.#getRawMarkdown();
+				this.#processedMarkdownCache = markdownProcessAsync({
+					markdown: markdownContent
+				});
+			} catch (error) {
+				console.error(`Error processing markdown for ${this.#absolutePath}:`, error);
+				// Return a fallback processed markdown
+				const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+				this.#processedMarkdownCache = Promise.resolve({
+					value: `<div class="error">Error loading content: ${errorMessage}</div>`,
+					data: {
+						title: 'Error',
+						description: 'Content could not be loaded',
+						dates: [],
+						tags: [],
+						keywords: []
+					}
+				});
+			}
 		}
 		return this.#processedMarkdownCache;
 	}
 
 	/**
 	 * 포스트의 메타데이터만 반환합니다.
-	 * @returns {Promise<{ absolutePath: string, data: any }>}
+	 * @returns {Promise<PostData>}
 	 */
 	async getMetadata() {
-		const processed = await this.#getProcessedMarkdown();
-		this.#metadata = {
-			absolutePath: this.#absolutePath,
-			data: processed.data
-		};
-		return this.#metadata;
+		try {
+			const processed = await this.#getProcessedMarkdown();
+			this.#metadata = {
+				absolutePath: this.#absolutePath,
+				data: processed.data
+			};
+			return this.#metadata;
+		} catch (error) {
+			console.error(`Error getting metadata for ${this.#absolutePath}:`, error);
+			const fallbackMetadata = {
+				absolutePath: this.#absolutePath,
+				data: {
+					title: 'Error Loading Post',
+					description: 'This post could not be loaded',
+					dates: [],
+					tags: [],
+					keywords: []
+				}
+			};
+			this.#metadata = fallbackMetadata;
+			return fallbackMetadata;
+		}
 	}
 
 	/**
 	 * 포스트의 콘텐츠(HTML)만 반환합니다.
-	 * @returns {Promise<{ absolutePath: string, value: string }>}
+	 * @returns {Promise<PostContent>}
 	 */
 	async getContent() {
-		const processed = await this.#getProcessedMarkdown();
-		return {
-			absolutePath: this.#absolutePath,
-			value: processed.value
-		};
+		try {
+			const processed = await this.#getProcessedMarkdown();
+			return {
+				absolutePath: this.#absolutePath,
+				value: processed.value
+			};
+		} catch (error) {
+			console.error(`Error getting content for ${this.#absolutePath}:`, error);
+			const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+			return {
+				absolutePath: this.#absolutePath,
+				value: `<div class="error">Error loading content: ${errorMessage}</div>`
+			};
+		}
 	}
 
 	/**
 	 * 포스트의 메타데이터와 콘텐츠를 모두 반환합니다.
-	 * @returns {Promise<{ absolutePath: string, data: any, value: string }>}
+	 * @returns {Promise<PostWithContent>}
 	 */
 	async getBoth() {
-		const processed = await this.#getProcessedMarkdown();
-		return {
-			absolutePath: this.#absolutePath,
-			data: processed.data,
-			value: processed.value
-		};
+		try {
+			const processed = await this.#getProcessedMarkdown();
+			return {
+				absolutePath: this.#absolutePath,
+				data: processed.data,
+				value: processed.value
+			};
+		} catch (error) {
+			console.error(`Error getting both metadata and content for ${this.#absolutePath}:`, error);
+			const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+			return {
+				absolutePath: this.#absolutePath,
+				data: {
+					title: 'Error Loading Post',
+					description: 'This post could not be loaded',
+					dates: [],
+					tags: [],
+					keywords: []
+				},
+				value: `<div class="error">Error loading content: ${errorMessage}</div>`
+			};
+		}
 	}
 
 	/**
 	 * 포스트를 직렬화하여 반환합니다. (하위 호환성을 위해)
-	 * @returns {Promise<{ absolutePath: string, [key: string]: any }>}
+	 * @returns {Promise<PostWithContent>}
 	 */
 	async toSerialize() {
 		return this.getBoth();
+	}
+
+	/**
+	 * 캐시를 정리합니다. (메모리 최적화)
+	 */
+	clearCache() {
+		this.#processedMarkdownCache = null;
+		this.#rawMarkdownCache = null;
+		this.#metadata = null;
+	}
+
+	/**
+	 * 정적 메서드: 모든 포스트의 캐시를 정리
+	 */
+	static clearAllCaches() {
+		for (const post of this.#posts.values()) {
+			post.clearCache();
+		}
 	}
 }

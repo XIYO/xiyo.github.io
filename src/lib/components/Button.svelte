@@ -1,11 +1,29 @@
 <script>
-	export let variant = 'primary';
-	export let size = 'medium';
-	export let disabled = false;
+	/**
+	 * @typedef {import('../types/components.js').ButtonProps & {
+	 *   children: import('svelte').Snippet,
+	 *   onclick?: () => void
+	 * }} ButtonComponentProps
+	 */
+
+	/** @type {ButtonComponentProps} */
+	const { 
+		variant = 'primary', 
+		size = 'md', 
+		disabled = false, 
+		type = 'button',
+		onclick,
+		children 
+	} = $props();
 </script>
 
-<button class={`btn btn-${variant} btn-${size}`} {disabled} on:click>
-	<slot />
+<button 
+	class={`btn btn-${variant} btn-${size}`} 
+	{disabled} 
+	{type}
+	onclick={onclick}
+>
+	{@render children()}
 </button>
 
 <style>
@@ -41,17 +59,17 @@
 		background-color: #4b5563;
 	}
 
-	.btn-small {
+	.btn-sm {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 	}
 
-	.btn-medium {
+	.btn-md {
 		padding: 0.5rem 1rem;
 		font-size: 1rem;
 	}
 
-	.btn-large {
+	.btn-lg {
 		padding: 0.75rem 1.5rem;
 		font-size: 1.125rem;
 	}

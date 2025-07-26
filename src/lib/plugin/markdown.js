@@ -68,17 +68,19 @@ function getProcessor() {
 
 /**
  * 마크다운을 HTML로 변환하고 메타데이터를 추출합니다.
- * remark-frontmatter와 remark-extract-frontmatter로 프론트매터를 파싱하고,
- * unified 파이프라인으로 마크다운을 HTML로 변환합니다.
  * 
- * 성능 최적화: 프로세서 캐싱으로 초기화 비용 감소
+ * 캐시 전략:
+ * ✅ unified 프로세서: 한 번 생성 후 재사용 (플러그인 체인 초기화 비용 절약)
+ * ❌ 처리 결과: 매번 다른 마크다운이므로 캐시 불가
  *
  * @param {{ markdown: string }} options
  * @returns {Promise<import('../types/markdown.js').ProcessedMarkdown>}
  */
 export default async function markdownAsync({ markdown }) {
-	// 캐시된 프로세서 사용
+	// ✅ 캐시된 프로세서 재사용: rehypeShiki 초기화 등 비싼 작업 절약
 	const processor = getProcessor();
+	
+	// ❌ 매번 새로운 마크다운 처리: 캐시 불가능
 	const result = await processor.process(markdown);
 
 	return {
@@ -89,15 +91,13 @@ export default async function markdownAsync({ markdown }) {
 
 /**
  * @type {import('@shikijs/rehype').RehypeShikiOptions}
- * 성능 최적화: Shiki 옵션 객체 재사용
+ * Shiki 옵션: 라이트/다크 모드 모두 Dracula 테마 사용
  */
 const rehypeShikiOptions = {
 	themes: {
 		light: 'dracula',
 		dark: 'dracula'
-	},
-	// 성능 향상을 위한 추가 옵션
-	defaultColor: false // CSS 변수 사용으로 번들 크기 감소
+	}
 };
 
 /**
@@ -105,4 +105,11 @@ const rehypeShikiOptions = {
  */
 export function clearProcessorCache() {
 	cachedProcessor = null;
+}
+
+// 개발 모드에서 핫 리로드 시 캐시 지우기
+if (import.meta.hot) {
+	import.meta.hot.accept(() => {
+		clearProcessorCache();
+	});
 }

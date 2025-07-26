@@ -79,32 +79,49 @@ export default class Category {
 
 	/**
 	 * 자식 카테고리 목록 반환 (최신 포스트 순으로 정렬)
-	 * @returns {Category[]}
+	 * @returns {Promise<Category[]>}
 	 */
-	get childCategories() {
-		return [...this.#childCategories.values()].sort((a, b) => {
-			const aLatest = a.latestPostDate;
-			const bLatest = b.latestPostDate;
-			return bLatest.getTime() - aLatest.getTime();
+	async getChildCategories() {
+		const categories = [...this.#childCategories.values()];
+		
+		// 각 카테고리의 최신 포스트 날짜를 위해 메타데이터 로드
+		const categoriesWithDates = await Promise.all(
+			categories.map(async (category) => ({
+				category,
+				latestDate: await category.getLatestPostDate()
+			}))
+		);
+		
+		// 최신 포스트 날짜순으로 정렬
+		categoriesWithDates.sort((a, b) => {
+			return b.latestDate.getTime() - a.latestDate.getTime();
 		});
+		
+		return categoriesWithDates.map(item => item.category);
 	}
 
 	/**
 	 * 자신의 포스트 목록 반환 (최신순으로 정렬)
-	 * @returns {import('./Post.js').default[]}
+	 * @returns {Promise<import('./Post.js').default[]>}
 	 */
-	get posts() {
-		return [...this.#posts.values()].sort((a, b) => {
+	async getPosts() {
+		const posts = [...this.#posts.values()];
+		
+		// 각 포스트의 메타데이터를 로드하여 정확한 정렬 날짜 확보
+		await Promise.all(posts.map(post => post.getMetadata()));
+		
+		// published 또는 dates[0] 기준으로 정렬
+		return posts.sort((a, b) => {
 			return b.sortDate.getTime() - a.sortDate.getTime();
 		});
 	}
 
 	/**
-	 * 카테고리의 가장 최신 포스트 날짜
-	 * @returns {Date}
+	 * 카테고리의 가장 최신 포스트 날짜 (비동기)
+	 * @returns {Promise<Date>}
 	 */
-	get latestPostDate() {
-		const allPosts = this.allPosts;
+	async getLatestPostDate() {
+		const allPosts = await this.getAllPosts();
 		if (allPosts.length === 0) return new Date(0);
 
 		// 모든 포스트의 날짜 중 가장 최신 날짜 반환
@@ -114,13 +131,23 @@ export default class Category {
 
 	/**
 	 * 자신과 하위 카테고리의 포스트 반환 (최신순으로 정렬)
-	 * @returns {import('./Post.js').default[]}
+	 * @returns {Promise<import('./Post.js').default[]>}
 	 */
-	get allPosts() {
-		const allPosts = [
-			...this.#posts.values(),
-			...[...this.#childCategories.values()].flatMap((child) => child.allPosts)
-		];
+	async getAllPosts() {
+		// 현재 카테고리의 포스트들
+		const currentPosts = [...this.#posts.values()];
+		
+		// 모든 하위 카테고리의 포스트들을 재귀적으로 가져오기
+		const childPosts = [];
+		for (const childCategory of this.#childCategories.values()) {
+			const posts = await childCategory.getAllPosts();
+			childPosts.push(...posts);
+		}
+		
+		const allPosts = [...currentPosts, ...childPosts];
+		
+		// 메타데이터 로드 후 정렬
+		await Promise.all(allPosts.map(post => post.getMetadata()));
 		
 		return allPosts.sort((a, b) => {
 			return b.sortDate.getTime() - a.sortDate.getTime();
@@ -139,10 +166,11 @@ export default class Category {
 	/**
 	 * 정적 메서드: 모든 카테고리의 캐시를 정리
 	 */
-	static clearAllCaches() {
+	static async clearAllCaches() {
 		// 루트 카테고리에서 시작하여 모든 포스트 캐시 정리
 		if (this.#root) {
-			for (const post of this.#root.allPosts) {
+			const allPosts = await this.#root.getAllPosts();
+			for (const post of allPosts) {
 				post.clearCache();
 			}
 		}
@@ -206,14 +234,21 @@ export default class Category {
 			};
 		}
 
-		// 메타데이터만 필요하므로 getMetadata() 사용
-		// 병렬 처리를 위해 쉬어진 방식 사용
-		const [posts, childCategories] = await Promise.all([
-			// Posts 메타데이터 캐시된 방식으로 처리
-			Promise.all(this.allPosts.map(post => post.getMetadata())),
-			// 자식 카테고리 순차 직렬화
-			Promise.all(this.childCategories.map(category => category.toSerialize(maxDepth - 1)))
+		// 메타데이터가 로드된 정렬된 데이터 사용
+		const [allPosts, sortedChildCategories] = await Promise.all([
+			// 메타데이터 로드 후 정렬된 포스트들
+			this.getAllPosts(),
+			// 메타데이터 로드 후 정렬된 자식 카테고리들
+			this.getChildCategories()
 		]);
+
+		// 포스트 메타데이터 추출 (이미 로드됨)
+		const posts = await Promise.all(allPosts.map(post => post.getMetadata()));
+		
+		// 자식 카테고리 직렬화
+		const childCategories = await Promise.all(
+			sortedChildCategories.map(category => category.toSerialize(maxDepth - 1))
+		);
 
 		// 메모리 효율적 방식으로 필터링
 		const filteredPosts = posts.map(post => ({

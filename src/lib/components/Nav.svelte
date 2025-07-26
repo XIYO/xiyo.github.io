@@ -2,7 +2,6 @@
 	import { page } from '$app/state';
 	import { deLocalizeHref } from '$lib/paraglide/runtime.js';
 	import { locales, localizeHref, setLocale } from '$lib/paraglide/runtime.js';
-	import { goto, invalidateAll } from '$app/navigation';
 
 	const { ...rest } = $props();
 
@@ -40,7 +39,7 @@
 	<ul class="flex flex-col gap-4 text-right">
 		{#each locales as locale (locale)}
 			<li>
-				<a 
+				<a
 					href={localizeHref(page.url.pathname, { locale })}
 					onclick={(e) => handleLocaleClick(e, locale)}
 					class="hover:text-primary cursor-pointer"

@@ -63,7 +63,7 @@ describe('Category and Post baseLocale fallback', () => {
 
 	it('should find about content for all language locales', async () => {
 		// 동적 import
-		const { locales, baseLocale } = await import('../src/lib/paraglide/runtime.js');
+		const { locales } = await import('../src/lib/paraglide/runtime.js');
 		const { default: Post } = await import('../src/lib/post/Post.js');
 
 		// Testing /about access for all locales

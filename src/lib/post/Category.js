@@ -83,7 +83,7 @@ export default class Category {
 	 */
 	async getChildCategories() {
 		const categories = [...this.#childCategories.values()];
-		
+
 		// 각 카테고리의 최신 포스트 날짜를 위해 메타데이터 로드
 		const categoriesWithDates = await Promise.all(
 			categories.map(async (category) => ({
@@ -91,13 +91,13 @@ export default class Category {
 				latestDate: await category.getLatestPostDate()
 			}))
 		);
-		
+
 		// 최신 포스트 날짜순으로 정렬
 		categoriesWithDates.sort((a, b) => {
 			return b.latestDate.getTime() - a.latestDate.getTime();
 		});
-		
-		return categoriesWithDates.map(item => item.category);
+
+		return categoriesWithDates.map((item) => item.category);
 	}
 
 	/**
@@ -106,10 +106,10 @@ export default class Category {
 	 */
 	async getPosts() {
 		const posts = [...this.#posts.values()];
-		
+
 		// 각 포스트의 메타데이터를 로드하여 정확한 정렬 날짜 확보
-		await Promise.all(posts.map(post => post.getMetadata()));
-		
+		await Promise.all(posts.map((post) => post.getMetadata()));
+
 		// published 또는 dates[0] 기준으로 정렬
 		return posts.sort((a, b) => {
 			return b.sortDate.getTime() - a.sortDate.getTime();
@@ -136,19 +136,19 @@ export default class Category {
 	async getAllPosts() {
 		// 현재 카테고리의 포스트들
 		const currentPosts = [...this.#posts.values()];
-		
+
 		// 모든 하위 카테고리의 포스트들을 재귀적으로 가져오기
 		const childPosts = [];
 		for (const childCategory of this.#childCategories.values()) {
 			const posts = await childCategory.getAllPosts();
 			childPosts.push(...posts);
 		}
-		
+
 		const allPosts = [...currentPosts, ...childPosts];
-		
+
 		// 메타데이터 로드 후 정렬
-		await Promise.all(allPosts.map(post => post.getMetadata()));
-		
+		await Promise.all(allPosts.map((post) => post.getMetadata()));
+
 		return allPosts.sort((a, b) => {
 			return b.sortDate.getTime() - a.sortDate.getTime();
 		});
@@ -243,15 +243,15 @@ export default class Category {
 		]);
 
 		// 포스트 메타데이터 추출 (이미 로드됨)
-		const posts = await Promise.all(allPosts.map(post => post.getMetadata()));
-		
+		const posts = await Promise.all(allPosts.map((post) => post.getMetadata()));
+
 		// 자식 카테고리 직렬화
 		const childCategories = await Promise.all(
-			sortedChildCategories.map(category => category.toSerialize(maxDepth - 1))
+			sortedChildCategories.map((category) => category.toSerialize(maxDepth - 1))
 		);
 
 		// 메모리 효율적 방식으로 필터링
-		const filteredPosts = posts.map(post => ({
+		const filteredPosts = posts.map((post) => ({
 			absolutePath: post.absolutePath,
 			data: post.data
 		}));

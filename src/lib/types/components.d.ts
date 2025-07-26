@@ -10,7 +10,7 @@ export interface PostProps {
 	postContent: PostContent;
 }
 
-// Posts component props  
+// Posts component props
 export interface PostsProps {
 	category: SerializedCategory;
 }

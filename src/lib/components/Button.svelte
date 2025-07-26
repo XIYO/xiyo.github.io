@@ -7,22 +7,17 @@
 	 */
 
 	/** @type {ButtonComponentProps} */
-	const { 
-		variant = 'primary', 
-		size = 'md', 
-		disabled = false, 
+	const {
+		variant = 'primary',
+		size = 'md',
+		disabled = false,
 		type = 'button',
 		onclick,
-		children 
+		children
 	} = $props();
 </script>
 
-<button 
-	class={`btn btn-${variant} btn-${size}`} 
-	{disabled} 
-	{type}
-	onclick={onclick}
->
+<button class={`btn btn-${variant} btn-${size}`} {disabled} {type} {onclick}>
 	{@render children()}
 </button>
 

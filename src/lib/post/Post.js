@@ -61,7 +61,7 @@ export default class Post {
 		if (!this.#metadata) {
 			return new Date(0);
 		}
-		
+
 		// published 필드가 있으면 우선 사용
 		if (this.#metadata?.data?.published) {
 			return new Date(this.#metadata.data.published);
@@ -84,16 +84,16 @@ export default class Post {
 		if (cachedMarkdown) {
 			return cachedMarkdown.content;
 		}
-		
+
 		const markdownContent = await this.#markdownAsync();
 		if (!markdownContent || typeof markdownContent !== 'string') {
 			throw new Error(`Invalid markdown content for ${this.#absolutePath}`);
 		}
-		
+
 		// WeakRef는 객체만 참조 가능하므로 문자열을 객체로 감싸서 캐시
 		try {
 			this.#rawMarkdownCache = new WeakRef({ content: markdownContent });
-		} catch (error) {
+		} catch {
 			// WeakRef가 지원되지 않는 환경에서는 일반 캐시 사용
 			this.#rawMarkdownCache = { deref: () => ({ content: markdownContent }) };
 		}

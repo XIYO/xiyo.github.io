@@ -10,7 +10,7 @@
 	let navRef;
 
 	let isRoot = $derived(deLocalizeHref(page.url.pathname) === '/');
-	
+
 	// Get title dynamically to ensure it updates with language changes
 	const title = $derived(m.title());
 

@@ -23,21 +23,23 @@ export async function load({ url }) {
 		const description = postMetadata?.data?.description || m.description();
 
 		// Safe OG metadata construction
-		const og = postMetadata?.data ? {
-			title: postMetadata.data.title || m.title(),
-			description: postMetadata.data.description || m.description(),
-			keywords: postMetadata.data.keywords || [],
-			type: 'article',
-			url: url.href,
-			publishedTime: postMetadata.data.dates?.[0] || null,
-			modifiedTime: postMetadata.data.dates?.at(-1) || null,
-			tags: postMetadata.data.tags || []
-		} : {
-			title: m.title(),
-			description: m.description(),
-			type: 'website',
-			url: url.href
-		};
+		const og = postMetadata?.data
+			? {
+					title: postMetadata.data.title || m.title(),
+					description: postMetadata.data.description || m.description(),
+					keywords: postMetadata.data.keywords || [],
+					type: 'article',
+					url: url.href,
+					publishedTime: postMetadata.data.dates?.[0] || null,
+					modifiedTime: postMetadata.data.dates?.at(-1) || null,
+					tags: postMetadata.data.tags || []
+				}
+			: {
+					title: m.title(),
+					description: m.description(),
+					type: 'website',
+					url: url.href
+				};
 
 		return {
 			title,
@@ -49,7 +51,7 @@ export async function load({ url }) {
 		};
 	} catch (error) {
 		console.error(`Error loading page data for ${url.pathname}:`, error);
-		
+
 		// Return error fallback data
 		return {
 			title: 'Error Loading Page',

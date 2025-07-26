@@ -68,7 +68,7 @@ function getProcessor() {
 
 /**
  * 마크다운을 HTML로 변환하고 메타데이터를 추출합니다.
- * 
+ *
  * 캐시 전략:
  * ✅ unified 프로세서: 한 번 생성 후 재사용 (플러그인 체인 초기화 비용 절약)
  * ❌ 처리 결과: 매번 다른 마크다운이므로 캐시 불가
@@ -79,7 +79,7 @@ function getProcessor() {
 export default async function markdownAsync({ markdown }) {
 	// ✅ 캐시된 프로세서 재사용: rehypeShiki 초기화 등 비싼 작업 절약
 	const processor = getProcessor();
-	
+
 	// ❌ 매번 새로운 마크다운 처리: 캐시 불가능
 	const result = await processor.process(markdown);
 

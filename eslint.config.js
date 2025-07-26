@@ -27,7 +27,10 @@ export default [
 			'.obsidian/',
 			'playwright.config.cjs',
 			'node_modules/',
-			'storybook-static/**'
+			'storybook-static/**',
+			'.wrangler/**',
+			'coverage/**',
+			'static/**/*.md'
 		]
 	},
 	...storybook.configs['flat/recommended']

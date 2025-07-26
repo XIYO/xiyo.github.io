@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # Git 서브모듈을 재귀적으로 클론
+          submodules: recursive # Git 서브모듈을 재귀적으로 클론
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4

@@ -4,7 +4,7 @@
 	import '../app.css';
 
 	const { children } = $props();
-	
+
 	// Get title and description dynamically to ensure they update with language changes
 	const title = $derived(m.title());
 	const description = $derived(m.description());

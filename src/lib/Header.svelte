@@ -5,7 +5,6 @@
 	import { afterNavigate } from '$app/navigation';
 	import { deLocalizeHref } from './paraglide/runtime';
 	import * as m from '$lib/paraglide/messages.js';
-	import confetti from 'canvas-confetti';
 
 	/** @type {HTMLDialogElement} */
 	let navRef;
@@ -28,7 +27,9 @@
 		navRef.showModal();
 	};
 
-	const handleConfetti = () => {
+	const handleConfetti = async () => {
+		// 성능 최적화: 동적 import로 번들 크기 감소
+		const { default: confetti } = await import('canvas-confetti');
 		confetti({
 			particleCount: 120,
 			spread: 90,

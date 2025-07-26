@@ -13,6 +13,10 @@
 		globe: { href: '/globe' }
 	};
 
+	/**
+	 * @param {Event} event
+	 * @param {string} locale
+	 */
 	async function handleLocaleClick(event, locale) {
 		event.preventDefault();
 		setLocale(locale);

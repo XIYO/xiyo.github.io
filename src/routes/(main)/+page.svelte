@@ -1,10 +1,9 @@
 <script>
-	import Card from '$lib/ui/card/Card.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import terminalBrowsing from '$lib/assets/terminal_browsing.png?enhanced';
 </script>
 
-<Card negative>
+<main>
 	<div class="p-4">
 		<p>{m.introduction()}</p>
 
@@ -19,4 +18,4 @@
 			<figcaption>{m.terminalCaption()}</figcaption>
 		</figure>
 	</div>
-</Card>
+</main>

@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/XIYO/xiyo.github.io/compare/v2.3.1...v2.3.2) (2025-07-27)
+
+
+### Bug Fixes
+
+* add actions write permission for workflow dispatch ([#48](https://github.com/XIYO/xiyo.github.io/issues/48)) ([9b59334](https://github.com/XIYO/xiyo.github.io/commit/9b59334844a372eea4383e0ecb9f46c33a21853a))
+
 ## [2.3.1](https://github.com/XIYO/xiyo.github.io/compare/v2.3.0...v2.3.1) (2025-07-27)
 
 

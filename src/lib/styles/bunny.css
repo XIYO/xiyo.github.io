@@ -213,3 +213,11 @@
     --color-cyan: oklch(63% 0.14 175deg);     /* #2aa198 */
     --color-green: oklch(68% 0.16 120deg);    /* #859900 */
 }
+
+@layer base {
+    main {
+        h1, h2, h3, h4, h5, h6 {
+            @apply bg-primary text-surface-50-950 p-4 font-black text-xl uppercase tracking-wider;
+        }
+    }
+}

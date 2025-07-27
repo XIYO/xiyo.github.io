@@ -11,8 +11,9 @@
 	const { category } = $props();
 </script>
 
-<Card negative>
-	<h2 class="bg-primary text-white p-4 font-black text-xl uppercase">categories</h2>
+<main>
+	<section>
+	<h2>categories</h2>
 
 	<div class="p-4">
 		{#if category.childCategories.length}
@@ -30,10 +31,8 @@
 			{m.subCategoryEmpty()}
 		{/if}
 	</div>
-</Card>
 
-<Card negative>
-	<h2 class="bg-primary text-white p-4 font-black text-xl uppercase">posts</h2>
+	<h2>posts</h2>
 
 	<ul class="p-4 flex flex-col gap-2">
 		{#each category.allPosts as post (post.absolutePath)}
@@ -42,4 +41,5 @@
 			</li>
 		{/each}
 	</ul>
-</Card>
+	</section>
+</main>

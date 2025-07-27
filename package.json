@@ -19,6 +19,8 @@
 	"devDependencies": {
 		"@inlang/paraglide-js": "2.2.0",
 		"@playwright/test": "^1.54.1",
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
 		"@shikijs/rehype": "^3.8.1",
 		"@shikijs/transformers": "^3.8.1",
 		"@skeletonlabs/skeleton": "^3.1.7",
@@ -46,6 +48,7 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.2",
 		"remark-stringify": "^11.0.0",
+		"semantic-release": "^24.2.7",
 		"shiki": "^3.8.1",
 		"super-sitemap": "^1.0.5",
 		"svelte": "https://pkg.pr.new/svelte@async",

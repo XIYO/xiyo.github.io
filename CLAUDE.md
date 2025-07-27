@@ -46,11 +46,6 @@ pnpm preview      # Preview production build locally
 pnpm deploy       # Deploy to Cloudflare Workers
 ```
 
-### Component Development
-
-```bash
-pnpm storybook    # Start Storybook (port 6006)
-```
 
 ## Architecture & Key Patterns
 

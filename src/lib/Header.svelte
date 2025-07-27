@@ -1,9 +1,8 @@
 <script>
-	import { page } from '$app/state';
-	import Card from '$lib/ui/card/Card.svelte';
+	import {page} from '$app/state';
 	import Nav from '$lib/components/Nav.svelte';
-	import { afterNavigate } from '$app/navigation';
-	import { deLocalizeHref } from './paraglide/runtime';
+	import {afterNavigate} from '$app/navigation';
+	import {deLocalizeHref} from './paraglide/runtime';
 	import * as m from '$lib/paraglide/messages.js';
 
 	/** @type {HTMLDialogElement} */

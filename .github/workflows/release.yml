@@ -22,6 +22,7 @@ jobs:
         with:
           fetch-depth: 0  # 전체 히스토리 필요 (버전 계산용)
           persist-credentials: false
+          submodules: recursive  # 서브모듈 체크아웃 필요
       
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4

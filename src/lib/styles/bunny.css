@@ -258,7 +258,7 @@
 		}
 
 		a {
-			@apply text-primary-500 underline;
+			@apply hover:preset-tonal-primary;
 		}
 
 		ul {

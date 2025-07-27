@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/XIYO/xiyo.github.io/compare/v2.3.0...v2.3.1) (2025-07-27)
+
+
+### Bug Fixes
+
+* prevent duplicate deploy workflow execution ([#47](https://github.com/XIYO/xiyo.github.io/issues/47)) ([99e1dd6](https://github.com/XIYO/xiyo.github.io/commit/99e1dd6e30c0ccee1dd41d91db8d8cb3fcf8ec9d))
+
 # [2.3.0](https://github.com/XIYO/xiyo.github.io/compare/v2.2.0...v2.3.0) (2025-07-27)
 
 

@@ -257,6 +257,10 @@
 			@apply leading-snug m-2;
 		}
 
+		a {
+			@apply text-primary-500 underline;
+		}
+
 		ul {
 			@apply list-disc pl-6 m-2;
 		}

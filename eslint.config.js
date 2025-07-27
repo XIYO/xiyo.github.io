@@ -1,6 +1,3 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from 'eslint-plugin-storybook';
-
 import js from '@eslint/js';
 import svelte from 'eslint-plugin-svelte';
 import prettier from 'eslint-config-prettier';
@@ -27,11 +24,9 @@ export default [
 			'.obsidian/',
 			'playwright.config.cjs',
 			'node_modules/',
-			'storybook-static/**',
 			'.wrangler/**',
 			'coverage/**',
 			'static/**/*.md'
 		]
 	},
-	...storybook.configs['flat/recommended']
 ];

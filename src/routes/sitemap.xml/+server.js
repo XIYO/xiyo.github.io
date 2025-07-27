@@ -120,21 +120,15 @@ async function scanDirectory(dirPath, locale, relativePath, urls) {
 					? postPath 
 					: `/${locale}${postPath}`;
 				
-				// 포스트 메타데이터에서 lastModified 필드만 가져오기
+				// 포스트 메타데이터에서 정확한 수정일 가져오기
 				const lastmod = await getPostLastModified(postUrl, stats);
 				
-				const urlEntry = {
+				urls.add({
 					url: postUrl,
 					priority: getPriority(postUrl),
-					changefreq: getChangeFreq(postUrl)
-				};
-				
-				// lastModified가 있을 때만 추가
-				if (lastmod) {
-					urlEntry.lastmod = lastmod;
-				}
-				
-				urls.add(urlEntry);
+					changefreq: getChangeFreq(postUrl),
+					lastmod: lastmod
+				});
 			}
 		}
 	} catch (error) {
@@ -186,35 +180,47 @@ function getChangeFreq(url) {
 }
 
 /**
- * Get last modified date for a post from metadata only
- * Only uses metadata.lastModified field, no fallback
+ * Get accurate last modified date for a post
+ * Priority: metadata.lastModified > metadata.modified > metadata.dates.last > file mtime
  */
 async function getPostLastModified(postUrl, fileStats) {
 	try {
 		// 포스트 인스턴스 가져오기
 		const postInstance = Post.getPosts(postUrl);
 		if (!postInstance) {
-			return null;
+			return fileStats.mtime.toISOString().split('T')[0];
 		}
 		
 		// 메타데이터 가져오기
 		const metadata = await postInstance.getMetadata();
 		if (!metadata?.data) {
-			return null;
+			return fileStats.mtime.toISOString().split('T')[0];
 		}
 		
 		const data = metadata.data;
 		
-		// lastModified 필드만 사용, 없으면 null 반환
+		// 1순위: lastModified 필드
 		if (data.lastModified) {
 			return new Date(data.lastModified).toISOString().split('T')[0];
 		}
 		
-		return null;
+		// 2순위: modified 필드  
+		if (data.modified) {
+			return new Date(data.modified).toISOString().split('T')[0];
+		}
+		
+		// 3순위: dates 배열의 마지막 날짜
+		if (data.dates && Array.isArray(data.dates) && data.dates.length > 0) {
+			const lastDate = data.dates[data.dates.length - 1];
+			return new Date(lastDate).toISOString().split('T')[0];
+		}
+		
+		// 4순위: 파일 시스템 수정 시간
+		return fileStats.mtime.toISOString().split('T')[0];
 		
 	} catch (error) {
 		console.warn(`포스트 메타데이터 로드 실패 ${postUrl}:`, error.message);
-		return null;
+		return fileStats.mtime.toISOString().split('T')[0];
 	}
 }
 
@@ -222,15 +228,13 @@ async function getPostLastModified(postUrl, fileStats) {
  * Generate sitemap XML
  */
 function generateSitemapXml(urls) {
-	const urlEntries = urls.map(({ url, priority, changefreq, lastmod }) => {
-		const lastmodTag = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : '';
-		return `
+	const urlEntries = urls.map(({ url, priority, changefreq, lastmod }) => `
   <url>
-    <loc>https://blog.xiyo.dev${url}</loc>${lastmodTag}
+    <loc>https://blog.xiyo.dev${url}</loc>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
-  </url>`;
-	}).join('');
+  </url>`).join('');
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

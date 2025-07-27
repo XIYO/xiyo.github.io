@@ -9,15 +9,11 @@ export default {
 				configPath: undefined,
 				environment: undefined,
 				persist: undefined
-			},
-			fallback: 'plaintext',
-			routes: {
-				include: ['/*'],
-				exclude: ['<all>']
 			}
 		}),
 		prerender: {
 			handleMissingId: 'warn'
-		}
+		},
+		trailingSlash: 'always'
 	}
 };

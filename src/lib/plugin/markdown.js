@@ -8,6 +8,7 @@ import remarkExtractFrontmatter from 'remark-extract-frontmatter';
 import remarkRehype from 'remark-rehype';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeCallouts from 'rehype-callouts';
+import rehypeMermaid from 'rehype-mermaid';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
 import { load as yamlLoad } from 'js-yaml';
@@ -42,6 +43,7 @@ function remarkStaticImagePath() {
  * @returns {import('unified').Processor}
  */
 function getProcessor() {
+	// rehype-mermaid 순서 변경으로 인한 캐시 무효화
 	if (!cachedProcessor) {
 		cachedProcessor = unified()
 			// remark 단계: 마크다운 파싱
@@ -55,6 +57,23 @@ function getProcessor() {
 
 			// rehype 단계: HTML 변환 및 처리
 			.use(remarkRehype, { allowDangerousHtml: true })
+			.use(rehypeMermaid, {
+				strategy: 'inline-svg',
+				mermaidConfig: {
+					theme: 'default',
+					themeVariables: {
+						fontFamily: 'inherit'
+					}
+				},
+				// GitHub Actions 환경을 위한 명시적 브라우저 설정
+				browser: process.env.CI ? 'chromium' : undefined,
+				launchOptions: process.env.CI 
+					? {
+						headless: true,
+						args: ['--no-sandbox', '--disable-setuid-sandbox']
+					}
+					: undefined
+			})
 			.use(rehypeShiki, rehypeShikiOptions)
 			.use(rehypeCallouts, {
 				theme: 'obsidian' // Obsidian 테마 사용

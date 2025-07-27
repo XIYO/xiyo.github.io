@@ -10,10 +10,7 @@
 			class="inline-block text-center align-middle focus:outline-none cursor-pointer group"
 		>
 			{#each 'chimi' as letter, i (i)}
-				<span
-					class="inline-block animate-bounce"
-					style:--delay="{i * 0.1}s">{letter}</span
-				>
+				<span class="inline-block animate-bounce" style:--delay="{i * 0.1}s">{letter}</span>
 			{/each}
 			<span class="ml-1 inline-block">
 				<span class="group-focus:hidden">🎈</span>

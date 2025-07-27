@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    # 매일 한국 시간 자정 (UTC 15:00)  
+    # 매일 한국 시간 자정 (UTC 15:00)
     - cron: '0 15 * * *'
   workflow_dispatch:
 

@@ -1,6 +1,6 @@
 <script>
-	import {datetime} from '$lib/paraglide/registry.js';
-	import {getLocale} from '$lib/paraglide/runtime.js';
+	import { datetime } from '$lib/paraglide/registry.js';
+	import { getLocale } from '$lib/paraglide/runtime.js';
 
 	/**
 	 * @typedef {import('../types/components.js').PostProps} PostProps

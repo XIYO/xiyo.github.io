@@ -98,3 +98,18 @@ git commit -m "docs: README 수정 [skip ci]"
 ```
 
 `[skip ci]` 플래그를 사용하면 릴리즈 워크플로우가 실행되지 않습니다.
+
+## 버전 확인
+
+현재 프로젝트 버전을 확인하려면:
+
+```bash
+# package.json 버전 확인
+npm version
+
+# 최신 Git 태그 확인  
+git describe --tags --abbrev=0
+
+# GitHub Release 확인
+gh release list
+```

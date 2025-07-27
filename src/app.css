@@ -5,12 +5,18 @@
 @import './markdown.css';
 @import './callouts-obsidian.css';
 
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton/optional/presets';
+@import './lib/styles/bunny.css';
+
+@source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
+
 :root {
 	color-scheme: light dark;
 }
 
 @theme {
-	--color-white: hsl(42, 66%, 93%);
+	--color-white: hsl(42, 67%, 93%);
 	--color-black: hsl(200, 5%, 10%);
 
 	--color-surface: light-dark(hsl(200, 4%, 16%), hsl(42, 66%, 93%));
@@ -36,17 +42,3 @@
 	--font-sans: 'Pretendard Variable', 'Pretendard', sans-serif;
 }
 
-@layer base {
-	:root {
-		@apply bg-primary-active text-content overscroll-none;
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply text-primary;
-	}
-}

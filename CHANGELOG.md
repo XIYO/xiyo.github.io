@@ -1,3 +1,10 @@
+## [2.3.7](https://github.com/XIYO/xiyo.github.io/compare/v2.3.6...v2.3.7) (2025-07-27)
+
+
+### Bug Fixes
+
+* 하위 카테고리 없음 메시지에 패딩 추가 ([#57](https://github.com/XIYO/xiyo.github.io/issues/57)) ([1beee76](https://github.com/XIYO/xiyo.github.io/commit/1beee76fd1b4db4066d9508f4a08bc7f7f85d16c)), closes [#56](https://github.com/XIYO/xiyo.github.io/issues/56)
+
 ## [2.3.6](https://github.com/XIYO/xiyo.github.io/compare/v2.3.5...v2.3.6) (2025-07-27)
 
 

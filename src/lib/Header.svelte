@@ -41,7 +41,7 @@
 	});
 </script>
 
-<header class="bg-primary text-white border-b sticky top-0 flex h-16">
+<header class="bg-primary-500 text-white border-b sticky top-0 flex h-16">
 	{#if !isRoot}
 		<a href="./" class="w-16 text-center content-center-safe">
 			<span class="text-3xl">✈️</span>

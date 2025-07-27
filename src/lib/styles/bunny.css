@@ -226,7 +226,7 @@
 		}
 
 		h1 {
-			@apply text-xl font-black p-4 bg-primary;
+			@apply text-xl font-black p-4 bg-primary-500;
 		}
 
 		h2 {
@@ -262,7 +262,7 @@
 		}
 
 		pre {
-			@apply m-2 p-2 overflow-y-auto border border-primary rounded;
+			@apply m-2 p-2 overflow-y-auto border border-primary-500 rounded;
 		}
 	}
 }

@@ -72,7 +72,7 @@
 	</section>
 
 	{#if hasDates}
-		<ul class="bg-primary p-2 text-right text-xs">
+		<ul class="bg-primary-500 p-2 text-right text-xs">
 			<li>First commit : {firstCommitDateString}</li>
 			{#if firstCommitDateString !== lastCommitDateString}
 				<li>Last commit : {lastCommitDateString}</li>

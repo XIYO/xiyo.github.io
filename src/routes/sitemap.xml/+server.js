@@ -2,6 +2,7 @@ import { readdir, stat } from 'fs/promises';
 import { join } from 'path';
 import { locales, baseLocale } from '$lib/paraglide/runtime';
 import { dev } from '$app/environment';
+import Post from '$lib/post/Post.js';
 
 /**
  * Generate sitemap.xml dynamically
@@ -119,12 +120,21 @@ async function scanDirectory(dirPath, locale, relativePath, urls) {
 					? postPath 
 					: `/${locale}${postPath}`;
 				
-				urls.add({
+				// 포스트 메타데이터에서 lastModified 필드만 가져오기
+				const lastmod = await getPostLastModified(postUrl, stats);
+				
+				const urlEntry = {
 					url: postUrl,
 					priority: getPriority(postUrl),
-					changefreq: getChangeFreq(postUrl),
-					lastmod: stats.mtime.toISOString().split('T')[0]
-				});
+					changefreq: getChangeFreq(postUrl)
+				};
+				
+				// lastModified가 있을 때만 추가
+				if (lastmod) {
+					urlEntry.lastmod = lastmod;
+				}
+				
+				urls.add(urlEntry);
 			}
 		}
 	} catch (error) {
@@ -176,16 +186,51 @@ function getChangeFreq(url) {
 }
 
 /**
+ * Get last modified date for a post from metadata only
+ * Only uses metadata.lastModified field, no fallback
+ */
+async function getPostLastModified(postUrl, fileStats) {
+	try {
+		// 포스트 인스턴스 가져오기
+		const postInstance = Post.getPosts(postUrl);
+		if (!postInstance) {
+			return null;
+		}
+		
+		// 메타데이터 가져오기
+		const metadata = await postInstance.getMetadata();
+		if (!metadata?.data) {
+			return null;
+		}
+		
+		const data = metadata.data;
+		
+		// lastModified 필드만 사용, 없으면 null 반환
+		if (data.lastModified) {
+			return new Date(data.lastModified).toISOString().split('T')[0];
+		}
+		
+		return null;
+		
+	} catch (error) {
+		console.warn(`포스트 메타데이터 로드 실패 ${postUrl}:`, error.message);
+		return null;
+	}
+}
+
+/**
  * Generate sitemap XML
  */
 function generateSitemapXml(urls) {
-	const urlEntries = urls.map(({ url, priority, changefreq, lastmod }) => `
+	const urlEntries = urls.map(({ url, priority, changefreq, lastmod }) => {
+		const lastmodTag = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : '';
+		return `
   <url>
-    <loc>https://blog.xiyo.dev${url}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <loc>https://blog.xiyo.dev${url}</loc>${lastmodTag}
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
-  </url>`).join('');
+  </url>`;
+	}).join('');
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

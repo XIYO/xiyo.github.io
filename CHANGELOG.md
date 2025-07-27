@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/XIYO/xiyo.github.io/compare/v2.3.2...v2.3.3) (2025-07-27)
+
+
+### Bug Fixes
+
+* optimize deploy workflow with build artifacts ([#49](https://github.com/XIYO/xiyo.github.io/issues/49)) ([5e7ebc3](https://github.com/XIYO/xiyo.github.io/commit/5e7ebc31f7fba5077c5c03de8a233172a5b49c1f))
+
 ## [2.3.2](https://github.com/XIYO/xiyo.github.io/compare/v2.3.1...v2.3.2) (2025-07-27)
 
 

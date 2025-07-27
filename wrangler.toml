@@ -10,7 +10,7 @@ workers_dev = true
 directory = "./build"
 binding = "ASSETS"
 html_handling = "auto-trailing-slash"
-not_found_handling = "single-page-application"
+not_found_handling = "none"
 
 # Routes configuration - 커스텀 도메인 설정 (필요시 활성화)
 [[routes]]

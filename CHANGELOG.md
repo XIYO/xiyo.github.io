@@ -1,3 +1,10 @@
+## [2.3.6](https://github.com/XIYO/xiyo.github.io/compare/v2.3.5...v2.3.6) (2025-07-27)
+
+
+### Bug Fixes
+
+* GitHub Actions에서 서브모듈 체크아웃 누락 문제 해결 ([46a1001](https://github.com/XIYO/xiyo.github.io/commit/46a1001d8d4a230b0d0374b623388f72916f14e9))
+
 ## [2.3.5](https://github.com/XIYO/xiyo.github.io/compare/v2.3.4...v2.3.5) (2025-07-27)
 
 

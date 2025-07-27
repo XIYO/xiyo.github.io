@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/state';
-	import Card from '$lib/ui/card/Card.svelte';
 	import Nav from '$lib/components/Nav.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { deLocalizeHref } from './paraglide/runtime';
@@ -42,7 +41,7 @@
 	});
 </script>
 
-<Card tag="header" class="flex h-16">
+<header class="bg-primary-500 text-white border-b sticky top-0 flex h-16">
 	{#if !isRoot}
 		<a href="./" class="w-16 text-center content-center-safe">
 			<span class="text-3xl">✈️</span>
@@ -73,11 +72,11 @@
 		>
 		<span class="sr-only">Go to Nav</span>
 	</a>
-</Card>
+</header>
 
 <dialog
 	bind:this={navRef}
-	class="ml-auto sm:w-sm h-screen bg-surface text-surface-inverse backdrop:bg-black/50 max-h-none max-w-none w-screen"
+	class="ml-auto sm:w-sm h-screen preset-filled-surface-50-950 backdrop:bg-black/50 max-h-none max-w-none w-screen"
 >
 	<form method="dialog" class="w-fit ml-auto">
 		<button type="submit" class="p-4 block cursor-pointer">

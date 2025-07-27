@@ -20,7 +20,6 @@
 		event.preventDefault();
 		setLocale(locale);
 	}
-
 </script>
 
 <nav class="p-4 uppercase text-2xl font-black" {...rest}>

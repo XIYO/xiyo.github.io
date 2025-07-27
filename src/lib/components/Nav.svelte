@@ -5,11 +5,11 @@
 
 	const { ...rest } = $props();
 
-	const menu = {
-		home: { href: '/' },
-		posts: { href: '/posts' },
-		about: { href: '/about' },
-		globe: { href: '/globe' }
+	const menuPaths = {
+		home: '/',
+		posts: '/posts',
+		about: '/about',
+		globe: '/globe'
 	};
 
 	/**
@@ -20,16 +20,17 @@
 		event.preventDefault();
 		setLocale(locale);
 	}
+
 </script>
 
 <nav class="p-4 uppercase text-2xl font-black" {...rest}>
 	<ul class="flex flex-col gap-4 items-center">
-		{#each Object.entries(menu) as [key, { href }] (key)}
+		{#each Object.entries(menuPaths) as [key, path] (key)}
 			<li
 				class="aria-[current=page]:text-primary"
-				aria-current={deLocalizeHref(page.url.pathname) === href ? 'page' : undefined}
+				aria-current={deLocalizeHref(page.url.pathname) === path ? 'page' : undefined}
 			>
-				<a {href}>{key}</a>
+				<a href={localizeHref(path)}>{key}</a>
 			</li>
 		{/each}
 	</ul>

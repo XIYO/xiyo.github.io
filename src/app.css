@@ -10,6 +10,9 @@
 }
 
 @theme {
+	--color-white: hsl(42, 66%, 93%);
+	--color-black: hsl(200, 5%, 10%);
+
 	--color-surface: light-dark(hsl(200, 4%, 16%), hsl(42, 66%, 93%));
 	--color-surface-muted: light-dark(hsl(240, 4%, 95%), hsl(200, 5%, 15%));
 	--color-surface-inverse: light-dark(hsl(42, 66%, 93%), hsl(200, 4%, 16%));
@@ -36,5 +39,14 @@
 @layer base {
 	:root {
 		@apply bg-primary-active text-content overscroll-none;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply text-primary;
 	}
 }

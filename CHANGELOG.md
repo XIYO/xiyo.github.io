@@ -1,3 +1,10 @@
+## [2.3.4](https://github.com/XIYO/xiyo.github.io/compare/v2.3.3...v2.3.4) (2025-07-27)
+
+
+### Bug Fixes
+
+* correct build artifact path from .cloudflare/ to build/ ([#50](https://github.com/XIYO/xiyo.github.io/issues/50)) ([cc2766f](https://github.com/XIYO/xiyo.github.io/commit/cc2766fea89fd22e0f0e9065c56a781be8233d4a))
+
 ## [2.3.3](https://github.com/XIYO/xiyo.github.io/compare/v2.3.2...v2.3.3) (2025-07-27)
 
 

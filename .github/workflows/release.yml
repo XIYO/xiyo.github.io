@@ -51,25 +51,16 @@ jobs:
       # - name: 🔍 Run tests
       #   run: pnpm test
       
+      - name: 📦 Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: .cloudflare/
+          retention-days: 1
+      
       - name: 🚀 Semantic Release
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-  # 릴리즈 후 배포 트리거
-  trigger-deploy:
-    needs: release
-    if: success()
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🚀 Trigger deployment
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'deploy.yml',
-              ref: 'main'
-            })
+  # 릴리즈 후 배포는 workflow_run 이벤트로 자동 트리거됨

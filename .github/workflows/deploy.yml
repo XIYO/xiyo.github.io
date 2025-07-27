@@ -1,42 +1,29 @@
 name: Deploy to Cloudflare Workers
 
 on:
-  schedule:
-    # 매일 한국 시간 자정 (UTC 15:00)
-    - cron: '0 15 * * *'
+  workflow_run:
+    workflows: ["🚀 Semantic Release"]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
-  release:
-    types: [published]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Release 워크플로우가 성공한 경우에만 실행
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     permissions:
       contents: read
       deployments: write
+      actions: read  # 아티팩트 다운로드를 위해 필요
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
         with:
-          submodules: recursive # Git 서브모듈을 재귀적으로 클론
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
-
-      - name: Build project
-        run: pnpm build
+          name: build-output
+          path: .cloudflare/
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3

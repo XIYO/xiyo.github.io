@@ -4,10 +4,16 @@ on:
   push:
     branches:
       - main
+    # 릴리즈 커밋은 별도 워크플로우에서 처리하므로 제외
+    paths-ignore:
+      - 'CHANGELOG.md'
+      - 'package.json'
   schedule:
     # 매일 한국 시간 자정 (UTC 15:00)
     - cron: '0 15 * * *'
   workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   deploy:

@@ -8,7 +8,7 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
-  actions: write  # workflow dispatch를 위해 필요
+  deployments: write  # Cloudflare deployment를 위해 필요
 
 jobs:
   release:
@@ -51,16 +51,15 @@ jobs:
       # - name: 🔍 Run tests
       #   run: pnpm test
       
-      - name: 📦 Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: build/
-          retention-days: 1
-      
       - name: 🚀 Semantic Release
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-  # 릴리즈 후 배포는 workflow_run 이벤트로 자동 트리거됨
+      
+      - name: 🚀 Deploy to Cloudflare Workers
+        if: success()
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --env production

@@ -2,7 +2,6 @@
 @import 'pretendard-jp/dist/web/variable/pretendardvariable-jp-dynamic-subset.css';
 @import '@kfonts/neodgm-code/index.css';
 @import 'tailwindcss';
-@import './markdown.css';
 @import './callouts-obsidian.css';
 
 @import '@skeletonlabs/skeleton';

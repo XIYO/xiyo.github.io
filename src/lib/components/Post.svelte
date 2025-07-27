@@ -1,7 +1,6 @@
 <script>
-	import { datetime } from '$lib/paraglide/registry.js';
-	import { getLocale } from '$lib/paraglide/runtime.js';
-	import Card from '$lib/ui/card/Card.svelte';
+	import {datetime} from '$lib/paraglide/registry.js';
+	import {getLocale} from '$lib/paraglide/runtime.js';
 
 	/**
 	 * @typedef {import('../types/components.js').PostProps} PostProps
@@ -67,17 +66,10 @@
 			: '';
 </script>
 
-<Card negative>
-	<div id="post-content" class="p-4">
-		<!-- Content rendering with safety checks -->
-		{#if postContent?.value}
-			<!-- eslint-disable svelte/no-at-html-tags -->
-			{@html postContent.value}
-			<!-- eslint-enable svelte/no-at-html-tags -->
-		{:else}
-			<div class="text-gray-500 italic">Content not available</div>
-		{/if}
-	</div>
+<main>
+	<section id="post-content">
+		{@html postContent.value}
+	</section>
 
 	{#if hasDates}
 		<ul class="bg-primary p-2 text-right text-xs">
@@ -87,4 +79,4 @@
 			{/if}
 		</ul>
 	{/if}
-</Card>
+</main>

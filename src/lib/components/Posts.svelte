@@ -14,18 +14,18 @@
     <section>
         <h2>categories</h2>
 
-        {#if category.childCategories.length}
-            <div class="uppercase flex flex-col gap-2 p-4">
+        <div class="uppercase flex flex-col gap-2 p-4">
+            {#if category.childCategories.length}
                 {#each category.childCategories as childCategory (childCategory.absolutePath)}
                     <a href={localizeHref(childCategory.absolutePath)}>
                         {childCategory.name}
                         <!-- ({childCategory.allPosts.length}) -->
                     </a>
                 {/each}
-            </div>
-        {:else}
-            {m.subCategoryEmpty()}
-        {/if}
+            {:else}
+                {m.subCategoryEmpty()}
+            {/if}
+        </div>
     </section>
 
     <section>

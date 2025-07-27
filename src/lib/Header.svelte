@@ -42,7 +42,7 @@
 	});
 </script>
 
-<Card tag="header" class="flex h-16">
+<header class="preset-filled-surface-950-50 flex h-16">
 	{#if !isRoot}
 		<a href="./" class="w-16 text-center content-center-safe">
 			<span class="text-3xl">✈️</span>
@@ -73,7 +73,7 @@
 		>
 		<span class="sr-only">Go to Nav</span>
 	</a>
-</Card>
+</header>
 
 <dialog
 	bind:this={navRef}

@@ -1,9 +1,8 @@
 ## [2.3.10](https://github.com/XIYO/xiyo.github.io/compare/v2.3.9...v2.3.10) (2025-07-28)
 
-
 ### Bug Fixes
 
-* 헤딩 요소의 바텀 보더 스타일 제거 ([be6da52](https://github.com/XIYO/xiyo.github.io/commit/be6da52c76ba4df3fdc3dcc64f083324ba94b3d4)), closes [#60](https://github.com/XIYO/xiyo.github.io/issues/60)
+- 헤딩 요소의 바텀 보더 스타일 제거 ([be6da52](https://github.com/XIYO/xiyo.github.io/commit/be6da52c76ba4df3fdc3dcc64f083324ba94b3d4)), closes [#60](https://github.com/XIYO/xiyo.github.io/issues/60)
 
 ## [2.3.9](https://github.com/XIYO/xiyo.github.io/compare/v2.3.8...v2.3.9) (2025-07-28)
 

@@ -380,7 +380,7 @@
 
 		/* Hover States for tbody rows with preset-tonal-primary */
 		tbody.preset-tonal-primary > tr:hover,
-		tbody[class*="hover:preset-tonal-primary"] > tr:hover {
+		tbody[class*='hover:preset-tonal-primary'] > tr:hover {
 			@apply bg-primary-200 dark:bg-primary-800;
 			@apply text-primary-900 dark:text-primary-100;
 		}

@@ -28,7 +28,7 @@
 			{@const currentPath = deLocalizeHref(page.url.pathname)}
 			{@const isCurrentPage = path === '/' ? currentPath === '/' : currentPath.startsWith(path)}
 			<li
-				class={[`text-center`, {'underline' : isCurrentPage}]}
+				class={[`text-center`, { underline: isCurrentPage }]}
 				aria-current={isCurrentPage ? 'page' : undefined}
 			>
 				<a class="p-4 block" href={localizeHref(path)}>{key}</a>

@@ -314,7 +314,7 @@
 		table {
 			@apply my-4 w-full border-collapse;
 			@apply border border-surface-300-700;
-			@apply bg-surface-50-900;
+			@apply bg-surface-50-950;
 			@apply rounded-lg overflow-x-scroll;
 		}
 

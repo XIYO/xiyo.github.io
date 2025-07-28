@@ -1,3 +1,10 @@
+## [2.3.9](https://github.com/XIYO/xiyo.github.io/compare/v2.3.8...v2.3.9) (2025-07-28)
+
+
+### Reverts
+
+* Revert "Merge pull request [#59](https://github.com/XIYO/xiyo.github.io/issues/59) from XIYO/58-design-포스트-화면-헤딩의-과도한-스타일-개선" ([b162959](https://github.com/XIYO/xiyo.github.io/commit/b162959996ea459b5c445614d1d5ce90a6f0ad7e))
+
 ## [2.3.8](https://github.com/XIYO/xiyo.github.io/compare/v2.3.7...v2.3.8) (2025-07-28)
 
 

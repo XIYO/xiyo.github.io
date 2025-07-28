@@ -46,7 +46,6 @@ pnpm preview      # Preview production build locally
 pnpm deploy       # Deploy to Cloudflare Workers
 ```
 
-
 ## Architecture & Key Patterns
 
 ### Tech Stack

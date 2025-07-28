@@ -67,11 +67,11 @@ function getProcessor() {
 				},
 				// GitHub Actions 환경을 위한 명시적 브라우저 설정
 				browser: process.env.CI ? 'chromium' : undefined,
-				launchOptions: process.env.CI 
+				launchOptions: process.env.CI
 					? {
-						headless: true,
-						args: ['--no-sandbox', '--disable-setuid-sandbox']
-					}
+							headless: true,
+							args: ['--no-sandbox', '--disable-setuid-sandbox']
+						}
 					: undefined
 			})
 			.use(rehypeShiki, rehypeShikiOptions)

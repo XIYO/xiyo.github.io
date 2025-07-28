@@ -12,7 +12,7 @@ export async function GET() {
 	try {
 		const urls = await generateAllUrls();
 		const sitemap = generateSitemapXml(urls);
-		
+
 		return new Response(sitemap, {
 			headers: {
 				'Content-Type': 'application/xml',
@@ -35,7 +35,7 @@ export const prerender = true;
  */
 async function generateAllUrls() {
 	const urls = new Set();
-	
+
 	// 홈페이지 추가
 	for (const locale of locales) {
 		if (locale === baseLocale) {
@@ -58,7 +58,7 @@ async function generateAllUrls() {
 	// 각 언어별 URL 스캔
 	for (const locale of locales) {
 		const localeUrls = await scanLocaleUrls(locale);
-		localeUrls.forEach(url => urls.add(url));
+		localeUrls.forEach((url) => urls.add(url));
 	}
 
 	return Array.from(urls);
@@ -70,13 +70,13 @@ async function generateAllUrls() {
 async function scanLocaleUrls(locale) {
 	const urls = new Set();
 	const staticPath = join(process.cwd(), 'static', locale);
-	
+
 	try {
 		await scanDirectory(staticPath, locale, '', urls);
 	} catch (error) {
 		console.warn(`⚠️  ${locale} 디렉토리 스캔 실패:`, error.message);
 	}
-	
+
 	return Array.from(urls);
 }
 
@@ -86,43 +86,38 @@ async function scanLocaleUrls(locale) {
 async function scanDirectory(dirPath, locale, relativePath, urls) {
 	try {
 		const entries = await readdir(dirPath);
-		
+
 		for (const entry of entries) {
 			// assets, 숨김 파일 제외
 			if (entry.startsWith('.') || entry === 'assets') {
 				continue;
 			}
-			
+
 			const fullPath = join(dirPath, entry);
 			const stats = await stat(fullPath);
 			const currentPath = relativePath ? `${relativePath}/${entry}` : `/${entry}`;
-			
+
 			if (stats.isDirectory()) {
 				// 디렉토리는 카테고리 URL로 추가
-				const categoryUrl = locale === baseLocale 
-					? currentPath 
-					: `/${locale}${currentPath}`;
-				
+				const categoryUrl = locale === baseLocale ? currentPath : `/${locale}${currentPath}`;
+
 				urls.add({
 					url: categoryUrl,
 					priority: getPriority(categoryUrl),
 					changefreq: getChangeFreq(categoryUrl),
 					lastmod: stats.mtime.toISOString().split('T')[0]
 				});
-				
+
 				// 하위 디렉토리 재귀 스캔
 				await scanDirectory(fullPath, locale, currentPath, urls);
-				
 			} else if (entry.endsWith('.md')) {
 				// 마크다운 파일은 포스트 URL로 추가
 				const postPath = currentPath.replace(/\.md$/, '');
-				const postUrl = locale === baseLocale 
-					? postPath 
-					: `/${locale}${postPath}`;
-				
+				const postUrl = locale === baseLocale ? postPath : `/${locale}${postPath}`;
+
 				// 포스트 메타데이터에서 정확한 수정일 가져오기
 				const lastmod = await getPostLastModified(postUrl, stats);
-				
+
 				urls.add({
 					url: postUrl,
 					priority: getPriority(postUrl),
@@ -144,18 +139,17 @@ function getPriority(url) {
 	if (url === '/' || url.match(/^\/(en-us|ja-jp)\/?$/)) {
 		return 1.0;
 	}
-	
+
 	// 메인 카테고리 (/posts, /posts/development 등)
-	if (url.match(/^(\/[^/]+)?\/posts\/?$/) || 
-		url.match(/^(\/[^/]+)?\/posts\/[^/]+\/?$/)) {
+	if (url.match(/^(\/[^/]+)?\/posts\/?$/) || url.match(/^(\/[^/]+)?\/posts\/[^/]+\/?$/)) {
 		return 0.8;
 	}
-	
+
 	// 서브 카테고리
 	if (url.match(/^(\/[^/]+)?\/posts\/[^/]+\/[^/]+\/?$/) && !url.includes('.')) {
 		return 0.6;
 	}
-	
+
 	// 개별 포스트
 	return 0.5;
 }
@@ -168,13 +162,12 @@ function getChangeFreq(url) {
 	if (url === '/' || url.match(/^\/(en-us|ja-jp)\/?$/)) {
 		return 'daily';
 	}
-	
+
 	// 메인 카테고리 = 주간
-	if (url.match(/^(\/[^/]+)?\/posts\/?$/) || 
-		url.match(/^(\/[^/]+)?\/posts\/[^/]+\/?$/)) {
+	if (url.match(/^(\/[^/]+)?\/posts\/?$/) || url.match(/^(\/[^/]+)?\/posts\/[^/]+\/?$/)) {
 		return 'weekly';
 	}
-	
+
 	// 개별 포스트, 서브카테고리 = 월간
 	return 'monthly';
 }
@@ -190,34 +183,33 @@ async function getPostLastModified(postUrl, fileStats) {
 		if (!postInstance) {
 			return fileStats.mtime.toISOString().split('T')[0];
 		}
-		
+
 		// 메타데이터 가져오기
 		const metadata = await postInstance.getMetadata();
 		if (!metadata?.data) {
 			return fileStats.mtime.toISOString().split('T')[0];
 		}
-		
+
 		const data = metadata.data;
-		
+
 		// 1순위: lastModified 필드
 		if (data.lastModified) {
 			return new Date(data.lastModified).toISOString().split('T')[0];
 		}
-		
-		// 2순위: modified 필드  
+
+		// 2순위: modified 필드
 		if (data.modified) {
 			return new Date(data.modified).toISOString().split('T')[0];
 		}
-		
+
 		// 3순위: dates 배열의 마지막 날짜
 		if (data.dates && Array.isArray(data.dates) && data.dates.length > 0) {
 			const lastDate = data.dates[data.dates.length - 1];
 			return new Date(lastDate).toISOString().split('T')[0];
 		}
-		
+
 		// 4순위: 파일 시스템 수정 시간
 		return fileStats.mtime.toISOString().split('T')[0];
-		
 	} catch (error) {
 		console.warn(`포스트 메타데이터 로드 실패 ${postUrl}:`, error.message);
 		return fileStats.mtime.toISOString().split('T')[0];
@@ -228,13 +220,17 @@ async function getPostLastModified(postUrl, fileStats) {
  * Generate sitemap XML
  */
 function generateSitemapXml(urls) {
-	const urlEntries = urls.map(({ url, priority, changefreq, lastmod }) => `
+	const urlEntries = urls
+		.map(
+			({ url, priority, changefreq, lastmod }) => `
   <url>
     <loc>https://blog.xiyo.dev${url}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
-  </url>`).join('');
+  </url>`
+		)
+		.join('');
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

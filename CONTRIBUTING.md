@@ -16,16 +16,16 @@
 
 ### 커밋 타입
 
-| 타입 | 버전 | 설명 | 예시 |
-|------|------|------|------|
-| `feat` | **minor** | 새로운 기능 추가 | `feat: 사용자 로그인 기능 추가` |
-| `fix` | **patch** | 버그 수정 | `fix: 로그인 오류 수정` |
-| `chore` | - | 빌드, 설정 변경 | `chore: 의존성 업데이트` |
-| `docs` | - | 문서 변경 | `docs: README 업데이트` |
-| `style` | - | 코드 스타일 변경 | `style: 코드 포맷팅` |
-| `refactor` | - | 코드 리팩토링 | `refactor: 컴포넌트 구조 개선` |
-| `test` | - | 테스트 추가/수정 | `test: 로그인 테스트 추가` |
-| `perf` | **patch** | 성능 개선 | `perf: 이미지 로딩 최적화` |
+| 타입       | 버전      | 설명             | 예시                            |
+| ---------- | --------- | ---------------- | ------------------------------- |
+| `feat`     | **minor** | 새로운 기능 추가 | `feat: 사용자 로그인 기능 추가` |
+| `fix`      | **patch** | 버그 수정        | `fix: 로그인 오류 수정`         |
+| `chore`    | -         | 빌드, 설정 변경  | `chore: 의존성 업데이트`        |
+| `docs`     | -         | 문서 변경        | `docs: README 업데이트`         |
+| `style`    | -         | 코드 스타일 변경 | `style: 코드 포맷팅`            |
+| `refactor` | -         | 코드 리팩토링    | `refactor: 컴포넌트 구조 개선`  |
+| `test`     | -         | 테스트 추가/수정 | `test: 로그인 테스트 추가`      |
+| `perf`     | **patch** | 성능 개선        | `perf: 이미지 로딩 최적화`      |
 
 ### Breaking Changes
 
@@ -46,6 +46,7 @@ feat(api)!: 사용자 인증 방식 변경
 ### 예시
 
 **Good ✅**
+
 ```bash
 feat: 다크 모드 지원 추가
 fix: 모바일에서 네비게이션 버그 수정
@@ -55,6 +56,7 @@ feat(blog): 태그 필터링 기능 구현
 ```
 
 **Bad ❌**
+
 ```bash
 added new feature
 bug fix
@@ -107,7 +109,7 @@ git commit -m "docs: README 수정 [skip ci]"
 # package.json 버전 확인
 npm version
 
-# 최신 Git 태그 확인  
+# 최신 Git 태그 확인
 git describe --tags --abbrev=0
 
 # GitHub Release 확인

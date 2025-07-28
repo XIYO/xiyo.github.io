@@ -22,22 +22,22 @@ const handleParaglide = ({ event, resolve }) =>
  */
 const handleBaseLocaleAssets = ({ event, resolve }) => {
 	const { pathname } = event.url;
-	
+
 	// Check if this is a request for assets that should be redirected to base locale
 	if (pathname.includes('/posts/') && pathname.includes('/assets/')) {
 		// Get the current locale from the request
 		const currentLocale = extractLocaleFromRequest(event.request);
-		
+
 		// Check if path doesn't already include any locale prefix
-		const hasLocalePrefix = locales.some(locale => pathname.startsWith(`/${locale}/`));
-		
+		const hasLocalePrefix = locales.some((locale) => pathname.startsWith(`/${locale}/`));
+
 		if (!hasLocalePrefix && currentLocale === baseLocale) {
 			// Redirect to the base locale version of the asset
 			const baseLocaleAssetPath = `/${baseLocale}${pathname}`;
 			throw redirect(302, baseLocaleAssetPath);
 		}
 	}
-	
+
 	return resolve(event);
 };
 

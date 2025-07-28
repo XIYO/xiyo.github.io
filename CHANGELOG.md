@@ -1,3 +1,16 @@
+# [2.4.0](https://github.com/XIYO/xiyo.github.io/compare/v2.3.10...v2.4.0) (2025-07-28)
+
+
+### Bug Fixes
+
+* correct dark mode utility class from 900 to 950 ([98dd8c3](https://github.com/XIYO/xiyo.github.io/commit/98dd8c3d623a50adbcdc39f8c39c4d5ebba4f607))
+* improve table visibility in dark mode with Skeleton UI syntax ([21e5eae](https://github.com/XIYO/xiyo.github.io/commit/21e5eaea9fc5634a528363c7bc680d0d464f7ab4))
+
+
+### Features
+
+* apply Solarized colors to Mermaid diagrams for better portability ([4386e4b](https://github.com/XIYO/xiyo.github.io/commit/4386e4bf90a43322e1926a2edd285af8dec82d2c)), closes [#71](https://github.com/XIYO/xiyo.github.io/issues/71)
+
 ## [2.3.10](https://github.com/XIYO/xiyo.github.io/compare/v2.3.9...v2.3.10) (2025-07-28)
 
 ### Bug Fixes

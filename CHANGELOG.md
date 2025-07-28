@@ -1,3 +1,10 @@
+## [2.3.8](https://github.com/XIYO/xiyo.github.io/compare/v2.3.7...v2.3.8) (2025-07-28)
+
+
+### Bug Fixes
+
+* remove heading background colors and ensure primary text color ([c6d7b8f](https://github.com/XIYO/xiyo.github.io/commit/c6d7b8fa0931fb7b97cd3f3c3c8fe35279d785ad)), closes [#58](https://github.com/XIYO/xiyo.github.io/issues/58)
+
 ## [2.3.7](https://github.com/XIYO/xiyo.github.io/compare/v2.3.6...v2.3.7) (2025-07-27)
 
 

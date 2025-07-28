@@ -222,7 +222,7 @@
 		h4,
 		h5,
 		h6 {
-			@apply text-white bg-primary-500 uppercase tracking-wider;
+			@apply text-white bg-primary-500 uppercase tracking-wider border-b-0 border-none;
 		}
 
 		h1 {
@@ -261,7 +261,7 @@
 		h4,
 		h5,
 		h6 {
-			@apply text-primary-500 uppercase tracking-wider;
+			@apply text-primary-500 uppercase tracking-wider border-b-0 border-none;
 		}
 
 		h1 {

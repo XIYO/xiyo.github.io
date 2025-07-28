@@ -22,27 +22,29 @@
 	}
 </script>
 
-<nav class="p-4 uppercase text-2xl font-black" {...rest}>
-	<ul class="flex flex-col gap-4 items-center">
+<nav class="p-4 uppercase text-2xl font-black tracking-widest" {...rest}>
+	<ul class="grid">
 		{#each Object.entries(menuPaths) as [key, path] (key)}
+			{@const currentPath = deLocalizeHref(page.url.pathname)}
+			{@const isCurrentPage = path === '/' ? currentPath === '/' : currentPath.startsWith(path)}
 			<li
-				class="aria-[current=page]:text-primary"
-				aria-current={deLocalizeHref(page.url.pathname) === path ? 'page' : undefined}
+				class={[`text-center`, {'underline' : isCurrentPage}]}
+				aria-current={isCurrentPage ? 'page' : undefined}
 			>
-				<a href={localizeHref(path)}>{key}</a>
+				<a class="p-4 block" href={localizeHref(path)}>{key}</a>
 			</li>
 		{/each}
 	</ul>
 
 	<hr class="my-4" />
 
-	<ul class="flex flex-col gap-4 text-right">
+	<ul class="grid">
 		{#each locales as locale (locale)}
-			<li>
+			<li class="text-right">
 				<a
+					class="block p-2"
 					href={localizeHref(page.url.pathname, { locale })}
 					onclick={(e) => handleLocaleClick(e, locale)}
-					class="hover:text-primary cursor-pointer"
 				>
 					{locale}
 				</a>

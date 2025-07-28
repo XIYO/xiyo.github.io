@@ -215,6 +215,10 @@
 }
 
 @layer base {
+	a {
+		@apply hover:preset-tonal-primary;
+	}
+
 	main:not(#post) {
 		h1,
 		h2,
@@ -247,10 +251,6 @@
 
 		h6 {
 			@apply text-xs font-normal p-2;
-		}
-
-		a {
-			@apply hover:preset-tonal-primary;
 		}
 	}
 

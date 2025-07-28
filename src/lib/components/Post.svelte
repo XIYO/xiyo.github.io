@@ -66,7 +66,7 @@
 			: '';
 </script>
 
-<main>
+<main id="post">
 	<section>
 		{@html postContent.value}
 	</section>

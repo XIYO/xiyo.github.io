@@ -216,37 +216,43 @@
 
 @layer base {
 	main {
+		h1, h2, h3, h4, h5, h6 {
+			@apply text-primary-500;
+		}
+	}
+
+	main#post {
 		h1,
 		h2,
 		h3,
 		h4,
 		h5,
 		h6 {
-			@apply text-white uppercase tracking-wider;
+			@apply text-primary-500 uppercase tracking-wider;
 		}
 
 		h1 {
-			@apply text-xl font-black p-4 bg-primary-500;
+			@apply text-xl font-black p-4;
 		}
 
 		h2 {
-			@apply text-lg font-extrabold p-3 bg-primary-200-800;
+			@apply text-lg font-extrabold p-3;
 		}
 
 		h3 {
-			@apply text-base font-bold p-3 bg-primary-100-900;
+			@apply text-base font-bold p-3;
 		}
 
 		h4 {
-			@apply text-sm font-semibold p-2 bg-primary-100-900;
+			@apply text-sm font-semibold p-2;
 		}
 
 		h5 {
-			@apply text-sm font-medium p-2 bg-primary-100-900;
+			@apply text-sm font-medium p-2;
 		}
 
 		h6 {
-			@apply text-xs font-normal p-2 bg-primary-100-900;
+			@apply text-xs font-normal p-2;
 		}
 
 		h1:first-child {

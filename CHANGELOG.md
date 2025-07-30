@@ -1,3 +1,17 @@
+# [2.5.0](https://github.com/XIYO/xiyo.github.io/compare/v2.4.0...v2.5.0) (2025-07-30)
+
+
+### Bug Fixes
+
+* add Playwright browser installation step [skip ci] ([fd5969f](https://github.com/XIYO/xiyo.github.io/commit/fd5969fe0ec15312a9a5afe92f988f7b16bd2491))
+
+
+### Features
+
+* add content-only deployment workflow [skip ci] ([bd276d3](https://github.com/XIYO/xiyo.github.io/commit/bd276d3026770e97d0b3bb84437bdb814b5468f3))
+* match release workflow environment (Node 22, Playwright cache) [skip ci] ([e6f5b5f](https://github.com/XIYO/xiyo.github.io/commit/e6f5b5f87879090e1b5dbcfa2b2ebf4fe837988d))
+* match release workflow exactly (except semantic-release) [skip ci] ([7f61a45](https://github.com/XIYO/xiyo.github.io/commit/7f61a45758154c5f4199eb693a662c8598ebdec7))
+
 # [2.4.0](https://github.com/XIYO/xiyo.github.io/compare/v2.3.10...v2.4.0) (2025-07-28)
 
 

@@ -1,4 +1,4 @@
-name: Content Deploy
+name: 🚀 Content Deploy
 
 on:
   workflow_dispatch:
@@ -8,42 +8,53 @@ on:
         required: false
         default: 'Content update'
 
+permissions:
+  contents: read
+  deployments: write # Cloudflare deployment를 위해 필요
+
 jobs:
   deploy:
     name: Deploy Content Only
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout
+      - name: 📦 Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
-          
-      - name: Setup pnpm
+          fetch-depth: 0 # 전체 히스토리 필요 (빌드용)
+          persist-credentials: false
+          submodules: recursive # 서브모듈 체크아웃 필요
+
+      - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4
-        
-      - name: Setup Node.js
+
+      - name: 📦 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'pnpm'
-          
-      - name: Cache Playwright browsers
+
+      - name: 💾 Cache Playwright browsers
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright
-          
-      - name: Install dependencies
+
+      - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
-        
-      - name: Install Playwright browsers
+
+      - name: 🎭 Install Playwright browsers
         run: pnpm exec playwright install --with-deps chromium
-        
-      - name: Build
+
+      - name: 🏗️ Build project
         run: pnpm build
-        
-      - name: Deploy to Cloudflare
-        run: pnpm deploy
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # semantic-release 단계 생략
+
+      - name: 🚀 Deploy to Cloudflare Workers
+        if: success()
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --env production

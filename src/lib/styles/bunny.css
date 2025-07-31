@@ -384,5 +384,12 @@
 			@apply bg-primary-200 dark:bg-primary-800;
 			@apply text-primary-900 dark:text-primary-100;
 		}
+
+		/* Fix for footnote link scroll offset with sticky header */
+		/* Apply scroll-margin-top to elements that are targets of footnote links */
+		[id^="user-content-fnref-"],
+		[id^="user-content-fn-"] {
+			scroll-margin-top: 5rem; /* 4rem header height + 1rem padding */
+		}
 	}
 }

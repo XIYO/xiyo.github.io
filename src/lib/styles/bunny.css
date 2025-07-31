@@ -386,10 +386,10 @@
 		}
 
 		/* Fix for footnote link scroll offset with sticky header */
-		/* Apply scroll-margin-top to elements that are targets of footnote links */
+		/* Position footnote links at 1/3 from top of viewport for better readability */
 		[id^="user-content-fnref-"],
 		[id^="user-content-fn-"] {
-			scroll-margin-top: 5rem; /* 4rem header height + 1rem padding */
+			scroll-margin-top: calc(33vh - 4rem); /* 1/3 viewport height minus header */
 		}
 	}
 }

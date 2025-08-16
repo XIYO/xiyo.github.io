@@ -3,7 +3,6 @@
 	import ttodo from '$lib/assets/ttodo.png?enhanced';
 	import bbakey from '$lib/assets/bbakey.png?enhanced';
 	import extractor from '$lib/assets/extractor.png?enhanced';
-	import zheon from '$lib/assets/zheon.png?enhanced';
 	import * as m from '$lib/paraglide/messages.js';
 </script>
 
@@ -44,15 +43,6 @@
 			/>
 			<h2>Extractor</h2>
 			<p>{m.extractorDescription()}</p>
-		</a>
-		<a class="text-center" href="https://zheon.xiyo.dev" target="_blank">
-			<enhanced:img
-				src={zheon}
-				alt={m.zheonImgAlt()}
-				class="object-cover aspect-square w-full h-auto"
-			/>
-			<h2>Zheon</h2>
-			<p>{m.zheonDescription()}</p>
 		</a>
 	</div>
 </main>

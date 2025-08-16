@@ -1,6 +1,32 @@
-User-agent: *
+# robots.txt for xiyo.dev
+# All crawlers are welcome
 
+User-agent: *
+Allow: /
+Crawl-delay: 0
+
+# Explicitly allow Naver Yeti bot
+User-agent: Yeti
+Allow: /
+Crawl-delay: 0
+
+# Allow other Korean search engines
+User-agent: Daumoa
 Allow: /
 
-# Sitemap
+# Allow Google
+User-agent: Googlebot
+Allow: /
+
+# Allow Bing
+User-agent: Bingbot
+Allow: /
+
+# Disallow certain paths if needed
+Disallow: /api/
+Disallow: /_app/
+Disallow: /build/
+
+# Sitemaps
 Sitemap: https://blog.xiyo.dev/sitemap.xml
+Sitemap: https://blog.xiyo.dev/rss.xml

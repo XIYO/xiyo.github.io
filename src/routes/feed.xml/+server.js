@@ -12,7 +12,7 @@ export async function GET() {
 		// Gather recent posts from the root category
 		const root = Category.getCategory('');
 		const all = await root?.getAllPosts();
-		const recent = (all ?? []).slice(0, 30);
+    const recent = (all ?? []).slice(0, 100);
 
 		const items = await Promise.all(
 			recent.map(async (post) => {
@@ -26,12 +26,12 @@ export async function GET() {
 			})
 		);
 
-		const rss = buildRss({
-			title: 'xiyo.dev feed',
-			link: SITE,
-			description: 'Recent posts from xiyo.dev',
-			items
-		});
+    const rss = buildRss({
+      title: 'xiyo.dev feed',
+      link: SITE,
+      description: 'Recent posts from xiyo.dev',
+      items
+    });
 
 		return new Response(rss, {
 			headers: {
@@ -62,9 +62,9 @@ function escapeXml(str) {
 }
 
 function buildRss({ title, link, description, items }) {
-	const entries = items
-		.map(
-			(i) => `
+  const entries = items
+    .map(
+      (i) => `
     <item>
       <title>${escapeXml(i.title)}</title>
       <link>${escapeXml(i.link)}</link>
@@ -72,16 +72,18 @@ function buildRss({ title, link, description, items }) {
       <pubDate>${i.pubDate}</pubDate>
       <description><![CDATA[${i.description}]]></description>
     </item>`
-		)
-		.join('');
+    )
+    .join('');
 
-	return `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
     <title>${escapeXml(title)}</title>
     <link>${escapeXml(link)}</link>
     <description>${escapeXml(description)}</description>
-    <language>${baseLocale}</language>
+    <language>ko-KR</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <ttl>60</ttl>
     ${entries}
   </channel>
 </rss>`;

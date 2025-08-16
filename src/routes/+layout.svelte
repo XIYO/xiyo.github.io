@@ -11,9 +11,13 @@
 	const effectiveTitle = $derived(page.data.meta?.title ?? m.title());
 	const effectiveDescription = $derived(page.data.meta?.description ?? m.description());
 
-	// URL helpers
-	const origin = $derived(page.url.origin);
-	const pathname = $derived(page.url.pathname);
+    // URL helpers
+    const origin = $derived(page.url.origin);
+    const pathname = $derived(page.url.pathname);
+
+    // Naver site verification (optional, injected via PUBLIC_NAVER_SITE_VERIFICATION)
+    // This will be empty string if not set in .env
+    const naverVerification = $derived(import.meta.env.PUBLIC_NAVER_SITE_VERIFICATION || '');
 
 	// Base path without locale using Paraglide runtime
 	const basePath = $derived(() => {
@@ -200,6 +204,22 @@
 		title="xiyo.dev feed"
 		href={origin + '/feed.xml'}
 	/>
+	{#if naverVerification}
+		<meta name="naver-site-verification" content={naverVerification} />
+	{/if}
+
+	<!-- Naver-specific meta tags -->
+	<meta name="robots" content="index,follow" />
+	<meta name="subject" content={page.data.meta?.subject || 'Development Blog'} />
+	<meta name="classification" content={page.data.meta?.classification || 'Technology'} />
+	<meta name="publisher" content={page.data.meta?.publisher || 'xiyo.dev'} />
+	<meta name="author" content={page.data.meta?.author || 'XIYO'} />
+	{#if page.data.meta?.keywords}
+		<meta name="keywords" content={page.data.meta.keywords} />
+	{/if}
+	<!-- Cache control for better Naver crawling -->
+	<meta http-equiv="cache-control" content="public, max-age=3600" />
+	<meta http-equiv="expires" content="3600" />
 	<meta property="og:title" content={page.data.meta?.title || effectiveTitle} />
 	<meta property="og:description" content={page.data.meta?.description || effectiveDescription} />
 	<meta property="og:type" content={page.data.meta?.type || (isArticle ? 'article' : 'website')} />
@@ -231,9 +251,6 @@
 			<meta property="article:tag" content={tag} />
 		{/each}
 	{/if}
-	<!--{#if page.data.meta.keywords}-->
-	<!--	<meta name="keywords" content={page.data.meta.keywords} />-->
-	<!--{/if}-->
 
 	<!-- Open Graph site name and locale -->
 	<meta property="og:site_name" content={effectiveTitle} />

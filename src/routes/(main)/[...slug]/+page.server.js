@@ -42,20 +42,26 @@ export async function load({ url }) {
 			postStats = { wordCount: words, timeRequired: `PT${minutes}M` };
 		}
 
-		// Meta construction with schema normalization
+		// Meta construction with schema normalization and Naver SEO
 		const meta = postMetadata?.data
 			? {
 					title: fm.title || m.title(),
 					description: fm.description || m.description(),
-					keywords: fm.keywords,
+					keywords: fm.keywords || (fm.tags ? fm.tags.join(', ') : ''),
 					type: 'article',
 					url: url.href,
 					publishedTime: fm.publishedTime,
 					modifiedTime: fm.modifiedTime,
 					tags: fm.tags,
 					image: fm.image,
-					author: fm.author,
-					section: fm.section
+					author: fm.author || 'XIYO',
+					section: fm.section,
+					// Naver-specific meta
+					subject: 'Development Article',
+					classification: 'Technology',
+					publisher: 'xiyo.dev',
+					robots: 'index, follow',
+					cacheControl: 'public, max-age=3600'
 				}
 			: {
 					// Category/list page description auto-summary from top posts
@@ -73,7 +79,14 @@ export async function load({ url }) {
 					})(),
 					type: 'website',
 					url: url.href,
-					image: category ? category.image || null : null
+					image: category ? category.image || null : null,
+					// Naver-specific meta for category pages
+					keywords: category?.name ? `${category.name}, 개발, 프로그래밍, 기술 블로그` : '개발, 프로그래밍',
+					subject: 'Development Blog',
+					classification: 'Technology',
+					publisher: 'xiyo.dev',
+					robots: 'index, follow',
+					cacheControl: 'public, max-age=3600'
 				};
 
 		return {

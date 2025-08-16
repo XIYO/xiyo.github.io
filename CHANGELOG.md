@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/XIYO/xiyo.github.io/compare/v2.5.0...v2.5.1) (2025-08-16)
+
+
+### Bug Fixes
+
+* **ci:** escape @ symbol in smoke test grep pattern ([5577acd](https://github.com/XIYO/xiyo.github.io/commit/5577acd40e74d01ea481d06f25566660a41b87aa))
+
 # [2.5.0](https://github.com/XIYO/xiyo.github.io/compare/v2.4.0...v2.5.0) (2025-07-30)
 
 ### Bug Fixes

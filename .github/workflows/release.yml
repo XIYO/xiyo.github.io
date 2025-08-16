@@ -49,8 +49,6 @@ jobs:
 
       - name: 🏗️ Build project
         run: pnpm build
-        env:
-          PUBLIC_NAVER_SITE_VERIFICATION: ${{ secrets.PUBLIC_NAVER_SITE_VERIFICATION }}
 
       - name: 🔍 Run unit tests
         run: pnpm run test:unit

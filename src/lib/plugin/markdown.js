@@ -8,6 +8,7 @@ import remarkExtractFrontmatter from 'remark-extract-frontmatter';
 import remarkRehype from 'remark-rehype';
 import rehypeCallouts from 'rehype-callouts';
 import rehypeStringify from 'rehype-stringify';
+import rehypeMermaid from 'rehype-mermaid';
 
 // 프리렌더 때만 무거운 플러그인을 로드한다.
 // 프리렌더가 아니면 가벼운 noop 플러그인을 제공해 .use(...) 체인이 깨지지 않게 한다.
@@ -16,10 +17,6 @@ const __noop = () => (tree) => tree;
 // Top-level await 가능: Vite/SvelteKit ESM, Cloudflare Workers 모두 지원
 const rehypeShiki = import.meta.env.PRERENDER
   ? (await import('@shikijs/rehype')).default
-  : __noop;
-
-const rehypeMermaid = import.meta.env.PRERENDER
-  ? (await import('rehype-mermaid')).default
   : __noop;
 import { visit } from 'unist-util-visit';
 import { load as yamlLoad } from 'js-yaml';

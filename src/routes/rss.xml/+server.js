@@ -1,6 +1,8 @@
 import Category from '$lib/post/Category.js';
 import * as m from '$lib/paraglide/messages.js';
 
+export const prerender = true;
+
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ url }) {
 	const origin = url.origin;

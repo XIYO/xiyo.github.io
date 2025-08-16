@@ -2,6 +2,7 @@
 	import jjakak from '$lib/assets/jjakak.jpeg?enhanced';
 	import ttodo from '$lib/assets/ttodo.png?enhanced';
 	import bbakey from '$lib/assets/bbakey.png?enhanced';
+	import extractor from '$lib/assets/extractor.png?enhanced';
 	import * as m from '$lib/paraglide/messages.js';
 </script>
 
@@ -33,6 +34,15 @@
 			/>
 			<h2>BbaKey</h2>
 			<p>{m.bbakeyDescription()}</p>
+		</a>
+		<a class="text-center" href="https://extractor.xiyo.dev" target="_blank">
+			<enhanced:img
+				src={extractor}
+				alt={m.extractorImgAlt()}
+				class="object-cover aspect-square w-full h-auto"
+			/>
+			<h2>Extractor</h2>
+			<p>{m.extractorDescription()}</p>
 		</a>
 	</div>
 </main>

@@ -1,6 +1,7 @@
 import { readdir, stat } from 'fs/promises';
 import { join } from 'path';
 import { locales, baseLocale } from '$lib/paraglide/runtime';
+import { localizeUrl, deLocalizeUrl } from '$lib/paraglide/runtime.js';
 import { dev } from '$app/environment';
 import Post from '$lib/post/Post.js';
 
@@ -219,6 +220,22 @@ async function getPostLastModified(postUrl, fileStats) {
 /**
  * Generate sitemap XML
  */
+// legacy helpers removed: using paraglide localizeUrl/deLocalizeUrl instead
+
+function buildAlternateLinks(url) {
+	const abs = new URL(`https://blog.xiyo.dev${url}`);
+	const baseAbs = deLocalizeUrl(abs);
+	const links = locales
+		.map((loc) => {
+			const locUrl = localizeUrl(baseAbs, { locale: loc });
+			return `\n    <xhtml:link rel="alternate" hreflang="${loc}" href="${locUrl.href}"/>`;
+		})
+		.join('');
+	const xDefaultUrl = localizeUrl(baseAbs, { locale: baseLocale });
+	const xDefault = `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${xDefaultUrl.href}"/>`;
+	return links + xDefault;
+}
+
 function generateSitemapXml(urls) {
 	const urlEntries = urls
 		.map(
@@ -227,13 +244,13 @@ function generateSitemapXml(urls) {
     <loc>https://blog.xiyo.dev${url}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <priority>${priority}</priority>${buildAlternateLinks(url)}
   </url>`
 		)
 		.join('');
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urlEntries}
 </urlset>`;
 }

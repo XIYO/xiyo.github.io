@@ -7,3 +7,4 @@ yarn.lock
 .obsidian/
 static/
 _drafts/
+src/routes/+layout.svelte

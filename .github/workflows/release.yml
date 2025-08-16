@@ -42,15 +42,17 @@ jobs:
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: 🎭 Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
-
       - name: 🏗️ Build project
         run: pnpm build
 
-      # 테스트는 일단 제외 (paraglide 런타임 이슈)
-      # - name: 🔍 Run tests
-      #   run: pnpm test
+      - name: 🎭 Install Playwright browsers (for smoke tests)
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: 🔍 Run unit tests
+        run: pnpm run test:unit
+
+      - name: 🚬 Run SEO smoke tests (@smoke)
+        run: pnpm run test:e2e -- --grep @smoke
 
       - name: 🚀 Semantic Release
         run: npx semantic-release

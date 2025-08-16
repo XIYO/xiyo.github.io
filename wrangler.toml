@@ -1,29 +1,30 @@
-# Top-level configuration
 name = "xiyo-blog"
-main = "./build/_worker.js"
-compatibility_date = "2024-12-01"
-compatibility_flags = ["nodejs_compat"]
-workers_dev = true
+main = ".svelte-kit/cloudflare/_worker.js"
 
-# Static Assets configuration (Workers Assets - 새로운 방식)
+# 최신 날짜로 갱신
+compatibility_date = "2025-08-16"
+
+# Node.js 호환 모드 유지 (2024-09-23+ 날짜 필요)
+compatibility_flags = ["nodejs_compat"]
+
+# routes를 쓰므로 workers_dev는 끔
+workers_dev = false
+
 [assets]
-directory = "./build"
+directory = ".svelte-kit/cloudflare"
 binding = "ASSETS"
 html_handling = "auto-trailing-slash"
 not_found_handling = "single-page-application"
 
-# Routes configuration - 커스텀 도메인 설정 (필요시 활성화)
 [[routes]]
 pattern = "blog.xiyo.dev/*"
 zone_name = "xiyo.dev"
 
-# Production environment
 [env.production]
-name = "xiyo-blog"
-workers_dev = true
-# 프로덕션에서는 메인 도메인을 사용하지 않고 workers.dev 서브도메인 사용
+# 충돌 방지: 기본 규칙을 쓰려면 name 줄을 지우거나, 아래처럼 명시적으로 분리
+name = "xiyo-blog-production"
+workers_dev = false
 
-# Observability settings
 [observability]
 enabled = true
 head_sampling_rate = 0.1

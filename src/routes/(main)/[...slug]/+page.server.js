@@ -1,6 +1,7 @@
 import Category from '$lib/post/Category.js';
 import Post from '$lib/post/Post.js';
 import * as m from '$lib/paraglide/messages.js';
+import { parseFrontmatter } from '$lib/post/meta-schema.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
@@ -22,23 +23,57 @@ export async function load({ url }) {
 		const title = postMetadata?.data?.title || category?.name || m.title();
 		const description = postMetadata?.data?.description || m.description();
 
-		// Safe OG metadata construction
-		const og = postMetadata?.data
+		// Unified meta construction with schema normalization
+		const fm = parseFrontmatter(postMetadata?.data ?? {}, {
+			fallbackTitle: m.title(),
+			fallbackDescription: m.description()
+		});
+		// Compute reading stats for articles
+		/** @type {{ wordCount?: number, timeRequired?: string } | null } */
+		let postStats = null;
+		if (postContent?.value && postMetadata?.data) {
+			const text = String(postContent.value)
+				.replace(/<[^>]+>/g, ' ')
+				.replace(/\s+/g, ' ')
+				.trim();
+			const words = text ? text.split(' ').length : 0;
+			const wpm = 200;
+			const minutes = Math.max(1, Math.ceil(words / wpm));
+			postStats = { wordCount: words, timeRequired: `PT${minutes}M` };
+		}
+
+		// Meta construction with schema normalization
+		const meta = postMetadata?.data
 			? {
-					title: postMetadata.data.title || m.title(),
-					description: postMetadata.data.description || m.description(),
-					keywords: postMetadata.data.keywords || [],
+					title: fm.title || m.title(),
+					description: fm.description || m.description(),
+					keywords: fm.keywords,
 					type: 'article',
 					url: url.href,
-					publishedTime: postMetadata.data.dates?.[0] || null,
-					modifiedTime: postMetadata.data.dates?.at(-1) || null,
-					tags: postMetadata.data.tags || []
+					publishedTime: fm.publishedTime,
+					modifiedTime: fm.modifiedTime,
+					tags: fm.tags,
+					image: fm.image,
+					author: fm.author,
+					section: fm.section
 				}
 			: {
-					title: m.title(),
-					description: m.description(),
+					// Category/list page description auto-summary from top posts
+					title: category?.name || m.title(),
+					description: (() => {
+						const titles = Array.isArray(category?.allPosts)
+							? category.allPosts
+									.slice(0, 5)
+									.map((p) => p?.data?.title || p?.absolutePath?.split('/')?.at(-1))
+									.filter(Boolean)
+							: [];
+						if (!titles.length) return m.description();
+						const summary = `Latest posts: ${titles.join(' · ')}`;
+						return summary.length > 300 ? summary.slice(0, 297) + '...' : summary;
+					})(),
 					type: 'website',
-					url: url.href
+					url: url.href,
+					image: category ? category.image || null : null
 				};
 
 		return {
@@ -47,7 +82,8 @@ export async function load({ url }) {
 			category,
 			postMetadata,
 			postContent,
-			og
+			meta,
+			postStats
 		};
 	} catch (error) {
 		console.error(`Error loading page data for ${url.pathname}:`, error);
@@ -59,7 +95,7 @@ export async function load({ url }) {
 			category: null,
 			postMetadata: null,
 			postContent: null,
-			og: {
+			meta: {
 				title: 'Error Loading Page',
 				description: 'This page could not be loaded',
 				type: 'website',

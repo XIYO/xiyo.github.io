@@ -51,7 +51,7 @@
 		"semantic-release": "^24.2.7",
 		"shiki": "^3.9.2",
 		"super-sitemap": "^1.0.5",
-		"svelte": "https://pkg.pr.new/svelte@async",
+		"svelte": "^5.38.1",
 		"svelte-check": "^4.3.1",
 		"typescript": "^5.9.2",
 		"unified": "^11.0.5",
@@ -75,7 +75,8 @@
 		"remark-extract-frontmatter": "^3.2.0",
 		"remark-frontmatter": "^5.0.0",
 		"remark-gfm": "^4.0.1",
-		"tailwindcss": "^4.1.12"
+		"tailwindcss": "^4.1.12",
+		"zod": "^4.0.17"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [

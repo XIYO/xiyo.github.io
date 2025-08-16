@@ -1,29 +1,25 @@
 # [2.5.0](https://github.com/XIYO/xiyo.github.io/compare/v2.4.0...v2.5.0) (2025-07-30)
 
-
 ### Bug Fixes
 
-* add Playwright browser installation step [skip ci] ([fd5969f](https://github.com/XIYO/xiyo.github.io/commit/fd5969fe0ec15312a9a5afe92f988f7b16bd2491))
-
+- add Playwright browser installation step [skip ci] ([fd5969f](https://github.com/XIYO/xiyo.github.io/commit/fd5969fe0ec15312a9a5afe92f988f7b16bd2491))
 
 ### Features
 
-* add content-only deployment workflow [skip ci] ([bd276d3](https://github.com/XIYO/xiyo.github.io/commit/bd276d3026770e97d0b3bb84437bdb814b5468f3))
-* match release workflow environment (Node 22, Playwright cache) [skip ci] ([e6f5b5f](https://github.com/XIYO/xiyo.github.io/commit/e6f5b5f87879090e1b5dbcfa2b2ebf4fe837988d))
-* match release workflow exactly (except semantic-release) [skip ci] ([7f61a45](https://github.com/XIYO/xiyo.github.io/commit/7f61a45758154c5f4199eb693a662c8598ebdec7))
+- add content-only deployment workflow [skip ci] ([bd276d3](https://github.com/XIYO/xiyo.github.io/commit/bd276d3026770e97d0b3bb84437bdb814b5468f3))
+- match release workflow environment (Node 22, Playwright cache) [skip ci] ([e6f5b5f](https://github.com/XIYO/xiyo.github.io/commit/e6f5b5f87879090e1b5dbcfa2b2ebf4fe837988d))
+- match release workflow exactly (except semantic-release) [skip ci] ([7f61a45](https://github.com/XIYO/xiyo.github.io/commit/7f61a45758154c5f4199eb693a662c8598ebdec7))
 
 # [2.4.0](https://github.com/XIYO/xiyo.github.io/compare/v2.3.10...v2.4.0) (2025-07-28)
 
-
 ### Bug Fixes
 
-* correct dark mode utility class from 900 to 950 ([98dd8c3](https://github.com/XIYO/xiyo.github.io/commit/98dd8c3d623a50adbcdc39f8c39c4d5ebba4f607))
-* improve table visibility in dark mode with Skeleton UI syntax ([21e5eae](https://github.com/XIYO/xiyo.github.io/commit/21e5eaea9fc5634a528363c7bc680d0d464f7ab4))
-
+- correct dark mode utility class from 900 to 950 ([98dd8c3](https://github.com/XIYO/xiyo.github.io/commit/98dd8c3d623a50adbcdc39f8c39c4d5ebba4f607))
+- improve table visibility in dark mode with Skeleton UI syntax ([21e5eae](https://github.com/XIYO/xiyo.github.io/commit/21e5eaea9fc5634a528363c7bc680d0d464f7ab4))
 
 ### Features
 
-* apply Solarized colors to Mermaid diagrams for better portability ([4386e4b](https://github.com/XIYO/xiyo.github.io/commit/4386e4bf90a43322e1926a2edd285af8dec82d2c)), closes [#71](https://github.com/XIYO/xiyo.github.io/issues/71)
+- apply Solarized colors to Mermaid diagrams for better portability ([4386e4b](https://github.com/XIYO/xiyo.github.io/commit/4386e4bf90a43322e1926a2edd285af8dec82d2c)), closes [#71](https://github.com/XIYO/xiyo.github.io/issues/71)
 
 ## [2.3.10](https://github.com/XIYO/xiyo.github.io/compare/v2.3.9...v2.3.10) (2025-07-28)
 

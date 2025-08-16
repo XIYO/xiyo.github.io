@@ -13,5 +13,13 @@
 	"terminal": "Terminal",
 	"back": "Back",
 	"terminalCaption": "Accessed using w3m from the terminal.",
-	"introduction": "I am a developer who loves the web. I consider accessibility and internationalization important, and aim for a web that everyone can use comfortably. I'm doing my best to ensure it displays well even in no js, no css environments."
+	"introduction": "I am a developer who loves the web. I consider accessibility and internationalization important, and aim for a web that everyone can use comfortably. I'm doing my best to ensure it displays well even in no js, no css environments.",
+	"ttodoImgAlt": "ttodo image",
+	"ttodoDescription": "Simple to-do management app. Uses local storage to save data.",
+	"bbakeyImgAlt": "BbaKey preview image",
+	"bbakeyDescription": "Shortcut key search service. Quickly find keyboard shortcuts for various programs.",
+	"extractorImgAlt": "Extractor preview image",
+	"extractorDescription": "Video subtitle extraction service. Extract subtitles from YouTube and other video platforms.",
+	"zheonImgAlt": "Zheon preview image",
+	"zheonDescription": "YouTube video AI summarization service. Quickly grasp key content of long videos."
 }

@@ -15,5 +15,11 @@
 	"terminalCaption": "ターミナルからw3mを使用してアクセスしました。",
 	"introduction": "ウェブを愛する開発者です。アクセシビリティと国際化を大切に考え、誰もが快適に使えるウェブを目指しています。no js、no css環境でもしっかり表示されるよう最大限努力しています。",
 	"ttodoImgAlt": "ttodo Todoアプリ画像",
-	"ttodoDescription": "シンプルなTodoアプリ。PWAで実装されており、ブラウザからアプリに直接インストールが可能です。"
+	"ttodoDescription": "シンプルなTodoアプリ。PWAで実装されており、ブラウザからアプリに直接インストールが可能です。",
+	"bbakeyImgAlt": "BbaKeyプレビュー画像",
+	"bbakeyDescription": "ショートカットキー検索サービス。様々なプログラムのショートカットを素早く検索できます。",
+	"extractorImgAlt": "Extractorプレビュー画像",
+	"extractorDescription": "動画字幕抽出サービス。YouTubeなどの動画から字幕を抽出できます。",
+	"zheonImgAlt": "Zheonプレビュー画像",
+	"zheonDescription": "YouTube動画をAIで要約するサービス。長い動画の要点を素早く把握できます。"
 }

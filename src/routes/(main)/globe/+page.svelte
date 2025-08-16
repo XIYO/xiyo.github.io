@@ -30,29 +30,29 @@
 		<a class="text-center" href="https://bbakey.xiyo.dev" target="_blank">
 			<enhanced:img
 				src={bbakey}
-				alt={'BbaKey preview image'}
+				alt={m.bbakeyImgAlt()}
 				class="object-cover aspect-square w-full h-auto"
 			/>
 			<h2>BbaKey</h2>
-			<p>{'A simple key-value tool'}</p>
+			<p>{m.bbakeyDescription()}</p>
 		</a>
 		<a class="text-center" href="https://extractor.xiyo.dev" target="_blank">
 			<enhanced:img
 				src={extractor}
-				alt={'Extractor preview image'}
+				alt={m.extractorImgAlt()}
 				class="object-cover aspect-square w-full h-auto"
 			/>
 			<h2>Extractor</h2>
-			<p>{'Text/metadata extraction utility'}</p>
+			<p>{m.extractorDescription()}</p>
 		</a>
 		<a class="text-center" href="https://zheon.xiyo.dev" target="_blank">
 			<enhanced:img
 				src={zheon}
-				alt={'Zheon preview image'}
+				alt={m.zheonImgAlt()}
 				class="object-cover aspect-square w-full h-auto"
 			/>
 			<h2>Zheon</h2>
-			<p>{'A small personal project'}</p>
+			<p>{m.zheonDescription()}</p>
 		</a>
 	</div>
 </main>

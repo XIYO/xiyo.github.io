@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/XIYO/xiyo.github.io/compare/v2.6.0...v2.7.0) (2025-08-16)
+
+
+### Features
+
+* **i18n:** add multilingual descriptions for all globe projects ([310fb33](https://github.com/XIYO/xiyo.github.io/commit/310fb339bc89c73d9276ae65a1a99ee7e8a8ab02))
+
 # [2.6.0](https://github.com/XIYO/xiyo.github.io/compare/v2.5.3...v2.6.0) (2025-08-16)
 
 

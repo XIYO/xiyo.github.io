@@ -1,3 +1,10 @@
+## [2.5.3](https://github.com/XIYO/xiyo.github.io/compare/v2.5.2...v2.5.3) (2025-08-16)
+
+
+### Bug Fixes
+
+* **build:** optimize Worker bundle by using conditional imports for rehype plugins ([cdc8540](https://github.com/XIYO/xiyo.github.io/commit/cdc8540c8bea2bf12ed5cb9f29aee4bc707cda2a))
+
 ## [2.5.2](https://github.com/XIYO/xiyo.github.io/compare/v2.5.1...v2.5.2) (2025-08-16)
 
 

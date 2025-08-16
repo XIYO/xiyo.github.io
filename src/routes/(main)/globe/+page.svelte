@@ -1,6 +1,7 @@
 <script>
 	import jjakak from '$lib/assets/jjakak.jpeg?enhanced';
 	import ttodo from '$lib/assets/ttodo.png?enhanced';
+	import bbakey from '$lib/assets/bbakey.png?enhanced';
 	import * as m from '$lib/paraglide/messages.js';
 </script>
 
@@ -23,6 +24,15 @@
 			/>
 			<h2>ttodo</h2>
 			<p>{m.ttodoDescription()}</p>
+		</a>
+		<a class="text-center" href="https://bbakey.xiyo.dev" target="_blank">
+			<enhanced:img
+				src={bbakey}
+				alt={m.bbakeyImgAlt()}
+				class="object-cover aspect-square w-full h-auto"
+			/>
+			<h2>BbaKey</h2>
+			<p>{m.bbakeyDescription()}</p>
 		</a>
 	</div>
 </main>

@@ -1,3 +1,12 @@
+## [2.5.2](https://github.com/XIYO/xiyo.github.io/compare/v2.5.1...v2.5.2) (2025-08-16)
+
+
+### Bug Fixes
+
+* **build:** use /static/public for Naver verification (prerender-safe); add .env.example hint\n\n- Revert to /static/public for prerendered route\n- Ensure build doesn’t fail when var exists (even empty)\n- Keep endpoint returning 404 when unset; 200 with code\n- Include Naver SEO routes and tags improvements ([6d7c081](https://github.com/XIYO/xiyo.github.io/commit/6d7c0812c8fabef53b6205463988e464d80dd325))
+* **ci:** add Naver verification environment variable to build step ([f456135](https://github.com/XIYO/xiyo.github.io/commit/f4561350080f0b781b2da98a3003fcea338d4bc2))
+* **release:** install Playwright browsers before build to prevent CI failures ([1aa0800](https://github.com/XIYO/xiyo.github.io/commit/1aa0800d9a8bbd634121eebfa82b3c87511386d1))
+
 ## [2.5.1](https://github.com/XIYO/xiyo.github.io/compare/v2.5.0...v2.5.1) (2025-08-16)
 
 

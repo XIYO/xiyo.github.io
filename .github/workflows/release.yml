@@ -52,7 +52,7 @@ jobs:
         run: pnpm run test:unit
 
       - name: 🚬 Run SEO smoke tests (@smoke)
-        run: pnpm run test:e2e -- --grep @smoke
+        run: pnpm exec playwright test --grep "\\@smoke"
 
       - name: 🚀 Semantic Release
         run: npx semantic-release

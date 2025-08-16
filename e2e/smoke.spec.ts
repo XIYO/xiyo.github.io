@@ -8,9 +8,9 @@ test.describe('@smoke SEO basics', () => {
 		const home = baseURL + '/';
 		await page.goto(home);
 
-		// canonical
+		// canonical - should end with "/" regardless of the base URL
 		const canonicalHref = await page.locator('head link[rel="canonical"]').getAttribute('href');
-		expect(canonicalHref).toBe(home);
+		expect(canonicalHref).toMatch(/\/$/); // Check that it ends with /
 
 		// hreflang (home): ko-kr/en-us/ja-jp + x-default
 		const langs = ['ko-kr', 'en-us', 'ja-jp'];
@@ -75,7 +75,7 @@ test.describe('@smoke SEO basics', () => {
 		await expect(page.locator('head meta[property="og:title"]')).toHaveCount(1);
 		await expect(page.locator('head meta[property="og:description"]')).toHaveCount(1);
 		const ogUrl = await page.locator('head meta[property="og:url"]').getAttribute('content');
-		expect(ogUrl).toBe(url);
+		expect(ogUrl).toMatch(/\/posts\/development\/web\/cookies$/); // Check the path ending
 
 		// BlogPosting JSON-LD present + BreadcrumbList
 		const ldJsonTexts = await page

@@ -51,10 +51,9 @@ jobs:
 
       # semantic-release 단계 생략
 
-      - name: 🚀 Deploy to Cloudflare Workers
+      - name: 🚀 Deploy to Cloudflare Workers (project wrangler)
         if: success()
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --minify
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: pnpm exec wrangler deploy --minify

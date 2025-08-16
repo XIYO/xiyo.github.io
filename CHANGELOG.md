@@ -1,3 +1,14 @@
+# [2.6.0](https://github.com/XIYO/xiyo.github.io/compare/v2.5.3...v2.6.0) (2025-08-16)
+
+
+### Features
+
+* add BbaKey project to globe page with automated screenshot ([dfdd02e](https://github.com/XIYO/xiyo.github.io/commit/dfdd02e524fa7fcdb9b99ab2f48ecb5e18f64523))
+* add Extractor project to globe page with YouTube subtitle API ([e8a75bf](https://github.com/XIYO/xiyo.github.io/commit/e8a75bf19b2fb846666d77cf39b38a4cfc0d7e94))
+* add Zheon YouTube AI summarization service to globe showcase ([6396f8e](https://github.com/XIYO/xiyo.github.io/commit/6396f8edabe9269bf65c64396ff3188dcd8ce4ac))
+* configure custom domain blog.xiyo.dev in wrangler.toml ([aab160d](https://github.com/XIYO/xiyo.github.io/commit/aab160d117b7d3e8ceed73ef54275adafd436df4))
+* **deploy:** switch to @sveltejs/adapter-cloudflare and worker deploy\n\n- Configure wrangler to use .svelte-kit/cloudflare/_worker.js\n- Add [assets] binding for worker-served static\n- Update scripts: deploy via wrangler on worker output\n- Fix globe page build by replacing missing paraglide keys with safe text\n\nThis migrates from static adapter to Cloudflare Worker deployment for blog.xiyo.dev. ([d2aac35](https://github.com/XIYO/xiyo.github.io/commit/d2aac352700f1a5ab8b720f92bef803b70c1adf2))
+
 ## [2.5.3](https://github.com/XIYO/xiyo.github.io/compare/v2.5.2...v2.5.3) (2025-08-16)
 
 ### Bug Fixes

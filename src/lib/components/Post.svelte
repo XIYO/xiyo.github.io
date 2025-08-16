@@ -68,6 +68,7 @@
 
 <main id="post">
 	<section>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html postContent.value}
 	</section>
 

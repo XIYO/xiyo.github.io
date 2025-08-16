@@ -5,7 +5,7 @@ import * as m from '$lib/paraglide/messages.js';
 export async function load({ url }) {
 	const root = Category.getCategory('');
 	const posts = await root?.getAllPosts();
-	const recent = (posts ?? []).slice(0, 50).map(post => ({
+	const recent = (posts ?? []).slice(0, 50).map((post) => ({
 		absolutePath: post.absolutePath,
 		data: post.data
 	}));
@@ -21,12 +21,17 @@ export async function load({ url }) {
 		classification: 'Technology',
 		publisher: 'xiyo.dev',
 		// Additional Naver-friendly keywords in Korean
-		keywords: '개발 블로그, 프로그래밍, 웹 개발, SvelteKit, JavaScript, TypeScript, 소프트웨어 개발, 기술 블로그, xiyo, 개발자 블로그',
+		keywords:
+			'개발 블로그, 프로그래밍, 웹 개발, SvelteKit, JavaScript, TypeScript, 소프트웨어 개발, 기술 블로그, xiyo, 개발자 블로그',
 		author: 'XIYO',
 		// Cache control for better crawling
 		cacheControl: 'public, max-age=3600',
 		// Naver-specific OpenGraph tags
-		ogLocale: url.pathname.startsWith('/en-us') ? 'en_US' : url.pathname.startsWith('/ja-jp') ? 'ja_JP' : 'ko_KR'
+		ogLocale: url.pathname.startsWith('/en-us')
+			? 'en_US'
+			: url.pathname.startsWith('/ja-jp')
+				? 'ja_JP'
+				: 'ko_KR'
 	};
 
 	return {

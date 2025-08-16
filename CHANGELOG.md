@@ -1,25 +1,22 @@
 ## [2.5.3](https://github.com/XIYO/xiyo.github.io/compare/v2.5.2...v2.5.3) (2025-08-16)
 
-
 ### Bug Fixes
 
-* **build:** optimize Worker bundle by using conditional imports for rehype plugins ([cdc8540](https://github.com/XIYO/xiyo.github.io/commit/cdc8540c8bea2bf12ed5cb9f29aee4bc707cda2a))
+- **build:** optimize Worker bundle by using conditional imports for rehype plugins ([cdc8540](https://github.com/XIYO/xiyo.github.io/commit/cdc8540c8bea2bf12ed5cb9f29aee4bc707cda2a))
 
 ## [2.5.2](https://github.com/XIYO/xiyo.github.io/compare/v2.5.1...v2.5.2) (2025-08-16)
 
-
 ### Bug Fixes
 
-* **build:** use /static/public for Naver verification (prerender-safe); add .env.example hint\n\n- Revert to /static/public for prerendered route\n- Ensure build doesn’t fail when var exists (even empty)\n- Keep endpoint returning 404 when unset; 200 with code\n- Include Naver SEO routes and tags improvements ([6d7c081](https://github.com/XIYO/xiyo.github.io/commit/6d7c0812c8fabef53b6205463988e464d80dd325))
-* **ci:** add Naver verification environment variable to build step ([f456135](https://github.com/XIYO/xiyo.github.io/commit/f4561350080f0b781b2da98a3003fcea338d4bc2))
-* **release:** install Playwright browsers before build to prevent CI failures ([1aa0800](https://github.com/XIYO/xiyo.github.io/commit/1aa0800d9a8bbd634121eebfa82b3c87511386d1))
+- **build:** use /static/public for Naver verification (prerender-safe); add .env.example hint\n\n- Revert to /static/public for prerendered route\n- Ensure build doesn’t fail when var exists (even empty)\n- Keep endpoint returning 404 when unset; 200 with code\n- Include Naver SEO routes and tags improvements ([6d7c081](https://github.com/XIYO/xiyo.github.io/commit/6d7c0812c8fabef53b6205463988e464d80dd325))
+- **ci:** add Naver verification environment variable to build step ([f456135](https://github.com/XIYO/xiyo.github.io/commit/f4561350080f0b781b2da98a3003fcea338d4bc2))
+- **release:** install Playwright browsers before build to prevent CI failures ([1aa0800](https://github.com/XIYO/xiyo.github.io/commit/1aa0800d9a8bbd634121eebfa82b3c87511386d1))
 
 ## [2.5.1](https://github.com/XIYO/xiyo.github.io/compare/v2.5.0...v2.5.1) (2025-08-16)
 
-
 ### Bug Fixes
 
-* **ci:** escape @ symbol in smoke test grep pattern ([5577acd](https://github.com/XIYO/xiyo.github.io/commit/5577acd40e74d01ea481d06f25566660a41b87aa))
+- **ci:** escape @ symbol in smoke test grep pattern ([5577acd](https://github.com/XIYO/xiyo.github.io/commit/5577acd40e74d01ea481d06f25566660a41b87aa))
 
 # [2.5.0](https://github.com/XIYO/xiyo.github.io/compare/v2.4.0...v2.5.0) (2025-07-30)
 

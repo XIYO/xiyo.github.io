@@ -15,9 +15,7 @@ import rehypeMermaid from 'rehype-mermaid';
 const __noop = () => (tree) => tree;
 
 // Top-level await 가능: Vite/SvelteKit ESM, Cloudflare Workers 모두 지원
-const rehypeShiki = import.meta.env.PRERENDER
-  ? (await import('@shikijs/rehype')).default
-  : __noop;
+const rehypeShiki = import.meta.env.PRERENDER ? (await import('@shikijs/rehype')).default : __noop;
 import { visit } from 'unist-util-visit';
 import { load as yamlLoad } from 'js-yaml';
 

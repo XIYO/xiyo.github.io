@@ -81,7 +81,9 @@ export async function load({ url }) {
 					url: url.href,
 					image: category ? category.image || null : null,
 					// Naver-specific meta for category pages
-					keywords: category?.name ? `${category.name}, 개발, 프로그래밍, 기술 블로그` : '개발, 프로그래밍',
+					keywords: category?.name
+						? `${category.name}, 개발, 프로그래밍, 기술 블로그`
+						: '개발, 프로그래밍',
 					subject: 'Development Blog',
 					classification: 'Technology',
 					publisher: 'xiyo.dev',

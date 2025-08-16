@@ -9,11 +9,11 @@ export async function GET({ url }) {
 	const root = Category.getCategory('');
 	const allPosts = await root?.getAllPosts();
 	const posts = (allPosts ?? []).slice(0, 50); // Recent 50 posts
-	
+
 	const title = m.title();
 	const description = m.description();
 	const now = new Date().toUTCString();
-	
+
 	// Generate RSS XML
 	const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" 
@@ -32,28 +32,32 @@ export async function GET({ url }) {
     <copyright>Copyright ${new Date().getFullYear()} XIYO</copyright>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <ttl>60</ttl>
-${posts.map(post => {
-	const path = post.absolutePath?.startsWith('/') ? post.absolutePath : '/' + post.absolutePath;
-	const postUrl = origin + path;
-	const postTitle = post.data?.title || path.split('/').pop()?.replace(/-/g, ' ') || 'Untitled';
-	const postDescription = post.data?.description || post.data?.messages?.[0] || '';
-	const postDate = new Date(post.data?.modified || post.data?.created || Date.now()).toUTCString();
-	const postAuthor = post.data?.author || 'XIYO';
-	const categories = post.data?.tags || [];
-	
-	return `    <item>
+${posts
+	.map((post) => {
+		const path = post.absolutePath?.startsWith('/') ? post.absolutePath : '/' + post.absolutePath;
+		const postUrl = origin + path;
+		const postTitle = post.data?.title || path.split('/').pop()?.replace(/-/g, ' ') || 'Untitled';
+		const postDescription = post.data?.description || post.data?.messages?.[0] || '';
+		const postDate = new Date(
+			post.data?.modified || post.data?.created || Date.now()
+		).toUTCString();
+		const postAuthor = post.data?.author || 'XIYO';
+		const categories = post.data?.tags || [];
+
+		return `    <item>
       <title>${escapeXml(postTitle)}</title>
       <link>${postUrl}</link>
       <guid isPermaLink="true">${postUrl}</guid>
       <description>${escapeXml(postDescription)}</description>
       <pubDate>${postDate}</pubDate>
       <dc:creator>${escapeXml(postAuthor)}</dc:creator>
-      ${categories.map(cat => `<category>${escapeXml(cat)}</category>`).join('\n      ')}
+      ${categories.map((cat) => `<category>${escapeXml(cat)}</category>`).join('\n      ')}
     </item>`;
-}).join('\n')}
+	})
+	.join('\n')}
   </channel>
 </rss>`;
-	
+
 	return new Response(xml, {
 		headers: {
 			'Content-Type': 'application/rss+xml; charset=utf-8',
@@ -66,12 +70,18 @@ function escapeXml(unsafe) {
 	if (!unsafe) return '';
 	return String(unsafe).replace(/[<>&'"]/g, (c) => {
 		switch (c) {
-			case '<': return '&lt;';
-			case '>': return '&gt;';
-			case '&': return '&amp;';
-			case '\'': return '&apos;';
-			case '"': return '&quot;';
-			default: return c;
+			case '<':
+				return '&lt;';
+			case '>':
+				return '&gt;';
+			case '&':
+				return '&amp;';
+			case "'":
+				return '&apos;';
+			case '"':
+				return '&quot;';
+			default:
+				return c;
 		}
 	});
 }

@@ -55,15 +55,15 @@ test.describe('@smoke SEO basics', () => {
 		});
 		expect(hasOrg).toBeTruthy();
 
-    // og:locale and alternates
-    await expect(page.locator('head meta[property="og:locale"]').first()).toHaveCount(1);
+		// og:locale and alternates
+		await expect(page.locator('head meta[property="og:locale"]').first()).toHaveCount(1);
 		const altLocales = await page.locator('head meta[property="og:locale:alternate"]').count();
 		expect(altLocales).toBeGreaterThan(0);
 
-    // RSS link present
-    await expect(
-      page.locator('head link[rel="alternate"][type="application/rss+xml"]').first()
-    ).toHaveCount(1);
+		// RSS link present
+		await expect(
+			page.locator('head link[rel="alternate"][type="application/rss+xml"]').first()
+		).toHaveCount(1);
 	});
 
 	test('a post page exposes BlogPosting JSON-LD and OG meta', async ({ page, baseURL }) => {

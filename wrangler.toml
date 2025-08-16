@@ -5,16 +5,16 @@ main = ".svelte-kit/cloudflare/_worker.js"
 compatibility_date = "2025-08-16"
 compatibility_flags = ["nodejs_compat"]
 
+# 커스텀 도메인 라우트 방식으로 전환
+[[routes]]
+pattern = "blog.xiyo.dev"
+custom_domain = true
+
 [assets]
 directory = ".svelte-kit/cloudflare"
 binding = "ASSETS"
 html_handling = "auto-trailing-slash"
 not_found_handling = "single-page-application"
-
-# blog.xiyo.dev 커스텀 도메인 설정
-[[routes]]
-pattern = "blog.xiyo.dev/*"
-zone_name = "xiyo.dev"
 
 [observability]
 enabled = true

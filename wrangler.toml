@@ -3,9 +3,6 @@ name = "xiyo-blog"
 # 최신 날짜로 갱신
 compatibility_date = "2025-08-16"
 
-# workers_dev를 끄고 커스텀 도메인 사용
-workers_dev = false
-
 [assets]
 directory = "build"
 html_handling = "auto-trailing-slash"

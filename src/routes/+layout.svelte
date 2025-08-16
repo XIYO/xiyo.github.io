@@ -1,7 +1,8 @@
 <script>
 	import { page } from '$app/state';
 	import * as m from '$lib/paraglide/messages.js';
-	import { locales, baseLocale, localizeUrl } from '$lib/paraglide/runtime';
+	import { locales, baseLocale, localizeUrl, deLocalizeUrl } from '$lib/paraglide/runtime';
+	import JsonLd from '$lib/JsonLd.svelte';
 	import '../app.css';
 
 	const { children } = $props();
@@ -14,17 +15,24 @@
 	const origin = $derived(page.url.origin);
 	const pathname = $derived(page.url.pathname);
 
-	// Strip leading locale from the current path to get a base path
+	// Base path without locale using Paraglide runtime
 	const basePath = $derived(() => {
-		const re = new RegExp(`^/(?:${locales.join('|')})(?=/|$)`);
-		const match = re.exec(pathname);
-		const stripped = match ? pathname.slice(match[0].length) : pathname;
-		return stripped || '/';
+		try {
+			const baseAbs = deLocalizeUrl(new URL(pathname, origin));
+			return baseAbs.pathname || '/';
+		} catch {
+			return '/';
+		}
 	});
 
 	const hrefForLocale = (loc) => {
-		const abs = new URL(basePath, origin);
-		return localizeUrl(abs, { locale: loc }).href;
+		try {
+			const abs = new URL(pathname, origin);
+			const baseAbs = deLocalizeUrl(abs);
+			return localizeUrl(baseAbs, { locale: loc }).href;
+		} catch {
+			return origin;
+		}
 	};
 
 	// OG image default (from meta)
@@ -126,14 +134,17 @@
 			: null
 	);
 
-	const itemListJsonLd = $derived(() => {
-		if (!page.data.category) return null;
-		const listItems = page.data.category.allPosts.slice(0, 50).map((p, idx) => ({
-			'@type': 'ListItem',
-			position: idx + 1,
-			name: p.data?.title ?? p.absolutePath.split('/').at(-1),
-			item: new URL(localizeHref(p.absolutePath), origin).href
-		}));
+    const itemListJsonLd = $derived(() => {
+        if (!page.data.category) return null;
+        const listItems = page.data.category.allPosts.slice(0, 50).map((p, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            name: p.data?.title ?? p.absolutePath.split('/').at(-1),
+            item: (() => {
+                const path = p.absolutePath?.startsWith('/') ? p.absolutePath : `/${p.absolutePath}`;
+                return new URL(path, origin).href;
+            })()
+        }));
 		return JSON.stringify(
 			{
 				'@context': 'https://schema.org',
@@ -146,27 +157,32 @@
 		);
 	});
 
-	const breadcrumbJsonLd = $derived(() => {
-		if (!basePath || basePath === '/') return null;
-		const segments = basePath.split('/').filter(Boolean);
-		const items = segments.map((seg, idx) => {
-			const human = seg.replaceAll('-', ' ');
-			const itemUrl =
-				origin +
-				(idx === segments.length - 1 ? basePath : '/' + segments.slice(0, idx + 1).join('/'));
-			const name =
-				isArticle && idx === segments.length - 1 && page.data.postMetadata?.data?.title
-					? page.data.postMetadata.data.title
-					: human;
-			return { '@type': 'ListItem', position: idx + 1, name, item: itemUrl };
-		});
-		/* eslint-enable no-unused-vars */
-		return JSON.stringify({
-			'@context': 'https://schema.org',
-			'@type': 'BreadcrumbList',
-			itemListElement: items
-		});
-	});
+    const breadcrumbJsonLd = $derived(() => {
+        let bp = '/';
+        try {
+            const abs = new URL(pathname, origin);
+            const baseAbs = deLocalizeUrl(abs);
+            bp = baseAbs.pathname || '/';
+        } catch {}
+        if (!bp || bp === '/') return null;
+        const segments = bp.split('/').filter(Boolean);
+        const items = segments.map((seg, idx) => {
+            const human = seg.replaceAll('-', ' ');
+            const itemUrl =
+                origin + (idx === segments.length - 1 ? bp : '/' + segments.slice(0, idx + 1).join('/'));
+            const name =
+                isArticle && idx === segments.length - 1 && page.data.postMetadata?.data?.title
+                    ? page.data.postMetadata.data.title
+                    : human;
+            return { '@type': 'ListItem', position: idx + 1, name, item: itemUrl };
+        });
+        /* eslint-enable no-unused-vars */
+        return JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: items
+        });
+    });
 </script>
 
 <svelte:head>
@@ -243,41 +259,27 @@
 	<meta name="twitter:image" content={ogImage?.startsWith('http') ? ogImage : origin + ogImage} />
 
 	<!-- JSON-LD: Organization -->
-	<!-- prettier-ignore -->
-	<script type="application/ld+json">
-{organizationJsonLd}
-	</script>
+	<JsonLd json={organizationJsonLd} />
 
 	<!-- JSON-LD: WebSite -->
-	<!-- prettier-ignore -->
-	<script type="application/ld+json">
-{websiteJsonLd}
-	</script>
+	<JsonLd json={websiteJsonLd} />
 	<!-- JSON-LD: BlogPosting (on post pages) -->
 	{#if isArticle && articleJsonLd}
-		<!-- prettier-ignore -->
-		<script type="application/ld+json">
-{articleJsonLd}
-		</script>
+		<JsonLd json={articleJsonLd} />
 	{/if}
 
 	<!-- JSON-LD: WebPage for non-article pages -->
 	{#if !isArticle}
-		<!-- prettier-ignore -->
-		<script type="application/ld+json">
-{webPageJsonLd}
-		</script>
+		<JsonLd json={webPageJsonLd} />
 
 		{#if page.data.category}
 			{#key page.data.category.absolutePath}
 				<!-- JSON-LD: CollectionPage and ItemList for category listings -->
 				{#if collectionJsonLd}
-          <!-- prettier-ignore -->
-          <script type="application/ld+json">{collectionJsonLd}</script>
+					<JsonLd json={collectionJsonLd} />
 				{/if}
 				{#if itemListJsonLd}
-          <!-- prettier-ignore -->
-          <script type="application/ld+json">{itemListJsonLd}</script>
+					<JsonLd json={itemListJsonLd} />
 				{/if}
 			{/key}
 		{/if}
@@ -287,10 +289,7 @@
 	{#if basePath && basePath !== '/'}
 		{#key basePath}
 			{#if breadcrumbJsonLd}
-				<!-- prettier-ignore -->
-				<script type="application/ld+json">
-{breadcrumbJsonLd}
-				</script>
+				<JsonLd json={breadcrumbJsonLd} />
 			{/if}
 		{/key}
 	{/if}

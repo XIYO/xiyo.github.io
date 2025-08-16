@@ -42,11 +42,13 @@ jobs:
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # rehype-mermaid 가 CI에서 Chromium을 사용하여 다이어그램을 렌더링하므로
+      # 빌드 전에 Playwright 브라우저를 설치해야 빌드가 대기/실패하지 않습니다.
+      - name: 🎭 Install Playwright browsers (for build & smoke tests)
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: 🏗️ Build project
         run: pnpm build
-
-      - name: 🎭 Install Playwright browsers (for smoke tests)
-        run: pnpm exec playwright install --with-deps chromium
 
       - name: 🔍 Run unit tests
         run: pnpm run test:unit

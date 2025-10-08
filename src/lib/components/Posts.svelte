@@ -11,7 +11,7 @@
 </script>
 
 <main class="markdown">
-    <h2>categories</h2>
+    <h2>Categories</h2>
 
     {#if category.childCategories.length}
         <ul class="category-list uppercase">
@@ -28,7 +28,9 @@
         <p>{m.subCategoryEmpty()}</p>
     {/if}
 
-    <h2>posts</h2>
+    <hr class="hr my-12" />
+
+    <h2>Posts</h2>
 
     <ul class="posts-list">
         {#each category.allPosts as post (post.absolutePath)}

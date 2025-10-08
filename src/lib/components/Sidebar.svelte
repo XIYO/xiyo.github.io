@@ -50,8 +50,6 @@
 	 * @param {PointerEvent} event
 	 */
 	const handleHoverOpen = (event) => {
-		if (event.pointerType !== 'mouse') return;
-		if (!sidebarElement?.showPopover) return;
 		sidebarElement.showPopover();
 	};
 
@@ -59,9 +57,6 @@
 	 * @param {PointerEvent} event
 	 */
 	const handleHoverClose = (event) => {
-		if (event.pointerType !== 'mouse') return;
-		if (!sidebarElement?.hidePopover) return;
-		if (!sidebarElement.hasAttribute('open')) return;
 		sidebarElement.hidePopover();
 	};
 </script>

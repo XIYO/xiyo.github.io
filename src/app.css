@@ -15,14 +15,20 @@
 	color-scheme: light dark;
 }
 
+@layer base {
+    html {
+        @apply overscroll-none;
+    }
+
+    body > div:first-child {
+        @apply contents;
+    }
+}
+
 @theme {
 	--color-white: hsl(42, 67%, 93%);
 	--color-black: hsl(200, 5%, 10%);
 
 	--font-mono: 'Neo둥근모 Code', 'Pretendard Variable', 'Pretendard', sans-serif;
 	--font-sans: 'Pretendard Variable', 'Pretendard', sans-serif;
-}
-
-html {
-	color: light-dark(var(--base-font-color), var(--base-font-color-dark));
 }

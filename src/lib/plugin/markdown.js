@@ -15,7 +15,7 @@ import rehypeMermaid from 'rehype-mermaid';
 const __noop = () => (/** @param {any} tree */ tree) => tree;
 
 // Top-level await 가능: Vite/SvelteKit ESM, Cloudflare Workers 모두 지원
-const rehypeShiki = import.meta.env.PRERENDER ? (await import('@shikijs/rehype')).default : __noop;
+const rehypeShiki = (await import('@shikijs/rehype')).default;
 import { visit } from 'unist-util-visit';
 import { load as yamlLoad } from 'js-yaml';
 
@@ -123,8 +123,8 @@ export default async function markdownAsync({ markdown }) {
  */
 const rehypeShikiOptions = {
 	themes: {
-		light: 'dracula',
-		dark: 'dracula'
+		light: 'night-owl',
+		dark: 'night-owl'
 	}
 };
 

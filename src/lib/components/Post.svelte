@@ -19,7 +19,9 @@
 					const dateStr = postMetadata?.data?.dates?.at(-1);
 					return dateStr ? new Date(dateStr) : null;
 				} catch (error) {
-					console.warn('Invalid first commit date:', error);
+					if (import.meta.env.DEV) {
+						console.warn('Invalid first commit date:', error);
+					}
 					return null;
 				}
 			})()
@@ -31,7 +33,9 @@
 					const dateStr = postMetadata?.data?.dates?.at(0);
 					return dateStr ? new Date(dateStr) : null;
 				} catch (error) {
-					console.warn('Invalid last commit date:', error);
+					if (import.meta.env.DEV) {
+						console.warn('Invalid last commit date:', error);
+					}
 					return null;
 				}
 			})()
@@ -47,7 +51,9 @@
 					try {
 						return datetime(getLocale(), firstCommitDate, dateFormatOptions);
 					} catch (error) {
-						console.warn('Error formatting first commit date:', error);
+						if (import.meta.env.DEV) {
+							console.warn('Error formatting first commit date:', error);
+						}
 						return firstCommitDate.toLocaleDateString();
 					}
 				})()
@@ -59,7 +65,9 @@
 					try {
 						return datetime(getLocale(), lastCommitDate, dateFormatOptions);
 					} catch (error) {
-						console.warn('Error formatting last commit date:', error);
+						if (import.meta.env.DEV) {
+							console.warn('Error formatting last commit date:', error);
+						}
 						return lastCommitDate.toLocaleDateString();
 					}
 				})()

@@ -21,7 +21,9 @@ export async function GET() {
 			}
 		});
 	} catch (error) {
-		console.error('사이트맵 생성 오류:', error);
+		if (import.meta.env.DEV) {
+			console.error('사이트맵 생성 오류:', error);
+		}
 		return new Response('사이트맵 생성에 실패했습니다', { status: 500 });
 	}
 }
@@ -75,7 +77,9 @@ async function scanLocaleUrls(locale) {
 	try {
 		await scanDirectory(staticPath, locale, '', urls);
 	} catch (error) {
-		console.warn(`⚠️  ${locale} 디렉토리 스캔 실패:`, error.message);
+		if (import.meta.env.DEV) {
+			console.warn(`⚠️  ${locale} 디렉토리 스캔 실패:`, error.message);
+		}
 	}
 
 	return Array.from(urls);
@@ -239,7 +243,7 @@ function buildAlternateLinks(url) {
 function generateSitemapXml(urls) {
 	const urlEntries = urls
 		.map(
-			({ url, priority, changefreq, lastmod }) => `
+			/** @param {{ url: string, priority: number, changefreq: string, lastmod: string }} param0 */ ({ url, priority, changefreq, lastmod }) => `
   <url>
     <loc>https://blog.xiyo.dev${url}</loc>
     <lastmod>${lastmod}</lastmod>

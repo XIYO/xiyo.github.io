@@ -67,11 +67,19 @@ export default class Post {
 			return new Date(this.#metadata.data.published);
 		}
 		// dates 배열의 첫 번째 값을 published로 사용
-		if (this.#metadata?.data?.dates?.length > 0 && this.#metadata.data.dates?.[0]) {
+		if (this.#metadata?.data?.dates?.length > 0 && this.#metadata.data.dates[0]) {
 			return new Date(this.#metadata.data.dates[0]);
 		}
 		// 날짜가 없으면 기본값
 		return new Date(0);
+	}
+
+	/**
+	 * 포스트의 data 속성 반환 (하위 호환성)
+	 * @returns {Promise<any>}
+	 */
+	get data() {
+		return this.getMetadata().then((meta) => meta.data);
 	}
 
 	/**
@@ -112,7 +120,9 @@ export default class Post {
 					markdown: markdownContent
 				});
 			} catch (error) {
+				if (import.meta.env.DEV) {
 				console.error(`Error processing markdown for ${this.#absolutePath}:`, error);
+			}
 				// Return a fallback processed markdown
 				const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 				this.#processedMarkdownCache = Promise.resolve({
@@ -143,7 +153,9 @@ export default class Post {
 			};
 			return this.#metadata;
 		} catch (error) {
-			console.error(`Error getting metadata for ${this.#absolutePath}:`, error);
+			if (import.meta.env.DEV) {
+				console.error(`Error getting metadata for ${this.#absolutePath}:`, error);
+			}
 			const fallbackMetadata = {
 				absolutePath: this.#absolutePath,
 				data: {
@@ -171,7 +183,9 @@ export default class Post {
 				value: processed.value
 			};
 		} catch (error) {
-			console.error(`Error getting content for ${this.#absolutePath}:`, error);
+			if (import.meta.env.DEV) {
+				console.error(`Error getting content for ${this.#absolutePath}:`, error);
+			}
 			const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 			return {
 				absolutePath: this.#absolutePath,
@@ -193,7 +207,9 @@ export default class Post {
 				value: processed.value
 			};
 		} catch (error) {
-			console.error(`Error getting both metadata and content for ${this.#absolutePath}:`, error);
+			if (import.meta.env.DEV) {
+				console.error(`Error getting both metadata and content for ${this.#absolutePath}:`, error);
+			}
 			const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 			return {
 				absolutePath: this.#absolutePath,

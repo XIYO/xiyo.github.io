@@ -5,10 +5,12 @@ import * as m from '$lib/paraglide/messages.js';
 export async function load({ url }) {
 	const root = Category.getCategory('');
 	const posts = await root?.getAllPosts();
-	const recent = (posts ?? []).slice(0, 50).map((post) => ({
-		absolutePath: post.absolutePath,
-		data: post.data
-	}));
+	const recent = await Promise.all(
+		(posts ?? []).slice(0, 50).map(async (post) => ({
+			absolutePath: post.absolutePath,
+			data: (await post.getMetadata()).data
+		}))
+	);
 
 	// Naver-specific meta enhancements
 	const meta = {

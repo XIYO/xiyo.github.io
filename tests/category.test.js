@@ -31,7 +31,8 @@ describe('Category and Post baseLocale fallback', () => {
 		const baseLocaleLower = baseLocale.toLowerCase();
 
 		// 카테고리 테스트: 각 locale의 posts 카테고리가 존재하는지 확인
-		const categoryByLocale = {};
+		/** @type {Record<string, any>} */
+	const categoryByLocale = {};
 		locales.forEach((locale) => {
 			const localeLower = locale.toLowerCase();
 			const category = Category.getCategory(`/${localeLower}/posts`);
@@ -47,7 +48,7 @@ describe('Category and Post baseLocale fallback', () => {
 		const postsCategory = Category.getCategory('/posts');
 		expect(postsCategory).toBeDefined();
 		// Category는 deLocalized path를 저장하므로 absolutePath는 '/posts'여야 함
-		expect(postsCategory.absolutePath).toBe('/posts');
+		expect(postsCategory?.absolutePath).toBe('/posts');
 
 		// Post 테스트: about 파일이 baseLocale에 있는지 확인
 		const baseAboutPost = Post.getPosts(`/${baseLocaleLower}/about`);
@@ -69,7 +70,8 @@ describe('Category and Post baseLocale fallback', () => {
 		// Testing /about access for all locales
 
 		// 각 언어별로 about 파일이 존재하는지 확인
-		const aboutPosts = {};
+		/** @type {Record<string, any>} */
+	const aboutPosts = {};
 		locales.forEach((locale) => {
 			const localeLower = locale.toLowerCase();
 			const aboutPost = Post.getPosts(`/${localeLower}/about`);

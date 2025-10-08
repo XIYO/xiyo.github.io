@@ -18,7 +18,7 @@
 	 */
 	async function handleLocaleClick(event, locale) {
 		event.preventDefault();
-		setLocale(locale);
+		setLocale(/** @type {import('$lib/paraglide/runtime.js').AvailableLanguageTag} */ (locale));
 	}
 </script>
 

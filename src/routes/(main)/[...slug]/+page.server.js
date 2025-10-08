@@ -79,7 +79,7 @@ export async function load({ url }) {
 					})(),
 					type: 'website',
 					url: url.href,
-					image: category ? category.image || null : null,
+					image: category ? /** @type {any} */ (category).image || null : null,
 					// Naver-specific meta for category pages
 					keywords: category?.name
 						? `${category.name}, 개발, 프로그래밍, 기술 블로그`
@@ -101,7 +101,9 @@ export async function load({ url }) {
 			postStats
 		};
 	} catch (error) {
-		console.error(`Error loading page data for ${url.pathname}:`, error);
+		if (import.meta.env.DEV) {
+			console.error(`Error loading page data for ${url.pathname}:`, error);
+		}
 
 		// Return error fallback data
 		return {

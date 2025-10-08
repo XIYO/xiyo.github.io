@@ -12,7 +12,7 @@ import rehypeMermaid from 'rehype-mermaid';
 
 // 프리렌더 때만 무거운 플러그인을 로드한다.
 // 프리렌더가 아니면 가벼운 noop 플러그인을 제공해 .use(...) 체인이 깨지지 않게 한다.
-const __noop = () => (tree) => tree;
+const __noop = () => (/** @param {any} tree */ tree) => tree;
 
 // Top-level await 가능: Vite/SvelteKit ESM, Cloudflare Workers 모두 지원
 const rehypeShiki = import.meta.env.PRERENDER ? (await import('@shikijs/rehype')).default : __noop;
@@ -63,23 +63,26 @@ function getProcessor() {
 
 			// rehype 단계: HTML 변환 및 처리
 			.use(remarkRehype, { allowDangerousHtml: true })
-			.use(rehypeMermaid, {
-				strategy: 'inline-svg',
-				mermaidConfig: {
-					theme: 'default',
-					themeVariables: {
-						fontFamily: 'inherit'
-					}
-				},
-				// GitHub Actions 환경을 위한 명시적 브라우저 설정
-				browser: process.env.CI ? 'chromium' : undefined,
-				launchOptions: process.env.CI
-					? {
-							headless: true,
-							args: ['--no-sandbox', '--disable-setuid-sandbox']
+			.use(
+				rehypeMermaid,
+				/** @type {any} */ ({
+					strategy: 'inline-svg',
+					mermaidConfig: {
+						theme: 'default',
+						themeVariables: {
+							fontFamily: 'inherit'
 						}
-					: undefined
-			})
+					},
+					// GitHub Actions 환경을 위한 명시적 브라우저 설정
+					browser: process.env.CI ? 'chromium' : undefined,
+					launchOptions: process.env.CI
+						? {
+								headless: true,
+								args: ['--no-sandbox', '--disable-setuid-sandbox']
+							}
+						: undefined
+				})
+			)
 			.use(rehypeShiki, rehypeShikiOptions)
 			.use(rehypeCallouts, {
 				theme: 'obsidian' // Obsidian 테마 사용
@@ -88,7 +91,7 @@ function getProcessor() {
 			// stringify 단계: 최종 HTML 생성
 			.use(rehypeStringify, { allowDangerousHtml: true });
 	}
-	return cachedProcessor;
+	return /** @type {import('unified').Processor} */ (cachedProcessor);
 }
 
 /**

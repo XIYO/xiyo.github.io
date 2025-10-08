@@ -29,6 +29,7 @@
 		}
 	});
 
+	/** @param {string} loc */
 	const hrefForLocale = (loc) => {
 		try {
 			const abs = new URL(pathname, origin);
@@ -140,7 +141,7 @@
 
     const itemListJsonLd = $derived(() => {
         if (!page.data.category) return null;
-        const listItems = page.data.category.allPosts.slice(0, 50).map((p, idx) => ({
+        const listItems = page.data.category.allPosts.slice(0, 50).map(/** @param {any} p @param {number} idx */ (p, idx) => ({
             '@type': 'ListItem',
             position: idx + 1,
             name: p.data?.title ?? p.absolutePath.split('/').at(-1),
@@ -303,7 +304,7 @@
 	{/if}
 
 	<!-- JSON-LD: BreadcrumbList -->
-	{#if basePath && basePath !== '/'}
+	{#if basePath && basePath() !== '/'}
 		{#key basePath}
 			{#if breadcrumbJsonLd}
 				<JsonLd json={breadcrumbJsonLd} />

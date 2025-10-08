@@ -40,11 +40,14 @@ export async function GET() {
 			}
 		});
 	} catch (e) {
-		console.error('RSS build error', e);
+		if (import.meta.env.DEV) {
+			console.error('RSS build error', e);
+		}
 		return new Response('RSS error', { status: 500 });
 	}
 }
 
+/** @param {string} absPath */
 function localizedPath(absPath) {
 	// Base locale has no prefix, others have /<locale>
 	// Prefer base locale link if available in locales set
@@ -52,6 +55,7 @@ function localizedPath(absPath) {
 	return absPath.startsWith('/') ? absPath : `/${absPath}`;
 }
 
+/** @param {string} str */
 function escapeXml(str) {
 	return String(str)
 		.replace(/&/g, '&amp;')
@@ -61,6 +65,7 @@ function escapeXml(str) {
 		.replace(/'/g, '&apos;');
 }
 
+/** @param {{ title: string, link: string, description: string, items: any[] }} param0 */
 function buildRss({ title, link, description, items }) {
 	const entries = items
 		.map(

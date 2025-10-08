@@ -17,5 +17,19 @@ export default defineConfig({
 	],
 	ssr: {
 		noExternal: ['@inlang/paraglide-js']
+	},
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks: (id) => {
+					// node_modules에서 가져온 라이브러리들을 vendor 청크로 분리
+					if (id.includes('node_modules')) {
+						if (id.includes('mermaid')) return 'mermaid';
+						if (id.includes('paraglide')) return 'i18n';
+						return 'vendor';
+					}
+				}
+			}
+		}
 	}
 });

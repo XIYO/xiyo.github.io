@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/XIYO/xiyo.github.io/compare/v2.7.0...v2.8.0) (2025-10-08)
+
+
+### Features
+
+* hoverable sidebar locale switcher ([bf79cfc](https://github.com/XIYO/xiyo.github.io/commit/bf79cfca1b53530e742194e85a1a511eeec3cbab))
+
 # [2.7.0](https://github.com/XIYO/xiyo.github.io/compare/v2.6.0...v2.7.0) (2025-08-16)
 
 ### Features

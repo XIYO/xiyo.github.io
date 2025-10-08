@@ -2,24 +2,30 @@
 	import Home from '@lucide/svelte/icons/home';
 	import FileText from '@lucide/svelte/icons/file-text';
 	import Info from '@lucide/svelte/icons/info';
-	import Globe from '@lucide/svelte/icons/globe';
+	import HandFist from '@lucide/svelte/icons/hand-fist';
 	import { page } from '$app/state';
 	import { afterNavigate } from '$app/navigation';
+	import { innerWidth } from 'svelte/reactivity/window';
 	import { deLocalizeHref } from '$lib/paraglide/runtime.js';
 	import { localizeHref, locales, setLocale } from '$lib/paraglide/runtime.js';
 
 	/** @type {HTMLElement | null} */
 	let sidebarElement = $state(null);
 
+	// Tailwind 'sm' = 640px. 모바일(<640px)에서만 자동 닫기
+	// svelte/reactivity/window: innerWidth.current is undefined on server
+	const isMobile = $derived((innerWidth.current ?? Infinity) < 640);
+
+	// 네비게이션 시 모바일에서만 사이드바 자동 닫기
 	afterNavigate(() => {
-		sidebarElement?.hidePopover();
+		if (isMobile) sidebarElement?.hidePopover();
 	});
 
 	const menuItems = [
 		{ label: 'Home', icon: Home, path: '/' },
 		{ label: 'Posts', icon: FileText, path: '/posts' },
 		{ label: 'About', icon: Info, path: '/about' },
-		{ label: 'Globe', icon: Globe, path: '/globe' }
+		{ label: 'Glove', icon: HandFist, path: '/glove' }
 	];
 
 	const localeEmojis = {
@@ -59,6 +65,8 @@
 		sidebarElement.hidePopover();
 	};
 </script>
+
+
 
 {#snippet sidebarItem(
 	/** @type {import('svelte').ComponentType | string | null | undefined} */ icon,

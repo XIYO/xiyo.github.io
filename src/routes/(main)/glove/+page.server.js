@@ -8,3 +8,4 @@ export function load({ depends }) {
 		description: m.globeDescription()
 	};
 }
+

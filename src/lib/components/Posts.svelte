@@ -10,31 +10,31 @@
 	const { category } = $props();
 </script>
 
-<main class="p-4">
-	<section>
-		<h2>categories</h2>
+<main class="markdown">
+    <h2>categories</h2>
 
-		<div class="uppercase flex flex-col gap-2 p-4">
-			{#if category.childCategories.length}
-				{#each category.childCategories as childCategory (childCategory.absolutePath)}
-					<a href={localizeHref(childCategory.absolutePath)}>
-						{childCategory.name}
-						<!-- ({childCategory.allPosts.length}) -->
-					</a>
-				{/each}
-			{:else}
-				{m.subCategoryEmpty()}
-			{/if}
-		</div>
-	</section>
+    {#if category.childCategories.length}
+        <ul class="category-list uppercase">
+            {#each category.childCategories as childCategory (childCategory.absolutePath)}
+                <li>
+                    <a class="plain-link" href={localizeHref(childCategory.absolutePath)}>
+                        {childCategory.name}
+                        <!-- ({childCategory.allPosts.length}) -->
+                    </a>
+                </li>
+            {/each}
+        </ul>
+    {:else}
+        <p>{m.subCategoryEmpty()}</p>
+    {/if}
 
-	<section>
-		<h2>posts</h2>
+    <h2>posts</h2>
 
-		<div class="flex flex-col gap-2 p-4">
-			{#each category.allPosts as post (post.absolutePath)}
-				<a href={localizeHref(post.absolutePath)}>{post.data.title}</a>
-			{/each}
-		</div>
-	</section>
+    <ul class="posts-list">
+        {#each category.allPosts as post (post.absolutePath)}
+            <li>
+                <a class="plain-link" href={localizeHref(post.absolutePath)}>{post.data.title}</a>
+            </li>
+        {/each}
+    </ul>
 </main>

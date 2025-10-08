@@ -7,6 +7,7 @@
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton/optional/presets';
 @import './lib/styles/bunny.css';
+@import './lib/styles/markdown.css';
 
 @source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
 
@@ -25,4 +26,3 @@
 html {
 	color: light-dark(var(--base-font-color), var(--base-font-color-dark));
 }
-

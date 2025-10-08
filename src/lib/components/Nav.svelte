@@ -9,7 +9,7 @@
 		home: '/',
 		posts: '/posts',
 		about: '/about',
-		globe: '/globe'
+		glove: '/glove'
 	};
 
 	/**

@@ -74,8 +74,8 @@
 			: '';
 </script>
 
-<main id="post" class="p-4">
-	<section>
+<main id="post">
+    <section class="markdown">
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html postContent.value}
 	</section>

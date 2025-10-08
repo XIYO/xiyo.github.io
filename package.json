@@ -16,6 +16,7 @@
 		"test:e2e": "playwright test"
 	},
 	"devDependencies": {
+        "@lucide/svelte": "^0.545.0",
 		"@inlang/paraglide-js": "2.2.0",
 		"@playwright/test": "^1.54.2",
 		"@semantic-release/changelog": "^6.0.3",

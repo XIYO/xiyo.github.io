@@ -10,7 +10,7 @@
 	const { category } = $props();
 </script>
 
-<main>
+<main class="p-4">
 	<section>
 		<h2>categories</h2>
 

@@ -3,7 +3,7 @@
 	"version": "2.7.0",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev --host",
+		"dev": "vite dev --host --port 7777",
 		"build": "svelte-kit sync && vite build",
 		"preview": "vite preview --host",
 		"deploy": "pnpm build && pnpm dlx wrangler@latest deploy --minify",

@@ -61,8 +61,6 @@
 	};
 </script>
 
-
-
 {#snippet sidebarItem(
 	/** @type {import('svelte').ComponentType | string | null | undefined} */ icon,
 	/** @type {string} */ label,
@@ -81,12 +79,13 @@
 			{#if typeof icon === 'string'}
 				<span aria-hidden="true" class="text-lg leading-none">{@html icon}</span>
 			{:else if icon}
-				<svelte:component this={icon} size={12} />
+				{@const IconComponent = icon}
+				<IconComponent size={12} />
 			{:else}
 				<span aria-hidden="true" class="text-lg leading-none">•</span>
 			{/if}
 		</div>
-		<span class="flex-1 content-center-safe">{label}</span>
+		<span class="flex-1 mx-2 content-center-safe">{label}</span>
 	</a>
 {/snippet}
 
@@ -118,7 +117,7 @@
                         <path d="M4 19h16" class="transition-all duration-300 origin-[12px_19px] group-open:-translate-y-[7px] group-open:-rotate-45"/>
                     </svg>
                 </span>
-                <span class="flex-1 h-full text-left content-center-safe px-2 text-sm">Menu</span>
+                <span class="flex-1 h-full text-left content-center-safe mx-2 text-sm">Menu</span>
             </button>
         </header>
 
@@ -161,13 +160,5 @@
 
     :global(body) {
         @apply sm:ml-12;
-    }
-
-    /*
-     * 루트에 존재하는 헤더 제어
-     * 사이드바는 모바일 퍼스트에서는 없고 버튼이 존재해야하는데 그 공간을 만들기 위한 여백
-     */
-    :global(#main-header) {
-        @apply pl-12 sm:pl-0;
     }
 </style>

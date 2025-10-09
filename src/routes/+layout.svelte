@@ -227,10 +227,10 @@
 	<meta property="og:url" content={page.data.meta?.url || page.url.href} />
 	<meta property="og:image" content={ogImage?.startsWith('http') ? ogImage : origin + ogImage} />
 	<meta property="og:image:alt" content={page.data.meta?.title || effectiveTitle} />
-	{#if page.data.meta.modifiedTime || page.data.meta.publishedTime}
+	{#if page.data.meta?.modifiedTime || page.data.meta?.publishedTime}
 		<meta
 			property="og:updated_time"
-			content={page.data.meta.modifiedTime || page.data.meta.publishedTime}
+			content={page.data.meta?.modifiedTime || page.data.meta?.publishedTime}
 		/>
 	{/if}
 	{#if page.data.meta?.author}
@@ -238,16 +238,16 @@
 	{:else if isArticle}
 		<meta property="article:author" content={effectiveTitle} />
 	{/if}
-	{#if page.data.meta.publishedTime}
+	{#if page.data.meta?.publishedTime}
 		<meta property="article:published_time" content={page.data.meta.publishedTime} />
 	{/if}
-	{#if page.data.meta.modifiedTime}
+	{#if page.data.meta?.modifiedTime}
 		<meta property="article:modified_time" content={page.data.meta.modifiedTime} />
 	{/if}
-	{#if page.data.meta.section}
+	{#if page.data.meta?.section}
 		<meta property="article:section" content={page.data.meta.section} />
 	{/if}
-	{#if page.data.meta.tags}
+	{#if page.data.meta?.tags}
 		{#each page.data.meta.tags as tag, i (i)}
 			<meta property="article:tag" content={tag} />
 		{/each}

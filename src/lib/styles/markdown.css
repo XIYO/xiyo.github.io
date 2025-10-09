@@ -1,6 +1,6 @@
 @layer base {
 	.markdown {
-		@apply mx-auto max-w-4xl px-6 my-12 md:px-10 md:my-16 font-sans text-sm md:text-base leading-7 text-pretty space-y-8;
+		@apply px-6 my-12 md:px-10 md:my-16 font-sans leading-7 text-pretty space-y-8;
 		color: color-mix(in srgb, var(--base-font-color) 85%, transparent);
 	}
 

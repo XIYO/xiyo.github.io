@@ -2,12 +2,23 @@ import Category from '$lib/post/Category.js';
 import Post from '$lib/post/Post.js';
 import * as m from '$lib/paraglide/messages.js';
 import { parseFrontmatter } from '$lib/post/meta-schema.js';
+import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
 	try {
-		const categoryPromise = Category.getCategory(url.pathname)?.toSerialize();
+		const categoryInstance = Category.getCategory(url.pathname);
 		const postInstance = Post.getPosts(url.pathname);
+
+		// 포스트도 카테고리도 없으면 404
+		if (!categoryInstance && !postInstance) {
+			throw error(404, {
+				message: 'Page not found',
+				path: url.pathname
+			});
+		}
+
+		const categoryPromise = categoryInstance?.toSerialize();
 
 		// 포스트가 있으면 메타데이터와 콘텐츠를 분리해서 가져오기
 		const postMetadataPromise = postInstance?.getMetadata();
@@ -100,12 +111,17 @@ export async function load({ url }) {
 			meta,
 			postStats
 		};
-	} catch (error) {
+	} catch (err) {
 		if (import.meta.env.DEV) {
-			console.error(`Error loading page data for ${url.pathname}:`, error);
+			console.error(`Error loading page data for ${url.pathname}:`, err);
 		}
 
-		// Return error fallback data
+		// 404 에러는 그대로 전파
+		if (err && typeof err === 'object' && 'status' in err && err.status === 404) {
+			throw err;
+		}
+
+		// 다른 에러는 fallback 반환
 		return {
 			title: 'Error Loading Page',
 			description: 'This page could not be loaded',
@@ -120,4 +136,27 @@ export async function load({ url }) {
 			}
 		};
 	}
+}
+
+/** @type {import('./$types').EntryGenerator} */
+export async function entries() {
+	const root = Category.getCategory('');
+	if (!root) return [];
+
+	const [allPosts, allCategories] = await Promise.all([
+		root.getAllPosts(),
+		Promise.resolve(root.allChildCategories)
+	]);
+
+	// 포스트 경로들
+	const postEntries = allPosts.map((post) => ({
+		slug: post.absolutePath.replace(/^\//, '') // 앞의 / 제거
+	}));
+
+	// 카테고리 경로들
+	const categoryEntries = allCategories.map((cat) => ({
+		slug: cat.absolutePath.replace(/^\//, '') // 앞의 / 제거
+	}));
+
+	return [...postEntries, ...categoryEntries];
 }

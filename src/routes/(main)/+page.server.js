@@ -13,6 +13,26 @@ export async function load({ url }) {
 		}))
 	);
 
+	const lang = url.pathname.startsWith('/en-us')
+		? 'en-us'
+		: url.pathname.startsWith('/ja-jp')
+			? 'ja-jp'
+			: 'ko';
+
+	const dlogPath = lang === 'ko' ? '/dlog' : `/${lang}/dlog`;
+	const dlogCategory = Category.getCategory(dlogPath);
+	const dlogPosts = await dlogCategory?.getAllPosts();
+	const dlogs = await Promise.all(
+		(dlogPosts ?? []).slice(0, 5).map(async (post) => {
+			const both = await post.getBoth();
+			return {
+				absolutePath: both.absolutePath,
+				data: both.data,
+				value: both.value
+			};
+		})
+	);
+
 	// Naver-specific meta enhancements
 	const meta = {
 		title: m.title(),
@@ -39,6 +59,8 @@ export async function load({ url }) {
 
 	return {
 		recent,
+		dlogs,
+		lang,
 		meta
 	};
 }

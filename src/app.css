@@ -5,11 +5,9 @@
 @import './callouts-obsidian.css';
 
 @import '@skeletonlabs/skeleton';
-@import '@skeletonlabs/skeleton/optional/presets';
+@import '@skeletonlabs/skeleton-svelte';
 @import './lib/styles/bunny.css';
 @import './lib/styles/markdown.css';
-
-@source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
 
 :root {
 	color-scheme: light dark;

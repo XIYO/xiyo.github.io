@@ -1,21 +1,11 @@
 <script>
-	import * as m from '$lib/paraglide/messages.js';
-	import terminalBrowsing from '$lib/assets/terminal_browsing.png?enhanced';
+	import DlogList from '$lib/components/dlog/DlogList.svelte';
+	import HeroSection from '$lib/components/HeroSection.svelte';
+	import { page } from '$app/state';
 </script>
 
 <main>
-	<div class="p-4">
-		<p>{m.introduction()}</p>
-
-		<figure>
-			<enhanced:img
-				src={terminalBrowsing}
-				alt={m.terminalBrowsing()}
-				data-title={m.terminal()}
-				loading="lazy"
-				decoding="async"
-			/>
-			<figcaption>{m.terminalCaption()}</figcaption>
-		</figure>
-	</div>
+	<HeroSection />
+    <hr class="hr">
+	<DlogList dlogs={page.data.dlogs} lang={page.data.lang} />
 </main>

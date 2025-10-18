@@ -5,7 +5,7 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
 		include: ['tests/**/*.{js,ts}'],
-		exclude: ['e2e/**/*'],
+		exclude: ['e2e/**/*', 'tests/**/*.browser.js'],
 		environment: 'node'
 	}
 });

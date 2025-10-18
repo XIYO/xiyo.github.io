@@ -1,6 +1,10 @@
 import adapter from '@sveltejs/adapter-cloudflare';
 
+/** @type {import('@sveltejs/kit').Config} */
 export default {
+	compilerOptions: {
+		runes: true  // 모든 컴포넌트에서 runes 강제 활성화
+	},
 	kit: {
 		adapter: adapter({
 			// Deploy as a Cloudflare Worker

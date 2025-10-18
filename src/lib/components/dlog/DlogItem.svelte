@@ -15,8 +15,8 @@
 					{/each}
 				</span>
 			{/if}
-			<time datetime={dlog.data.created}>
-				{new Date(dlog.data.created).toLocaleDateString(lang === 'en-us' ? 'en-US' : lang === 'ja-jp' ? 'ja-JP' : 'ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
+			<time datetime={dlog.data.createdAt}>
+				{new Date(dlog.data.createdAt).toLocaleDateString(lang === 'en-us' ? 'en-US' : lang === 'ja-jp' ? 'ja-JP' : 'ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}
 			</time>
 		</div>
 	</div>

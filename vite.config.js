@@ -13,7 +13,26 @@ export default defineConfig({
 			project: './project.inlang',
 			outdir: './src/lib/paraglide',
 			strategy: ['url', 'cookie', 'baseLocale']
-		})
+		}),
+		{
+			name: 'markdown-charset',
+			configureServer(server) {
+				return () => {
+					server.middlewares.use((req, res, next) => {
+						if (req.url?.endsWith('.md')) {
+							const _setHeader = res.setHeader.bind(res);
+							res.setHeader = function (name, value) {
+								if (name.toLowerCase() === 'content-type' && value === 'text/markdown') {
+									return _setHeader('Content-Type', 'text/markdown; charset=utf-8');
+								}
+								return _setHeader(name, value);
+							};
+						}
+						next();
+					});
+				};
+			}
+		}
 	],
 	ssr: {
 		noExternal: ['@inlang/paraglide-js']

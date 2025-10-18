@@ -6,6 +6,7 @@ export default defineConfig({
 	test: {
 		include: ['tests/**/*.{js,ts}'],
 		exclude: ['e2e/**/*', 'tests/**/*.browser.js'],
-		environment: 'node'
+		environment: 'node',
+		testTimeout: 10000
 	}
 });

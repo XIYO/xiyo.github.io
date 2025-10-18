@@ -2,10 +2,10 @@
 title: 콜아웃 테스트
 authors:
   - XIYO
-created: "2025-07-20T12:00:00.000Z"
-modified: "2025-07-20T12:00:00.000Z"
-lastModified: 2025-07-27T21:20:48Z
-published: 2025-07-22T02:34:17Z
+createdAt: "2025-07-20T12:00:00.000Z"
+modifiedAt: "2025-07-20T12:00:00.000Z"
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2025-07-22T02:34:17Z
 ---
 
 # 콜아웃 테스트

@@ -62,11 +62,11 @@ export default class Post {
 			return new Date(0);
 		}
 
-		// published 필드가 있으면 우선 사용
-		if (this.#metadata?.data?.published) {
-			return new Date(this.#metadata.data.published);
+		// createdAt 필드가 있으면 우선 사용
+		if (this.#metadata?.data?.createdAt) {
+			return new Date(this.#metadata.data.createdAt);
 		}
-		// dates 배열의 첫 번째 값을 published로 사용
+		// dates 배열의 첫 번째 값을 createdAt로 사용
 		if (this.#metadata?.data?.dates?.length > 0 && this.#metadata.data.dates[0]) {
 			return new Date(this.#metadata.data.dates[0]);
 		}

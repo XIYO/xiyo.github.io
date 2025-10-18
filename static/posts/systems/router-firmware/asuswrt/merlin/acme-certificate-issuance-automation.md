@@ -5,8 +5,8 @@ description: >-
   기회에 완전히 정리한 후기를 남깁니다.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2025-02-16T23:11:19Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2025-02-16T23:11:19Z
 ---
 # ACME 인증서 발급 자동화 (ASUS AC88U 라우터)
 

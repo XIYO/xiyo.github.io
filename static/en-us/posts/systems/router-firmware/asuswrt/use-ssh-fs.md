@@ -3,8 +3,8 @@ title: USE SSH FS
 description: "![SSH FS connection screen in VS Code](./assets/2023-10-22-11-55-54.png)"
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:56:54+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:56:54+09:00
 ---
 # USE SSH FS
 

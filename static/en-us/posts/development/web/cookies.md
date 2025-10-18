@@ -8,8 +8,8 @@ description: >-
 authors:
   - XIYO
   - xiyo
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T02:44:08+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T02:44:08+09:00
 ---
 # Cookie Transmission Scenario Analysis
 

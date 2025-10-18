@@ -3,8 +3,8 @@ title: 마크다운 파서 플러그인 만들기
 description: 이 블로그를 만들면서 마크다운 파서가 필요했습니다
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2024-08-13T21:22:36Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2024-08-13T21:22:36Z
 ---
 # 마크다운 파서 플러그인 만들기
 

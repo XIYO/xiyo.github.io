@@ -3,8 +3,8 @@ title: USE SSH FS
 description: "![*VS Code*에서 *SSH FS*으로 연결한 화면](./assets/2023-10-22-11-55-54.png)"
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2023-10-21T23:59:59Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2023-10-21T23:59:59Z
 ---
 # USE SSH FS
 

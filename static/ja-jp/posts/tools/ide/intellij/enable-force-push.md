@@ -3,8 +3,8 @@ title: INTELLIJでの強制プッシュの有効化
 description: IntelliJでは、マスターやメインブランチに対して強制プッシュが基本的に保護されています。 \
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-22T01:57:19+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-22T01:57:19+09:00
 ---
 # INTELLIJでの強制プッシュの有効化
 

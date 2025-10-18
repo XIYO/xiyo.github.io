@@ -20,7 +20,7 @@ export async function GET() {
 				const title = data.title || 'Untitled';
 				const link = PUBLIC_SITE_URL + localizedPath(post.absolutePath);
 				const description = data.description || '';
-				const pub = data.published || data.dates?.[0] || new Date(0).toISOString();
+				const pub = data.createdAt || data.dates?.[0] || new Date(0).toISOString();
 				return { title, link, description, pubDate: new Date(pub).toUTCString() };
 			})
 		);

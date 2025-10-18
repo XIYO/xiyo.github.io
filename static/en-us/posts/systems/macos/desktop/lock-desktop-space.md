@@ -3,8 +3,8 @@ title: LOCK DESKTOP SPACE
 description: Learn how to lock the desktop spaces in Mission Control.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:59:36+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:59:36+09:00
 ---
 # LOCK DESKTOP SPACE
 

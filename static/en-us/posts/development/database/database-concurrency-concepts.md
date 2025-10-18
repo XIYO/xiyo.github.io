@@ -3,8 +3,8 @@ title: "Database Concurrency Issues and ANSI SQL Standardization"
 description: "From ANSI SQL's four concurrency problems to MVCC innovation - a complete guide to the history and core concepts of database concurrency control from a practical perspective"
 authors: ["XIYO"]
 tags: ["database", "concurrency", "ANSI SQL", "MVCC", "isolation levels", "transaction", "PostgreSQL", "MySQL", "Oracle"]
-published: 2025-07-31T00:00:00+09:00
-lastModified: 2025-07-30T19:29:06Z
+createdAt: 2025-07-31T00:00:00+09:00
+modifiedAt: 2025-07-30T19:29:06Z
 ---
 
 # Database Concurrency Issues and ANSI SQL Standardization
@@ -37,7 +37,7 @@ Let's explore the concurrency problems defined in the ANSI SQL-92 standard[^5] w
 ```mermaid
 ---
 title: Customer queries while administrator is updating inventory
-lastModified: 2025-07-30T19:29:06Z
+modifiedAt: 2025-07-30T19:29:06Z
 ---
 sequenceDiagram
     participant M as Administrator
@@ -76,7 +76,7 @@ sequenceDiagram
 ```mermaid
 ---
 title: New sales data added during report generation
-lastModified: 2025-07-30T19:29:06Z
+modifiedAt: 2025-07-30T19:29:06Z
 ---
 sequenceDiagram
     participant R as Report Generation<br/>Transaction
@@ -121,7 +121,7 @@ sequenceDiagram
 ```mermaid
 ---
 title: New high-value order added during analysis
-lastModified: 2025-07-30T19:29:06Z
+modifiedAt: 2025-07-30T19:29:06Z
 ---
 sequenceDiagram
     participant A as Analysis<br/>Transaction
@@ -169,7 +169,7 @@ sequenceDiagram
 ```mermaid
 ---
 title: Two users attempt to use points simultaneously
-lastModified: 2025-07-30T19:29:06Z
+modifiedAt: 2025-07-30T19:29:06Z
 ---
 sequenceDiagram
     participant A as User A<br/>(Online Shopping)

@@ -5,8 +5,8 @@ description: >-
   있는 캐시 활용 방안을 도입했습니다.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2024-08-16T00:55:20Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2024-08-16T00:55:20Z
 ---
 # 깃허브 액션 캐시 사용하기
 

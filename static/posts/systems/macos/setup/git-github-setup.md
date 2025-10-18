@@ -9,8 +9,8 @@ tags:
   - version-control
   - ssh
   - github-cli
-lastModified: 2025-07-27T21:20:48Z
-published: 2025-07-22T00:14:46Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2025-07-22T00:14:46Z
 ---
 
 # Git & GitHub 설정

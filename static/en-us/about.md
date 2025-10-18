@@ -4,8 +4,8 @@ description: Hello, I'm a developer who loves the web.
 authors:
   - XIYO
   - xiyo
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2023-01-26T17:55:59+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2023-01-26T17:55:59+09:00
 ---
 # ABOUT
 

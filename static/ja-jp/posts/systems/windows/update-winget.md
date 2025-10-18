@@ -3,8 +3,8 @@ title: WinGet 実行エラーの解決方法
 description: コンピュータが遅くなったので、久しぶりに Windows を再インストールしました。
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-22T01:57:19+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-22T01:57:19+09:00
 ---
 # WinGet 実行エラーの解決方法
 

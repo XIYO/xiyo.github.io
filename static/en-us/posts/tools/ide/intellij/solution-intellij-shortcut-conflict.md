@@ -3,8 +3,8 @@ title: SOLUTION INTELLIJ SHORTCUT CONFLICT
 description: This document explains how to resolve shortcut conflicts in *IntelliJ*.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:56:54+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:56:54+09:00
 ---
 # SOLUTION INTELLIJ SHORTCUT CONFLICT
 

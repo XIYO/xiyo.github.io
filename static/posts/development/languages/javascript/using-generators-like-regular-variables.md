@@ -3,8 +3,8 @@ title: 제터레이터를 일반 변수처럼 사용하기
 description: 자바스크립트에서 제너레이터를 이용하여 반복 가능한 객체를 만듭니다.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2024-08-22T18:45:28Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2024-08-22T18:45:28Z
 ---
 # 제터레이터를 일반 변수처럼 사용하기
 

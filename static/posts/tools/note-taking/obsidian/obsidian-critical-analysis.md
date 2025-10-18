@@ -8,8 +8,8 @@ tags:
   - productivity
   - tools
   - critical-review
-published: 2025-07-26T22:31:49Z
-lastModified: 2025-07-27T21:20:48Z
+createdAt: 2025-07-26T22:31:49Z
+modifiedAt: 2025-07-27T21:20:48Z
 ---
 
 # 옵시디언의 실체: 과대포장된 마크다운 에디터에 대한 비판적 분석

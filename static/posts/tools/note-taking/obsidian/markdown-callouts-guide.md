@@ -2,10 +2,10 @@
 title: "마크다운 콜아웃 가이드"
 description: "옵시디언, GitHub, GitLab에서 사용할 수 있는 마크다운 콜아웃(알림) 기능 가이드"
 authors: ["XIYO"]
-published: "2025-07-30"
+createdAt: "2025-07-30"
 lastmodified: "2025-07-30"
 tags: ["markdown", "obsidian", "github", "gitlab", "callouts", "documentation", "guide"]
-lastModified: 2025-07-30T13:59:51Z
+modifiedAt: 2025-07-30T13:59:51Z
 ---
 
 # 마크다운 콜아웃 가이드

@@ -3,8 +3,8 @@ title: 📝 Posts
 description: 개인 블로그 [blog.xiyo.dev](https://blog.xiyo.dev)의 포스트를 관리하는 리포지토리입니다.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2023-01-25T22:29:14Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2023-01-25T22:29:14Z
 ---
 # 📝 Posts
 

@@ -4,8 +4,8 @@ description: Learn how to configure IntelliJ IDEA to always open projects in tab
 authors:
   - XIYO
   - xiyo
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:56:54+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:56:54+09:00
 ---
 # How to Set IntelliJ Projects to Always Open in Tabs on macOS
 

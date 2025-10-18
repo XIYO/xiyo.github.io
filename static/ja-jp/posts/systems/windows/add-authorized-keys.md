@@ -3,8 +3,8 @@ title: SSH公開鍵の登録方法 - Windows
 description: WindowsでSSHをインストールした後、公開鍵を登録する方法を見ていきましょう。
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-22T01:57:19+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-22T01:57:19+09:00
 ---
 # SSH公開鍵の登録方法 - Windows
 

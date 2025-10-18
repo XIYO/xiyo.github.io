@@ -3,8 +3,8 @@ title: IntelliJにおけるHTMLの静的リソース認識問題の解決
 description: IntelliJでSpring BootプロジェクトのHTMLが静的リソースであるJavaScriptファイルを認識しない問題を解決します。
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-22T01:57:19+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-22T01:57:19+09:00
 ---
 # IntelliJにおけるHTMLの静的リソース認識問題の解決
 

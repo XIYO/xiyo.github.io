@@ -3,8 +3,8 @@ title: INSTALL RSYNC
 description: 라우터에 nginx를 구동중 입니다. \
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2024-03-24T16:54:26Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2024-03-24T16:54:26Z
 ---
 # INSTALL RSYNC
 

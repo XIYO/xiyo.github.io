@@ -3,8 +3,8 @@ title: 팝오버 API 사용하기
 description: 저의 블로그 내비게이션은 `input` 태그를 이용해 토글 기능을 구현했습니다.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2024-08-17T01:19:11Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2024-08-17T01:19:11Z
 ---
 # 팝오버 API 사용하기
 

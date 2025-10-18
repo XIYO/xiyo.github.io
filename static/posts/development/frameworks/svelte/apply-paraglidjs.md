@@ -3,8 +3,8 @@ title: Paraglide JS 적용기
 description: 새로운 국제화 라이브러리인 **Paraglide JS**를 프로젝트에 적용한 경험을 공유합니다.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2024-09-18T17:12:07Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2024-09-18T17:12:07Z
 ---
 # Paraglide JS 적용기
 

@@ -31,9 +31,8 @@ export const PostFrontmatterSchema = z
 			)
 			.optional(),
 		dates: z.array(z.string()).optional(),
-		published: z.string().optional(),
-		modified: z.string().optional(),
-		lastModified: z.string().optional(),
+		createdAt: z.string().optional(),
+		modifiedAt: z.string().optional(),
 		author: z.string().optional(),
 		image: z.string().optional(),
 		section: z.string().optional(),
@@ -51,9 +50,8 @@ export function parseFrontmatter(fm, opts = {}) {
 	const data = parsed.success ? parsed.data : {};
 
 	const dates = Array.isArray(data.dates) ? data.dates : [];
-	const publishedTime = data.published || dates[0] || null;
-	const modifiedTime =
-		data.lastModified || data.modified || (dates.length ? dates[dates.length - 1] : null);
+	const publishedTime = data.createdAt || dates[0] || null;
+	const modifiedTime = data.modifiedAt || (dates.length ? dates[dates.length - 1] : null);
 
 	return {
 		title: data.title ?? opts.fallbackTitle ?? null,

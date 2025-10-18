@@ -3,8 +3,8 @@ title: "The Evolution of Database Locking: From Pessimistic to Optimistic Lockin
 description: "Explore 50 years of database locking evolution from IBM System R in the 1970s to modern approaches. Learn the differences between pessimistic and optimistic locking, performance characteristics, and practical implementation guides for real-world applications."
 tags: ["database", "concurrency", "pessimistic-lock", "optimistic-lock", "performance", "architecture"]
 authors: ["gimtaehui"]
-published: 2025-08-01T00:00:00+09:00
-lastModified: 2025-07-31T15:27:25Z
+createdAt: 2025-08-01T00:00:00+09:00
+modifiedAt: 2025-07-31T15:27:25Z
 ---
 
 # The Evolution of Database Locking: From Pessimistic to Optimistic Locking

@@ -4,8 +4,8 @@ description: 컬렉션의 순회 방법을 정해줌으로써 사용
 authors:
   - XIYO
   - xiyo
-lastModified: 2025-07-27T21:20:48Z
-published: 2024-12-11T12:33:58Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2024-12-11T12:33:58Z
 ---
 # 이터레이터
 

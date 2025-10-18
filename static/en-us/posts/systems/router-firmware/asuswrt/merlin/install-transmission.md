@@ -3,8 +3,8 @@ title: INSTALL TRANSMISSION ON ASUSWRT
 description: Learn how to install Transmission and manage torrents remotely.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:56:54+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:56:54+09:00
 ---
 # INSTALL TRANSMISSION ON ASUSWRT
 

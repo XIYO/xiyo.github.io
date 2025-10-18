@@ -3,8 +3,8 @@ title: LG Gramにドライバーをインストール
 description: LG GramのOSを初期化し再インストールする過程で発生したドライバーの問題を解決します。
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-22T02:44:45+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-22T02:44:45+09:00
 ---
 # LG Gramにドライバーをインストール
 

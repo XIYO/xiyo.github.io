@@ -7,8 +7,8 @@ authors:
   - XIYO
   - xiyo
 category: blog
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:32:54+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:32:54+09:00
 ---
 # Building a Git History-Based Frontmatter Automation System
 
@@ -203,8 +203,8 @@ title: My Post
 category: blog        # This shouldn't disappear...
 tags: [git, automation]  # This too...
 featured: true        # This is important too...
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:32:54+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:32:54+09:00
 ---
 ```
 
@@ -250,8 +250,8 @@ title: Manually copy-paste
 description: Also manually written
 authors:
   - Uh... what was my GitHub ID?
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:32:54+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:32:54+09:00
 ---
 ```
 
@@ -274,8 +274,8 @@ authors:
 messages:
   - 📝 Write blog post
 category: blog  # This stays as I set it
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:32:54+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:32:54+09:00
 ---
 ```
 

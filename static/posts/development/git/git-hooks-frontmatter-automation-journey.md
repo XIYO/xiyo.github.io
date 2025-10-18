@@ -2,8 +2,8 @@
 title: Git Hooks를 활용한 마크다운 프론트매터 자동화 여정
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2025-07-20T18:50:03Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2025-07-20T18:50:03Z
 ---
 # Git Hooks를 활용한 마크다운 프론트매터 자동화 여정
 
@@ -200,10 +200,10 @@ authors:
   - XIYO
 messages:
   - '✨ 새로운 기능 추가'  # 자동으로 포함됨!
-created: '2025-07-20T09:40:48.024Z'
-modified: '2025-07-20T09:40:48.024Z'
-lastModified: 2025-07-27T21:20:48Z
-published: 2025-07-20T18:50:03Z
+createdAt: '2025-07-20T09:40:48.024Z'
+modifiedAt: '2025-07-20T09:40:48.024Z'
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2025-07-20T18:50:03Z
 ---
 
 # 새로운 기능

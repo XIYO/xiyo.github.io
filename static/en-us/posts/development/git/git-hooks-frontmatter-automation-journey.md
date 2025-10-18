@@ -2,8 +2,8 @@
 title: Journey to Automating Markdown Frontmatter with Git Hooks
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T02:44:08+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T02:44:08+09:00
 ---
 # Journey to Automating Markdown Frontmatter with Git Hooks
 
@@ -200,10 +200,10 @@ authors:
   - XIYO
 messages:
   - '✨ Add new feature'  # Automatically included!
-created: '2025-07-20T09:40:48.024Z'
-modified: '2025-07-20T09:40:48.024Z'
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T02:44:08+09:00
+createdAt: '2025-07-20T09:40:48.024Z'
+modifiedAt: '2025-07-20T09:40:48.024Z'
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T02:44:08+09:00
 ---
 
 # New Feature

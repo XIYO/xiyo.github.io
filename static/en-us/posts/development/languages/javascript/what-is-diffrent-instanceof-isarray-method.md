@@ -3,8 +3,8 @@ title: How to Accurately Validate an Array
 description: There was a need for a deep copy of an object. \
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:36+09:00
-published: 2025-07-22T01:56:54+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
+createdAt: 2025-07-22T01:56:54+09:00
 ---
 # How to Accurately Validate an Array
 

@@ -3,8 +3,8 @@ title: SOLUTION INTELLIJ SHORTCUT CONFLICT
 description: _IntelliJ_ 단축키 충돌 문제를 해결하는 방법을 알아봅니다.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2023-10-27T13:20:09Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2023-10-27T13:20:09Z
 ---
 # SOLUTION INTELLIJ SHORTCUT CONFLICT
 

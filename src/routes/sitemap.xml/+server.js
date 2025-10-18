@@ -180,7 +180,7 @@ function getChangeFreq(url) {
 
 /**
  * Get accurate last modified date for a post
- * Priority: metadata.lastModified > metadata.modified > metadata.dates.last > file mtime
+ * Priority: metadata.modifiedAt > metadata.dates.last > file mtime
  */
 async function getPostLastModified(postUrl, fileStats) {
 	try {
@@ -198,14 +198,9 @@ async function getPostLastModified(postUrl, fileStats) {
 
 		const data = metadata.data;
 
-		// 1순위: lastModified 필드
-		if (data.lastModified) {
-			return new Date(data.lastModified).toISOString().split('T')[0];
-		}
-
-		// 2순위: modified 필드
-		if (data.modified) {
-			return new Date(data.modified).toISOString().split('T')[0];
+		// 1순위: modifiedAt 필드
+		if (data.modifiedAt) {
+			return new Date(data.modifiedAt).toISOString().split('T')[0];
 		}
 
 		// 3순위: dates 배열의 마지막 날짜

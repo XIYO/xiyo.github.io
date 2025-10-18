@@ -1,7 +1,7 @@
 ---
 title: Obsidian Sync Guide
 description: iCloud, Obsidian Sync, Cloud Drives, and Git - Everything you need to know about Obsidian synchronization from 4 years of hands-on experience. From losing 500 notes to sync conflicts to building a reliable sync system, I'll share all my insights.
-published: 2025-07-27T16:35:01+09:00
+createdAt: 2025-07-27T16:35:01+09:00
 authors:
   - XIYO
 tags:
@@ -11,7 +11,7 @@ tags:
   - Productivity
   - Note-taking
   - Knowledge Management
-lastModified: 2025-07-27T21:08:36+09:00
+modifiedAt: 2025-07-27T21:08:36+09:00
 ---
 
 # Obsidian Sync Guide

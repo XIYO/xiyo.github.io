@@ -3,8 +3,8 @@ title: CHECKING BACKGROUND JOBS
 description: "`UNIX`와 `UNIX LIKE`에서 `Job control` 일부인 `jobs` 명령어를 설명합니다."
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2023-10-07T16:23:22Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2023-10-07T16:23:22Z
 ---
 # CHECKING BACKGROUND JOBS
 

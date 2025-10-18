@@ -9,8 +9,8 @@ tags:
   - productivity
   - screenshot
   - spotlight
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-23T00:41:04+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-23T00:41:04+09:00
 ---
 
 # macOS 便利技集

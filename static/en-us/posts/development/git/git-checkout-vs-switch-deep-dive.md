@@ -1,8 +1,8 @@
 ---
 title: "Git Checkout vs Switch: Why Did We Need New Commands?"
 description: "An in-depth analysis of the background behind introducing switch and restore commands in Git 2.23, their differences from checkout, and why IntelliJ still sticks to checkout"
-published: 2025-07-28T00:00:00Z
-lastModified: 2025-07-30T13:59:56Z
+createdAt: 2025-07-28T00:00:00Z
+modifiedAt: 2025-07-30T13:59:56Z
 authors:
   - XIYO
 tags:

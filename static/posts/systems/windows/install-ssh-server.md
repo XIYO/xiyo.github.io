@@ -3,8 +3,8 @@ title: INSTALL SSH SERVER
 description: 윈도우즈에서 _SSH_ 서버를 설치하는 방법을 알아봅니다.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2023-10-30T12:33:42Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2023-10-30T12:33:42Z
 ---
 # INSTALL SSH SERVER
 

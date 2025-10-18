@@ -3,8 +3,8 @@ title: SSH FSの使用
 description: "![VS CodeでSSH FSに接続した画面](./assets/2023-10-22-11-55-54.png)"
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-22T01:57:19+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-22T01:57:19+09:00
 ---
 # SSH FSの使用
 

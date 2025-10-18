@@ -2,10 +2,10 @@
 title: "Markdownコールアウトガイド"
 description: "Obsidian、GitHub、GitLabで使用できるMarkdownコールアウト（通知）機能のガイド"
 authors: ["XIYO"]
-published: "2025-07-30"
+createdAt: "2025-07-30"
 lastmodified: "2025-07-30"
 tags: ["markdown", "obsidian", "github", "gitlab", "callouts", "documentation", "guide"]
-lastModified: 2025-07-30T14:00:01Z
+modifiedAt: 2025-07-30T14:00:01Z
 ---
 
 # Markdownコールアウトガイド

@@ -2,10 +2,10 @@
 title: "Markdown Callouts Guide"
 description: "A comprehensive guide to markdown callout (alert) features available in Obsidian, GitHub, and GitLab"
 authors: ["XIYO"]
-published: "2025-07-30"
+createdAt: "2025-07-30"
 lastmodified: "2025-07-30"
 tags: ["markdown", "obsidian", "github", "gitlab", "callouts", "documentation", "guide"]
-lastModified: 2025-07-30T13:59:56Z
+modifiedAt: 2025-07-30T13:59:56Z
 ---
 
 # Markdown Callouts Guide

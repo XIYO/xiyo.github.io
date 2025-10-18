@@ -10,8 +10,8 @@ tags:
   - obsidian
   - chrome
   - rectangle
-lastModified: 2025-07-27T21:20:48Z
-published: 2025-07-22T00:14:46Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2025-07-22T00:14:46Z
 ---
 
 # 시스템 유틸리티 설치

@@ -3,8 +3,8 @@ title: LG 그램에 드라이버 설치
 description: LG 그램의 OS를 초기화하고 다시 설치하는 과정에서 생긴 드라이버 문제를 해결합니다.
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2024-08-26T22:37:12Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2024-08-26T22:37:12Z
 ---
 # LG 그램에 드라이버 설치
 

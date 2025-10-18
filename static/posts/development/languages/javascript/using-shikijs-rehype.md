@@ -2,8 +2,8 @@
 title: Shiki와 함께하는 Markdown 코드 하이라이팅
 authors:
   - XIYO
-lastModified: 2025-07-27T21:20:48Z
-published: 2024-08-14T05:19:14Z
+modifiedAt: 2025-07-27T21:20:48Z
+createdAt: 2024-08-14T05:19:14Z
 ---
 # Shiki와 함께하는 Markdown 코드 하이라이팅
 

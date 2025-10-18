@@ -4,8 +4,8 @@ description: こんにちは、私はウェブを愛する開発者です。
 authors:
   - XIYO
   - xiyo
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2023-01-26T17:55:59+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2023-01-26T17:55:59+09:00
 ---
 # ABOUT
 

@@ -3,8 +3,8 @@ title: Windowsでの韓国語と英語の切り替えキーの変更
 description: Windows 11で、1つのキーボードでMacとWindowsを同時に使用する環境にいるため、韓国語と英語の切り替えに不便を感じました。\
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-22T01:57:19+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-22T01:57:19+09:00
 ---
 # Windowsでの韓国語と英語の切り替えキーの変更
 

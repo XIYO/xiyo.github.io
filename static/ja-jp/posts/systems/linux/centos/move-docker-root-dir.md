@@ -3,8 +3,8 @@ title: Dockerのルートディレクトリの移動
 description: 社内クラウドサーバーにGitLabを立てて使用していました。\
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-22T01:57:19+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-22T01:57:19+09:00
 ---
 # Dockerのルートディレクトリの移動
 

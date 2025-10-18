@@ -3,8 +3,8 @@ title: スヴェルト開発日誌 1, POJO
 description: 私はマークダウンが好きで、その中でも特に好きな文法は [mermaidjs](https://mermaid.js.org/) です。
 authors:
   - XIYO
-lastModified: 2025-07-27T21:08:42+09:00
-published: 2025-07-22T01:57:19+09:00
+modifiedAt: 2025-07-27T21:08:42+09:00
+createdAt: 2025-07-22T01:57:19+09:00
 ---
 # スヴェルト開発日誌 1, POJO
 

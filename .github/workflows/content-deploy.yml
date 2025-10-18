@@ -48,7 +48,7 @@ jobs:
       - name: 🏗️ Build project
         run: pnpm build
         env:
-          PUBLIC_SITE_URL: https://xiyo.dev
+          PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
 
       # semantic-release 단계 생략
 

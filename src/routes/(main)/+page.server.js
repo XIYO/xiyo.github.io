@@ -1,5 +1,6 @@
 import Category from '$lib/post/Category.js';
 import * as m from '$lib/paraglide/messages.js';
+import { PUBLIC_SITE_URL } from '$env/static/public';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
@@ -21,7 +22,7 @@ export async function load({ url }) {
 		// Naver recognizes these tags
 		subject: 'Development Blog',
 		classification: 'Technology',
-		publisher: 'xiyo.dev',
+		publisher: new URL(PUBLIC_SITE_URL).hostname,
 		// Additional Naver-friendly keywords in Korean
 		keywords:
 			'개발 블로그, 프로그래밍, 웹 개발, SvelteKit, JavaScript, TypeScript, 소프트웨어 개발, 기술 블로그, xiyo, 개발자 블로그',

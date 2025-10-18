@@ -28,5 +28,5 @@ Disallow: /_app/
 Disallow: /build/
 
 # Sitemaps
-Sitemap: https://blog.xiyo.dev/sitemap.xml
-Sitemap: https://blog.xiyo.dev/rss.xml
+Sitemap: https://xiyo.dev/sitemap.xml
+Sitemap: https://xiyo.dev/rss.xml

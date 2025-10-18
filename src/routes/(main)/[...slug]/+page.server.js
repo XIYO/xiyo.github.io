@@ -3,6 +3,7 @@ import Post from '$lib/post/Post.js';
 import * as m from '$lib/paraglide/messages.js';
 import { parseFrontmatter } from '$lib/post/meta-schema.js';
 import { error } from '@sveltejs/kit';
+import { PUBLIC_SITE_URL } from '$env/static/public';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
@@ -70,7 +71,7 @@ export async function load({ url }) {
 					// Naver-specific meta
 					subject: 'Development Article',
 					classification: 'Technology',
-					publisher: 'xiyo.dev',
+					publisher: new URL(PUBLIC_SITE_URL).hostname,
 					robots: 'index, follow',
 					cacheControl: 'public, max-age=3600'
 				}
@@ -97,7 +98,7 @@ export async function load({ url }) {
 						: '개발, 프로그래밍',
 					subject: 'Development Blog',
 					classification: 'Technology',
-					publisher: 'xiyo.dev',
+					publisher: new URL(PUBLIC_SITE_URL).hostname,
 					robots: 'index, follow',
 					cacheControl: 'public, max-age=3600'
 				};

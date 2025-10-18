@@ -4,6 +4,7 @@ import { locales, baseLocale } from '$lib/paraglide/runtime';
 import { localizeUrl, deLocalizeUrl } from '$lib/paraglide/runtime.js';
 import { dev } from '$app/environment';
 import Post from '$lib/post/Post.js';
+import { PUBLIC_SITE_URL } from '$env/static/public';
 
 /**
  * Generate sitemap.xml dynamically
@@ -227,7 +228,7 @@ async function getPostLastModified(postUrl, fileStats) {
 // legacy helpers removed: using paraglide localizeUrl/deLocalizeUrl instead
 
 function buildAlternateLinks(url) {
-	const abs = new URL(`https://blog.xiyo.dev${url}`);
+	const abs = new URL(PUBLIC_SITE_URL + url);
 	const baseAbs = deLocalizeUrl(abs);
 	const links = locales
 		.map((loc) => {
@@ -245,7 +246,7 @@ function generateSitemapXml(urls) {
 		.map(
 			/** @param {{ url: string, priority: number, changefreq: string, lastmod: string }} param0 */ ({ url, priority, changefreq, lastmod }) => `
   <url>
-    <loc>https://blog.xiyo.dev${url}</loc>
+    <loc>${PUBLIC_SITE_URL}${url}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>${buildAlternateLinks(url)}

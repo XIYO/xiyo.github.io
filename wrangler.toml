@@ -7,7 +7,7 @@ compatibility_flags = ["nodejs_compat"]
 
 # 커스텀 도메인 라우트 방식으로 전환
 [[routes]]
-pattern = "blog.xiyo.dev"
+pattern = "xiyo.dev"
 custom_domain = true
 
 [assets]

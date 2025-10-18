@@ -3,6 +3,7 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import { locales, baseLocale, localizeUrl, deLocalizeUrl } from '$lib/paraglide/runtime';
 	import JsonLd from '$lib/JsonLd.svelte';
+	import { PUBLIC_SITE_URL } from '$env/static/public';
 	import '../app.css';
 
 	const { children } = $props();
@@ -193,7 +194,7 @@
 <svelte:head>
 	<title>{effectiveTitle}</title>
 	<meta content={effectiveDescription} name="description" />
-	<link href={page.url.origin + page.url.pathname} rel="canonical" />
+	<link href={PUBLIC_SITE_URL + page.url.pathname} rel="canonical" />
 
 	{#each locales as loc (loc)}
 		<link rel="alternate" hreflang={loc} href={hrefForLocale(loc)} />
@@ -202,7 +203,7 @@
 	<link
 		rel="alternate"
 		type="application/rss+xml"
-		title="xiyo.dev feed"
+		title={new URL(PUBLIC_SITE_URL).hostname + ' feed'}
 		href={origin + '/feed.xml'}
 	/>
 	{#if naverVerification}
@@ -213,7 +214,7 @@
 	<meta name="robots" content="index,follow" />
 	<meta name="subject" content={page.data.meta?.subject || 'Development Blog'} />
 	<meta name="classification" content={page.data.meta?.classification || 'Technology'} />
-	<meta name="publisher" content={page.data.meta?.publisher || 'xiyo.dev'} />
+	<meta name="publisher" content={page.data.meta?.publisher || new URL(PUBLIC_SITE_URL).hostname} />
 	<meta name="author" content={page.data.meta?.author || 'XIYO'} />
 	{#if page.data.meta?.keywords}
 		<meta name="keywords" content={page.data.meta.keywords} />

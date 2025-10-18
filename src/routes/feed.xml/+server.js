@@ -1,7 +1,6 @@
 import Category from '$lib/post/Category.js';
 import { baseLocale } from '$lib/paraglide/runtime.js';
-
-const SITE = 'https://blog.xiyo.dev';
+import { PUBLIC_SITE_URL } from '$env/static/public';
 
 /**
  * Generate RSS 2.0 feed for recent posts (base locale prioritized)
@@ -19,7 +18,7 @@ export async function GET() {
 				const md = await post.getMetadata();
 				const data = md?.data ?? {};
 				const title = data.title || 'Untitled';
-				const link = SITE + localizedPath(post.absolutePath);
+				const link = PUBLIC_SITE_URL + localizedPath(post.absolutePath);
 				const description = data.description || '';
 				const pub = data.published || data.dates?.[0] || new Date(0).toISOString();
 				return { title, link, description, pubDate: new Date(pub).toUTCString() };
@@ -27,9 +26,9 @@ export async function GET() {
 		);
 
 		const rss = buildRss({
-			title: 'xiyo.dev feed',
-			link: SITE,
-			description: 'Recent posts from xiyo.dev',
+			title: `${new URL(PUBLIC_SITE_URL).hostname} feed`,
+			link: PUBLIC_SITE_URL,
+			description: `Recent posts from ${new URL(PUBLIC_SITE_URL).hostname}`,
 			items
 		});
 

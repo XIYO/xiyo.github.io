@@ -1,3 +1,11 @@
+## [2.8.1](https://github.com/XIYO/xiyo.github.io/compare/v2.8.0...v2.8.1) (2025-10-18)
+
+
+### Bug Fixes
+
+* add PUBLIC_SITE_URL environment variable to GitHub Actions build steps ([aa5f269](https://github.com/XIYO/xiyo.github.io/commit/aa5f269308538972304538f72841a1d8c88669e2))
+* add UTF-8 encoding support for markdown files and remove submodule references ([6f94802](https://github.com/XIYO/xiyo.github.io/commit/6f948029e7621925e4d15ca6391d00549f30a611))
+
 # [2.8.0](https://github.com/XIYO/xiyo.github.io/compare/v2.7.0...v2.8.0) (2025-10-08)
 
 

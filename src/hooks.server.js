@@ -4,26 +4,6 @@ import { redirect } from '@sveltejs/kit';
 import { baseLocale, locales, extractLocaleFromRequest } from '$lib/paraglide/runtime';
 
 /**
- * Handle markdown file encoding to properly serve UTF-8 content
- * @param {{ event: import('@sveltejs/kit').RequestEvent, resolve: any }} param0
- */
-const handleMarkdownEncoding = async ({ event, resolve }) => {
-	if (event.url.pathname.endsWith('.md')) {
-		const response = await resolve(event);
-		const headers = new Headers(response.headers);
-		headers.set('Content-Type', 'text/markdown; charset=utf-8');
-
-		return new Response(response.body, {
-			status: response.status,
-			statusText: response.statusText,
-			headers
-		});
-	}
-
-	return resolve(event);
-};
-
-/**
  * @param {{ event: import('@sveltejs/kit').RequestEvent, resolve: any }} param0
  */
 const handleParaglide = ({ event, resolve }) =>
@@ -62,4 +42,4 @@ const handleBaseLocaleAssets = ({ event, resolve }) => {
 	return resolve(event);
 };
 
-export const handle = sequence(handleBaseLocaleAssets, handleParaglide, handleMarkdownEncoding);
+export const handle = sequence(handleBaseLocaleAssets, handleParaglide);

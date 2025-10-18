@@ -1,9 +1,0 @@
-[submodule "static/ko-kr"]
-	path = static/ko-kr
-	url = https://github.com/XIYO/ko-kr.posts.git
-[submodule "static/ja-jp"]
-	path = static/ja-jp
-	url = https://github.com/XIYO/ja-jp.posts.git
-[submodule "static/en-us"]
-	path = static/en-us
-	url = https://github.com/XIYO/en-us.posts.git

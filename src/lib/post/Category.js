@@ -1,5 +1,5 @@
 import Post from '$lib/post/Post.js';
-import { deLocalizeHref, baseLocale } from '$lib/paraglide/runtime.js';
+import { deLocalizeHref } from '$lib/paraglide/runtime.js';
 
 /**
  * @typedef {import('../types/markdown.js').SerializedCategory} SerializedCategory
@@ -28,8 +28,6 @@ export default class Category {
 		Object.entries(markdowns).forEach(([path, markdownAsync]) => {
 			let absolutePath = path
 				.replace(/^\/static/, '') // 스태틱 경로 제거
-				// baseLocale가 있는 경우 제거
-				.replace(new RegExp(`^/${baseLocale.toLowerCase()}`), '')
 				.replace(/\.md$/, ''); // 확장자 제거
 
 			this.#initCategories({

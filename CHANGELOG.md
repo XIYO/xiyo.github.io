@@ -1,3 +1,28 @@
+# [3.0.0](https://github.com/XIYO/xiyo.github.io/compare/v2.8.1...v3.0.0) (2025-10-18)
+
+
+### Bug Fixes
+
+* increase test timeout and fix authors test assertion ([41ff9a0](https://github.com/XIYO/xiyo.github.io/commit/41ff9a06ec2252b0679c0db779bbcc6548744499))
+* increase test timeout to 20s for CI environment ([a54ad45](https://github.com/XIYO/xiyo.github.io/commit/a54ad45a6c7a2bd83e5dd067f8517bd5cf29dcfe))
+* update semantic-release config for pnpm ([702790e](https://github.com/XIYO/xiyo.github.io/commit/702790eb02883e32fba0568c3499212793acda1d))
+* use createdAt consistently across all dlog components and tests ([d4d8da8](https://github.com/XIYO/xiyo.github.io/commit/d4d8da8c4171f5052ac179830b85ca322ca6075d))
+
+
+### Code Refactoring
+
+* standardize time field names to createdAt/modifiedAt ([71e1336](https://github.com/XIYO/xiyo.github.io/commit/71e1336cd03114e76f4a66cdada2341cf824b6d7))
+
+
+### Features
+
+* add first dlog entry and fix date display ([b8bc27c](https://github.com/XIYO/xiyo.github.io/commit/b8bc27cd67d9087208d82e023be7dcd17686d1cc))
+
+
+### BREAKING CHANGES
+
+* Field names in frontmatter have changed from published/lastModified to createdAt/modifiedAt
+
 ## [2.8.1](https://github.com/XIYO/xiyo.github.io/compare/v2.8.0...v2.8.1) (2025-10-18)
 
 

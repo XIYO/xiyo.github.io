@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/XIYO/xiyo.github.io/compare/v3.0.0...v3.1.0) (2025-10-20)
+
+
+### Features
+
+* 최근 변경 이력 dlog 작성 및 footer 스타일 간소화 ([c7dc1eb](https://github.com/XIYO/xiyo.github.io/commit/c7dc1ebf1fbe178de6b9f03b10fcf3c853f1343c))
+
 # [3.0.0](https://github.com/XIYO/xiyo.github.io/compare/v2.8.1...v3.0.0) (2025-10-18)
 
 

@@ -130,7 +130,7 @@
             {/each}
         </nav>
         <!-- 푸터: 언어 선택 -->
-        <footer class="w-full border-t border-surface-200-800 bg-surface-50-950/70 backdrop-blur">
+        <footer>
             {#each locales as locale (locale)}
                 {@render sidebarItem(
                     localeEmojis[locale] ?? '🌐',
